@@ -59,14 +59,27 @@ export interface PrecursorUsage {
 	amount: number
 }
 
+export interface EmInstState {
+	method:
+		| 'combustion'
+		| 'process-emissions'
+		| 'mass-balance'
+	name: string
+	ad: number
+	adUnit: 't' | 'kNm3'
+	ncv: number
+}
+
 export interface CbamState {
 	processes: Array<ProcessState>
 	precursors: Array<PrecursorState>
+	eminst: Array<EmInstState>
 }
 
 const initialState: CbamState = {
 	processes: [],
 	precursors: [],
+	eminst: [],
 }
 
 export const cbamSlice = createSlice({
