@@ -10,16 +10,21 @@ import {
 	theme,
 } from 'antd'
 import { addNewEmInst } from './store/cbam'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from './store'
 
 export const EmInst = ({ id }: { id: string }) => {
 	const { token } = theme.useToken()
+	const { eminst } = useSelector(
+		({ cbam }: RootState) => cbam,
+	)
 
 	const dispatch = useDispatch()
 
 	return (
 		<Table
 			id={id}
+			pagination={false}
 			title={() => (
 				<Flex justify="space-between">
 					<Typography.Title
@@ -140,7 +145,7 @@ export const EmInst = ({ id }: { id: string }) => {
 					dataIndex: 'energy-bio',
 				},
 			]}
-			dataSource={[{}]}
+			dataSource={eminst}
 		/>
 	)
 }
