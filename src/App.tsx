@@ -1,51 +1,173 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {
+	Anchor,
+	Button,
+	Col,
+	Flex,
+	Layout,
+	Row,
+	Typography,
+	message,
+	theme,
+} from 'antd'
+import { Emissions } from './Emissions'
+import { Precursors } from './Precursors'
+import { Processes } from './Processes'
+import { Content, Header } from 'antd/es/layout/layout'
+import Sider from 'antd/es/layout/Sider'
+import aipimLogo from './assets/aipim-logo-green.png'
+import { VerticalAlignBottomOutlined } from '@ant-design/icons'
+import { GhgEmissions } from './GhgEmissions'
+import { InstData } from './InstData'
 
 function App() {
-	const [count, setCount] = useState(0)
+	const {
+		token: { colorPrimary },
+		token,
+	} = theme.useToken()
 
 	return (
-		<>
-			<div>
-				<a
-					href="https://vitejs.dev"
-					target="_blank"
+		<Layout
+			style={{
+				minHeight: '100vh',
+			}}
+		>
+			<Header
+				style={{
+					backgroundColor: 'inherit',
+					height: '10em',
+				}}
+			>
+				<Flex
+					align="center"
+					style={{
+						height: '100%',
+					}}
 				>
-					<img
-						src={viteLogo}
-						className="logo"
-						alt="Vite logo"
-					/>
-				</a>
-				<a href="https://react.dev" target="_blank">
-					<img
-						src={reactLogo}
-						className="logo react"
-						alt="React logo"
-					/>
-				</a>
-			</div>
-			<h1>Vite + React</h1>
-			<div className="card">
-				<button
-					onClick={() =>
-						setCount(count => count + 1)
-					}
+					<img src={aipimLogo} height={'80%'} />
+					<Flex
+						justify="center"
+						align="center"
+						style={{
+							width: '100%',
+							height: '100%',
+						}}
+					>
+						<Typography.Title
+							level={1}
+							style={{
+								color: colorPrimary,
+								textAlign: 'center',
+							}}
+						>
+							Aipim CBAM reporter v2
+						</Typography.Title>
+					</Flex>
+				</Flex>
+			</Header>
+			<Layout>
+				<Sider
+					style={{
+						backgroundColor: 'inherit',
+					}}
 				>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save
-					to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">
-				Click on the Vite and React logos to learn
-				more
-			</p>
-		</>
+					<Anchor
+						items={[
+							{
+								title: 'General information',
+								href: '#instdata',
+							},
+							{
+								title: 'Processes',
+								href: '#processes',
+							},
+							{
+								title: 'Precursors',
+								href: '#precursors',
+							},
+							{
+								title: 'GHG emissions balance',
+								href: '#ghg',
+							},
+							{
+								title: 'Emissions',
+								href: '#emissions',
+							},
+						].map((v, k) => ({
+							...v,
+							key: `${k}`,
+						}))}
+					/>
+				</Sider>
+				<Content
+					style={{
+						backgroundColor: 'inherit',
+					}}
+				>
+					<Flex vertical gap="large">
+						<Row>
+							<Col span={21}>
+								<InstData id="instdata" />
+							</Col>
+						</Row>
+						<Row>
+							<Col span={21}>
+								<Processes />
+							</Col>
+						</Row>
+						<Row>
+							<Col span={21}>
+								<Precursors />
+							</Col>
+						</Row>
+						<Row>
+							<Col span={21}>
+								<GhgEmissions id="ghg" />
+							</Col>
+						</Row>
+						<Row>
+							<Col span={21}>
+								<Emissions />
+							</Col>
+						</Row>
+						<Row>
+							<Col span={21}>
+								<Flex
+									justify="end"
+									style={{
+										// margin
+										height: 150,
+									}}
+								>
+									<Button
+										type="primary"
+										icon={
+											<VerticalAlignBottomOutlined />
+										}
+										onClick={() =>
+											message.error(
+												'Not implemented yet',
+											)
+										}
+									>
+										<Typography.Text
+											strong
+											style={{
+												color: token
+													.Button
+													?.primaryColor,
+											}}
+										>
+											Export as Excel
+											report
+										</Typography.Text>
+									</Button>
+								</Flex>
+							</Col>
+						</Row>
+					</Flex>
+				</Content>
+			</Layout>
+		</Layout>
 	)
 }
 
