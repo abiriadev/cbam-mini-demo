@@ -445,6 +445,18 @@ export const cbamSlice = createSlice({
 					),
 			)
 		},
+
+		addNewEmInst: ({ eminst }) =>
+			void eminst.push({
+				method: 'mass-balance',
+				name: chooseUniqueName(
+					eminst.map(({ name }) => name),
+					'new stream',
+				),
+				ad: 0,
+				adUnit: 't',
+				ncv: 0,
+			}),
 	},
 })
 
@@ -531,6 +543,7 @@ export const {
 		updateExportedMeasurableHeatEf,
 		updateImportedWasteGasAmount,
 		updateExportedWasteGasAmount,
+		addNewEmInst,
 	},
 	reducer,
 } = cbamSlice
