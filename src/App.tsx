@@ -18,6 +18,7 @@ import aipimLogo from './assets/aipim-logo-green.png'
 import { VerticalAlignBottomOutlined } from '@ant-design/icons'
 import { GhgEmissions } from './GhgEmissions'
 import { InstData } from './InstData'
+import { EmInst } from './EmInst'
 
 function App() {
 	const {
@@ -77,6 +78,10 @@ function App() {
 								href: '#instdata',
 							},
 							{
+								title: 'Installation emission',
+								href: '#eminst',
+							},
+							{
 								title: 'Processes',
 								href: '#processes',
 							},
@@ -107,6 +112,11 @@ function App() {
 						<Row>
 							<Col span={21}>
 								<InstData id="instdata" />
+							</Col>
+						</Row>
+						<Row>
+							<Col span={21}>
+								<EmInst id="eminst" />
 							</Col>
 						</Row>
 						<Row>

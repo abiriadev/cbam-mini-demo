@@ -6,8 +6,6 @@ import {
 	PrecursorUsage,
 	totalEmission,
 	findPrecursorById,
-	ZeroEmission,
-	precursorMapToArray,
 	precursorMapToUsageArray,
 } from './store/cbam'
 import { fixEmission, nanGuard, sum } from './utils'
