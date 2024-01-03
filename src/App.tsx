@@ -19,6 +19,7 @@ import { VerticalAlignBottomOutlined } from '@ant-design/icons'
 import { GhgEmissions } from './GhgEmissions'
 import { InstData } from './InstData'
 import { EmInst } from './EmInst'
+import { SummaryProducts } from './SummaryProducts.1'
 
 function App() {
 	const {
@@ -97,6 +98,10 @@ function App() {
 								title: 'Emissions',
 								href: '#emissions',
 							},
+							{
+								title: 'Summary products',
+								href: '#summary-products',
+							},
 						].map((v, k) => ({
 							...v,
 							key: `${k}`,
@@ -137,6 +142,11 @@ function App() {
 						<Row>
 							<Col span={21}>
 								<Emissions />
+							</Col>
+						</Row>
+						<Row>
+							<Col span={21}>
+								<SummaryProducts id="summary-products" />
 							</Col>
 						</Row>
 						<Row>
