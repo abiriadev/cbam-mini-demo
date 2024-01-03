@@ -9,7 +9,7 @@ import {
 	Typography,
 	theme,
 } from 'antd'
-import { addNewProcess } from './store/cbam'
+import { addNewEmInst } from './store/cbam'
 import { useDispatch } from 'react-redux'
 
 export const EmInst = ({ id }: { id: string }) => {
@@ -35,7 +35,7 @@ export const EmInst = ({ id }: { id: string }) => {
 						type="primary"
 						icon={<PlusOutlined />}
 						onClick={() =>
-							dispatch(addNewProcess())
+							dispatch(addNewEmInst())
 						}
 					>
 						<Typography.Text
