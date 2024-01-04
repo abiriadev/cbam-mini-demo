@@ -21,6 +21,8 @@ import { InstData } from './InstData'
 import { EmInst } from './EmInst'
 import { SummaryProducts } from './SummaryProducts'
 import { AGC } from './AGC'
+import { ProcessEmissions } from './ProcessEmissions'
+import { PrecursorEmissions } from './PrecursorEmissions'
 
 function App() {
 	const {
@@ -100,6 +102,14 @@ function App() {
 								href: '#ghg',
 							},
 							{
+								title: 'Process emissions',
+								href: '#process-emissions',
+							},
+							{
+								title: 'Precursor emissions',
+								href: '#precursor-emissions',
+							},
+							{
 								title: 'Emissions',
 								href: '#emissions',
 							},
@@ -147,6 +157,21 @@ function App() {
 						<Row>
 							<Col span={21}>
 								<GhgEmissions id="ghg" />
+							</Col>
+						</Row>
+						<Row>
+							<Col span={21}>
+								<ProcessEmissions id="process-emissions" />
+							</Col>
+						</Row>
+						<Row>
+							<Col span={21}>
+								<PrecursorEmissions id="precursor-emissions" />
+							</Col>
+						</Row>
+						<Row>
+							<Col span={21}>
+								<Emissions />
 							</Col>
 						</Row>
 						<Row>
