@@ -19,7 +19,8 @@ import { VerticalAlignBottomOutlined } from '@ant-design/icons'
 import { GhgEmissions } from './GhgEmissions'
 import { InstData } from './InstData'
 import { EmInst } from './EmInst'
-import { SummaryProducts } from './SummaryProducts.1'
+import { SummaryProducts } from './SummaryProducts'
+import { AGC } from './AGC'
 
 function App() {
 	const {
@@ -79,6 +80,10 @@ function App() {
 								href: '#instdata',
 							},
 							{
+								title: 'Aggregated goods categories',
+								href: '#agc',
+							},
+							{
 								title: 'Installation emission',
 								href: '#eminst',
 							},
@@ -117,6 +122,11 @@ function App() {
 						<Row>
 							<Col span={21}>
 								<InstData id="instdata" />
+							</Col>
+						</Row>
+						<Row>
+							<Col span={21}>
+								<AGC id="agc" />
 							</Col>
 						</Row>
 						<Row>
