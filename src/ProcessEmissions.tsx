@@ -19,7 +19,11 @@ interface EmissionResult {
 	children?: Array<EmissionResult>
 }
 
-export const ProcessEmissions = ({id}: {id: string}) => {
+export const ProcessEmissions = ({
+	id,
+}: {
+	id: string
+}) => {
 	const { processes, precursors: ppa } = useSelector(
 		(st: RootState) => st.cbam,
 	)
@@ -129,7 +133,7 @@ export const ProcessEmissions = ({id}: {id: string}) => {
 							marginBottom: 0,
 						}}
 					>
-						Emissions
+						Process Emissions
 					</Typography.Title>
 				)}
 				rowKey={({ id }) => id}

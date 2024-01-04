@@ -133,7 +133,7 @@ export const PrecursorEmissions = ({
 							marginBottom: 0,
 						}}
 					>
-						Emissions
+						Precursor Emissions
 					</Typography.Title>
 				)}
 				rowKey={({ id }) => id}
