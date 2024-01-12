@@ -38,6 +38,7 @@ export const totalUsage = ({
 export interface ProcessState {
 	id: string
 	name: string
+	agc: AgcKind
 	direm: number
 	activity_level: number
 	heat: ImpExp
@@ -122,13 +123,17 @@ export const cbamSlice = createSlice({
 			{ payload }: PayloadAction<ProcessState>,
 		) => void processes.push(payload),
 
-		addNewProcess: ({ processes }) =>
+		addNewProcess: (
+			{ processes },
+			{ payload }: PayloadAction<AgcKind>,
+		) =>
 			void processes.push({
 				id: crypto.randomUUID(),
 				name: chooseUniqueName(
 					processes.map(({ name }) => name),
 					'new process',
 				),
+				agc: payload,
 				direm: 0,
 				activity_level: 0,
 				heat: {
