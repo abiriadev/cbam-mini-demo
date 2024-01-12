@@ -17,7 +17,7 @@ import Sider from 'antd/es/layout/Sider'
 import aipimLogo from './assets/aipim-logo-green.png'
 import { VerticalAlignBottomOutlined } from '@ant-design/icons'
 import { GhgEmissions } from './GhgEmissions'
-import { InstData } from './InstData'
+import { AboutTheInstallation } from './AboutTheInstallation'
 import { EmInst } from './EmInst'
 import { SummaryProducts } from './SummaryProducts'
 import { AGC } from './AGC'
@@ -143,7 +143,7 @@ function App() {
 									title="A_InstData"
 								>
 									<ReportingPeriod id="reporting-period" />
-									<InstData id="instdata" />
+									<AboutTheInstallation id="instdata" />
 								</Sheet>
 							</Col>
 						</Row>

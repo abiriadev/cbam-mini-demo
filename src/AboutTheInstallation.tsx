@@ -1,14 +1,10 @@
-import {
-	DatePicker,
-	Flex,
-	Form,
-	Input,
-	Space,
-	Typography,
-	theme,
-} from 'antd'
+import { Flex, Form, Input, Typography, theme } from 'antd'
 
-export const InstData = ({ id }: { id?: string }) => {
+export const AboutTheInstallation = ({
+	id,
+}: {
+	id?: string
+}) => {
 	const { token } = theme.useToken()
 
 	return (
@@ -42,13 +38,6 @@ export const InstData = ({ id }: { id?: string }) => {
 						span: 10,
 					}}
 				>
-					<Form.Item
-						label="Reporting period"
-						name="period"
-						rules={[{ required: true }]}
-					>
-						<DatePicker.RangePicker />
-					</Form.Item>
 					<Form.Item
 						label="Name of the installation"
 						name="name"
