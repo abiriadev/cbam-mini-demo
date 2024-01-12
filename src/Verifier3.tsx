@@ -31,28 +31,10 @@ export const Verifier3 = ({ id }: { id?: string }) => {
 				</Typography.Title>
 			</Flex>
 			<Flex gap="large">
-				<Form
-					labelCol={{
-						span: 15,
-					}}
-				>
-					<I label="Name of the installation (optional)" />
-					<I
-						label="Name of the installation (English name)"
-						required
-					/>
-					<I label="Street, Number" />
-					<I label="Economic activity" />
-					<I label="Post code" />
-					<I label="P.O. Box" />
-					<I label="City" />
-					<I label="Country" required />
-					<I label="UNLOCODE" required />
-					<I label="Coordinates of the main emission source (latitude)" />
-					<I label="Coordinates of the main emission source (longitude)" />
-					<I label="Name of authorized representative" />
-					<I label="Email" />
-					<I label="Telephone" />
+				<Form>
+					<I label="Accreditation Member State" />
+					<I label="Name of the national accreditation body" />
+					<I label="Registration number issued by the Accreditation body" />
 				</Form>
 			</Flex>
 		</div>

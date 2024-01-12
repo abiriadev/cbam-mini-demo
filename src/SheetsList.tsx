@@ -40,9 +40,9 @@ export const SheetsList = () => {
 							title="Verifier of the report"
 							sub
 						>
-							<Verifier1 />
-							<Verifier2 />
-							<Verifier3 />
+							<Verifier1 id="verifier1" />
+							<Verifier2 id="verifier2" />
+							<Verifier3 id="verifier3" />
 						</Sheet>
 					</Sheet>
 				</Col>

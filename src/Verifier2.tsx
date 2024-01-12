@@ -1,11 +1,7 @@
 import { Flex, Form, Typography, theme } from 'antd'
 import { I } from './I'
 
-export const Verifier2 = ({
-	id,
-}: {
-	id?: string
-}) => {
+export const Verifier2 = ({ id }: { id?: string }) => {
 	const { token } = theme.useToken()
 
 	return (
@@ -37,26 +33,13 @@ export const Verifier2 = ({
 			<Flex gap="large">
 				<Form
 					labelCol={{
-						span: 15,
+						span: 10,
 					}}
 				>
-					<I label="Name of the installation (optional)" />
-					<I
-						label="Name of the installation (English name)"
-						required
-					/>
-					<I label="Street, Number" />
-					<I label="Economic activity" />
-					<I label="Post code" />
-					<I label="P.O. Box" />
-					<I label="City" />
-					<I label="Country" required />
-					<I label="UNLOCODE" required />
-					<I label="Coordinates of the main emission source (latitude)" />
-					<I label="Coordinates of the main emission source (longitude)" />
-					<I label="Name of authorized representative" />
-					<I label="Email" />
-					<I label="Telephone" />
+					<I label="Name" />
+					<I label="Email address" />
+					<I label="Telephone number" />
+					<I label="Fax" />
 				</Form>
 			</Flex>
 		</div>
