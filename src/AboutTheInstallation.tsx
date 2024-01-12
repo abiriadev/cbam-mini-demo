@@ -29,62 +29,50 @@ export const AboutTheInstallation = ({
 						marginBottom: 0,
 					}}
 				>
-					General information
+					About the installation
 				</Typography.Title>
 			</Flex>
 			<Flex gap="large">
 				<Form
 					labelCol={{
-						span: 10,
+						span: 15,
 					}}
 				>
-					<Form.Item
-						label="Name of the installation"
-						name="name"
-						rules={[{ required: true }]}
-					>
-						<Input placeholder="name" />
-					</Form.Item>
-					<Form.Item
-						label="Country"
-						name="country"
-						rules={[{ required: true }]}
-					>
-						<Input placeholder="ex: Korea" />
-					</Form.Item>
-					<Form.Item
-						label="UNLOCODE"
-						name="unlocode"
-						rules={[{ required: true }]}
-					>
-						<Input />
-					</Form.Item>
-					<Form.Item label="Authorized representative">
-						<Input />
-					</Form.Item>
-				</Form>
-				<Form
-					labelCol={{
-						span: 12,
-					}}
-				>
-					<Form.Item label="Company Name">
-						<Input placeholder="ex: Aipim" />
-					</Form.Item>
-					<Form.Item label="Verifier Name">
-						<Input />
-					</Form.Item>
-					<Form.Item label="Verifier email address">
-						<Input />
-					</Form.Item>
-					<Form.Item label="Accreditation member state">
-						<Input />
-					</Form.Item>
-					<Form.Item label="Registration number">
-						<Input />
-					</Form.Item>
+					<I label="Name of the installation (optional)" />
+					<I
+						label="Name of the installation (English name)"
+						required
+					/>
+					<I label="Street, Number" />
+					<I label="Economic activity" />
+					<I label="Post code" />
+					<I label="P.O. Box" />
+					<I label="City" />
+					<I label="Country" required />
+					<I label="UNLOCODE" required />
+					<I label="Coordinates of the main emission source (latitude)" />
+					<I label="Coordinates of the main emission source (longitude)" />
+					<I label="Name of authorized representative" />
+					<I label="Email" />
+					<I label="Telephone" />
 				</Form>
 			</Flex>
 		</div>
 	)
 }
+
+const I = ({
+	label,
+	required,
+}: {
+	label: string
+	required?: boolean
+}) => (
+	<Form.Item
+		label={label}
+		name={label}
+		rules={[{ required }]}
+	>
+		<Input />
+	</Form.Item>
+)
