@@ -18,25 +18,41 @@ export const FuelBalance = ({ id }: { id?: string }) => {
 			)}
 			columns={[
 				{
+					title: 'Fuel Balance',
+					dataIndex: 'fb',
+				},
+				{
 					title: 'Unit',
+					render: () => 'TJ',
 				},
 				{
 					title: 'Total fuel input',
+					dataIndex: 'tfi',
+					render: () => 0,
 				},
 				{
 					title: 'Direct fuel for CBAM goods',
+					render: () => 0,
 				},
 				{
 					title: 'Fuel for electricity',
+					render: () => 0,
 				},
 				{
 					title: 'Direct fuel for non CBAM goods',
+					render: () => 0,
 				},
 				{
 					title: 'Rest',
+					dataIndex: 'rest',
+					render: () => 0,
 				},
 			]}
-			dataSource={[]}
+			dataSource={[
+				{ fb: 'from sheet B_EmInst' },
+				{ fb: 'manual entries' },
+				{ fb: 'Results' },
+			]}
 		/>
 	)
 }
