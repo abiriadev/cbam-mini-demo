@@ -62,14 +62,27 @@ export const SheetsList = () => {
 						<PFC id="B-2" />
 						<EmissionsSources id="B-3" />
 					</Sheet>
-					<Processes />
-					<GhgEmissions id="ghg" />
-					<ProcessEmissions id="process-emissions" />
-					<PrecursorEmissions id="precursor-emissions" />
-					<Emissions />
-					<Emissions />
-					<SummaryProducts id="summary-products" />
-					<SummaryCommunication id="summary-communication" />
+					<Sheet id="D" title="B EmInst">
+						<Processes />
+					</Sheet>
+					<Sheet
+						id="S1"
+						title="Summary Processes"
+					>
+						<GhgEmissions id="ghg" />
+						<ProcessEmissions id="process-emissions" />
+						<PrecursorEmissions id="precursor-emissions" />
+						<Emissions />
+					</Sheet>
+					<Sheet id="S2" title="Summary Products">
+						<SummaryProducts id="summary-products" />
+					</Sheet>
+					<Sheet
+						id="S3"
+						title="Summary Communication"
+					>
+						<SummaryCommunication id="summary-communication" />
+					</Sheet>
 					<Flex
 						justify="end"
 						style={{
