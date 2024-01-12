@@ -1,10 +1,9 @@
 import {
 	Button,
+	Dropdown,
 	Flex,
 	Input,
-	InputNumber,
 	Popconfirm,
-	Select,
 	Table,
 	Typography,
 	message,
@@ -16,12 +15,12 @@ import {
 	addNewPrecursor,
 	updatePrecursorName,
 	removePrecursor,
-	updatePrecursorDirectSee,
-	updatePrecursorIndirectSee,
+	AgcKindSet,
+	AgcKind,
 } from './store/cbam'
 import {
 	DeleteOutlined,
-	PlusOutlined,
+	DownOutlined,
 } from '@ant-design/icons'
 
 export const Precursors = ({ id }: { id?: string }) => {
@@ -46,23 +45,38 @@ export const Precursors = ({ id }: { id?: string }) => {
 						>
 							Purchased precursors
 						</Typography.Title>
-						<Button
-							type="primary"
-							icon={<PlusOutlined />}
-							onClick={() =>
-								dispatch(addNewPrecursor())
-							}
+						<Dropdown
+							trigger={['click']}
+							menu={{
+								items: AgcKindSet.map(
+									k => ({
+										key: k,
+										label: k,
+									}),
+								),
+								onClick: ({ key }) =>
+									dispatch(
+										addNewPrecursor(
+											key as AgcKind,
+										),
+									),
+							}}
 						>
-							<Typography.Text
-								strong
-								style={{
-									color: token.Button
-										?.primaryColor,
-								}}
+							<Button
+								type="primary"
+								icon={<DownOutlined />}
 							>
-								Add new precursor
-							</Typography.Text>
-						</Button>
+								<Typography.Text
+									strong
+									style={{
+										color: token.Button
+											?.primaryColor,
+									}}
+								>
+									Add new precursor
+								</Typography.Text>
+							</Button>
+						</Dropdown>
 					</Flex>
 				)}
 				pagination={false}
@@ -70,7 +84,7 @@ export const Precursors = ({ id }: { id?: string }) => {
 				columns={[
 					{
 						title: 'Production process',
-						render: () => <Input />,
+						dataIndex: 'agc',
 					},
 					{
 						title: 'Country code',
