@@ -33,7 +33,7 @@ export const SheetsList = () => {
 		<Flex vertical gap="large">
 			<Row>
 				<Col span={21}>
-					<Sheet id="instdata" title="A_InstData">
+					<Sheet id="instdata" title="A InstData">
 						<ReportingPeriod id="reporting-period" />
 						<AboutTheInstallation id="about-the-installation" />
 						<Sheet
@@ -59,7 +59,9 @@ export const SheetsList = () => {
 			</Row>
 			<Row>
 				<Col span={21}>
-					<EmInst id="eminst" />
+					<Sheet id="B" title="B EmInst">
+						<EmInst id="B-1" />
+					</Sheet>
 				</Col>
 			</Row>
 			<Row>

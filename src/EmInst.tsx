@@ -12,22 +12,6 @@ import {
 import { addNewEmInst } from './store/cbam'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './store'
-import { Emissions } from './Emissions'
-import { Precursors } from './Precursors'
-import { Processes } from './Processes'
-import { Content, Header } from 'antd/es/layout/layout'
-import Sider from 'antd/es/layout/Sider'
-import aipimLogo from './assets/aipim-logo-green.png'
-import { VerticalAlignBottomOutlined } from '@ant-design/icons'
-import { GhgEmissions } from './GhgEmissions'
-import { AboutTheInstallation } from './AboutTheInstallation'
-import { SummaryProducts } from './SummaryProducts'
-import { AGC } from './AGC'
-import { ProcessEmissions } from './ProcessEmissions'
-import { PrecursorEmissions } from './PrecursorEmissions'
-import { SummaryCommunication } from './SummaryCommunication'
-import { ReportingPeriod } from './ReportingPeriod'
-import { Sheet } from './Sheet'
 
 export const EmInst = ({ id }: { id: string }) => {
 	const { token } = theme.useToken()
