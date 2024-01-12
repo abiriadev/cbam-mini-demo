@@ -21,41 +21,32 @@ export const SummaryOfTheInstallation = ({
 				</Typography.Title>
 			)}
 			columns={[
+				{ dataIndex: 'k' },
 				{
-					title: 'Parameter',
-					dataIndex: 'a',
-				},
-				{
-					title: 'Fuel input into CHP',
-					dataIndex: 'b',
-				},
-				{
-					title: 'Heat output from CHP',
-					dataIndex: 'c',
-				},
-				{
-					title: 'Electricity output from CHP',
-					dataIndex: 'd',
-				},
-				{
-					title: 'Electricity output from CHP',
-					dataIndex: 'e',
+					render: () => 'value',
 				},
 			]}
 			dataSource={[
 				{
-					a: 'Unit',
-					b: 'TJ',
-					c: 'TJ',
-					d: 'MWh',
-					e: 'TJ',
+					k: 'Name of the installation (English name)',
 				},
 				{
-					a: 0,
-					b: 0,
-					c: 0,
-					d: 0,
-					e: 0,
+					k: 'Street, Number',
+				},
+				{
+					k: 'Economic activity',
+				},
+				{
+					k: 'Country',
+				},
+				{
+					k: 'UNLOCODE',
+				},
+				{
+					k: 'Coordinates of the main emission source (latitude)',
+				},
+				{
+					k: 'Coordinates of the main emission source (longitude)',
 				},
 			]}
 		/>
