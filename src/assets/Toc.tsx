@@ -53,6 +53,20 @@ export const Toc = () => {
 								},
 							],
 						},
+						{
+							title: 'Aggregated goods categories and relevant production processes',
+							href: '#aggregated-goods-category',
+							children: [
+								{
+									title: 'List of aggregated goods categories, relevant precursors and corresponding production routes',
+									href: '#list-of-aggregated-goods-categories',
+								},
+								{
+									title: 'Relevant production processes',
+									href: '#relevant-production-processes',
+								},
+							],
+						},
 					],
 				},
 				{

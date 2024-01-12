@@ -44,12 +44,14 @@ export const SheetsList = () => {
 							<Verifier2 id="verifier2" />
 							<Verifier3 id="verifier3" />
 						</Sheet>
+						<Sheet
+							id="aggregated-goods-category"
+							title="Aggregated goods categories and relevant production processes"
+							sub
+						>
+							<AGC id="list-of-aggregated-goods-categories" />
+						</Sheet>
 					</Sheet>
-				</Col>
-			</Row>
-			<Row>
-				<Col span={21}>
-					<AGC id="agc" />
 				</Col>
 			</Row>
 			<Row>

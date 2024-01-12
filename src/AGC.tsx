@@ -1,6 +1,6 @@
 import { Table, Typography } from 'antd'
 
-export const AGC = ({ id }: { id: string }) => {
+export const AGC = ({ id }: { id?: string }) => {
 	return (
 		<Table
 			id={id}
