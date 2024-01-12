@@ -1,26 +1,77 @@
-import { Table, Typography } from 'antd'
+import {
+	Button,
+	Dropdown,
+	Flex,
+	Table,
+	Typography,
+	theme,
+} from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './store'
+import {
+	DownOutlined,
+	PlusOutlined,
+} from '@ant-design/icons'
+import {
+	AgcKind,
+	AgcKindSet,
+	addNewAgc,
+} from './store/cbam'
 
 export const AGC = ({ id }: { id?: string }) => {
 	const { agc } = useSelector(
 		({ cbam }: RootState) => cbam,
 	)
+
+	const { token } = theme.useToken()
 	const dispatch = useDispatch()
 
 	return (
 		<Table
 			id={id}
 			title={() => (
-				<Typography.Title
-					level={4}
-					style={{
-						marginTop: 0,
-						marginBottom: 0,
-					}}
-				>
-					List of aggregated goods categories
-				</Typography.Title>
+				<Flex justify="space-between">
+					<Typography.Title
+						level={4}
+						style={{
+							marginTop: 0,
+							marginBottom: 0,
+						}}
+					>
+						List of aggregated goods categories
+					</Typography.Title>
+					<Dropdown
+						trigger={['click']}
+						menu={{
+							items: AgcKindSet.map(k => ({
+								key: k,
+								label: k,
+							})),
+							onClick: ({ key }) =>
+								dispatch(
+									addNewAgc(
+										key as AgcKind,
+									),
+								),
+						}}
+					>
+						<Button
+							type="primary"
+							icon={<DownOutlined />}
+						>
+							<Typography.Text
+								strong
+								style={{
+									color: token.Button
+										?.primaryColor,
+								}}
+							>
+								Add new aggregated goods
+								category
+							</Typography.Text>
+						</Button>
+					</Dropdown>
+				</Flex>
 			)}
 			columns={[
 				{
