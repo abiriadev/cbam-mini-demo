@@ -23,6 +23,7 @@ import { SummaryProducts } from './SummaryProducts'
 import { AGC } from './AGC'
 import { ProcessEmissions } from './ProcessEmissions'
 import { PrecursorEmissions } from './PrecursorEmissions'
+import { SummaryCommunication } from './SummaryCommunication'
 
 function App() {
 	const {
@@ -117,6 +118,10 @@ function App() {
 								title: 'Summary products',
 								href: '#summary-products',
 							},
+							{
+								title: 'Summary communication',
+								href: '#summary-communication',
+							},
 						].map((v, k) => ({
 							...v,
 							key: `${k}`,
@@ -182,6 +187,11 @@ function App() {
 						<Row>
 							<Col span={21}>
 								<SummaryProducts id="summary-products" />
+							</Col>
+						</Row>
+						<Row>
+							<Col span={21}>
+								<SummaryCommunication id="summary-communication" />
 							</Col>
 						</Row>
 						<Row>
