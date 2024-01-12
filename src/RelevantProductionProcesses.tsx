@@ -21,6 +21,7 @@ import {
 	removePrecursorFromProcess,
 	updatePrecursorAmount,
 	AgcKindSet,
+	AgcKind,
 } from './store/cbam'
 import {
 	DeleteOutlined,
@@ -69,7 +70,9 @@ export const RelevantProductionProcesses = ({
 								),
 								onClick: ({ key }) =>
 									dispatch(
-										addNewProcess(),
+										addNewProcess(
+											key as AgcKind,
+										),
 									),
 							}}
 						>
@@ -108,6 +111,10 @@ export const RelevantProductionProcesses = ({
 								}
 							/>
 						),
+					},
+					{
+						title: 'Production process',
+						dataIndex: 'agc',
 					},
 					{
 						title: '1',
