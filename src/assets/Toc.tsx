@@ -63,9 +63,13 @@ export const Toc = () => {
 								},
 								{
 									title: 'Relevant production processes',
-									href: '#relevant-production-processes',
+									href: '#A-4-b',
 								},
 							],
+						},
+						{
+							title: 'Purchased precursors',
+							href: '#A-5',
 						},
 					],
 				},

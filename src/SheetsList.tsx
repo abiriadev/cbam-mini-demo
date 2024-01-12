@@ -53,6 +53,7 @@ export const SheetsList = () => {
 							<AGC id="list-of-aggregated-goods-categories" />
 							<RelevantProductionProcesses id="A-4-b" />
 						</Sheet>
+						<Precursors id="A-5" />
 					</Sheet>
 				</Col>
 			</Row>
@@ -64,11 +65,6 @@ export const SheetsList = () => {
 			<Row>
 				<Col span={21}>
 					<Processes />
-				</Col>
-			</Row>
-			<Row>
-				<Col span={21}>
-					<Precursors />
 				</Col>
 			</Row>
 			<Row>

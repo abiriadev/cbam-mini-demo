@@ -24,7 +24,7 @@ import {
 	PlusOutlined,
 } from '@ant-design/icons'
 
-export const Precursors = () => {
+export const Precursors = ({ id }: { id?: string }) => {
 	const { token } = theme.useToken()
 
 	const { precursors } = useSelector(
@@ -33,7 +33,7 @@ export const Precursors = () => {
 	const dispatch = useDispatch()
 
 	return (
-		<div id="precursors">
+		<div id={id}>
 			<Table
 				title={() => (
 					<Flex justify="space-between">
@@ -69,6 +69,34 @@ export const Precursors = () => {
 				rowKey={({ id }) => id}
 				columns={[
 					{
+						title: 'Production process',
+						render: () => <Input />,
+					},
+					{
+						title: 'Country code',
+						// render: () => <Input />,
+					},
+					{
+						title: 'Route 1',
+						render: () => <Input />,
+					},
+					{
+						title: 'Route 2',
+						render: () => <Input />,
+					},
+					{
+						title: 'Route 3',
+						render: () => <Input />,
+					},
+					{
+						title: 'Route 4',
+						render: () => <Input />,
+					},
+					{
+						title: 'Route 5',
+						render: () => <Input />,
+					},
+					{
 						title: 'Name',
 						dataIndex: 'name',
 						render: (v, { id }) => (
@@ -87,83 +115,6 @@ export const Precursors = () => {
 									)
 								}
 							/>
-						),
-					},
-					{
-						title: 'SEE (direct)',
-						dataIndex: ['see', 'direct'],
-						render: (v, { id: ppid }) => (
-							<InputNumber
-								value={v}
-								controls={false}
-								addonAfter="eCO2t"
-								onChange={see_d =>
-									dispatch(
-										updatePrecursorDirectSee(
-											{
-												ppid,
-												see_d,
-											},
-										),
-									)
-								}
-							/>
-						),
-					},
-					{
-						title: 'Source',
-						render: () => (
-							<Select style={{ width: 100 }}>
-								<Select.Option>
-									Measured
-								</Select.Option>
-								<Select.Option>
-									Default
-								</Select.Option>
-							</Select>
-						),
-					},
-					{
-						title: 'SEE (indirect)',
-						dataIndex: ['see', 'indirect'],
-						render: (v, { id: ppid }) => (
-							<InputNumber
-								value={v}
-								controls={false}
-								addonAfter="eCO2t"
-								onChange={see_i =>
-									dispatch(
-										updatePrecursorIndirectSee(
-											{
-												ppid,
-												see_i,
-											},
-										),
-									)
-								}
-							/>
-						),
-					},
-					{
-						title: 'Source',
-						render: () => (
-							<Select style={{ width: 100 }}>
-								<Select.Option>
-									D.2.1
-								</Select.Option>
-								<Select.Option>
-									D.2.2
-								</Select.Option>
-								<Select.Option>
-									D.2.3
-								</Select.Option>
-								<Select.Option>
-									D.2.4
-								</Select.Option>
-								<Select.Option>
-									Mix
-								</Select.Option>
-							</Select>
 						),
 					},
 					{
@@ -195,3 +146,101 @@ export const Precursors = () => {
 		</div>
 	)
 }
+
+// ;[
+// 	{
+// 		title: 'Name',
+// 		dataIndex: 'name',
+// 		render: (v, { id }) => (
+// 			<Input
+// 				value={v}
+// 				onChange={ev =>
+// 					dispatch(
+// 						updatePrecursorName({
+// 							ppid: id,
+// 							name: ev.target.value,
+// 						}),
+// 					)
+// 				}
+// 			/>
+// 		),
+// 	},
+// 	{
+// 		title: 'SEE (direct)',
+// 		dataIndex: ['see', 'direct'],
+// 		render: (v, { id: ppid }) => (
+// 			<InputNumber
+// 				value={v}
+// 				controls={false}
+// 				addonAfter="eCO2t"
+// 				onChange={see_d =>
+// 					dispatch(
+// 						updatePrecursorDirectSee({
+// 							ppid,
+// 							see_d,
+// 						}),
+// 					)
+// 				}
+// 			/>
+// 		),
+// 	},
+// 	{
+// 		title: 'Source',
+// 		render: () => (
+// 			<Select style={{ width: 100 }}>
+// 				<Select.Option>Measured</Select.Option>
+// 				<Select.Option>Default</Select.Option>
+// 			</Select>
+// 		),
+// 	},
+// 	{
+// 		title: 'SEE (indirect)',
+// 		dataIndex: ['see', 'indirect'],
+// 		render: (v, { id: ppid }) => (
+// 			<InputNumber
+// 				value={v}
+// 				controls={false}
+// 				addonAfter="eCO2t"
+// 				onChange={see_i =>
+// 					dispatch(
+// 						updatePrecursorIndirectSee({
+// 							ppid,
+// 							see_i,
+// 						}),
+// 					)
+// 				}
+// 			/>
+// 		),
+// 	},
+// 	{
+// 		title: 'Source',
+// 		render: () => (
+// 			<Select style={{ width: 100 }}>
+// 				<Select.Option>D.2.1</Select.Option>
+// 				<Select.Option>D.2.2</Select.Option>
+// 				<Select.Option>D.2.3</Select.Option>
+// 				<Select.Option>D.2.4</Select.Option>
+// 				<Select.Option>Mix</Select.Option>
+// 			</Select>
+// 		),
+// 	},
+// 	{
+// 		render: (_, { id }) => (
+// 			<Popconfirm
+// 				title="Delete 1 precursor"
+// 				description="Are you sure to delete this precursor?"
+// 				onConfirm={() =>
+// 					dispatch(removePrecursor(id)) &&
+// 					message.success(
+// 						'1 precursor has been deleted',
+// 					)
+// 				}
+// 			>
+// 				<Button
+// 					danger
+// 					icon={<DeleteOutlined />}
+// 				></Button>
+// 			</Popconfirm>
+// 		),
+// 	},
+// ]
