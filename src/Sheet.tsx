@@ -5,12 +5,14 @@ export interface SheetProps {
 	id: string
 	title: string
 	children: ReactNode
+	sub?: boolean
 }
 
 export const Sheet = ({
 	id,
 	title,
 	children,
+	sub,
 }: SheetProps) => {
 	const {
 		token: { colorPrimary },
@@ -19,10 +21,10 @@ export const Sheet = ({
 	return (
 		<div id={id}>
 			<Typography.Title
-				level={3}
+				level={sub ? 5 : 3}
 				style={{
 					paddingBottom: 10,
-					color: colorPrimary,
+					color: sub ? 'black' : colorPrimary,
 				}}
 			>
 				{title}
