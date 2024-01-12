@@ -34,11 +34,7 @@ export const AboutTheInstallation = ({
 				</Typography.Title>
 			</Flex>
 			<Flex gap="large">
-				<Form
-					labelCol={{
-						span: 15,
-					}}
-				>
+				<Form>
 					<I label="Name of the installation (optional)" />
 					<I
 						label="Name of the installation (English name)"

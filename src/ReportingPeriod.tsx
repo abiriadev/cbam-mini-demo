@@ -39,11 +39,7 @@ export const ReportingPeriod = ({
 				</Typography.Title>
 			</Flex>
 			<Flex>
-				<Form
-					labelCol={{
-						span: 10,
-					}}
-				>
+				<Form>
 					<Form.Item
 						label="Reporting period"
 						name="period"
