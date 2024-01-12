@@ -20,6 +20,7 @@ import {
 	findPrecursorById,
 	removePrecursorFromProcess,
 	updatePrecursorAmount,
+	AgcKindSet,
 } from './store/cbam'
 import {
 	DeleteOutlined,
@@ -56,23 +57,37 @@ export const RelevantProductionProcesses = ({
 						>
 							Relevand production processes
 						</Typography.Title>
-						<Button
-							type="primary"
-							icon={<PlusOutlined />}
-							onClick={() =>
-								dispatch(addNewProcess())
-							}
+
+						<Dropdown
+							trigger={['click']}
+							menu={{
+								items: AgcKindSet.map(
+									k => ({
+										key: k,
+										label: k,
+									}),
+								),
+								onClick: ({ key }) =>
+									dispatch(
+										addNewProcess(),
+									),
+							}}
 						>
-							<Typography.Text
-								strong
-								style={{
-									color: token.Button
-										?.primaryColor,
-								}}
+							<Button
+								type="primary"
+								icon={<DownOutlined />}
 							>
-								Add new process
-							</Typography.Text>
-						</Button>
+								<Typography.Text
+									strong
+									style={{
+										color: token.Button
+											?.primaryColor,
+									}}
+								>
+									Add new process
+								</Typography.Text>
+							</Button>
+						</Dropdown>
 					</Flex>
 				)}
 				columns={[
