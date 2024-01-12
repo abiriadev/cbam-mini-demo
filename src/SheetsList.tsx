@@ -27,6 +27,7 @@ import { RelevantProductionProcesses } from './RelevantProductionProcesses'
 import { SourceStreams } from './SourceStreams'
 import { PFC } from './PFC'
 import { EmissionsSources } from './EmissionsSources'
+import { FuelBalance } from './FuelBalance'
 
 export const SheetsList = () => {
 	const { token } = theme.useToken()
@@ -61,6 +62,12 @@ export const SheetsList = () => {
 						<SourceStreams id="B-1" />
 						<PFC id="B-2" />
 						<EmissionsSources id="B-3" />
+					</Sheet>
+					<Sheet
+						id="C"
+						title="C Emissions & Energy"
+					>
+						<FuelBalance id="C-1" />
 					</Sheet>
 					<Sheet id="D" title="Processes">
 						<Processes />
