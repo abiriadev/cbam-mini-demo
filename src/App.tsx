@@ -9,6 +9,7 @@ import { Content, Header } from 'antd/es/layout/layout'
 import Sider from 'antd/es/layout/Sider'
 import aipimLogo from './assets/aipim-logo-green.png'
 import { SheetsList } from './SheetsList'
+import { Toc } from './assets/Toc'
 
 function App() {
 	const {
@@ -60,57 +61,7 @@ function App() {
 						backgroundColor: 'inherit',
 					}}
 				>
-					<Anchor
-						items={[
-							{
-								title: 'General information',
-								href: '#instdata',
-							},
-							{
-								title: 'Aggregated goods categories',
-								href: '#agc',
-							},
-							{
-								title: 'Installation emission',
-								href: '#eminst',
-							},
-							{
-								title: 'Processes',
-								href: '#processes',
-							},
-							{
-								title: 'Precursors',
-								href: '#precursors',
-							},
-							{
-								title: 'GHG emissions balance',
-								href: '#ghg',
-							},
-							{
-								title: 'Process emissions',
-								href: '#process-emissions',
-							},
-							{
-								title: 'Precursor emissions',
-								href: '#precursor-emissions',
-							},
-							{
-								title: 'Emissions',
-								href: '#emissions',
-							},
-							{
-								title: 'Summary products',
-								href: '#summary-products',
-							},
-							{
-								title: 'Summary communication',
-								href: '#summary-communication',
-							},
-						].map((v, k) => ({
-							...v,
-							key: `${k}`,
-						}))}
-					/>
+					<Toc />
 				</Sider>
 				<Content
 					style={{
