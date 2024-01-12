@@ -101,6 +101,26 @@ export interface AgcState {
 	routes: Array<string>
 }
 
+export const cc = [
+	'AD',
+	'AE',
+	'AF',
+	'AG',
+	'AI',
+	'AL',
+	'AM',
+	'AN',
+	'AO',
+	'AQ',
+	'AR',
+	'AS',
+	'AT',
+	'AU',
+	'AW',
+	'AX',
+	'AZ',
+]
+
 export interface CbamState {
 	processes: Array<ProcessState>
 	precursors: Array<PrecursorState>
