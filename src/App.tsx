@@ -25,6 +25,7 @@ import { ProcessEmissions } from './ProcessEmissions'
 import { PrecursorEmissions } from './PrecursorEmissions'
 import { SummaryCommunication } from './SummaryCommunication'
 import { ReportingPeriod } from './ReportingPeriod'
+import { Sheet } from './Sheet'
 
 function App() {
 	const {
@@ -137,12 +138,10 @@ function App() {
 					<Flex vertical gap="large">
 						<Row>
 							<Col span={21}>
-								<ReportingPeriod id="reporting-period" />
-							</Col>
-						</Row>
-						<Row>
-							<Col span={21}>
-								<InstData id="instdata" />
+								<Sheet>
+									<ReportingPeriod id="reporting-period" />
+									<InstData id="instdata" />
+								</Sheet>
 							</Col>
 						</Row>
 						<Row>

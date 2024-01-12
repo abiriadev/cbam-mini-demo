@@ -11,7 +11,9 @@ export const Sheet = ({ children }: SheetProps) => {
 			<Typography.Title level={3}>
 				Title
 			</Typography.Title>
-			<Flex>{children}</Flex>
+			<Flex vertical gap="large">
+				{children}
+			</Flex>
 		</div>
 	)
 }
