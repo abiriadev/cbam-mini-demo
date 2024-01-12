@@ -32,9 +32,9 @@ export const SheetsList = () => {
 	const { token } = theme.useToken()
 
 	return (
-		<Flex vertical gap="large">
-			<Row>
-				<Col span={21}>
+		<Row>
+			<Col span={21}>
+				<Flex vertical gap="large">
 					<Sheet id="instdata" title="A InstData">
 						<ReportingPeriod id="reporting-period" />
 						<AboutTheInstallation id="about-the-installation" />
@@ -57,59 +57,19 @@ export const SheetsList = () => {
 						</Sheet>
 						<Precursors id="A-5" />
 					</Sheet>
-				</Col>
-			</Row>
-			<Row>
-				<Col span={21}>
 					<Sheet id="B" title="B EmInst">
 						<SourceStreams id="B-1" />
 						<PFC id="B-2" />
 						<EmissionsSources id="B-3" />
 					</Sheet>
-				</Col>
-			</Row>
-			<Row>
-				<Col span={21}>
 					<Processes />
-				</Col>
-			</Row>
-			<Row>
-				<Col span={21}>
 					<GhgEmissions id="ghg" />
-				</Col>
-			</Row>
-			<Row>
-				<Col span={21}>
 					<ProcessEmissions id="process-emissions" />
-				</Col>
-			</Row>
-			<Row>
-				<Col span={21}>
 					<PrecursorEmissions id="precursor-emissions" />
-				</Col>
-			</Row>
-			<Row>
-				<Col span={21}>
 					<Emissions />
-				</Col>
-			</Row>
-			<Row>
-				<Col span={21}>
 					<Emissions />
-				</Col>
-			</Row>
-			<Row>
-				<Col span={21}>
 					<SummaryProducts id="summary-products" />
-				</Col>
-			</Row>
-			<Row>
-				<Col span={21}>
 					<SummaryCommunication id="summary-communication" />
-				</Col>
-			</Row>
-			<Row>
-				<Col span={21}>
 					<Flex
 						justify="end"
 						style={{
@@ -139,8 +99,8 @@ export const SheetsList = () => {
 							</Typography.Text>
 						</Button>
 					</Flex>
-				</Col>
-			</Row>
-		</Flex>
+				</Flex>
+			</Col>
+		</Row>
 	)
 }
