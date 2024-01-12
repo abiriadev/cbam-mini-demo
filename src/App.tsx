@@ -24,6 +24,7 @@ import { AGC } from './AGC'
 import { ProcessEmissions } from './ProcessEmissions'
 import { PrecursorEmissions } from './PrecursorEmissions'
 import { SummaryCommunication } from './SummaryCommunication'
+import { ReportingPeriod } from './ReportingPeriod'
 
 function App() {
 	const {
@@ -134,6 +135,11 @@ function App() {
 					}}
 				>
 					<Flex vertical gap="large">
+						<Row>
+							<Col span={21}>
+								<ReportingPeriod id="reporting-period" />
+							</Col>
+						</Row>
 						<Row>
 							<Col span={21}>
 								<InstData id="instdata" />
