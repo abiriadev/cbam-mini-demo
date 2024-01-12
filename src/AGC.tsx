@@ -17,37 +17,28 @@ export const AGC = ({ id }: { id: string }) => {
 			)}
 			columns={[
 				{
-					title: 'Process',
+					title: 'Aggregated goods category',
 				},
 				{
-					title: 'AGC',
+					title: 'Route',
 				},
 				{
-					title: 'CN Name',
+					title: 'Route 1',
 				},
 				{
-					title: 'Product name',
+					title: 'Route 2',
 				},
 				{
-					title: 'SEE (direct)',
+					title: 'Route 3',
 				},
 				{
-					title: 'SEE (indirect)',
+					title: 'Route 4',
 				},
 				{
-					title: 'SEE (total)',
+					title: 'Route 5',
 				},
 				{
-					title: 'Unit',
-				},
-				{
-					title: 'Share of emissions',
-				},
-				{
-					title: 'Source for electricity EF',
-				},
-				{
-					title: 'Embedded electricity',
+					title: 'Route 6',
 				},
 			]}
 			dataSource={[]}
