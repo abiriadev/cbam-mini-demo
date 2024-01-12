@@ -24,6 +24,7 @@ import { ReportingPeriod } from './ReportingPeriod'
 import { Verifier1 } from './Verifier1'
 import { Verifier2 } from './Verifier2'
 import { Verifier3 } from './Verifier3'
+import { RelevantProductionProcesses } from './RelevantProductionProcesses'
 
 export const SheetsList = () => {
 	const { token } = theme.useToken()
@@ -50,6 +51,7 @@ export const SheetsList = () => {
 							sub
 						>
 							<AGC id="list-of-aggregated-goods-categories" />
+							<RelevantProductionProcesses id="A-4-b" />
 						</Sheet>
 					</Sheet>
 				</Col>
