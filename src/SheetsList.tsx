@@ -34,7 +34,7 @@ export const SheetsList = () => {
 				<Col span={21}>
 					<Sheet id="instdata" title="A_InstData">
 						<ReportingPeriod id="reporting-period" />
-						<AboutTheInstallation id="instdata" />
+						<AboutTheInstallation id="about-the-installation" />
 						<Sheet
 							id="verifier-of-the-report"
 							title="Verifier of the report"

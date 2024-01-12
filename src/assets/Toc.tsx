@@ -28,9 +28,30 @@ export const Toc = () => {
 					href: '#instdata',
 					children: [
 						{
-							title: 'a',
-							href: 'a',
-							key: 'a',
+							title: 'Reporting Period',
+							href: '#reporting-period',
+						},
+						{
+							title: 'About the installation',
+							href: '#about-the-installation',
+						},
+						{
+							title: 'Verifier of the report',
+							href: '#verifier-of-the-report',
+							children: [
+								{
+									title: 'Name and address of the verifier of this report',
+									href: '#verifier1',
+								},
+								{
+									title: 'Authorised representative of the verifier',
+									href: '#verifier2',
+								},
+								{
+									title: "Information about the verifier's accreditation",
+									href: '#verifier3',
+								},
+							],
 						},
 					],
 				},
