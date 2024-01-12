@@ -138,7 +138,10 @@ function App() {
 					<Flex vertical gap="large">
 						<Row>
 							<Col span={21}>
-								<Sheet>
+								<Sheet
+									id="instdata"
+									title="A_InstData"
+								>
 									<ReportingPeriod id="reporting-period" />
 									<InstData id="instdata" />
 								</Sheet>
