@@ -1,12 +1,38 @@
-import { Anchor } from 'antd'
+import { Anchor, AnchorLinkProps } from 'antd'
+
+type sibal = {
+	title: string
+	href: string
+	children?: Array<sibal>
+}
+
+type sibal2 = {
+	key: string
+	title: string
+	href: string
+	children: Array<sibal2>
+}
+
+const setKey = (a: sibal): sibal2 => ({
+	...a,
+	key: a.href,
+	children: a.children?.map(setKey) ?? [],
+})
 
 export const Toc = () => {
 	return (
 		<Anchor
 			items={[
 				{
-					title: 'General information',
+					title: 'A_InstData',
 					href: '#instdata',
+					children: [
+						{
+							title: 'a',
+							href: 'a',
+							key: 'a',
+						},
+					],
 				},
 				{
 					title: 'Aggregated goods categories',
@@ -48,10 +74,7 @@ export const Toc = () => {
 					title: 'Summary communication',
 					href: '#summary-communication',
 				},
-			].map((v, k) => ({
-				...v,
-				key: `${k}`,
-			}))}
+			].map(setKey)}
 		/>
 	)
 }
