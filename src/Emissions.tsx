@@ -19,7 +19,7 @@ interface EmissionResult {
 	children?: Array<EmissionResult>
 }
 
-export const Emissions = () => {
+export const Emissions = ({ id }: { id?: string }) => {
 	const { processes, precursors: ppa } = useSelector(
 		(st: RootState) => st.cbam,
 	)
@@ -119,7 +119,7 @@ export const Emissions = () => {
 	)
 
 	return (
-		<div id="emissions">
+		<div id={id}>
 			<Table
 				title={() => (
 					<Typography.Title

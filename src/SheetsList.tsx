@@ -30,6 +30,7 @@ import { EmissionsSources } from './EmissionsSources'
 import { FuelBalance } from './FuelBalance'
 import { GhgBalanceByType } from './GhgBalanceByType'
 import { FuelIntoChp } from './FuelIntoChp'
+import { SummaryOfTheInstallation } from './SummaryOfTheInstallation'
 
 export const SheetsList = () => {
 	const { token } = theme.useToken()
@@ -85,10 +86,23 @@ export const SheetsList = () => {
 						id="S1"
 						title="Summary Processes"
 					>
-						<GhgEmissions id="ghg" />
-						<ProcessEmissions id="process-emissions" />
-						<PrecursorEmissions id="precursor-emissions" />
-						<Emissions />
+						<Sheet
+							id="S1-1"
+							title="Summary of the installation, processes and production routes"
+							sub
+						>
+							<SummaryOfTheInstallation id="S1-1-1" />
+						</Sheet>
+						<Sheet
+							id="S1-2"
+							title="Greenhouse gas emissions balance and specific embedded emissions (SEE)"
+							sub
+						>
+							<GhgEmissions id="S1-2-1-a" />
+							<ProcessEmissions id="S1-2-2-a" />
+							<PrecursorEmissions id="S1-2-2-b" />
+						</Sheet>
+						<Emissions id="S1-3" />
 					</Sheet>
 					<Sheet id="S2" title="Summary Products">
 						<SummaryProducts id="summary-products" />

@@ -140,14 +140,34 @@ export const Toc = () => {
 						{
 							title: 'Summary of the installation, processes and production routes',
 							href: '#S1-1',
+							children: [
+								{
+									title: 'Summary of the installation',
+									href: '#S1-1-1',
+								},
+							],
 						},
 						{
 							title: 'Greenhouse gas emissions balance and specific embedded emissions (SEE)',
-							href: '#S2-2',
+							href: '#S1-2',
+							children: [
+								{
+									title: 'GHG emissions balance of the installation and all production processes',
+									href: '#S1-2-1-a',
+								},
+								{
+									title: 'Production process',
+									href: '#S1-2-2-a',
+								},
+								{
+									title: 'Purchased precursors',
+									href: '#S1-2-2-b',
+								},
+							],
 						},
 						{
 							title: 'Detailed overview of each production processes',
-							href: '#S3-3',
+							href: '#S1-3',
 						},
 					],
 				},
