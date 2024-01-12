@@ -1,12 +1,19 @@
 import { ThemeConfig } from 'antd'
 
+const primary = '#13B48B'
+
 export const theme: ThemeConfig = {
 	token: {
-		colorPrimary: '#13B48B',
+		colorPrimary: primary,
 	},
 	components: {
 		Button: {
 			primaryColor: '#fff',
+		},
+
+		Typography: {
+			titleMarginBottom: '0',
+			// colorTextHeading: primary,
 		},
 	},
 }
