@@ -53,6 +53,7 @@ export interface ProcessState {
 export interface PrecursorState {
 	id: string
 	name: string
+	agc: AgcKind
 	see: Emission
 }
 
@@ -400,13 +401,17 @@ export const cbamSlice = createSlice({
 			{ payload }: PayloadAction<PrecursorState>,
 		) => void precursors.push(payload),
 
-		addNewPrecursor: ({ precursors }) =>
+		addNewPrecursor: (
+			{ precursors },
+			{ payload }: PayloadAction<AgcKind>,
+		) =>
 			void precursors.push({
 				id: crypto.randomUUID(),
 				name: chooseUniqueName(
 					precursors.map(({ name }) => name),
 					'new precursor',
 				),
+				agc: payload,
 				see: ZeroEmission,
 			}),
 
