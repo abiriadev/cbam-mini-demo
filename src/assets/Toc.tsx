@@ -76,6 +76,20 @@ export const Toc = () => {
 				{
 					title: 'B EmInst',
 					href: '#B',
+					children: [
+						{
+							title: 'Source Streams',
+							href: '#B-1',
+						},
+						{
+							title: 'PFC Emissions',
+							href: '#B-2',
+						},
+						{
+							title: 'Emissions Sources',
+							href: '#B-3',
+						},
+					],
 				},
 			].map(setKey)}
 		/>

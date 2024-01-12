@@ -14,7 +14,6 @@ import { Processes } from './Processes'
 import { VerticalAlignBottomOutlined } from '@ant-design/icons'
 import { GhgEmissions } from './GhgEmissions'
 import { AboutTheInstallation } from './AboutTheInstallation'
-import { EmInst } from './EmInst'
 import { SummaryProducts } from './SummaryProducts'
 import { AGC } from './AGC'
 import { ProcessEmissions } from './ProcessEmissions'
@@ -25,6 +24,9 @@ import { Verifier1 } from './Verifier1'
 import { Verifier2 } from './Verifier2'
 import { Verifier3 } from './Verifier3'
 import { RelevantProductionProcesses } from './RelevantProductionProcesses'
+import { SourceStreams } from './SourceStreams'
+import { PFC } from './PFC'
+import { EmissionsSources } from './EmissionsSources'
 
 export const SheetsList = () => {
 	const { token } = theme.useToken()
@@ -60,7 +62,9 @@ export const SheetsList = () => {
 			<Row>
 				<Col span={21}>
 					<Sheet id="B" title="B EmInst">
-						<EmInst id="B-1" />
+						<SourceStreams id="B-1" />
+						<PFC id="B-2" />
+						<EmissionsSources id="B-3" />
 					</Sheet>
 				</Col>
 			</Row>

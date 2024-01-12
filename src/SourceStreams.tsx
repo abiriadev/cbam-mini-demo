@@ -13,7 +13,7 @@ import { addNewEmInst } from './store/cbam'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './store'
 
-export const EmInst = ({ id }: { id: string }) => {
+export const SourceStreams = ({ id }: { id: string }) => {
 	const { token } = theme.useToken()
 	const { eminst } = useSelector(
 		({ cbam }: RootState) => cbam,
@@ -34,7 +34,7 @@ export const EmInst = ({ id }: { id: string }) => {
 							marginBottom: 0,
 						}}
 					>
-						Installation emission
+						Source Streams
 					</Typography.Title>
 					<Button
 						type="primary"
