@@ -70,16 +70,43 @@ export interface EmInstState {
 	ncv: number
 }
 
+export type AgcKind =
+	| 'Cement'
+	| 'Cement clinker'
+	| 'Calcined clays'
+	| 'Aluminous cement'
+	| 'Iron or steel products'
+	| 'Crude steel'
+	| 'Direct reduced iron'
+	| 'Pig iron'
+	| 'Alloys'
+	| 'Sintered Ore'
+	| 'Hydrogen'
+	| 'Ammonia'
+	| 'Nitric acid'
+	| 'Urea'
+	| 'Mixed fertilizers'
+	| 'Aluminium products'
+	| 'Unwrought aluminium'
+	| 'Electricity'
+
+export interface AgcState {
+	kind: AgcKind
+	routes: Array<string>
+}
+
 export interface CbamState {
 	processes: Array<ProcessState>
 	precursors: Array<PrecursorState>
 	eminst: Array<EmInstState>
+	agc: Array<AgcState>
 }
 
 const initialState: CbamState = {
 	processes: [],
 	precursors: [],
 	eminst: [],
+	agc: [],
 }
 
 export const cbamSlice = createSlice({
