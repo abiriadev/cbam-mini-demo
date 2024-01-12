@@ -495,6 +495,16 @@ export const cbamSlice = createSlice({
 				kind: payload,
 				routes: [],
 			}),
+
+		removeAgc: (
+			{ agc },
+			{ payload }: PayloadAction<string>,
+		) => {
+			const i = agc.findIndex(
+				({ id }) => id === payload,
+			)
+			if (i !== -1) agc.splice(i, 1)
+		},
 	},
 })
 
@@ -583,6 +593,7 @@ export const {
 		updateExportedWasteGasAmount,
 		addNewEmInst,
 		addNewAgc,
+		removeAgc,
 	},
 	reducer,
 } = cbamSlice
