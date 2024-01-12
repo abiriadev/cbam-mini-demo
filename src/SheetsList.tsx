@@ -62,8 +62,11 @@ export const SheetsList = () => {
 						<PFC id="B-2" />
 						<EmissionsSources id="B-3" />
 					</Sheet>
-					<Sheet id="D" title="B EmInst">
+					<Sheet id="D" title="Processes">
 						<Processes />
+					</Sheet>
+					<Sheet id="E" title="PurchPrec">
+						<Precursors id="A-5" />
 					</Sheet>
 					<Sheet
 						id="S1"
