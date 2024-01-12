@@ -91,6 +91,7 @@ export type AgcKind =
 	| 'Electricity'
 
 export interface AgcState {
+	id: string
 	kind: AgcKind
 	routes: Array<string>
 }
@@ -484,6 +485,16 @@ export const cbamSlice = createSlice({
 				adUnit: 't',
 				ncv: 0,
 			}),
+
+		addNewAgc: (
+			{ agc },
+			{ payload }: PayloadAction<AgcKind>,
+		) =>
+			void agc.push({
+				id: crypto.randomUUID(),
+				kind: payload,
+				routes: [],
+			}),
 	},
 })
 
@@ -571,6 +582,7 @@ export const {
 		updateImportedWasteGasAmount,
 		updateExportedWasteGasAmount,
 		addNewEmInst,
+		addNewAgc,
 	},
 	reducer,
 } = cbamSlice
