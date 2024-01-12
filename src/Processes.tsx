@@ -87,9 +87,6 @@ export const Processes = () => {
 						render: (v, { id }) => (
 							<Input
 								value={v}
-								// style={{
-								// 	width: '9em',
-								// }}
 								onChange={ev =>
 									dispatch(
 										updateProcessName({
@@ -133,11 +130,6 @@ export const Processes = () => {
 							<InputNumber
 								value={v}
 								controls={false}
-								style={
-									{
-										// width: '7em',
-									}
-								}
 								addonAfter="t"
 								onChange={activity_level =>
 									dispatch(
@@ -171,11 +163,6 @@ export const Processes = () => {
 								<InputNumber
 									value={amount}
 									controls={false}
-									style={
-										{
-											// width: '7em',
-										}
-									}
 									addonAfter="TJ"
 									onChange={amount =>
 										dispatch(
@@ -191,11 +178,6 @@ export const Processes = () => {
 								<InputNumber
 									value={emissionFactor}
 									controls={false}
-									style={
-										{
-											// width: '10em',
-										}
-									}
 									addonAfter="tCO2e/TJ"
 									onChange={ef =>
 										dispatch(
