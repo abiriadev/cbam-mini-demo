@@ -70,7 +70,7 @@ export interface EmInstState {
 	ncv: number
 }
 
-const AgcKindSet = [
+export const AgcKindSet = [
 	'Cement',
 	'Cement clinker',
 	'Calcined clays',
