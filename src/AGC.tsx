@@ -2,16 +2,14 @@ import {
 	Button,
 	Dropdown,
 	Flex,
+	Input,
 	Table,
 	Typography,
 	theme,
 } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './store'
-import {
-	DownOutlined,
-	PlusOutlined,
-} from '@ant-design/icons'
+import { DownOutlined } from '@ant-design/icons'
 import {
 	AgcKind,
 	AgcKindSet,
@@ -29,6 +27,7 @@ export const AGC = ({ id }: { id?: string }) => {
 	return (
 		<Table
 			id={id}
+			pagination={false}
 			title={() => (
 				<Flex justify="space-between">
 					<Typography.Title
@@ -84,26 +83,32 @@ export const AGC = ({ id }: { id?: string }) => {
 				{
 					title: 'Route 1',
 					dataIndex: ['routes', 0],
+					render: () => <Input />,
 				},
 				{
 					title: 'Route 2',
 					dataIndex: ['routes', 1],
+					render: () => <Input />,
 				},
 				{
 					title: 'Route 3',
 					dataIndex: ['routes', 2],
+					render: () => <Input />,
 				},
 				{
 					title: 'Route 4',
 					dataIndex: ['routes', 3],
+					render: () => <Input />,
 				},
 				{
 					title: 'Route 5',
 					dataIndex: ['routes', 4],
+					render: () => <Input />,
 				},
 				{
 					title: 'Route 6',
 					dataIndex: ['routes', 5],
+					render: () => <Input />,
 				},
 			]}
 			dataSource={agc}
