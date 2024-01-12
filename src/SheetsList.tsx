@@ -21,6 +21,7 @@ import { ProcessEmissions } from './ProcessEmissions'
 import { PrecursorEmissions } from './PrecursorEmissions'
 import { SummaryCommunication } from './SummaryCommunication'
 import { ReportingPeriod } from './ReportingPeriod'
+import { VerifierOfTheReport } from './VerifierOfTheReport'
 
 export const SheetsList = () => {
 	const { token } = theme.useToken()
@@ -32,6 +33,7 @@ export const SheetsList = () => {
 					<Sheet id="instdata" title="A_InstData">
 						<ReportingPeriod id="reporting-period" />
 						<AboutTheInstallation id="instdata" />
+						<VerifierOfTheReport id="verifier-of-the-report" />
 					</Sheet>
 				</Col>
 			</Row>

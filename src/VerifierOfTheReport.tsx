@@ -1,7 +1,7 @@
 import { Flex, Form, Typography, theme } from 'antd'
 import { I } from './I'
 
-export const AboutTheInstallation = ({
+export const VerifierOfTheReport = ({
 	id,
 }: {
 	id?: string
@@ -30,7 +30,7 @@ export const AboutTheInstallation = ({
 						marginBottom: 0,
 					}}
 				>
-					About the installation
+					Verifier of the report
 				</Typography.Title>
 			</Flex>
 			<Flex gap="large">
