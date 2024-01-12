@@ -19,47 +19,41 @@ export const FuelIntoChp = ({ id }: { id?: string }) => {
 			)}
 			columns={[
 				{
-					title: 'Installation level data',
-					dataIndex: 'fb',
+					title: 'Parameter',
+					dataIndex: 'a',
 				},
 				{
-					title: 'Unit',
-					render: () => 'tCO2e',
+					title: 'Fuel input into CHP',
+					dataIndex: 'b',
 				},
 				{
-					title: 'Total CO2 emissions',
-					dataIndex: 'tfi',
-					render: () => 0,
+					title: 'Heat output from CHP',
+					dataIndex: 'c',
 				},
 				{
-					title: 'Biomass emissions',
-					render: () => 0,
+					title: 'Electricity output from CHP',
+					dataIndex: 'd',
 				},
 				{
-					title: 'Total N2O emissions',
-					render: () => 0,
-				},
-				{
-					title: 'Total PFC emissions',
-					render: () => 0,
-				},
-				{
-					title: 'Total direct emissions',
-					render: () => 0,
-				},
-				{
-					title: 'Total indirect emissions',
-					render: () => 0,
-				},
-				{
-					title: 'Total emissions',
-					render: () => 0,
+					title: 'Electricity output from CHP',
+					dataIndex: 'e',
 				},
 			]}
 			dataSource={[
-				{ fb: 'from sheet B_EmInst' },
-				{ fb: 'manual entries' },
-				{ fb: 'Results' },
+				{
+					a: 'Unit',
+					b: 'TJ',
+					c: 'TJ',
+					d: 'MWh',
+					e: 'TJ',
+				},
+				{
+					a: 0,
+					b: 0,
+					c: 0,
+					d: 0,
+					e: 0,
+				},
 			]}
 		/>
 	)
