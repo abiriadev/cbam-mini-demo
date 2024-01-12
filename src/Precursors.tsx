@@ -4,6 +4,7 @@ import {
 	Flex,
 	Input,
 	Popconfirm,
+	Select,
 	Table,
 	Typography,
 	message,
@@ -17,6 +18,7 @@ import {
 	removePrecursor,
 	AgcKindSet,
 	AgcKind,
+	cc,
 } from './store/cbam'
 import {
 	DeleteOutlined,
@@ -88,7 +90,15 @@ export const Precursors = ({ id }: { id?: string }) => {
 					},
 					{
 						title: 'Country code',
-						// render: () => <Input />,
+						render: () => (
+							<Select
+								style={{ width: 70 }}
+								options={cc.map(c => ({
+									value: c,
+									label: c,
+								}))}
+							/>
+						),
 					},
 					{
 						title: 'Route 1',
