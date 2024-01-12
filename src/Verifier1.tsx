@@ -1,11 +1,7 @@
 import { Flex, Form, Typography, theme } from 'antd'
 import { I } from './I'
 
-export const VerifierOfTheReport = ({
-	id,
-}: {
-	id?: string
-}) => {
+export const Verifier1 = ({ id }: { id?: string }) => {
 	const { token } = theme.useToken()
 
 	return (
@@ -30,7 +26,8 @@ export const VerifierOfTheReport = ({
 						marginBottom: 0,
 					}}
 				>
-					Verifier of the report
+					Name and address of the verifier of this
+					report
 				</Typography.Title>
 			</Flex>
 			<Flex gap="large">
