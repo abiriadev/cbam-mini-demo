@@ -29,6 +29,7 @@ import { PFC } from './PFC'
 import { EmissionsSources } from './EmissionsSources'
 import { FuelBalance } from './FuelBalance'
 import { GhgBalanceByType } from './GhgBalanceByType'
+import { FuelIntoChp } from './FuelIntoChp'
 
 export const SheetsList = () => {
 	const { token } = theme.useToken()
@@ -76,6 +77,9 @@ export const SheetsList = () => {
 					</Sheet>
 					<Sheet id="E" title="PurchPrec">
 						<Precursors id="A-5" />
+					</Sheet>
+					<Sheet id="F" title="Tools">
+						<FuelIntoChp id="F-1-a" />
 					</Sheet>
 					<Sheet
 						id="S1"

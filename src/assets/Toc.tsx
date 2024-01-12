@@ -120,6 +120,12 @@ export const Toc = () => {
 						{
 							title: 'Cogeneration Tool',
 							href: '#F-1',
+							children: [
+								{
+									title: 'Total amount of fuel input into CHP units',
+									href: '#F-1-a',
+								},
+							],
 						},
 						{
 							title: 'Tool to calculate the carbon price due',
