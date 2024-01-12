@@ -91,6 +91,78 @@ export const Toc = () => {
 						},
 					],
 				},
+				{
+					title: 'C Emissions & Energy',
+					href: '#C',
+					children: [
+						{
+							title: 'Fuel Balance',
+							href: '#C-1',
+						},
+						{
+							title: 'Greenhouse gas emissions balance & information on data quality',
+							href: '#C-2',
+						},
+					],
+				},
+				{
+					title: 'D Processes',
+					href: '#D',
+				},
+				{
+					title: 'E PurchPrec',
+					href: '#E',
+				},
+				{
+					title: 'F Tools',
+					href: '#F',
+					children: [
+						{
+							title: 'Cogeneration Tool',
+							href: '#F-1',
+						},
+						{
+							title: 'Tool to calculate the carbon price due',
+							href: '#F-2',
+						},
+					],
+				},
+				{
+					title: 'Summary Processes',
+					href: '#S1',
+					children: [
+						{
+							title: 'Summary of the installation, processes and production routes',
+							href: '#S1-1',
+						},
+						{
+							title: 'Greenhouse gas emissions balance and specific embedded emissions (SEE)',
+							href: '#S2-2',
+						},
+						{
+							title: 'Detailed overview of each production processes',
+							href: '#S3-3',
+						},
+					],
+				},
+				{
+					title: 'Summary Products',
+					href: '#S2',
+				},
+				{
+					title: 'Summary Communication',
+					href: '#S3',
+					children: [
+						{
+							title: 'Summary of the installation and production processes',
+							href: '#S3-1',
+						},
+						{
+							title: 'Summary of products',
+							href: '#S3-2',
+						},
+					],
+				},
 			].map(setKey)}
 		/>
 	)
