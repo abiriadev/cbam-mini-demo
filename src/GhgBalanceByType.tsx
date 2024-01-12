@@ -22,33 +22,40 @@ export const GhgBalanceByType = ({
 			)}
 			columns={[
 				{
-					title: 'Fuel Balance',
+					title: 'Installation level data',
 					dataIndex: 'fb',
 				},
 				{
 					title: 'Unit',
-					render: () => 'TJ',
+					render: () => 'tCO2e',
 				},
 				{
-					title: 'Total fuel input',
+					title: 'Total CO2 emissions',
 					dataIndex: 'tfi',
 					render: () => 0,
 				},
 				{
-					title: 'Direct fuel for CBAM goods',
+					title: 'Biomass emissions',
 					render: () => 0,
 				},
 				{
-					title: 'Fuel for electricity',
+					title: 'Total N2O emissions',
 					render: () => 0,
 				},
 				{
-					title: 'Direct fuel for non CBAM goods',
+					title: 'Total PFC emissions',
 					render: () => 0,
 				},
 				{
-					title: 'Rest',
-					dataIndex: 'rest',
+					title: 'Total direct emissions',
+					render: () => 0,
+				},
+				{
+					title: 'Total indirect emissions',
+					render: () => 0,
+				},
+				{
+					title: 'Total emissions',
 					render: () => 0,
 				},
 			]}
