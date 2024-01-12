@@ -28,6 +28,7 @@ import { SourceStreams } from './SourceStreams'
 import { PFC } from './PFC'
 import { EmissionsSources } from './EmissionsSources'
 import { FuelBalance } from './FuelBalance'
+import { GhgBalanceByType } from './GhgBalanceByType'
 
 export const SheetsList = () => {
 	const { token } = theme.useToken()
@@ -68,6 +69,7 @@ export const SheetsList = () => {
 						title="C Emissions & Energy"
 					>
 						<FuelBalance id="C-1" />
+						<GhgBalanceByType id="C-2" />
 					</Sheet>
 					<Sheet id="D" title="Processes">
 						<Processes />
