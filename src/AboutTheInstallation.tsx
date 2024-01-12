@@ -60,19 +60,3 @@ export const AboutTheInstallation = ({
 		</div>
 	)
 }
-
-const I = ({
-	label,
-	required,
-}: {
-	label: string
-	required?: boolean
-}) => (
-	<Form.Item
-		label={label}
-		name={label}
-		rules={[{ required }]}
-	>
-		<Input />
-	</Form.Item>
-)
