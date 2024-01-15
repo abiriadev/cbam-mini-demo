@@ -113,13 +113,7 @@ export const SheetsList = () => {
 					>
 						<SummaryCommunication id="summary-communication" />
 					</Sheet>
-					<Flex
-						justify="end"
-						style={{
-							// margin
-							height: 150,
-						}}
-					>
+					<Flex justify="end" className="h-40">
 						<Button
 							type="primary"
 							icon={

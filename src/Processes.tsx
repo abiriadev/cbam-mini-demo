@@ -14,7 +14,6 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from './store'
 import {
-	addNewProcess,
 	removeProcess,
 	updateDirem,
 	updateActivityLevel,
@@ -52,13 +51,7 @@ export const Processes = () => {
 				rowKey={({ id }) => id}
 				title={() => (
 					<Flex justify="space-between">
-						<Typography.Title
-							level={4}
-							style={{
-								marginTop: 0,
-								marginBottom: 0,
-							}}
-						>
+						<Typography.Title level={4}>
 							Processes
 						</Typography.Title>
 						<Button
@@ -353,10 +346,6 @@ export const Processes = () => {
 									<Flex justify="space-between">
 										<Typography.Title
 											level={5}
-											style={{
-												marginTop: 0,
-												marginBottom: 0,
-											}}
 										>
 											Consumed
 											precursors in "
