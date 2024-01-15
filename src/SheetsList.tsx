@@ -8,7 +8,7 @@ import {
 	message,
 	theme,
 } from 'antd'
-import { Emissions } from './Emissions'
+import { Emissions } from '@layouts/Emissions'
 import { Precursors } from '@layouts/Precursors'
 import { Processes } from './Processes'
 import { VerticalAlignBottomOutlined } from '@ant-design/icons'
