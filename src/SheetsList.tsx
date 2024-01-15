@@ -30,7 +30,7 @@ import { EmissionsSources } from './EmissionsSources'
 import { FuelBalance } from '@layouts/FuelBalance'
 import { GhgBalanceByType } from '@layouts/GhgBalanceByType'
 import { FuelIntoChp } from '@layouts/FuelIntoChp'
-import { SummaryOfTheInstallation } from './SummaryOfTheInstallation'
+import { SummaryOfTheInstallation } from '@layouts/SummaryOfTheInstallation'
 
 export const SheetsList = () => {
 	const { token } = theme.useToken()
