@@ -1,25 +1,27 @@
-import {
-	Anchor,
-	Flex,
-	Layout,
-	Typography,
-	theme,
-} from 'antd'
+import { Flex, Layout, Typography, theme } from 'antd'
 import { Content, Header } from 'antd/es/layout/layout'
 import Sider from 'antd/es/layout/Sider'
 import aipimLogo from './assets/aipim-logo-green.png'
 import { SheetsList } from './SheetsList'
 import { Toc } from './assets/Toc'
+import { useSelector } from 'react-redux'
+import { RootState } from './store'
 
 function App() {
 	const {
 		token: { colorPrimary },
 	} = theme.useToken()
+	useSelector
+
+	const { isIframe } = useSelector(
+		(st: RootState) => st.environment,
+	)
 
 	return (
 		<Layout
 			style={{
 				minHeight: '100vh',
+				display: isIframe ? 'none' : 'unset',
 			}}
 		>
 			<Header

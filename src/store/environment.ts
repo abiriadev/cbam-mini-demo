@@ -4,8 +4,10 @@ export interface Environment {
 	isIframe: boolean
 }
 
+const testIframe = () => window.self !== window.top
+
 const initialState: Environment = {
-	isIframe: false,
+	isIframe: testIframe(),
 }
 
 export const cbamSlice = createSlice({
