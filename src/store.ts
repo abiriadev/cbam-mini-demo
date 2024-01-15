@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { reducer } from './store/cbam'
+import { reducer as cbam } from './store/cbam'
+import { reducer as environment } from './store/environment'
 
 export const store = configureStore({
 	reducer: {
-		cbam: reducer,
+		cbam,
+		environment,
 	},
 })
 
