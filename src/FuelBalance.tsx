@@ -6,13 +6,7 @@ export const FuelBalance = ({ id }: { id?: string }) => {
 			id={id}
 			pagination={false}
 			title={() => (
-				<Typography.Title
-					level={4}
-					style={{
-						marginTop: 0,
-						marginBottom: 0,
-					}}
-				>
+				<Typography.Title level={4}>
 					Fuel balance
 				</Typography.Title>
 			)}

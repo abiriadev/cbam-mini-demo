@@ -122,13 +122,7 @@ export const Emissions = ({ id }: { id?: string }) => {
 		<div id={id}>
 			<Table
 				title={() => (
-					<Typography.Title
-						level={4}
-						style={{
-							marginTop: 0,
-							marginBottom: 0,
-						}}
-					>
+					<Typography.Title level={4}>
 						Emissions
 					</Typography.Title>
 				)}

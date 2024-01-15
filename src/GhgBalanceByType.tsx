@@ -10,13 +10,7 @@ export const GhgBalanceByType = ({
 			id={id}
 			pagination={false}
 			title={() => (
-				<Typography.Title
-					level={4}
-					style={{
-						marginTop: 0,
-						marginBottom: 0,
-					}}
-				>
+				<Typography.Title level={4}>
 					GHG balance by type of GHG
 				</Typography.Title>
 			)}

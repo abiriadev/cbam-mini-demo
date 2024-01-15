@@ -52,13 +52,7 @@ export const GhgEmissions = ({
 			rowKey={({ id }) => id}
 			pagination={false}
 			title={() => (
-				<Typography.Title
-					level={4}
-					style={{
-						marginTop: 0,
-						marginBottom: 0,
-					}}
-				>
+				<Typography.Title level={4}>
 					GHG emissions balance
 				</Typography.Title>
 			)}

@@ -19,13 +19,7 @@ export const Verifier3 = ({ id }: { id?: string }) => {
 					paddingBottom: token.padding,
 				}}
 			>
-				<Typography.Title
-					level={4}
-					style={{
-						marginTop: 0,
-						marginBottom: 0,
-					}}
-				>
+				<Typography.Title level={4}>
 					Information about the verifier's
 					accreditation
 				</Typography.Title>

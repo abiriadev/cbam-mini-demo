@@ -27,13 +27,7 @@ export const PFC = ({ id }: { id: string }) => {
 			pagination={false}
 			title={() => (
 				<Flex justify="space-between">
-					<Typography.Title
-						level={4}
-						style={{
-							marginTop: 0,
-							marginBottom: 0,
-						}}
-					>
+					<Typography.Title level={4}>
 						PFC Emissions
 					</Typography.Title>
 					<Button

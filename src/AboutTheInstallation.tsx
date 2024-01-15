@@ -23,13 +23,7 @@ export const AboutTheInstallation = ({
 					paddingBottom: token.padding,
 				}}
 			>
-				<Typography.Title
-					level={4}
-					style={{
-						marginTop: 0,
-						marginBottom: 0,
-					}}
-				>
+				<Typography.Title level={4}>
 					About the installation
 				</Typography.Title>
 			</Flex>

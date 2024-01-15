@@ -9,13 +9,7 @@ export const SummaryCommunication = ({
 		<Table
 			id={id}
 			title={() => (
-				<Typography.Title
-					level={4}
-					style={{
-						marginTop: 0,
-						marginBottom: 0,
-					}}
-				>
+				<Typography.Title level={4}>
 					Summary communication
 				</Typography.Title>
 			)}

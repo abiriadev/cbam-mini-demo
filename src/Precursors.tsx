@@ -38,13 +38,7 @@ export const Precursors = ({ id }: { id?: string }) => {
 			<Table
 				title={() => (
 					<Flex justify="space-between">
-						<Typography.Title
-							level={4}
-							style={{
-								marginTop: 0,
-								marginBottom: 0,
-							}}
-						>
+						<Typography.Title level={4}>
 							Purchased precursors
 						</Typography.Title>
 						<Dropdown
