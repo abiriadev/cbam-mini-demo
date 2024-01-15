@@ -11,7 +11,7 @@ import {
 	theme,
 } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from './store'
+import { RootState } from '@/store'
 import {
 	addNewPrecursor,
 	updatePrecursorName,
@@ -19,7 +19,7 @@ import {
 	AgcKindSet,
 	AgcKind,
 	cc,
-} from './store/cbam'
+} from '@/store/cbam'
 import {
 	DeleteOutlined,
 	DownOutlined,

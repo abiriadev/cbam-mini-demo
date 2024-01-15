@@ -9,7 +9,7 @@ import {
 	theme,
 } from 'antd'
 import { Emissions } from './Emissions'
-import { Precursors } from './Precursors'
+import { Precursors } from '@layouts/Precursors'
 import { Processes } from './Processes'
 import { VerticalAlignBottomOutlined } from '@ant-design/icons'
 import { GhgEmissions } from '@layouts/GhgEmissions'
