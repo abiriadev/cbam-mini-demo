@@ -12,7 +12,7 @@ import {
 	theme,
 } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from './store'
+import { RootState } from '@/store'
 import {
 	removeProcess,
 	updateDirem,
@@ -28,7 +28,7 @@ import {
 	updateExportedMeasurableHeatEf,
 	updateImportedWasteGasAmount,
 	updateExportedWasteGasAmount,
-} from './store/cbam'
+} from '@/store/cbam'
 import {
 	DeleteOutlined,
 	DownOutlined,
