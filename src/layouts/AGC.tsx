@@ -8,13 +8,13 @@ import {
 	theme,
 } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from './store'
+import { RootState } from '@/store'
 import { DownOutlined } from '@ant-design/icons'
 import {
 	AgcKind,
 	AgcKindSet,
 	addNewAgc,
-} from './store/cbam'
+} from '@/store/cbam'
 
 export const AGC = ({ id }: { id?: string }) => {
 	const { agc } = useSelector(
