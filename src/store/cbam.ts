@@ -62,6 +62,7 @@ export interface PrecursorUsage {
 }
 
 export interface EmInstState {
+	id: string
 	method:
 		| 'combustion'
 		| 'process-emissions'
@@ -509,6 +510,7 @@ export const cbamSlice = createSlice({
 
 		addNewEmInst: ({ eminst }) =>
 			void eminst.push({
+				id: crypto.randomUUID(),
 				method: 'mass-balance',
 				name: chooseUniqueName(
 					eminst.map(({ name }) => name),

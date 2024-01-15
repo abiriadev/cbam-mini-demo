@@ -64,9 +64,9 @@ export const Processes = () => {
 						<Button
 							type="primary"
 							icon={<PlusOutlined />}
-							onClick={() =>
-								dispatch(addNewProcess())
-							}
+							// onClick={() =>
+							// 	dispatch(addNewProcess())
+							// }
 						>
 							<Typography.Text
 								strong

@@ -88,7 +88,7 @@ export const EmissionsSources = ({
 					render: (v, { id }) => (
 						<Input
 							value={v}
-							onChange={ev => dispatch(null)}
+							// onChange={ev => dispatch(null)}
 						/>
 					),
 				},
@@ -112,9 +112,9 @@ export const EmissionsSources = ({
 									</Select.Option>
 								</Select>
 							}
-							onChange={activity_level =>
-								dispatch(null)
-							}
+							// onChange={activity_level =>
+							// 	dispatch(null)
+							// }
 						/>
 					),
 				},
@@ -126,9 +126,9 @@ export const EmissionsSources = ({
 							value={v}
 							controls={false}
 							addonAfter={'GJ/t'}
-							onChange={activity_level =>
-								dispatch(null)
-							}
+							// onChange={activity_level =>
+							// 	dispatch(null)
+							// }
 						/>
 					),
 				},
