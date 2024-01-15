@@ -29,7 +29,7 @@ import { PFC } from '@layouts/PFC'
 import { EmissionsSources } from './EmissionsSources'
 import { FuelBalance } from './FuelBalance'
 import { GhgBalanceByType } from './GhgBalanceByType'
-import { FuelIntoChp } from './FuelIntoChp'
+import { FuelIntoChp } from '@layouts/FuelIntoChp'
 import { SummaryOfTheInstallation } from './SummaryOfTheInstallation'
 
 export const SheetsList = () => {
