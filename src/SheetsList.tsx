@@ -28,7 +28,7 @@ import { SourceStreams } from './SourceStreams'
 import { PFC } from '@layouts/PFC'
 import { EmissionsSources } from './EmissionsSources'
 import { FuelBalance } from './FuelBalance'
-import { GhgBalanceByType } from './GhgBalanceByType'
+import { GhgBalanceByType } from '@layouts/GhgBalanceByType'
 import { FuelIntoChp } from '@layouts/FuelIntoChp'
 import { SummaryOfTheInstallation } from './SummaryOfTheInstallation'
 
