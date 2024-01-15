@@ -1,14 +1,14 @@
 import { Table, Typography } from 'antd'
 import { useSelector } from 'react-redux'
-import { RootState } from './store'
+import { RootState } from '@/store'
 import {
 	Emission,
 	PrecursorUsage,
 	totalEmission,
 	findPrecursorById,
 	precursorMapToUsageArray,
-} from './store/cbam'
-import { fixEmission, nanGuard, sum } from './utils'
+} from '@/store/cbam'
+import { fixEmission, nanGuard, sum } from '@/utils'
 
 interface EmissionResult {
 	id: string
