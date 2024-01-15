@@ -9,9 +9,9 @@ import {
 	Typography,
 	theme,
 } from 'antd'
-import { addNewEmInst } from './store/cbam'
+import { addNewEmInst } from '@/store/cbam'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from './store'
+import { RootState } from '@/store'
 
 export const PFC = ({ id }: { id: string }) => {
 	const { token } = theme.useToken()
