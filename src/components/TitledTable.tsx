@@ -8,10 +8,14 @@ import {
 } from 'antd'
 
 export interface TitledTableProps {
-	id: string
+	id?: string
+	titleText: string
 }
 
-export const TitledTable = ({ id }: TitledTableProps) => {
+export const TitledTable = ({
+	id,
+	titleText,
+}: TitledTableProps) => {
 	const { token } = theme.useToken()
 
 	return (
@@ -21,7 +25,7 @@ export const TitledTable = ({ id }: TitledTableProps) => {
 			title={() => (
 				<Flex justify="space-between">
 					<Typography.Title level={4}>
-						Processes
+						{titleText}
 					</Typography.Title>
 					<Button
 						type="primary"
