@@ -99,11 +99,6 @@ export const Processes = () => {
 							<InputNumber
 								value={v}
 								controls={false}
-								style={
-									{
-										// width: '9em',
-									}
-								}
 								addonAfter="eCO2t"
 								onChange={direm =>
 									dispatch(
@@ -205,11 +200,6 @@ export const Processes = () => {
 								<InputNumber
 									value={amount}
 									controls={false}
-									style={
-										{
-											// width: '7em',
-										}
-									}
 									addonAfter="TJ"
 									onChange={amount =>
 										dispatch(
@@ -225,11 +215,6 @@ export const Processes = () => {
 								<InputNumber
 									value={emissionFactor}
 									controls={false}
-									style={
-										{
-											// width: '10em',
-										}
-									}
 									addonAfter="tCO2e/TJ"
 									onChange={ef =>
 										dispatch(
@@ -256,11 +241,6 @@ export const Processes = () => {
 							<InputNumber
 								value={v}
 								controls={false}
-								style={
-									{
-										// width: '7em',
-									}
-								}
 								addonAfter="TJ"
 								onChange={amount =>
 									dispatch(
@@ -286,11 +266,6 @@ export const Processes = () => {
 							<InputNumber
 								value={v}
 								controls={false}
-								style={
-									{
-										// width: '7em',
-									}
-								}
 								addonAfter="TJ"
 								onChange={amount =>
 									dispatch(
