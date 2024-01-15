@@ -1,7 +1,7 @@
 import { Table, Typography } from 'antd'
 import { useSelector } from 'react-redux'
-import { RootState } from './store'
-import { fix3, sum } from './utils'
+import { RootState } from '@/store'
+import { fix3, sum } from '@/utils'
 
 interface GhgEmissionResult {
 	id: string
