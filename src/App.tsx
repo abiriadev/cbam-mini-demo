@@ -18,38 +18,24 @@ function App() {
 	)
 
 	return (
-		<Layout
-			style={{
-				minHeight: '100vh',
-			}}
-		>
+		<Layout className="min-h-screen">
 			<Header
-				style={{
-					backgroundColor: 'inherit',
-					height: '10em',
-					display: isIframe ? 'none' : 'unset',
-				}}
+				className={`h-36 bg-inherit ${
+					isIframe && 'hidden'
+				}`}
 			>
-				<Flex
-					align="center"
-					style={{
-						height: '100%',
-					}}
-				>
+				<Flex align="center" className="h-full">
 					<img src={aipimLogo} height={'80%'} />
 					<Flex
 						justify="center"
 						align="center"
-						style={{
-							width: '100%',
-							height: '100%',
-						}}
+						className="w-full h-full"
 					>
 						<Typography.Title
 							level={1}
+							className="text-center"
 							style={{
 								color: colorPrimary,
-								textAlign: 'center',
 							}}
 						>
 							Aipim CBAM reporter v2
@@ -58,18 +44,10 @@ function App() {
 				</Flex>
 			</Header>
 			<Layout>
-				<Sider
-					style={{
-						backgroundColor: 'inherit',
-					}}
-				>
+				<Sider className="!bg-inherit">
 					<Toc />
 				</Sider>
-				<Content
-					style={{
-						backgroundColor: 'inherit',
-					}}
-				>
+				<Content className="bg-inherit">
 					<SheetsList />
 				</Content>
 			</Layout>
