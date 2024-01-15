@@ -1,5 +1,5 @@
 import { Flex, Form, Typography, theme } from 'antd'
-import { I } from './I'
+import { I } from '@/I'
 
 export const Verifier2 = ({ id }: { id?: string }) => {
 	const { token } = theme.useToken()
