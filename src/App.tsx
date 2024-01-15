@@ -21,13 +21,13 @@ function App() {
 		<Layout
 			style={{
 				minHeight: '100vh',
-				display: isIframe ? 'none' : 'unset',
 			}}
 		>
 			<Header
 				style={{
 					backgroundColor: 'inherit',
 					height: '10em',
+					display: isIframe ? 'none' : 'unset',
 				}}
 			>
 				<Flex
