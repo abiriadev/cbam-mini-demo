@@ -166,11 +166,11 @@ components:
         name:
           type: string
         country:
-          type: string
+          $ref: '#/components/schemas/CountryCode'
         routes:
           type: array
           items:
-            $ref: '#/components/schemas/Route'
+            $ref: '#/components/schemas/Route'          
     CountryCode:
       type: string
       enum:
