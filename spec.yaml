@@ -15,18 +15,62 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pet'
+                $ref: '#/components/schemas/CBAM'
 components:
   schemas:
-    Pet:
+    CBAM:
       type: object
-      required:
-        - id
-        - name
+      # required:
+      # - name
       properties:
-        id:
-          type: integer
-          format: int64
+        reporting-period:
+          type: object
+          properties:
+            start:
+              type: string
+              format: date
+            end:
+              type: string
+              format: date
+        installation:
+          type: object
+          properties:
+            name:
+              type: string
+            name-en:
+              type: string
+            street:
+              type: string
+            economic-activity:
+              type: string
+            postcode:
+              type: integer
+            po-box:
+              type: string
+            city:
+              type: string
+            country:
+              type: string
+            unlocode:
+              type: string
+            coordinates:
+              type: object
+              properties:
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+            representative:
+              type: string
+            email:
+              type: string
+              format: email
+            telephone:
+              type: string
+          required:
+            - name-en
+            - country
+            - unlocode
         name:
           type: string
         tag:
