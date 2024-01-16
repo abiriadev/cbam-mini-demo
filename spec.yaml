@@ -143,3 +143,17 @@ components:
       type: string
       enum:
         - Basic oxygen steelmaking
+    Process:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        agc:
+          $ref: '#/components/schemas/AGC'
+        included-goods:
+          type: array
+          items:
+            $ref: '#/components/schemas/AGC'
