@@ -20,12 +20,6 @@ components:
   schemas:
     CBAM:
       type: object
-      required:
-        - reporting-period
-        - installation
-        - verifier
-        - agcs
-        - processes
       properties:
         reporting-period:
           type: object
@@ -118,6 +112,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Process'
+        precursors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Precursor'
+      required:
+        - reporting-period
+        - installation
+        - verifier
+        - agcs
+        - processes
     AGC:
       type: string
       enum:
