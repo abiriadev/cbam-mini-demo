@@ -20,8 +20,10 @@ components:
   schemas:
     CBAM:
       type: object
-      # required:
-      # - name
+      required:
+        - reporting-period
+        - installation
+        - verifier
       properties:
         reporting-period:
           type: object
@@ -71,7 +73,33 @@ components:
             - name-en
             - country
             - unlocode
-        name:
-          type: string
+        verifier:
+          type: object
+          properties:
+            company-name:
+              type: string
+            street:
+              type: string
+            city:
+              type: string
+            postcode:
+              type: string
+            country:
+              type: string
+            name:
+              type: string
+            email:
+              type: string
+              format: email
+            telephone:
+              type: string
+            fax:
+              type: string
+            accreditation-state:
+              type: string
+            national-accreditation-body:
+              type: string
+            registration-number:
+              type: string
         tag:
           type: string
