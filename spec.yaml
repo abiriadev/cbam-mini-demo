@@ -157,3 +157,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AGC'
+    Precursor:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        country:
+          type: string
+        routes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Route'
