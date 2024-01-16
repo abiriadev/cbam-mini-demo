@@ -122,6 +122,7 @@ components:
         - verifier
         - agcs
         - processes
+        - precursors
     AGC:
       type: string
       enum:
