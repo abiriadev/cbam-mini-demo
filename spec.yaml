@@ -24,6 +24,8 @@ components:
         - reporting-period
         - installation
         - verifier
+        - agcs
+        - processes
       properties:
         reporting-period:
           type: object
@@ -101,8 +103,21 @@ components:
               type: string
             registration-number:
               type: string
-        tag:
-          type: string
+        agcs:
+          type: array
+          items:
+            type: object
+            properties:
+              agc:
+                $ref: '#/components/schemas/AGC'
+              routes:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Route'
+        processes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Process'
     AGC:
       type: string
       enum:
@@ -124,3 +139,7 @@ components:
         - Aluminium products
         - Unwrought aluminium
         - Electricity
+    Route:
+      type: string
+      enum:
+        - Basic oxygen steelmaking
