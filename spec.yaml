@@ -132,7 +132,7 @@ components:
               type: string
         agcs:
           type: array
-          description: 관련된 AGC 종류
+          description: 관련된 집약 상품 카테고리 종류
           items:
             type: object
             properties:
@@ -140,8 +140,12 @@ components:
                 $ref: '#/components/schemas/AGC'
               routes:
                 type: array
+                description: 각 집약 상품 카테고리를 생산하는 서로 다른 제조 경로
                 items:
                   $ref: '#/components/schemas/Route'
+            required:
+              - agc
+              - routes
         processes:
           type: array
           description: 제조 공정 목록
