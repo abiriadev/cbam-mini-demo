@@ -176,6 +176,8 @@ components:
               type: number
             indirect:
               type: number
+          required:
+            - indirect
       required:
         - reporting-period
         - installation
@@ -183,6 +185,7 @@ components:
         - agcs
         - processes
         - precursors
+        - source-streams
         - ghg-balance
     AGC:
       type: string
