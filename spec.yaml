@@ -160,30 +160,7 @@ components:
           type: array
           description: 소스 스트림 목록
           items:
-            type: object
-            properties:
-              method:
-                type: string
-                description: 배출량 측정 방식
-                enum:
-                  - Combustion
-                  - Process emissions
-                  - Mass Balance
-              name:
-                type: string
-                description: 본 스트림의 명칭
-              ad:
-                type: number
-                description: 소비량 (Activity data)
-              ad-unit:
-                type: string
-                description: 소비량 단위
-                enum:
-                  - t
-                  - 1000Nm3
-              ncv:
-                type: number
-                description: Net calorific value
+            $ref: '#/components/schemas/Stream'
         ghg-balance:
           type: object
           properties:
@@ -450,6 +427,31 @@ components:
         - routes
         - consumed
         - see
+    Stream:
+      type: object
+      properties:
+        method:
+          type: string
+          description: 배출량 측정 방식
+          enum:
+            - Combustion
+            - Process emissions
+            - Mass Balance
+        name:
+          type: string
+          description: 본 스트림의 명칭
+        ad:
+          type: number
+          description: 소비량 (Activity data)
+        ad-unit:
+          type: string
+          description: 소비량 단위
+          enum:
+            - t
+            - 1000Nm3
+        ncv:
+          type: number
+          description: Net calorific value
     CountryCode:
       type: string
       description: 국가 코드
