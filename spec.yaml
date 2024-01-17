@@ -192,6 +192,49 @@ components:
             direm:
               type: number
               description: 직접배출량
+            heat:
+              type: object
+              properties:
+                imported:
+                  type: object
+                  properties:
+                    amount:
+                      type: number
+                    ef:
+                      type: number
+                exported:
+                  type: object
+                  properties:
+                    amount:
+                      type: number
+                    ef:
+                      type: number
+            wg:
+              type: object
+              properties:
+                imported:
+                  type: object
+                  properties:
+                    amount:
+                      type: number
+                    ef:
+                      type: number
+                exported:
+                  type: object
+                  properties:
+                    amount:
+                      type: number
+                    ef:
+                      type: number
+            electricity:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                ef:
+                  type: integer
+                source:
+                  type: string
     Precursor:
       type: object
       description: 프리커서
