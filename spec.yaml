@@ -94,26 +94,36 @@ components:
             - unlocode
         verifier:
           type: object
+          description: CBAM 보고서 인증기관 정보
           properties:
             company-name:
               type: string
+              description: 사명
             street:
               type: string
+              description: 주소
             city:
               type: string
+              description: 도시
             postcode:
               type: string
+              description: 우편번호
             country:
               type: string
+              description: 국가
             name:
               type: string
+              description: 담당자 이름
             email:
               type: string
               format: email
+              description: 이메일
             telephone:
               type: string
+              description: 연락처
             fax:
               type: string
+              description: 팩스
             accreditation-state:
               type: string
             national-accreditation-body:
