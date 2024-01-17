@@ -166,16 +166,22 @@ components:
           properties:
             co2:
               type: number
+              description: 총 CO2 배출량
             biomass:
               type: number
+              description: 총 바이오매스 배출량
             n2o:
               type: number
+              description: 총 N20 배출량
             pfc:
               type: number
+              description: 총 PFC 배출량
             direct:
               type: number
+              description: 총 직접배출량
             indirect:
               type: number
+              description: 총 간접배출량
           required:
             - indirect
       required:
