@@ -227,26 +227,28 @@ components:
                     ef:
                       type: number
             electricity:
-              imported:
-                type: object
-                properties:
-                  amount:
-                    type: number
-                  ef:
-                    type: number
-                  source:
-                    type: string
-                required:
-                  - amount
-                  - ef
-                  - source
-              exported:
-                type: object
-                properties:
-                  amount:
-                    type: number
-                  ef:
-                    type: number
+              type: object
+              properties:
+                imported:
+                  type: object
+                  properties:
+                    amount:
+                      type: number
+                    ef:
+                      type: number
+                    source:
+                      type: string
+                  required:
+                    - amount
+                    - ef
+                    - source
+                exported:
+                  type: object
+                  properties:
+                    amount:
+                      type: number
+                    ef:
+                      type: number
     Precursor:
       type: object
       description: 프리커서
