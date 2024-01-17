@@ -42,8 +42,10 @@ components:
           properties:
             name:
               type: string
+              example: 공장 A
             name-en:
               type: string
+              example: factory A
             street:
               type: string
             economic-activity:
@@ -54,10 +56,12 @@ components:
               type: string
             city:
               type: string
+              example: 'Seoul'
             country:
-              type: string
+              $ref: '#/components/schemas/CountryCode'
             unlocode:
               type: string
+              example: KR SEL
             coordinates:
               type: object
               properties:
@@ -72,6 +76,7 @@ components:
               format: email
             telephone:
               type: string
+              example: 010-1234-5678
           required:
             - name-en
             - country
