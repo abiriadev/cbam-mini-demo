@@ -206,6 +206,9 @@ components:
                     ef:
                       type: number
                       description: 배출계수
+                  required:
+                    - amount
+                    - ef
                 exported:
                   type: object
                   description: 추출된 열
@@ -216,6 +219,12 @@ components:
                     ef:
                       type: number
                       description: 배출계수
+                  required:
+                    - amount
+                    - ef
+              required:
+                - imported
+                - exported
             wg:
               type: object
               description: 폐가스
@@ -230,6 +239,8 @@ components:
                     ef:
                       type: number
                       description: 배출계수
+                  required:
+                    - amount
                 exported:
                   type: object
                   description: 수출된 폐가스
@@ -240,6 +251,11 @@ components:
                     ef:
                       type: number
                       description: 배출계수
+                  required:
+                    - amount
+              required:
+                - imported
+                - exported
             electricity:
               type: object
               description: 전력
@@ -271,6 +287,15 @@ components:
                     ef:
                       type: number
                       description: 배출계수
+                  required:
+                    - amount
+                    - ef
+              required:
+                - imported
+                - exported
+          required:
+            - direm
+            - electricity
     Precursor:
       type: object
       description: 프리커서
