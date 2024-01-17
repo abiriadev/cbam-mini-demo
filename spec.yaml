@@ -356,6 +356,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Route'
+        consumed:
+          type: object
+          additionalProperties:
+            type: number
+        see:
+          type: object
+          properties:
+            direct:
+              type: object
+              properties:
+                value:
+                  type: number
+                source:
+                  type: string
+            indirect:
+              type: object
+              properties:
+                value:
+                  type: number
+                source:
+                  type: string
+            justification:
+              type: string
     CountryCode:
       type: string
       description: 국가 코드
