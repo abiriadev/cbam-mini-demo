@@ -163,6 +163,7 @@ components:
             $ref: '#/components/schemas/Stream'
         ghg-balance:
           type: object
+          description: 온실가스 균형 정보
           properties:
             co2:
               type: number
@@ -359,6 +360,14 @@ components:
           required:
             - direm
             - electricity
+      required:
+        - id
+        - name
+        - agc
+        - included-goods
+        - production-level
+        - consumed
+        - attr
     Precursor:
       type: object
       description: 프리커서
