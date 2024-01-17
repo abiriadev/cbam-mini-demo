@@ -374,6 +374,9 @@ components:
                 source:
                   type: string
                   description: 배출량 출처
+                  enum:
+                    - Measured
+                    - Default
             indirect:
               type: object
               description: 특정간접내재배출량
@@ -384,9 +387,19 @@ components:
                 source:
                   type: string
                   description: 배출량 출처
+                  enum:
+                    - D.2.1
+                    - D.2.2
+                    - D.2.3
+                    - D.2.4
+                    - Mix
             justification:
               type: string
               description: 기본수치를 적용한 이유
+              enum:
+                - Unreasonable costs for more accurate monitoring
+                - Data gaps
+                - Other
     CountryCode:
       type: string
       description: 국가 코드
