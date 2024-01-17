@@ -194,61 +194,83 @@ components:
               description: 직접배출량
             heat:
               type: object
+              description: 측정가능한 열
               properties:
                 imported:
                   type: object
+                  description: 수입된 열
                   properties:
                     amount:
                       type: number
+                      description: 수입된 양
                     ef:
                       type: number
+                      description: 배출계수
                 exported:
                   type: object
+                  description: 추출된 열
                   properties:
                     amount:
                       type: number
+                      description: 수출된 양
                     ef:
                       type: number
+                      description: 배출계수
             wg:
               type: object
+              description: 폐가스
               properties:
                 imported:
                   type: object
+                  description: 수입된 폐가스
                   properties:
                     amount:
                       type: number
+                      description: 수입된 양
                     ef:
                       type: number
+                      description: 배출계수
                 exported:
                   type: object
+                  description: 수출된 폐가스
                   properties:
                     amount:
                       type: number
+                      description: 수출된 양
                     ef:
                       type: number
+                      description: 배출계수
             electricity:
               type: object
+              description: 전력
               properties:
                 imported:
                   type: object
+                  description: 수입된 전력
                   properties:
                     amount:
                       type: number
+                      description: 수입된 양 (MWh)
                     ef:
                       type: number
+                      description: 배출계수
                     source:
                       type: string
+                      description: 배출계수 출처
                   required:
                     - amount
                     - ef
                     - source
                 exported:
                   type: object
+                  description: 수출된 전력 (간접배출량)
                   properties:
                     amount:
                       type: number
+                      description: 수출된 양 (MWh)
                     ef:
                       type: number
+                      description: 배출계수
     Precursor:
       type: object
       description: 프리커서
