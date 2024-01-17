@@ -33,6 +33,9 @@ components:
               type: string
               format: date
               description: CBAM 보고 기간의 종료일
+          example:
+            start: 2023-01-01
+            end: 2023-12-31
         installation:
           type: object
           description: 설비 기본 정보
@@ -687,3 +690,4 @@ components:
         - ZM
         - ZR
         - ZW
+      example: KR
