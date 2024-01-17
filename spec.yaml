@@ -452,6 +452,12 @@ components:
         ncv:
           type: number
           description: Net calorific value
+      required:
+        - method
+        - name
+        - ad
+        - ad-unit
+        - ncv
     CountryCode:
       type: string
       description: 국가 코드
