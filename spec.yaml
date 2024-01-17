@@ -42,28 +42,36 @@ components:
           properties:
             name:
               type: string
+              description: 설비 명칭
               example: 공장 A
             name-en:
               type: string
+              description: 설비 영문 명칭
               example: factory A
             street:
               type: string
+              description: 주소
             economic-activity:
               type: string
             postcode:
               type: integer
+              description: 우편번호
             po-box:
               type: string
+              description: 우편함
             city:
               type: string
+              description: 설립 도시
               example: 'Seoul'
             country:
               $ref: '#/components/schemas/CountryCode'
             unlocode:
               type: string
+              description: UN/LO 지역 코드
               example: KR SEL
             coordinates:
               type: object
+              description: 설비의 좌표
               properties:
                 latitude:
                   type: number
@@ -71,11 +79,14 @@ components:
                   type: number
             representative:
               type: string
+              description: 담당자
             email:
               type: string
               format: email
+              description: 이메일
             telephone:
               type: string
+              description: 연락처
               example: 010-1234-5678
           required:
             - name-en
