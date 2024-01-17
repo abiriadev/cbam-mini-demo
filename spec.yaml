@@ -231,16 +231,22 @@ components:
                 type: object
                 properties:
                   amount:
-                    type: integer
+                    type: number
                   ef:
-                    type: integer
+                    type: number
                   source:
                     type: string
+                required:
+                  - amount
+                  - ef
+                  - source
               exported:
-                amount:
-                  type: number
-                ef:
-                  type: number
+                type: object
+                properties:
+                  amount:
+                    type: number
+                  ef:
+                    type: number
     Precursor:
       type: object
       description: 프리커서
