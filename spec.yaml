@@ -377,6 +377,9 @@ components:
                   enum:
                     - Measured
                     - Default
+              required:
+                - value
+                - source
             indirect:
               type: object
               description: 특정간접내재배출량
@@ -393,6 +396,9 @@ components:
                     - D.2.3
                     - D.2.4
                     - Mix
+              required:
+                - value
+                - source
             justification:
               type: string
               description: 기본수치를 적용한 이유
@@ -400,6 +406,17 @@ components:
                 - Unreasonable costs for more accurate monitoring
                 - Data gaps
                 - Other
+          required:
+            - direct
+            - indirect
+            - justification
+      required:
+        - id
+        - name
+        - country
+        - routes
+        - consumed
+        - see
     CountryCode:
       type: string
       description: 국가 코드
