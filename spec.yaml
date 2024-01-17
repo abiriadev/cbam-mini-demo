@@ -131,14 +131,26 @@ components:
             properties:
               method:
                 type: string
+                description: 배출량 측정 방식
+                enum:
+                  - Combustion
+                  - Process emissions
+                  - Mass Balance
               name:
                 type: string
+                description: 본 스트림의 명칭
               ad:
                 type: number
+                description: 소비량 (Activity data)
               ad-unit:
                 type: string
+                description: 소비량 단위
+                enum:
+                  - t
+                  - 1000Nm3
               ncv:
                 type: number
+                description: Net calorific value
       required:
         - reporting-period
         - installation
