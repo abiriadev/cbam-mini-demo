@@ -362,23 +362,31 @@ components:
             type: number
         see:
           type: object
+          description: 특정내재배출량 정보
           properties:
             direct:
               type: object
+              description: 특정직접내재배출량
               properties:
                 value:
                   type: number
+                  description: 내재배출량 값 (tCO2e/t)
                 source:
                   type: string
+                  description: 배출량 출처
             indirect:
               type: object
+              description: 특정간접내재배출량
               properties:
                 value:
                   type: number
+                  description: 내재배출량 값 (tCO2e/t)
                 source:
                   type: string
+                  description: 배출량 출처
             justification:
               type: string
+              description: 기본수치를 적용한 이유
     CountryCode:
       type: string
       description: 국가 코드
