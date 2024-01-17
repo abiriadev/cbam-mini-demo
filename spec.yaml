@@ -183,6 +183,7 @@ components:
         - agcs
         - processes
         - precursors
+        - ghg-balance
     AGC:
       type: string
       description: 집약 상품 카테고리
