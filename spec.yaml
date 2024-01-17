@@ -123,6 +123,22 @@ components:
           description: 구입한 프리커서 목록
           items:
             $ref: '#/components/schemas/Precursor'
+        source-streams:
+          type: array
+          description: 소스 스트림 목록
+          items:
+            type: object
+            properties:
+              method:
+                type: string
+              name:
+                type: string
+              ad:
+                type: number
+              ad-unit:
+                type: string
+              ncv:
+                type: number
       required:
         - reporting-period
         - installation
