@@ -173,12 +173,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AGC'
+        production-level:
+          type: object
+          description: 각 제조 경로별로 생산된 양
+          additionalProperties:
+            type: number
+            description: 각 경로별로 생산된 양. 톤 단위.
         consumed:
           type: object
           description: 각 제조 공정에서 소비된 양
           additionalProperties:
             type: number
             description: 옆 공정에서 소비된 양. 톤 단위.
+        attr:
+          type: object
+          description: 귀속배출량 계산
+          properties:
+            direm:
+              type: number
+              description: 직접배출량
     Precursor:
       type: object
       description: 프리커서
