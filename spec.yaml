@@ -151,6 +151,21 @@ components:
               ncv:
                 type: number
                 description: Net calorific value
+        ghg-balance:
+          type: object
+          properties:
+            co2:
+              type: number
+            biomass:
+              type: number
+            n2o:
+              type: number
+            pfc:
+              type: number
+            direct:
+              type: number
+            indirect:
+              type: number
       required:
         - reporting-period
         - installation
