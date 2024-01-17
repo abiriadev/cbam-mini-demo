@@ -23,15 +23,19 @@ components:
       properties:
         reporting-period:
           type: object
+          description: CBAM 보고 기간
           properties:
             start:
               type: string
               format: date
+              description: CBAM 보고 기간의 시작일
             end:
               type: string
               format: date
+              description: CBAM 보고 기간의 종료일
         installation:
           type: object
+          description: 설비 기본 정보
           properties:
             name:
               type: string
@@ -99,6 +103,7 @@ components:
               type: string
         agcs:
           type: array
+          description: 관련된 AGC 종류
           items:
             type: object
             properties:
@@ -110,10 +115,12 @@ components:
                   $ref: '#/components/schemas/Route'
         processes:
           type: array
+          description: 제조 공정 목록
           items:
             $ref: '#/components/schemas/Process'
         precursors:
           type: array
+          description: 구입한 프리커서 목록
           items:
             $ref: '#/components/schemas/Precursor'
       required:
@@ -125,6 +132,7 @@ components:
         - precursors
     AGC:
       type: string
+      description: 집약 상품 카테고리
       enum:
         - Cement
         - Cement clinker
@@ -146,6 +154,7 @@ components:
         - Electricity
     Route:
       type: string
+      description: 생산 경로
       enum:
         - Basic oxygen steelmaking
     Process:
@@ -154,8 +163,10 @@ components:
         id:
           type: string
           format: uuid
+          description: 식별자
         name:
           type: string
+          description: 제조 공정 명칭
         agc:
           $ref: '#/components/schemas/AGC'
         included-goods:
@@ -164,12 +175,15 @@ components:
             $ref: '#/components/schemas/AGC'
     Precursor:
       type: object
+      description: 프리커서
       properties:
         id:
           type: string
           format: uuid
+          description: 식별자
         name:
           type: string
+          description: 프리커서 명칭
         country:
           $ref: '#/components/schemas/CountryCode'
         routes:
@@ -178,6 +192,7 @@ components:
             $ref: '#/components/schemas/Route'          
     CountryCode:
       type: string
+      description: 국가 코드
       enum:
         - AD
         - AE
