@@ -173,6 +173,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AGC'
+        consumed:
+          type: object
+          description: 각 제조 공정에서 소비된 양
+          additionalProperties:
+            type: number
+            description: 옆 공정에서 소비된 양. 톤 단위.
     Precursor:
       type: object
       description: 프리커서
@@ -189,7 +195,7 @@ components:
         routes:
           type: array
           items:
-            $ref: '#/components/schemas/Route'          
+            $ref: '#/components/schemas/Route'
     CountryCode:
       type: string
       description: 국가 코드
