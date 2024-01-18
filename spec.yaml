@@ -339,6 +339,12 @@ components:
                     source:
                       type: string
                       description: 배출계수 출처
+                      enum:
+                        - D.2.1
+                        - D.2.2
+                        - D.2.3
+                        - D.2.4
+                        - Mix
                   required:
                     - amount
                     - ef
