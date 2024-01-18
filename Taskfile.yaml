@@ -1,0 +1,6 @@
+version: 3
+tasks:
+  gen:
+    cmds:
+      - npm exec swagger-typescript-api -- -p ./spec.yaml -o ./src
+    silent: true
