@@ -9,9 +9,9 @@ paths:
       operationId: fetch
       summary: Fetch CBAM data
       responses:
-        200:
+        '200':
           description: |-
-            200 response
+            정상 응답
           content:
             application/json:
               schema:
@@ -20,6 +20,7 @@ components:
   schemas:
     CBAM:
       type: object
+      description: CBAM 계산
       properties:
         reporting-period:
           type: object
@@ -231,6 +232,7 @@ components:
         name:
           type: string
           description: 제조 공정 명칭
+          example: Process 1
         agc:
           $ref: '#/components/schemas/AGC'
         included-goods:
@@ -468,6 +470,7 @@ components:
           enum:
             - t
             - 1000Nm3
+          example: t
         ncv:
           type: number
           description: Net calorific value
