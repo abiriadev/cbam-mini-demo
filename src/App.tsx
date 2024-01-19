@@ -178,16 +178,22 @@ const M = ({
 			footer={() => <></>}
 		>
 			{loading ? (
-				<Spin
-					indicator={
-						<LoadingOutlined
-							style={{
-								fontSize: 100,
-							}}
-							spin
-						/>
-					}
-				/>
+				<Flex
+					justify="center"
+					align="center"
+					className="p-28"
+				>
+					<Spin
+						indicator={
+							<LoadingOutlined
+								style={{
+									fontSize: 72,
+								}}
+								spin
+							/>
+						}
+					/>
+				</Flex>
 			) : (
 				<Result
 					status="success"
