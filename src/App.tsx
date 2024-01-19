@@ -6,8 +6,10 @@ import {
 	Input,
 	Layout,
 	Modal,
+	Result,
 	Row,
 	Space,
+	Spin,
 	Typography,
 	message,
 	theme,
@@ -21,6 +23,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from './store'
 import {
 	CheckOutlined,
+	LoadingOutlined,
 	VerticalAlignBottomOutlined,
 } from '@ant-design/icons'
 import { useState } from 'react'
@@ -141,11 +144,7 @@ function App() {
 											false,
 										)
 									}
-								>
-									<p>Some contents...</p>
-									<p>Some contents...</p>
-									<p>Some contents...</p>
-								</Modal>
+								></Modal>
 							</Flex>
 						</Col>
 					</Row>
@@ -156,3 +155,32 @@ function App() {
 }
 
 export default App
+
+const M = () => {
+	const [loading, setLoading] = useState(true)
+
+	return loading ? (
+		<Spin
+			indicator={
+				<LoadingOutlined
+					style={{
+						fontSize: 100,
+					}}
+					spin
+				/>
+			}
+		/>
+	) : (
+		<Result
+			status="success"
+			title="Successfully Purchased Cloud Server ECS!"
+			subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+			extra={[
+				<Button type="primary" key="console">
+					Go Console
+				</Button>,
+				<Button key="buy">Buy Again</Button>,
+			]}
+		/>
+	)
+}
