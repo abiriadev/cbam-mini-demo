@@ -132,6 +132,21 @@ export interface Nemesia {
 			}
 		}>
 	}
+	s2: {
+		list: Array<{
+			name: string
+			agc: string
+			cn: string
+			product_name: string
+			see_d: number
+			see_i: number
+			see_t: number
+			unit: string
+			share: number
+			source: string
+			ee: number
+		}>
+	}
 }
 
 const init: Nemesia = {
@@ -383,6 +398,49 @@ const init: Nemesia = {
 					direct: 353,
 					indirect: 353,
 				},
+			},
+		],
+	},
+	s2: {
+		list: [
+			{
+				name: 'process 1',
+				agc: 'Cement',
+				cn: '1233 55 66',
+				product_name: 'Cement prod',
+				see_d: 123,
+				see_i: 34,
+				see_t: 588,
+				unit: 't',
+				share: 33,
+				source: 'Mix',
+				ee: 353,
+			},
+			{
+				name: 'process 2',
+				agc: 'Cement',
+				cn: '1233 55 66',
+				product_name: 'Cement prod',
+				see_d: 123,
+				see_i: 34,
+				see_t: 588,
+				unit: 't',
+				share: 33,
+				source: 'Mix',
+				ee: 353,
+			},
+			{
+				name: 'process 3',
+				agc: 'Cement',
+				cn: '1233 55 66',
+				product_name: 'Cement prod',
+				see_d: 123,
+				see_i: 34,
+				see_t: 588,
+				unit: 't',
+				share: 33,
+				source: 'Mix',
+				ee: 353,
 			},
 		],
 	},
