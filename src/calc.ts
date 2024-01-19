@@ -56,6 +56,15 @@ export interface Nemesia {
 			included: Array<string>
 		}>
 	}
+	a_5: {
+		list: Array<{
+			id: string
+			name: string
+			agc: string
+			country: string
+			routes: Array<string>
+		}>
+	}
 }
 
 const init: Nemesia = {
@@ -145,6 +154,17 @@ const init: Nemesia = {
 				name: 'Process 3',
 				agc: 'Pig iron',
 				included: [],
+			},
+		],
+	},
+	a_5: {
+		list: [
+			{
+				id: '1',
+				name: 'precursor 1',
+				agc: 'Cement',
+				country: 'KR',
+				routes: ['A', 'B'],
 			},
 		],
 	},
