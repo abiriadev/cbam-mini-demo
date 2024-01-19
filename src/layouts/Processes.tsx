@@ -34,6 +34,7 @@ import {
 	DownOutlined,
 	PlusOutlined,
 } from '@ant-design/icons'
+import { selectNemesia } from '@/calc'
 
 export const Processes = () => {
 	const { token } = theme.useToken()
@@ -42,6 +43,7 @@ export const Processes = () => {
 		(st: RootState) => st.cbam,
 	)
 	const dispatch = useDispatch()
+	const nemesia = useSelector(selectNemesia).d
 
 	return (
 		<div>
@@ -304,7 +306,7 @@ export const Processes = () => {
 						),
 					},
 				]}
-				dataSource={processes}
+				dataSource={nemesia.list}
 				expandable={{
 					expandedRowRender: ({
 						id,
@@ -439,16 +441,17 @@ export const Processes = () => {
 										),
 									},
 								]}
-								dataSource={Object.entries(
-									precursors,
-								).map(([k, v]) => ({
-									id: k,
-									name: findPrecursorById(
-										pps,
-										k,
-									)?.name,
-									amount: v.amount,
-								}))}
+								// dataSource={Object.entries(
+								// 	precursors,
+								// ).map(([k, v]) => ({
+								// 	id: k,
+								// 	name: findPrecursorById(
+								// 		pps,
+								// 		k,
+								// 	)?.name,
+								// 	amount: v.amount,
+								// }))}
+								dataSource={[]}
 								pagination={false}
 							/>
 						)

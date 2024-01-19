@@ -1,4 +1,14 @@
-import { Flex, Layout, Typography, theme } from 'antd'
+import {
+	Button,
+	Col,
+	Flex,
+	Form,
+	Input,
+	Layout,
+	Row,
+	Typography,
+	theme,
+} from 'antd'
 import { Content, Header } from 'antd/es/layout/layout'
 import Sider from 'antd/es/layout/Sider'
 import aipimLogo from './assets/aipim-logo-green.png'
@@ -6,6 +16,7 @@ import { SheetsList } from '@layouts/SheetsList'
 import { Toc } from './assets/Toc'
 import { useSelector } from 'react-redux'
 import { RootState } from './store'
+import { CheckOutlined } from '@ant-design/icons'
 
 function App() {
 	const {
@@ -47,6 +58,36 @@ function App() {
 					<Toc />
 				</Sider>
 				<Content className="bg-inherit">
+					<Row>
+						<Col span={21}>
+							<Flex justify="end">
+								<Form>
+									<Form.Item
+										label={
+											<p className="text-xl font-bold">
+												PCF id
+											</p>
+										}
+									>
+										<Input
+											placeholder=""
+											className="w-96"
+										/>
+										<Button
+											type="primary"
+											className="font-bold"
+											icon={
+												<CheckOutlined />
+											}
+										>
+											Generate report
+										</Button>
+									</Form.Item>
+								</Form>
+							</Flex>
+						</Col>
+					</Row>
+
 					<SheetsList />
 				</Content>
 			</Layout>
