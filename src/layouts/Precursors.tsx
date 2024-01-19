@@ -24,6 +24,7 @@ import {
 	DeleteOutlined,
 	DownOutlined,
 } from '@ant-design/icons'
+import { selectNemesia } from '@/calc'
 
 export const Precursors = ({ id }: { id?: string }) => {
 	const { token } = theme.useToken()
@@ -32,6 +33,7 @@ export const Precursors = ({ id }: { id?: string }) => {
 		(st: RootState) => st.cbam,
 	)
 	const dispatch = useDispatch()
+	const nemesia = useSelector(selectNemesia).a_5
 
 	return (
 		<div id={id}>
@@ -94,26 +96,15 @@ export const Precursors = ({ id }: { id?: string }) => {
 							/>
 						),
 					},
-					{
-						title: 'Route 1',
-						render: () => <Input />,
-					},
-					{
-						title: 'Route 2',
-						render: () => <Input />,
-					},
-					{
-						title: 'Route 3',
-						render: () => <Input />,
-					},
-					{
-						title: 'Route 4',
-						render: () => <Input />,
-					},
-					{
-						title: 'Route 5',
-						render: () => <Input />,
-					},
+					...Array(5)
+						.fill(null)
+						.map((_, i) => ({
+							title: `Route ${i + 1}`,
+							dataIndex: ['routes', i],
+							render: (r: any) => (
+								<Input value={r} />
+							),
+						})),
 					{
 						title: 'Name',
 						dataIndex: 'name',
@@ -159,7 +150,7 @@ export const Precursors = ({ id }: { id?: string }) => {
 						),
 					},
 				]}
-				dataSource={precursors}
+				dataSource={nemesia.list}
 			/>
 		</div>
 	)
