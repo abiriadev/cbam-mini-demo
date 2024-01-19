@@ -55,6 +55,7 @@ export const EmissionsSources = ({
 					</Button>
 				</Flex>
 			)}
+			rowKey={({ id }) => id}
 			columns={[
 				{
 					title: 'Method',

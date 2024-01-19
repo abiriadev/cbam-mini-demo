@@ -51,6 +51,7 @@ export const PFC = ({ id }: { id: string }) => {
 					</Button>
 				</Flex>
 			)}
+			rowKey={({ id }) => id}
 			columns={[
 				{
 					title: 'Method',

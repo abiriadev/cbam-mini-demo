@@ -32,6 +32,7 @@ export const SourceStreams = ({ id }: { id: string }) => {
 				text: 'Add new process',
 				callback: () => void 0,
 			}}
+			rowKey={({ id }) => id}
 			columns={[
 				{
 					title: 'Method',
