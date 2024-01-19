@@ -175,6 +175,7 @@ const M = ({
 			open={excelModalOpen}
 			onOk={() => setExcelModalOpen(false)}
 			onCancel={() => setExcelModalOpen(false)}
+			footer={() => <></>}
 		>
 			{loading ? (
 				<Spin
@@ -190,17 +191,15 @@ const M = ({
 			) : (
 				<Result
 					status="success"
-					title="Successfully Purchased Cloud Server ECS!"
-					subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+					title="Successfully generated Excel report!"
+					subTitle="CBAM_communication_for_installation_1705539693.xlsx"
 					extra={[
 						<Button
 							type="primary"
 							key="console"
+							className="font-bold"
 						>
-							Go Console
-						</Button>,
-						<Button key="buy">
-							Buy Again
+							Download file
 						</Button>,
 					]}
 				/>
