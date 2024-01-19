@@ -1,4 +1,4 @@
-import { Table, Typography } from 'antd'
+import { TitledTable } from '@/components/TitledTable'
 
 export const GhgBalanceByType = ({
 	id,
@@ -6,14 +6,9 @@ export const GhgBalanceByType = ({
 	id?: string
 }) => {
 	return (
-		<Table
+		<TitledTable
 			id={id}
-			pagination={false}
-			title={() => (
-				<Typography.Title level={4}>
-					GHG balance by type of GHG
-				</Typography.Title>
-			)}
+			titleText="GHG balance by type of GHG"
 			columns={[
 				{
 					title: 'Installation level data',
