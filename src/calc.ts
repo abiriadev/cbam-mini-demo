@@ -41,6 +41,7 @@ export interface Nemesia {
 	}
 	a_4_1: {
 		list: Array<{
+			id: string
 			kind: string
 			routes_kind: string
 			routes: Array<string>
@@ -99,11 +100,13 @@ const init: Nemesia = {
 	a_4_1: {
 		list: [
 			{
+				id: '1',
 				kind: 'Cement',
 				routes_kind: 'All production routes',
 				routes: [],
 			},
 			{
+				id: '2',
 				kind: 'Crude steel',
 				routes_kind: 'Manual',
 				routes: [
@@ -112,6 +115,7 @@ const init: Nemesia = {
 				],
 			},
 			{
+				id: '3',
 				kind: 'Pig iron',
 				routes_kind: 'Manual',
 				routes: [
