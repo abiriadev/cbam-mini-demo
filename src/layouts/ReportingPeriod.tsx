@@ -7,7 +7,7 @@ import {
 	theme,
 } from 'antd'
 import { useSelector } from 'react-redux'
-import * as dayjs from 'dayjs'
+import dayjs from 'dayjs'
 
 export const ReportingPeriod = ({
 	id,
