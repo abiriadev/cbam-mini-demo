@@ -446,6 +446,11 @@ const init: Nemesia = {
 	},
 }
 
-export const selectNemesia = ({ cbam }: RootState) => {
-	return init
+const empty = {}
+
+export const selectNemesia = ({
+	cbam,
+	environment,
+}: RootState) => {
+	return environment.state === 'empty' ? empty : init
 }
