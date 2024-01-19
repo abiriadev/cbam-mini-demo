@@ -308,11 +308,8 @@ export const Processes = () => {
 				]}
 				dataSource={nemesia.list}
 				expandable={{
-					expandedRowRender: ({
-						id,
-						name,
-						precursors,
-					}) => {
+					expandedRowRender: ({ id, name }) => {
+						const precursors = []
 						return (
 							<Table
 								rowKey={({ id }) => id}
