@@ -66,6 +66,7 @@ export const AGC = ({ id }: { id?: string }) => {
 					</Button>
 				</Dropdown>
 			}
+			rowKey={({ id }) => id}
 			columns={[
 				{
 					title: 'Aggregated goods category',
