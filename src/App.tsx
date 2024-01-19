@@ -8,6 +8,7 @@ import {
 	Row,
 	Space,
 	Typography,
+	message,
 	theme,
 } from 'antd'
 import { Content, Header } from 'antd/es/layout/layout'
@@ -17,12 +18,13 @@ import { SheetsList } from '@layouts/SheetsList'
 import { Toc } from './assets/Toc'
 import { useSelector } from 'react-redux'
 import { RootState } from './store'
-import { CheckOutlined } from '@ant-design/icons'
+import {
+	CheckOutlined,
+	VerticalAlignBottomOutlined,
+} from '@ant-design/icons'
 
 function App() {
-	const {
-		token: { colorPrimary },
-	} = theme.useToken()
+	const { token } = theme.useToken()
 
 	const { isIframe } = useSelector(
 		(st: RootState) => st.environment,
@@ -46,7 +48,7 @@ function App() {
 							level={1}
 							className="text-center"
 							style={{
-								color: colorPrimary,
+								color: token.colorPrimary,
 							}}
 						>
 							Aipim CBAM reporter v2
@@ -91,8 +93,40 @@ function App() {
 							</Flex>
 						</Col>
 					</Row>
-
 					<SheetsList />
+					<Row>
+						<Col span={21} className="mt-8">
+							<Flex
+								justify="end"
+								className="h-40"
+							>
+								<Button
+									type="primary"
+									size="large"
+									icon={
+										<VerticalAlignBottomOutlined />
+									}
+									onClick={() =>
+										message.error(
+											'Not implemented yet',
+										)
+									}
+								>
+									<Typography.Text
+										strong
+										style={{
+											color: token
+												.Button
+												?.primaryColor,
+										}}
+									>
+										Export as Excel
+										report
+									</Typography.Text>
+								</Button>
+							</Flex>
+						</Col>
+					</Row>
 				</Content>
 			</Layout>
 		</Layout>

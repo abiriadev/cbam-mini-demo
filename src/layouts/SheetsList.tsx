@@ -113,29 +113,6 @@ export const SheetsList = () => {
 					>
 						<SummaryCommunication id="summary-communication" />
 					</Sheet>
-					<Flex justify="end" className="h-40">
-						<Button
-							type="primary"
-							icon={
-								<VerticalAlignBottomOutlined />
-							}
-							onClick={() =>
-								message.error(
-									'Not implemented yet',
-								)
-							}
-						>
-							<Typography.Text
-								strong
-								style={{
-									color: token.Button
-										?.primaryColor,
-								}}
-							>
-								Export as Excel report
-							</Typography.Text>
-						</Button>
-					</Flex>
 				</Flex>
 			</Col>
 		</Row>
