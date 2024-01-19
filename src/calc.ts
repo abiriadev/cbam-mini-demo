@@ -34,6 +34,11 @@ export interface Nemesia {
 		telephone: string
 		fax: string
 	}
+	a_3_3: {
+		state: string
+		accreditation: string
+		reg: string
+	}
 }
 
 const init: Nemesia = {
@@ -69,6 +74,11 @@ const init: Nemesia = {
 		email: 'email',
 		telephone: '010-1212!??',
 		fax: '????',
+	},
+	a_3_3: {
+		state: 'state',
+		accreditation: 'accreditation',
+		reg: '123232',
 	},
 }
 
