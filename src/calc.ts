@@ -41,9 +41,9 @@ export interface Nemesia {
 	}
 	a_4_1: {
 		list: Array<{
-			agc: string
-			routes: string
-			routes1_6: Array<string>
+			kind: string
+			routes_kind: string
+			routes: Array<string>
 		}>
 		precursors: Array<string>
 	}
@@ -91,22 +91,22 @@ const init: Nemesia = {
 	a_4_1: {
 		list: [
 			{
-				agc: 'Cement',
-				routes: 'All production routes',
-				routes1_6: [],
+				kind: 'Cement',
+				routes_kind: 'All production routes',
+				routes: [],
 			},
 			{
-				agc: 'Crude steel',
-				routes: 'Manual',
-				routes1_6: [
+				kind: 'Crude steel',
+				routes_kind: 'Manual',
+				routes: [
 					'Basic oxygen steelmaking',
 					'Electric arc furnace',
 				],
 			},
 			{
-				agc: 'Pig iron',
-				routes: 'Manual',
-				routes1_6: [
+				kind: 'Pig iron',
+				routes_kind: 'Manual',
+				routes: [
 					'Blast furnace route',
 					'Smelting reduction',
 				],
