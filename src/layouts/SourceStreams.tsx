@@ -12,6 +12,7 @@ import {
 import { addNewEmInst } from '@/store/cbam'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
+import { TitledTable } from '@/components/TitledTable'
 
 export const SourceStreams = ({ id }: { id: string }) => {
 	const { token } = theme.useToken()
@@ -22,33 +23,13 @@ export const SourceStreams = ({ id }: { id: string }) => {
 	const dispatch = useDispatch()
 
 	return (
-		<Table
+		<TitledTable
 			id={id}
-			pagination={false}
-			title={() => (
-				<Flex justify="space-between">
-					<Typography.Title level={4}>
-						Source Streams
-					</Typography.Title>
-					<Button
-						type="primary"
-						icon={<PlusOutlined />}
-						onClick={() =>
-							dispatch(addNewEmInst())
-						}
-					>
-						<Typography.Text
-							strong
-							style={{
-								color: token.Button
-									?.primaryColor,
-							}}
-						>
-							Add new process
-						</Typography.Text>
-					</Button>
-				</Flex>
-			)}
+			titleText="Source Streams"
+			button={{
+				text: 'Add new process',
+				callback: () => void 0,
+			}}
 			columns={[
 				{
 					title: 'Method',
