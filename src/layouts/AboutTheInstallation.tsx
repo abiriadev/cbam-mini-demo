@@ -1,5 +1,7 @@
 import { Flex, Form, Typography, theme } from 'antd'
 import { I } from '@/I'
+import { useSelector } from 'react-redux'
+import { selectNemesia } from '@/calc'
 
 export const AboutTheInstallation = ({
 	id,
@@ -7,6 +9,7 @@ export const AboutTheInstallation = ({
 	id?: string
 }) => {
 	const { token } = theme.useToken()
+	const nemesia = useSelector(selectNemesia).a_2
 
 	return (
 		<div
@@ -29,23 +32,50 @@ export const AboutTheInstallation = ({
 			</Flex>
 			<Flex gap="large">
 				<Form>
-					<I label="Name of the installation (optional)" />
+					<I
+						label="Name of the installation (optional)"
+						name="name"
+					/>
 					<I
 						label="Name of the installation (English name)"
+						name="name_en"
 						required
 					/>
-					<I label="Street, Number" />
-					<I label="Economic activity" />
-					<I label="Post code" />
-					<I label="P.O. Box" />
-					<I label="City" />
-					<I label="Country" required />
-					<I label="UNLOCODE" required />
-					<I label="Coordinates of the main emission source (latitude)" />
-					<I label="Coordinates of the main emission source (longitude)" />
-					<I label="Name of authorized representative" />
-					<I label="Email" />
-					<I label="Telephone" />
+					<I
+						label="Street, Number"
+						name="street"
+					/>
+					<I
+						label="Economic activity"
+						name="economic"
+					/>
+					<I label="Post code" name="zip" />
+					<I label="P.O. Box" name="po" />
+					<I label="City" name="city" />
+					<I
+						label="Country"
+						name="country"
+						required
+					/>
+					<I
+						label="UNLOCODE"
+						name="unlocode"
+						required
+					/>
+					<I
+						label="Coordinates of the main emission source (latitude)"
+						name="latitude"
+					/>
+					<I
+						label="Coordinates of the main emission source (longitude)"
+						name="longitude"
+					/>
+					<I
+						label="Name of authorized representative"
+						name="representative"
+					/>
+					<I label="Email" name="email" />
+					<I label="Telephone" name="telephone" />
 				</Form>
 			</Flex>
 		</div>
