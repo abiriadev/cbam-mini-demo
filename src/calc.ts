@@ -65,6 +65,19 @@ export interface Nemesia {
 			routes: Array<string>
 		}>
 	}
+	b_1: {
+		list: Array<{
+			id: string
+			method: string
+			name: string
+			ad: number
+			ncv: number
+			fossil: number
+			bio: number
+			content_fossil: number
+			content_bio: number
+		}>
+	}
 }
 
 const init: Nemesia = {
@@ -165,6 +178,43 @@ const init: Nemesia = {
 				agc: 'Cement',
 				country: 'KR',
 				routes: ['A', 'B'],
+			},
+		],
+	},
+	b_1: {
+		list: [
+			{
+				id: '1',
+				method: 'Combustion',
+				name: 'stream name',
+				ad: 123,
+				ncv: 435,
+				fossil: 12432,
+				bio: 45,
+				content_fossil: 4,
+				content_bio: 558,
+			},
+			{
+				id: '2',
+				method: 'Combustion',
+				name: 'stream name 2',
+				ad: 123,
+				ncv: 435,
+				fossil: 12432,
+				bio: 45,
+				content_fossil: 4,
+				content_bio: 558,
+			},
+			{
+				id: '3',
+				method: 'Combustion',
+				name: 'stream name 3',
+				ad: 123,
+				ncv: 435,
+				fossil: 12432,
+				bio: 45,
+				content_fossil: 4,
+				content_bio: 558,
 			},
 		],
 	},
