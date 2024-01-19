@@ -73,7 +73,7 @@ function App() {
 										<Space.Compact>
 											<Input
 												placeholder=""
-												className="w-96"
+												className="w-80"
 											/>
 											<Button
 												type="primary"
