@@ -47,6 +47,13 @@ export interface Nemesia {
 		}>
 		precursors: Array<string>
 	}
+	a_4_2: {
+		list: Array<{
+			name: string
+			agc: string
+			included: Array<string>
+		}>
+	}
 }
 
 const init: Nemesia = {
@@ -113,6 +120,25 @@ const init: Nemesia = {
 			},
 		],
 		precursors: [],
+	},
+	a_4_2: {
+		list: [
+			{
+				name: 'Process 1',
+				agc: 'Cement',
+				included: ['Cement clinker'],
+			},
+			{
+				name: 'Process 2',
+				agc: 'Crude steel',
+				included: [],
+			},
+			{
+				name: 'Process 3',
+				agc: 'Pig iron',
+				included: [],
+			},
+		],
 	},
 }
 
