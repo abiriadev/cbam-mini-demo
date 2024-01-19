@@ -1,10 +1,14 @@
+import { selectNemesia } from '@/calc'
 import { Table, Typography } from 'antd'
+import { useSelector } from 'react-redux'
 
 export const SummaryCommunication = ({
 	id,
 }: {
 	id: string
 }) => {
+	const nemesia = useSelector(selectNemesia).s2
+
 	return (
 		<Table
 			id={id}
@@ -59,7 +63,7 @@ export const SummaryCommunication = ({
 					dataIndex: 'ee',
 				},
 			]}
-			dataSource={[]}
+			dataSource={nemesia.list}
 		/>
 	)
 }
