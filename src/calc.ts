@@ -114,13 +114,23 @@ export interface Nemesia {
 			direct: number
 			indirect: number
 		}>
-		total: {
-			direm: number
-			heat: number
-			wg: number
-			direct: number
-			indirect: number
-		}
+	}
+	s1_2_2_1: {
+		list: Array<{
+			name: string
+			se: {
+				direct: number
+				indirect: number
+			}
+			see: {
+				direct: number
+				indirect: number
+			}
+			ee: {
+				direct: number
+				indirect: number
+			}
+		}>
 	}
 }
 
@@ -311,13 +321,70 @@ const init: Nemesia = {
 				indirect: 353,
 			},
 		],
-		total: {
-			direm: 123,
-			heat: 334,
-			wg: 3535,
-			direct: 343,
-			indirect: 353,
-		},
+	},
+	s1_2_2_1: {
+		list: [
+			{
+				name: 'process 1',
+				se: {
+					direct: 123,
+					indirect: 4546,
+				},
+				see: {
+					direct: 53,
+					indirect: 35,
+				},
+				ee: {
+					direct: 353,
+					indirect: 353,
+				},
+			},
+			{
+				name: 'process 2',
+				se: {
+					direct: 123,
+					indirect: 4546,
+				},
+				see: {
+					direct: 53,
+					indirect: 35,
+				},
+				ee: {
+					direct: 353,
+					indirect: 353,
+				},
+			},
+			{
+				name: 'process 3',
+				se: {
+					direct: 123,
+					indirect: 4546,
+				},
+				see: {
+					direct: 53,
+					indirect: 35,
+				},
+				ee: {
+					direct: 353,
+					indirect: 353,
+				},
+			},
+			{
+				name: 'process 4',
+				se: {
+					direct: 123,
+					indirect: 4546,
+				},
+				see: {
+					direct: 53,
+					indirect: 35,
+				},
+				ee: {
+					direct: 353,
+					indirect: 353,
+				},
+			},
+		],
 	},
 }
 
