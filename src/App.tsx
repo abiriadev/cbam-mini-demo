@@ -5,6 +5,7 @@ import {
 	Form,
 	Input,
 	Layout,
+	Modal,
 	Row,
 	Space,
 	Typography,
@@ -22,6 +23,7 @@ import {
 	CheckOutlined,
 	VerticalAlignBottomOutlined,
 } from '@ant-design/icons'
+import { useState } from 'react'
 
 function App() {
 	const { token } = theme.useToken()
@@ -29,6 +31,8 @@ function App() {
 	const { isIframe } = useSelector(
 		(st: RootState) => st.environment,
 	)
+	const [excelModalOpen, setExcelModalOpen] =
+		useState(false)
 
 	return (
 		<Layout className="min-h-screen">
@@ -107,8 +111,8 @@ function App() {
 										<VerticalAlignBottomOutlined />
 									}
 									onClick={() =>
-										message.error(
-											'Not implemented yet',
+										setExcelModalOpen(
+											true,
 										)
 									}
 								>
@@ -124,6 +128,24 @@ function App() {
 										report
 									</Typography.Text>
 								</Button>
+								<Modal
+									title="Export results as CBAM Excel report"
+									open={excelModalOpen}
+									onOk={() =>
+										setExcelModalOpen(
+											false,
+										)
+									}
+									onCancel={() =>
+										setExcelModalOpen(
+											false,
+										)
+									}
+								>
+									<p>Some contents...</p>
+									<p>Some contents...</p>
+									<p>Some contents...</p>
+								</Modal>
 							</Flex>
 						</Col>
 					</Row>
