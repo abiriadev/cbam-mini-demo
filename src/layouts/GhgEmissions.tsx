@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { fix3, sum } from '@/utils'
 import { TitledTable } from '@/components/TitledTable'
+import { selectNemesia } from '@/calc'
 
 interface GhgEmissionResult {
 	id: string
@@ -23,6 +24,7 @@ export const GhgEmissions = ({
 	const { processes } = useSelector(
 		(st: RootState) => st.cbam,
 	)
+	const nemesia = useSelector(selectNemesia).s1_2_1
 
 	const em: Array<GhgEmissionResult> = processes.map(
 		({
@@ -49,17 +51,21 @@ export const GhgEmissions = ({
 	return (
 		<TitledTable
 			id={id}
-			dataSource={em}
+			dataSource={nemesia.list}
 			rowKey={({ id }) => id}
 			titleText="GHG emissions balance"
 			columns={[
 				{
 					title: 'Production Process',
-					dataIndex: 'name',
+					dataIndex: 'process',
+				},
+				{
+					title: 'AGC',
+					dataIndex: 'agc',
 				},
 				{
 					title: 'Unit',
-					dataIndex: 'unit',
+					render: () => 'tCO2e',
 				},
 				{
 					title: 'DirEm*',
@@ -75,7 +81,7 @@ export const GhgEmissions = ({
 				},
 				{
 					title: 'Total direct emissions',
-					dataIndex: 'totalDirem',
+					dataIndex: 'direct',
 				},
 				{
 					title: 'Indirect',
