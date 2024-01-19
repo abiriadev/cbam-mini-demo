@@ -28,6 +28,7 @@ import {
 	DownOutlined,
 	PlusOutlined,
 } from '@ant-design/icons'
+import { selectNemesia } from '@/calc'
 
 export const RelevantProductionProcesses = ({
 	id,
@@ -40,6 +41,7 @@ export const RelevantProductionProcesses = ({
 		(st: RootState) => st.cbam,
 	)
 	const dispatch = useDispatch()
+	const nemesia = useSelector(selectNemesia).a_4_2
 
 	return (
 		<div>
@@ -158,7 +160,7 @@ export const RelevantProductionProcesses = ({
 						),
 					},
 				]}
-				dataSource={processes}
+				dataSource={nemesia.list}
 			/>
 		</div>
 	)
