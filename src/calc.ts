@@ -104,6 +104,24 @@ export interface Nemesia {
 			}
 		}>
 	}
+	s1_2_1: {
+		list: Array<{
+			process: string
+			agc: string
+			direm: number
+			heat: number
+			wg: number
+			direct: number
+			indirect: number
+		}>
+		total: {
+			direm: number
+			heat: number
+			wg: number
+			direct: number
+			indirect: number
+		}
+	}
 }
 
 const init: Nemesia = {
@@ -271,6 +289,35 @@ const init: Nemesia = {
 				},
 			},
 		],
+	},
+	s1_2_1: {
+		list: [
+			{
+				process: 'process 1',
+				agc: 'Cement',
+				direm: 1232,
+				heat: 53,
+				wg: 6543,
+				direct: 353,
+				indirect: 353,
+			},
+			{
+				process: 'process 2',
+				agc: 'Crude steel',
+				direm: 1232,
+				heat: 53,
+				wg: 6543,
+				direct: 353,
+				indirect: 353,
+			},
+		],
+		total: {
+			direm: 123,
+			heat: 334,
+			wg: 3535,
+			direct: 343,
+			indirect: 353,
+		},
 	},
 }
 
