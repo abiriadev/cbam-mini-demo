@@ -11,7 +11,6 @@ function App() {
 	const {
 		token: { colorPrimary },
 	} = theme.useToken()
-	useSelector
 
 	const { isIframe } = useSelector(
 		(st: RootState) => st.environment,
