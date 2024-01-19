@@ -9,6 +9,7 @@ export const GhgBalanceByType = ({
 		<TitledTable
 			id={id}
 			titleText="GHG balance by type of GHG"
+			rowKey={({ id }) => id}
 			columns={[
 				{
 					title: 'Installation level data',
@@ -49,9 +50,9 @@ export const GhgBalanceByType = ({
 				},
 			]}
 			dataSource={[
-				{ fb: 'from sheet B_EmInst' },
-				{ fb: 'manual entries' },
-				{ fb: 'Results' },
+				{ id: '1', fb: 'from sheet B_EmInst' },
+				{ id: '2', fb: 'manual entries' },
+				{ id: '3', fb: 'Results' },
 			]}
 		/>
 	)
