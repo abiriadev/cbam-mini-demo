@@ -6,6 +6,7 @@ import {
 	Input,
 	Layout,
 	Row,
+	Space,
 	Typography,
 	theme,
 } from 'antd'
@@ -58,7 +59,7 @@ function App() {
 					<Toc />
 				</Sider>
 				<Content className="bg-inherit">
-					<Row>
+					<Row className="mb-2">
 						<Col span={21}>
 							<Flex justify="end">
 								<Form>
@@ -69,19 +70,22 @@ function App() {
 											</p>
 										}
 									>
-										<Input
-											placeholder=""
-											className="w-96"
-										/>
-										<Button
-											type="primary"
-											className="font-bold"
-											icon={
-												<CheckOutlined />
-											}
-										>
-											Generate report
-										</Button>
+										<Space.Compact>
+											<Input
+												placeholder=""
+												className="w-96"
+											/>
+											<Button
+												type="primary"
+												className="font-bold"
+												icon={
+													<CheckOutlined />
+												}
+											>
+												Generate
+												report
+											</Button>
+										</Space.Compact>
 									</Form.Item>
 								</Form>
 							</Flex>
