@@ -8,6 +8,7 @@ import {
 } from 'antd'
 import { useSelector } from 'react-redux'
 import dayjs from 'dayjs'
+import { RootState } from '@/store'
 
 export const ReportingPeriod = ({
 	id,
@@ -16,6 +17,9 @@ export const ReportingPeriod = ({
 }) => {
 	const { token } = theme.useToken()
 	const nemesia = useSelector(selectNemesia).a_1
+	const { state } = useSelector(
+		({ environment }: RootState) => environment,
+	)
 
 	return (
 		<div
@@ -44,10 +48,18 @@ export const ReportingPeriod = ({
 						rules={[{ required: true }]}
 					>
 						<DatePicker.RangePicker
-							defaultValue={[
-								dayjs(nemesia.start),
-								dayjs(nemesia.end),
-							]}
+							{...(state === 'generated'
+								? {
+										defaultValue: [
+											dayjs(
+												nemesia.start,
+											),
+											dayjs(
+												nemesia.end,
+											),
+										],
+								  }
+								: {})}
 						/>
 					</Form.Item>
 				</Form>

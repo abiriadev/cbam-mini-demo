@@ -34,7 +34,6 @@ function App() {
 	const { isIframe } = useSelector(
 		(st: RootState) => st.environment,
 	)
-	const [gen, setGen] = useState(false)
 	const [excelModalOpen, setExcelModalOpen] =
 		useState(false)
 
