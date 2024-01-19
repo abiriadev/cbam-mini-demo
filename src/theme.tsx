@@ -5,6 +5,7 @@ const primary = '#13B48B'
 export const theme: ThemeConfig = {
 	token: {
 		colorPrimary: primary,
+		colorSuccess: primary,
 	},
 	components: {
 		Button: {
