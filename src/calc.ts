@@ -78,6 +78,32 @@ export interface Nemesia {
 			content_bio: number
 		}>
 	}
+	d: {
+		list: Array<{
+			id: string
+			name: string
+			direm: number
+			activity_level: number
+			heat: {
+				imported: {
+					amount: number
+					emissionFactor: number
+				}
+				exported: {
+					amount: number
+					emissionFactor: number
+				}
+			}
+			wg: {
+				imported: {
+					amount: number
+				}
+				exported: {
+					amount: number
+				}
+			}
+		}>
+	}
 }
 
 const init: Nemesia = {
@@ -215,6 +241,34 @@ const init: Nemesia = {
 				bio: 45,
 				content_fossil: 4,
 				content_bio: 558,
+			},
+		],
+	},
+	d: {
+		list: [
+			{
+				id: '1',
+				name: 'process',
+				direm: 132,
+				activity_level: 353,
+				heat: {
+					imported: {
+						amount: 2343,
+						emissionFactor: 2343,
+					},
+					exported: {
+						amount: 243,
+						emissionFactor: 35353,
+					},
+				},
+				wg: {
+					imported: {
+						amount: 35353,
+					},
+					exported: {
+						amount: 35353,
+					},
+				},
 			},
 		],
 	},
