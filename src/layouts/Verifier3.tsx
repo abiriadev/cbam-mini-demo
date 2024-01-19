@@ -1,8 +1,14 @@
 import { Flex, Form, Typography, theme } from 'antd'
 import { I } from '@/I'
+import { useSelector } from 'react-redux'
+import { selectNemesia } from '@/calc'
 
 export const Verifier3 = ({ id }: { id?: string }) => {
 	const { token } = theme.useToken()
+	const nemesia = useSelector(selectNemesia).a_3_3
+	const [form] = Form.useForm()
+
+	form.setFieldsValue(nemesia)
 
 	return (
 		<div
@@ -25,7 +31,7 @@ export const Verifier3 = ({ id }: { id?: string }) => {
 				</Typography.Title>
 			</Flex>
 			<Flex gap="large">
-				<Form>
+				<Form form={form}>
 					<I
 						label="Accreditation Member State"
 						name="state"
