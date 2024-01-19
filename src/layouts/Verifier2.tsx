@@ -26,10 +26,13 @@ export const Verifier2 = ({ id }: { id?: string }) => {
 			</Flex>
 			<Flex gap="large">
 				<Form>
-					<I label="Name" />
-					<I label="Email address" />
-					<I label="Telephone number" />
-					<I label="Fax" />
+					<I label="Name" name="name" />
+					<I label="Email address" name="email" />
+					<I
+						label="Telephone number"
+						name="telephone"
+					/>
+					<I label="Fax" name="fax" />
 				</Form>
 			</Flex>
 		</div>
