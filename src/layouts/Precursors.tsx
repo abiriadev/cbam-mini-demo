@@ -81,31 +81,6 @@ export const Precursors = ({ id }: { id?: string }) => {
 				rowKey={({ id }) => id}
 				columns={[
 					{
-						title: 'Production process',
-						dataIndex: 'agc',
-					},
-					{
-						title: 'Country code',
-						render: () => (
-							<Select
-								style={{ width: 70 }}
-								options={cc.map(c => ({
-									value: c,
-									label: c,
-								}))}
-							/>
-						),
-					},
-					...Array(5)
-						.fill(null)
-						.map((_, i) => ({
-							title: `Route ${i + 1}`,
-							dataIndex: ['routes', i],
-							render: (r: any) => (
-								<Input value={r} />
-							),
-						})),
-					{
 						title: 'Name',
 						dataIndex: 'name',
 						render: (v, { id }) => (
@@ -126,6 +101,33 @@ export const Precursors = ({ id }: { id?: string }) => {
 							/>
 						),
 					},
+					{
+						title: 'Production process',
+						dataIndex: 'agc',
+					},
+					{
+						title: 'Country code',
+						dataIndex: 'country',
+						render: country => (
+							<Select
+								defaultValue={country}
+								style={{ width: 70 }}
+								options={cc.map(c => ({
+									value: c,
+									label: c,
+								}))}
+							/>
+						),
+					},
+					...Array(5)
+						.fill(null)
+						.map((_, i) => ({
+							title: `Route ${i + 1}`,
+							dataIndex: ['routes', i],
+							render: (r: any) => (
+								<Input value={r} />
+							),
+						})),
 					{
 						render: (_, { id }) => (
 							<Popconfirm
