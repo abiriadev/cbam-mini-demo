@@ -13,12 +13,14 @@ import { addNewEmInst } from '@/store/cbam'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { TitledTable } from '@/components/TitledTable'
+import { selectNemesia } from '@/calc'
 
 export const SourceStreams = ({ id }: { id: string }) => {
 	const { token } = theme.useToken()
 	const { eminst } = useSelector(
 		({ cbam }: RootState) => cbam,
 	)
+	const nemesia = useSelector(selectNemesia).b_1
 
 	const dispatch = useDispatch()
 
@@ -105,22 +107,22 @@ export const SourceStreams = ({ id }: { id: string }) => {
 				},
 				{
 					title: 'CO2e fossil',
-					dataIndex: 'co2e-fossil',
+					dataIndex: 'fossil',
 				},
 				{
 					title: 'CO2e bio',
-					dataIndex: 'co2e-bio',
+					dataIndex: 'bio',
 				},
 				{
 					title: 'Energy content (fossil)',
-					dataIndex: 'energy-fossil',
+					dataIndex: 'content_fossil',
 				},
 				{
 					title: 'Energy content (bio)',
-					dataIndex: 'energy-bio',
+					dataIndex: 'content_bio',
 				},
 			]}
-			dataSource={eminst}
+			dataSource={nemesia.list}
 		/>
 	)
 }
