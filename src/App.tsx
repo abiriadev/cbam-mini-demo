@@ -65,7 +65,7 @@ function App() {
 								<Form>
 									<Form.Item
 										label={
-											<p className="text-xl font-bold">
+											<p className="text-xl font-medium">
 												PCF id
 											</p>
 										}
