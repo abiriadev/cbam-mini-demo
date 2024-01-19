@@ -3,13 +3,17 @@ import {
 	Dropdown,
 	Flex,
 	Input,
+	Popconfirm,
 	Table,
 	Typography,
 	theme,
 } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
-import { DownOutlined } from '@ant-design/icons'
+import {
+	DeleteOutlined,
+	DownOutlined,
+} from '@ant-design/icons'
 import {
 	AgcKind,
 	AgcKindSet,
@@ -102,6 +106,20 @@ export const AGC = ({ id }: { id?: string }) => {
 					title: 'Route 6',
 					dataIndex: ['routes', 5],
 					render: r => <Input value={r} />,
+				},
+				{
+					render: (_, { id }) => (
+						<Popconfirm
+							title="Delete 1 process"
+							description="Are you sure to delete this process?"
+							onConfirm={() => void 0}
+						>
+							<Button
+								danger
+								icon={<DeleteOutlined />}
+							></Button>
+						</Popconfirm>
+					),
 				},
 			]}
 			dataSource={nemesia.list}
