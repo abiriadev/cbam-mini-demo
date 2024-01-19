@@ -10,6 +10,9 @@ export const AboutTheInstallation = ({
 }) => {
 	const { token } = theme.useToken()
 	const nemesia = useSelector(selectNemesia).a_2
+	const [form] = Form.useForm()
+
+	form.setFieldsValue(nemesia)
 
 	return (
 		<div
@@ -31,7 +34,7 @@ export const AboutTheInstallation = ({
 				</Typography.Title>
 			</Flex>
 			<Flex gap="large">
-				<Form>
+				<Form form={form} layout="vertical">
 					<I
 						label="Name of the installation (optional)"
 						name="name"
