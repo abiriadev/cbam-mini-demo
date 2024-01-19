@@ -1,3 +1,4 @@
+import { selectNemesia } from '@/calc'
 import {
 	DatePicker,
 	Flex,
@@ -5,6 +6,8 @@ import {
 	Typography,
 	theme,
 } from 'antd'
+import { useSelector } from 'react-redux'
+import * as dayjs from 'dayjs'
 
 export const ReportingPeriod = ({
 	id,
@@ -12,6 +15,7 @@ export const ReportingPeriod = ({
 	id?: string
 }) => {
 	const { token } = theme.useToken()
+	const nemesia = useSelector(selectNemesia).a_1
 
 	return (
 		<div
@@ -39,7 +43,12 @@ export const ReportingPeriod = ({
 						name="period"
 						rules={[{ required: true }]}
 					>
-						<DatePicker.RangePicker />
+						<DatePicker.RangePicker
+							defaultValue={[
+								dayjs(nemesia.start),
+								dayjs(nemesia.end),
+							]}
+						/>
 					</Form.Item>
 				</Form>
 			</Flex>
