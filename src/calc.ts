@@ -446,7 +446,45 @@ const init: Nemesia = {
 	},
 }
 
-const empty = {}
+const empty = {
+	a_1: {
+		start: new Date(),
+		end: new Date(),
+	},
+	a_2: {
+		name: '',
+		name_en: '',
+		street: '',
+		economic: '',
+		zip: '',
+		po: '',
+		city: '',
+		country: '',
+		unlocode: '',
+		latitude: '',
+		longitude: '',
+		representative: '',
+		email: '',
+		telephone: '',
+	},
+	a_3_1: {
+		name: '',
+		street: '',
+		city: '',
+		zip: '',
+		country: '',
+	},
+	a_3_2: { name: '', email: '', telephone: '', fax: '' },
+	a_3_3: { state: '', accreditation: '', reg: '' },
+	a_4_1: { list: [], precursors: [] },
+	a_4_2: { list: [] },
+	a_5: { list: [] },
+	b_1: { list: [] },
+	d: { list: [] },
+	s1_2_1: { list: [] },
+	s1_2_2_1: { list: [] },
+	s2: { list: [] },
+}
 
 export const selectNemesia = ({
 	cbam,
