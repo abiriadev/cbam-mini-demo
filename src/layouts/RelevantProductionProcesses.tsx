@@ -16,17 +16,12 @@ import {
 	addNewProcess,
 	removeProcess,
 	updateProcessName,
-	addPrecursorToProcess,
-	findPrecursorById,
-	removePrecursorFromProcess,
-	updatePrecursorAmount,
 	AgcKindSet,
 	AgcKind,
 } from '@/store/cbam'
 import {
 	DeleteOutlined,
 	DownOutlined,
-	PlusOutlined,
 } from '@ant-design/icons'
 import { selectNemesia } from '@/calc'
 
