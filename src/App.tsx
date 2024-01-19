@@ -26,7 +26,7 @@ import {
 	LoadingOutlined,
 	VerticalAlignBottomOutlined,
 } from '@ant-design/icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function App() {
 	const { token } = theme.useToken()
@@ -131,20 +131,14 @@ function App() {
 										report
 									</Typography.Text>
 								</Button>
-								<Modal
-									title="Export results as CBAM Excel report"
-									open={excelModalOpen}
-									onOk={() =>
-										setExcelModalOpen(
-											false,
-										)
+								<M
+									excelModalOpen={
+										excelModalOpen
 									}
-									onCancel={() =>
-										setExcelModalOpen(
-											false,
-										)
+									setExcelModalOpen={
+										setExcelModalOpen
 									}
-								></Modal>
+								/>
 							</Flex>
 						</Col>
 					</Row>
@@ -156,31 +150,60 @@ function App() {
 
 export default App
 
-const M = () => {
+const M = ({
+	excelModalOpen,
+	setExcelModalOpen,
+}: {
+	excelModalOpen: boolean
+	setExcelModalOpen: (_: boolean) => void
+}) => {
 	const [loading, setLoading] = useState(true)
 
-	return loading ? (
-		<Spin
-			indicator={
-				<LoadingOutlined
-					style={{
-						fontSize: 100,
-					}}
-					spin
+	useEffect(() => {
+		if (!excelModalOpen) return
+
+		setLoading(true)
+		setTimeout(() => {
+			setLoading(false)
+		}, 1000)
+	}, [excelModalOpen])
+
+	return (
+		<Modal
+			title="Export results as CBAM Excel report"
+			open={excelModalOpen}
+			onOk={() => setExcelModalOpen(false)}
+			onCancel={() => setExcelModalOpen(false)}
+		>
+			{loading ? (
+				<Spin
+					indicator={
+						<LoadingOutlined
+							style={{
+								fontSize: 100,
+							}}
+							spin
+						/>
+					}
 				/>
-			}
-		/>
-	) : (
-		<Result
-			status="success"
-			title="Successfully Purchased Cloud Server ECS!"
-			subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
-			extra={[
-				<Button type="primary" key="console">
-					Go Console
-				</Button>,
-				<Button key="buy">Buy Again</Button>,
-			]}
-		/>
+			) : (
+				<Result
+					status="success"
+					title="Successfully Purchased Cloud Server ECS!"
+					subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+					extra={[
+						<Button
+							type="primary"
+							key="console"
+						>
+							Go Console
+						</Button>,
+						<Button key="buy">
+							Buy Again
+						</Button>,
+					]}
+				/>
+			)}
+		</Modal>
 	)
 }
