@@ -15,11 +15,13 @@ import {
 	AgcKindSet,
 	addNewAgc,
 } from '@/store/cbam'
+import { selectNemesia } from '@/calc'
 
 export const AGC = ({ id }: { id?: string }) => {
 	const { agc } = useSelector(
 		({ cbam }: RootState) => cbam,
 	)
+	const nemesia = useSelector(selectNemesia).a_4_1
 
 	const { token } = theme.useToken()
 	const dispatch = useDispatch()
@@ -105,7 +107,7 @@ export const AGC = ({ id }: { id?: string }) => {
 					render: () => <Input />,
 				},
 			]}
-			dataSource={agc}
+			dataSource={nemesia.list}
 		/>
 	)
 }
