@@ -39,6 +39,14 @@ export interface Nemesia {
 		accreditation: string
 		reg: string
 	}
+	a_4_1: {
+		list: Array<{
+			agc: string
+			routes: string
+			routes1_6: Array<string>
+		}>
+		precursors: Array<string>
+	}
 }
 
 const init: Nemesia = {
@@ -79,6 +87,32 @@ const init: Nemesia = {
 		state: 'state',
 		accreditation: 'accreditation',
 		reg: '123232',
+	},
+	a_4_1: {
+		list: [
+			{
+				agc: 'Cement',
+				routes: 'All production routes',
+				routes1_6: [],
+			},
+			{
+				agc: 'Crude steel',
+				routes: 'Manual',
+				routes1_6: [
+					'Basic oxygen steelmaking',
+					'Electric arc furnace',
+				],
+			},
+			{
+				agc: 'Pig iron',
+				routes: 'Manual',
+				routes1_6: [
+					'Blast furnace route',
+					'Smelting reduction',
+				],
+			},
+		],
+		precursors: [],
 	},
 }
 
