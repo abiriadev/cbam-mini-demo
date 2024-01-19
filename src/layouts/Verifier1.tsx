@@ -6,6 +6,9 @@ import { selectNemesia } from '@/calc'
 export const Verifier1 = ({ id }: { id?: string }) => {
 	const { token } = theme.useToken()
 	const nemesia = useSelector(selectNemesia).a_3_1
+	const [form] = Form.useForm()
+
+	form.setFieldsValue(nemesia)
 
 	return (
 		<div
@@ -28,7 +31,7 @@ export const Verifier1 = ({ id }: { id?: string }) => {
 				</Typography.Title>
 			</Flex>
 			<Flex gap="large">
-				<Form>
+				<Form form={form}>
 					<I label="Company Name" name="name" />
 					<I
 						label="Street, Number"
