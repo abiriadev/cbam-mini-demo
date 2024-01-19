@@ -21,6 +21,13 @@ export interface Nemesia {
 		email: string
 		telephone: string
 	}
+	a_3_1: {
+		name: string
+		street: string
+		city: string
+		zip: string
+		country: string
+	}
 }
 
 const init: Nemesia = {
@@ -43,6 +50,13 @@ const init: Nemesia = {
 		representative: '??',
 		email: 'aaa@aaa.com',
 		telephone: '232323',
+	},
+	a_3_1: {
+		name: 'name',
+		street: 'street',
+		city: 'city',
+		zip: 'zip',
+		country: 'Republic of Korea',
 	},
 }
 
