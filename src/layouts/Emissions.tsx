@@ -9,6 +9,7 @@ import {
 	precursorMapToUsageArray,
 } from '@/store/cbam'
 import { fixEmission, nanGuard, sum } from '@/utils'
+import { selectNemesia } from '@/calc'
 
 interface EmissionResult {
 	id: string
@@ -23,6 +24,7 @@ export const Emissions = ({ id }: { id?: string }) => {
 	const { processes, precursors: ppa } = useSelector(
 		(st: RootState) => st.cbam,
 	)
+	const nemesia = useSelector(selectNemesia).s1_2_2_1
 
 	const em: Array<EmissionResult> = processes.map(
 		({
@@ -173,7 +175,7 @@ export const Emissions = ({ id }: { id?: string }) => {
 							totalEmission(ee),
 					},
 				]}
-				dataSource={em}
+				dataSource={nemesia.list}
 			/>
 		</div>
 	)
