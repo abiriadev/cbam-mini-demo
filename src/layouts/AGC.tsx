@@ -79,32 +79,32 @@ export const AGC = ({ id }: { id?: string }) => {
 				{
 					title: 'Route 1',
 					dataIndex: ['routes', 0],
-					render: () => <Input />,
+					render: r => <Input value={r} />,
 				},
 				{
 					title: 'Route 2',
 					dataIndex: ['routes', 1],
-					render: () => <Input />,
+					render: r => <Input value={r} />,
 				},
 				{
 					title: 'Route 3',
 					dataIndex: ['routes', 2],
-					render: () => <Input />,
+					render: r => <Input value={r} />,
 				},
 				{
 					title: 'Route 4',
 					dataIndex: ['routes', 3],
-					render: () => <Input />,
+					render: r => <Input value={r} />,
 				},
 				{
 					title: 'Route 5',
 					dataIndex: ['routes', 4],
-					render: () => <Input />,
+					render: r => <Input value={r} />,
 				},
 				{
 					title: 'Route 6',
 					dataIndex: ['routes', 5],
-					render: () => <Input />,
+					render: r => <Input value={r} />,
 				},
 			]}
 			dataSource={nemesia.list}
