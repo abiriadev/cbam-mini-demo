@@ -26,9 +26,18 @@ export const Verifier3 = ({ id }: { id?: string }) => {
 			</Flex>
 			<Flex gap="large">
 				<Form>
-					<I label="Accreditation Member State" />
-					<I label="Name of the national accreditation body" />
-					<I label="Registration number issued by the Accreditation body" />
+					<I
+						label="Accreditation Member State"
+						name="state"
+					/>
+					<I
+						label="Name of the national accreditation body"
+						name="accreditation"
+					/>
+					<I
+						label="Registration number issued by the Accreditation body"
+						name="reg"
+					/>
 				</Form>
 			</Flex>
 		</div>
