@@ -71,36 +71,15 @@ export const AGC = ({ id }: { id?: string }) => {
 					title: 'Aggregated goods category',
 					dataIndex: 'kind',
 				},
-				{
-					title: 'Route 1',
-					dataIndex: ['routes', 0],
-					render: r => <Input value={r} />,
-				},
-				{
-					title: 'Route 2',
-					dataIndex: ['routes', 1],
-					render: r => <Input value={r} />,
-				},
-				{
-					title: 'Route 3',
-					dataIndex: ['routes', 2],
-					render: r => <Input value={r} />,
-				},
-				{
-					title: 'Route 4',
-					dataIndex: ['routes', 3],
-					render: r => <Input value={r} />,
-				},
-				{
-					title: 'Route 5',
-					dataIndex: ['routes', 4],
-					render: r => <Input value={r} />,
-				},
-				{
-					title: 'Route 6',
-					dataIndex: ['routes', 5],
-					render: r => <Input value={r} />,
-				},
+				...Array(6)
+					.fill(null)
+					.map((_, i) => ({
+						title: `Route ${i + 1}`,
+						dataIndex: ['routes', i],
+						render: (r: any) => (
+							<Input value={r} />
+						),
+					})),
 				{
 					render: (_, { id }) => (
 						<Popconfirm
