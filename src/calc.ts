@@ -28,6 +28,12 @@ export interface Nemesia {
 		zip: string
 		country: string
 	}
+	a_3_2: {
+		name: string
+		email: string
+		telephone: string
+		fax: string
+	}
 }
 
 const init: Nemesia = {
@@ -57,6 +63,12 @@ const init: Nemesia = {
 		city: 'city',
 		zip: 'zip',
 		country: 'Republic of Korea',
+	},
+	a_3_2: {
+		name: 'name',
+		email: 'email',
+		telephone: '010-1212!??',
+		fax: '????',
 	},
 }
 
