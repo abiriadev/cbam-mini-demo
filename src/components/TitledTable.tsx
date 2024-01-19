@@ -5,10 +5,11 @@ import {
 	Table,
 	Typography,
 	theme,
+	TableProps,
 } from 'antd'
 import { ReactElement } from 'react'
 
-export interface TitledTableProps {
+export interface TitledTableProps extends TableProps<any> {
 	id?: string
 	titleText: string
 	button?:
@@ -20,11 +21,8 @@ export interface TitledTableProps {
 		  }
 }
 
-export const TitledTable = ({
-	id,
-	titleText,
-	button,
-}: TitledTableProps) => {
+export const TitledTable = (props: TitledTableProps) => {
+	const { id, titleText, button, ...rest } = props
 	const { token } = theme.useToken()
 
 	return (
@@ -63,6 +61,7 @@ export const TitledTable = ({
 						))}
 				</Flex>
 			)}
+			{...rest}
 		/>
 	)
 }
