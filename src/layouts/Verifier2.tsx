@@ -31,7 +31,7 @@ export const Verifier2 = ({ id }: { id?: string }) => {
 				</Typography.Title>
 			</Flex>
 			<Flex gap="large">
-				<Form form={form}>
+				<Form form={form} layout="vertical">
 					<I label="Name" name="name" />
 					<I label="Email address" name="email" />
 					<I
