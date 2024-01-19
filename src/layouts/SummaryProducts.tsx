@@ -1,14 +1,10 @@
-import { Table, Typography } from 'antd'
+import { TitledTable } from '@/components/TitledTable'
 
 export const SummaryProducts = ({ id }: { id: string }) => {
 	return (
-		<Table
+		<TitledTable
 			id={id}
-			title={() => (
-				<Typography.Title level={4}>
-					Summary products
-				</Typography.Title>
-			)}
+			titleText="Summary products"
 			columns={[
 				{
 					title: 'Process',
