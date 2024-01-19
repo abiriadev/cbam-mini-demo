@@ -24,6 +24,7 @@ import {
 	DownOutlined,
 } from '@ant-design/icons'
 import { selectNemesia } from '@/calc'
+import { TitledTable } from '@/components/TitledTable'
 
 export const RelevantProductionProcesses = ({
 	id,
@@ -40,50 +41,42 @@ export const RelevantProductionProcesses = ({
 
 	return (
 		<div>
-			<Table
+			<TitledTable
 				id={id}
-				pagination={false}
+				titleText="Relevand production processes"
 				rowKey={({ id }) => id}
-				title={() => (
-					<Flex justify="space-between">
-						<Typography.Title level={4}>
-							Relevand production processes
-						</Typography.Title>
-
-						<Dropdown
-							trigger={['click']}
-							menu={{
-								items: AgcKindSet.map(
-									k => ({
-										key: k,
-										label: k,
-									}),
-								),
-								onClick: ({ key }) =>
-									dispatch(
-										addNewProcess(
-											key as AgcKind,
-										),
+				button={
+					<Dropdown
+						trigger={['click']}
+						menu={{
+							items: AgcKindSet.map(k => ({
+								key: k,
+								label: k,
+							})),
+							onClick: ({ key }) =>
+								dispatch(
+									addNewProcess(
+										key as AgcKind,
 									),
-							}}
+								),
+						}}
+					>
+						<Button
+							type="primary"
+							icon={<DownOutlined />}
 						>
-							<Button
-								type="primary"
-								icon={<DownOutlined />}
+							<Typography.Text
+								strong
+								style={{
+									color: token.Button
+										?.primaryColor,
+								}}
 							>
-								<Typography.Text
-									strong
-									style={{
-										color: token.Button
-											?.primaryColor,
-									}}
-								>
-									Add new process
-								</Typography.Text>
-							</Button>
-						</Dropdown>
-					</Flex>
-				)}
+								Add new process
+							</Typography.Text>
+						</Button>
+					</Dropdown>
+				}
 				columns={[
 					{
 						title: 'Name',
