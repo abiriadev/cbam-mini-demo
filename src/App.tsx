@@ -170,6 +170,7 @@ const M = ({
 
 	return (
 		<Modal
+			centered
 			title="Export results as CBAM Excel report"
 			open={excelModalOpen}
 			onOk={() => setExcelModalOpen(false)}
