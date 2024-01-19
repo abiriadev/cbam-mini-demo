@@ -74,9 +74,6 @@ export const AGC = ({ id }: { id?: string }) => {
 					dataIndex: 'kind',
 				},
 				{
-					title: 'Routes',
-				},
-				{
 					title: 'Route 1',
 					dataIndex: ['routes', 0],
 					render: r => <Input value={r} />,
