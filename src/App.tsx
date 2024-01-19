@@ -62,7 +62,7 @@ function App() {
 					<Row className="mb-2">
 						<Col span={21}>
 							<Flex justify="end">
-								<Form>
+								<Form size="large">
 									<Form.Item
 										label={
 											<p className="text-xl font-medium">
