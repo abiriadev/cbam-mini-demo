@@ -113,28 +113,46 @@ export const RelevantProductionProcesses = ({
 						dataIndex: 'agc',
 					},
 					{
-						title: '1',
-						render: () => <Input />,
+						title: 'Included goods 1',
+						dataIndex: ['included', 0],
+						render: value => (
+							<Input value={value} />
+						),
 					},
 					{
-						title: '2',
-						render: () => <Input />,
+						title: 'Included goods 2',
+						dataIndex: ['included', 1],
+						render: value => (
+							<Input value={value} />
+						),
 					},
 					{
-						title: '3',
-						render: () => <Input />,
+						title: 'Included goods 3',
+						dataIndex: ['included', 2],
+						render: value => (
+							<Input value={value} />
+						),
 					},
 					{
-						title: '4',
-						render: () => <Input />,
+						title: 'Included goods 4',
+						dataIndex: ['included', 3],
+						render: value => (
+							<Input value={value} />
+						),
 					},
 					{
-						title: '5',
-						render: () => <Input />,
+						title: 'Included goods 5',
+						dataIndex: ['included', 4],
+						render: value => (
+							<Input value={value} />
+						),
 					},
 					{
-						title: '6',
-						render: () => <Input />,
+						title: 'Included goods 6',
+						dataIndex: ['included', 5],
+						render: value => (
+							<Input value={value} />
+						),
 					},
 					{
 						render: (_, { id }) => (
