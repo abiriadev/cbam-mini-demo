@@ -204,6 +204,9 @@ const M = ({
 							type="primary"
 							key="console"
 							className="font-bold"
+							onClick={() =>
+								setExcelModalOpen(false)
+							}
 						>
 							Download file
 						</Button>,
