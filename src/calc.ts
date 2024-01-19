@@ -106,6 +106,7 @@ export interface Nemesia {
 	}
 	s1_2_1: {
 		list: Array<{
+			id: string
 			process: string
 			agc: string
 			direm: number
@@ -117,6 +118,7 @@ export interface Nemesia {
 	}
 	s1_2_2_1: {
 		list: Array<{
+			id: string
 			name: string
 			se: {
 				direct: number
@@ -134,6 +136,7 @@ export interface Nemesia {
 	}
 	s2: {
 		list: Array<{
+			id: string
 			name: string
 			agc: string
 			cn: string
@@ -318,6 +321,7 @@ const init: Nemesia = {
 	s1_2_1: {
 		list: [
 			{
+				id: '1',
 				process: 'process 1',
 				agc: 'Cement',
 				direm: 1232,
@@ -327,6 +331,7 @@ const init: Nemesia = {
 				indirect: 353,
 			},
 			{
+				id: '2',
 				process: 'process 2',
 				agc: 'Crude steel',
 				direm: 1232,
@@ -340,6 +345,7 @@ const init: Nemesia = {
 	s1_2_2_1: {
 		list: [
 			{
+				id: '1',
 				name: 'process 1',
 				se: {
 					direct: 123,
@@ -355,6 +361,7 @@ const init: Nemesia = {
 				},
 			},
 			{
+				id: '2',
 				name: 'process 2',
 				se: {
 					direct: 123,
@@ -370,6 +377,7 @@ const init: Nemesia = {
 				},
 			},
 			{
+				id: '3',
 				name: 'process 3',
 				se: {
 					direct: 123,
@@ -385,6 +393,7 @@ const init: Nemesia = {
 				},
 			},
 			{
+				id: '4',
 				name: 'process 4',
 				se: {
 					direct: 123,
@@ -404,6 +413,7 @@ const init: Nemesia = {
 	s2: {
 		list: [
 			{
+				id: '1',
 				name: 'process 1',
 				agc: 'Cement',
 				cn: '1233 55 66',
@@ -417,6 +427,7 @@ const init: Nemesia = {
 				ee: 353,
 			},
 			{
+				id: '2',
 				name: 'process 2',
 				agc: 'Cement',
 				cn: '1233 55 66',
@@ -430,6 +441,7 @@ const init: Nemesia = {
 				ee: 353,
 			},
 			{
+				id: '3',
 				name: 'process 3',
 				agc: 'Cement',
 				cn: '1233 55 66',
