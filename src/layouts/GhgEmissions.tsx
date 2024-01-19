@@ -2,6 +2,7 @@ import { Table, Typography } from 'antd'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { fix3, sum } from '@/utils'
+import { TitledTable } from '@/components/TitledTable'
 
 interface GhgEmissionResult {
 	id: string
@@ -15,7 +16,7 @@ interface GhgEmissionResult {
 }
 
 export const GhgEmissions = ({
-	id: elemId,
+	id: id,
 }: {
 	id?: string
 }) => {
@@ -46,16 +47,11 @@ export const GhgEmissions = ({
 	)
 
 	return (
-		<Table
-			id={elemId}
+		<TitledTable
+			id={id}
 			dataSource={em}
 			rowKey={({ id }) => id}
-			pagination={false}
-			title={() => (
-				<Typography.Title level={4}>
-					GHG emissions balance
-				</Typography.Title>
-			)}
+			titleText="GHG emissions balance"
 			columns={[
 				{
 					title: 'Production Process',
