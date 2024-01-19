@@ -100,48 +100,17 @@ export const RelevantProductionProcesses = ({
 						title: 'Production process',
 						dataIndex: 'agc',
 					},
-					{
-						title: 'Included goods 1',
-						dataIndex: ['included', 0],
-						render: value => (
-							<Input value={value} />
-						),
-					},
-					{
-						title: 'Included goods 2',
-						dataIndex: ['included', 1],
-						render: value => (
-							<Input value={value} />
-						),
-					},
-					{
-						title: 'Included goods 3',
-						dataIndex: ['included', 2],
-						render: value => (
-							<Input value={value} />
-						),
-					},
-					{
-						title: 'Included goods 4',
-						dataIndex: ['included', 3],
-						render: value => (
-							<Input value={value} />
-						),
-					},
-					{
-						title: 'Included goods 5',
-						dataIndex: ['included', 4],
-						render: value => (
-							<Input value={value} />
-						),
-					},
-					{
-						title: 'Included goods 6',
-						dataIndex: ['included', 5],
-						render: value => (
-							<Input value={value} />
-						),
-					},
+					...Array(6)
+						.fill(null)
+						.map((_, i) => ({
+							title: `Included goods ${
+								i + 1
+							}`,
+							dataIndex: ['included', i],
+							render: (value: any) => (
+								<Input value={value} />
+							),
+						})),
 					{
 						render: (_, { id }) => (
 							<Popconfirm
