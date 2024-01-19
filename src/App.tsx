@@ -19,7 +19,7 @@ import Sider from 'antd/es/layout/Sider'
 import aipimLogo from './assets/aipim-logo-green.png'
 import { SheetsList } from '@layouts/SheetsList'
 import { Toc } from './assets/Toc'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './store'
 import {
 	CheckOutlined,
@@ -27,6 +27,7 @@ import {
 	VerticalAlignBottomOutlined,
 } from '@ant-design/icons'
 import { useEffect, useState } from 'react'
+import { generate } from './store/environment'
 
 function App() {
 	const { token } = theme.useToken()
@@ -36,6 +37,7 @@ function App() {
 	)
 	const [excelModalOpen, setExcelModalOpen] =
 		useState(false)
+	const dispatch = useDispatch()
 
 	return (
 		<Layout className="min-h-screen">
@@ -89,6 +91,11 @@ function App() {
 												className="font-bold"
 												icon={
 													<CheckOutlined />
+												}
+												onClick={() =>
+													dispatch(
+														generate(),
+													)
 												}
 											>
 												Generate
