@@ -1,8 +1,11 @@
 import { Flex, Form, Typography, theme } from 'antd'
 import { I } from '@/I'
+import { useSelector } from 'react-redux'
+import { selectNemesia } from '@/calc'
 
 export const Verifier1 = ({ id }: { id?: string }) => {
 	const { token } = theme.useToken()
+	const nemesia = useSelector(selectNemesia).a_3_1
 
 	return (
 		<div
@@ -26,11 +29,14 @@ export const Verifier1 = ({ id }: { id?: string }) => {
 			</Flex>
 			<Flex gap="large">
 				<Form>
-					<I label="Company Name" />
-					<I label="Street, Number" />
-					<I label="City" />
-					<I label="Postcode/ZIP" />
-					<I label="Country" />
+					<I label="Company Name" name="name" />
+					<I
+						label="Street, Number"
+						name="street"
+					/>
+					<I label="City" name="city" />
+					<I label="Postcode/ZIP" name="zip" />
+					<I label="Country" name="country" />
 				</Form>
 			</Flex>
 		</div>
