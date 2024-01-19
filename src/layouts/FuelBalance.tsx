@@ -5,6 +5,7 @@ export const FuelBalance = ({ id }: { id?: string }) => {
 		<TitledTable
 			id={id}
 			titleText="Fuel balance"
+			rowKey={({ id }) => id}
 			columns={[
 				{
 					title: 'Fuel Balance',
@@ -38,9 +39,9 @@ export const FuelBalance = ({ id }: { id?: string }) => {
 				},
 			]}
 			dataSource={[
-				{ fb: 'from sheet B_EmInst' },
-				{ fb: 'manual entries' },
-				{ fb: 'Results' },
+				{ id: '1', fb: 'from sheet B_EmInst' },
+				{ id: '2', fb: 'manual entries' },
+				{ id: '3', fb: 'Results' },
 			]}
 		/>
 	)
