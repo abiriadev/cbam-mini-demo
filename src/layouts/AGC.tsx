@@ -20,6 +20,7 @@ import {
 	addNewAgc,
 } from '@/store/cbam'
 import { selectNemesia } from '@/calc'
+import { TitledTable } from '@/components/TitledTable'
 
 export const AGC = ({ id }: { id?: string }) => {
 	const { agc } = useSelector(
@@ -31,47 +32,40 @@ export const AGC = ({ id }: { id?: string }) => {
 	const dispatch = useDispatch()
 
 	return (
-		<Table
+		<TitledTable
 			id={id}
-			pagination={false}
-			title={() => (
-				<Flex justify="space-between">
-					<Typography.Title level={4}>
-						List of aggregated goods categories
-					</Typography.Title>
-					<Dropdown
-						trigger={['click']}
-						menu={{
-							items: AgcKindSet.map(k => ({
-								key: k,
-								label: k,
-							})),
-							onClick: ({ key }) =>
-								dispatch(
-									addNewAgc(
-										key as AgcKind,
-									),
-								),
-						}}
+			titleText="List of aggregated goods categories"
+			button={
+				<Dropdown
+					trigger={['click']}
+					menu={{
+						items: AgcKindSet.map(k => ({
+							key: k,
+							label: k,
+						})),
+						onClick: ({ key }) =>
+							dispatch(
+								addNewAgc(key as AgcKind),
+							),
+					}}
+				>
+					<Button
+						type="primary"
+						icon={<DownOutlined />}
 					>
-						<Button
-							type="primary"
-							icon={<DownOutlined />}
+						<Typography.Text
+							strong
+							style={{
+								color: token.Button
+									?.primaryColor,
+							}}
 						>
-							<Typography.Text
-								strong
-								style={{
-									color: token.Button
-										?.primaryColor,
-								}}
-							>
-								Add new aggregated goods
-								category
-							</Typography.Text>
-						</Button>
-					</Dropdown>
-				</Flex>
-			)}
+							Add new aggregated goods
+							category
+						</Typography.Text>
+					</Button>
+				</Dropdown>
+			}
 			columns={[
 				{
 					title: 'Aggregated goods category',
