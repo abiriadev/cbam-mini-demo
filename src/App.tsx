@@ -208,6 +208,9 @@ const M = ({
 		}, 1000)
 	}, [excelModalOpen])
 
+	const filename =
+		'CBAM_communication_for_installation_1705539693.xlsx'
+
 	return (
 		<Modal
 			centered
@@ -238,7 +241,7 @@ const M = ({
 				<Result
 					status="success"
 					title="Successfully generated Excel report!"
-					subTitle="CBAM_communication_for_installation_1705539693.xlsx"
+					subTitle={filename}
 					extra={[
 						<Button
 							type="primary"
@@ -248,7 +251,12 @@ const M = ({
 								setExcelModalOpen(false)
 							}
 						>
-							Download file
+							<a
+								href={`/${filename}`}
+								download
+							>
+								Download file
+							</a>
 						</Button>,
 					]}
 				/>
