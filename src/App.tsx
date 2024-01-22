@@ -14,10 +14,8 @@ import {
 	theme,
 } from 'antd'
 import { Content, Header } from 'antd/es/layout/layout'
-import Sider from 'antd/es/layout/Sider'
 import aipimLogo from './assets/aipim-logo-green.png'
 import { SheetsList } from '@layouts/SheetsList'
-import { Toc } from './assets/Toc'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './store'
 import {

@@ -196,8 +196,5 @@ const empty = {
 export const selectNemesia = ({
 	cbam,
 	environment,
-}: RootState) => {
-	return environment.state === 'empty'
-		? empty
-		: nemesiaInit
-}
+}: RootState) =>
+	environment.state === 'generated' ? nemesiaInit : empty

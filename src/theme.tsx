@@ -30,6 +30,9 @@ export const theme: ThemeConfig = {
 		Input: {
 			colorBgContainer: white,
 		},
+		InputNumber: {
+			colorBgContainer: white,
+		},
 		DatePicker: {
 			colorBgContainer: white,
 		},
