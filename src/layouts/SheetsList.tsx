@@ -32,12 +32,12 @@ import { GhgBalanceByType } from '@layouts/GhgBalanceByType'
 import { FuelIntoChp } from '@layouts/FuelIntoChp'
 import { SummaryOfTheInstallation } from '@layouts/SummaryOfTheInstallation'
 
-export const SheetsList = () => {
+export const SheetsList = ({ roww }: { roww: number }) => {
 	const { token } = theme.useToken()
 
 	return (
 		<Row>
-			<Col span={21}>
+			<Col span={roww}>
 				<Flex vertical gap="large">
 					<Sheet id="instdata" title="A InstData">
 						<ReportingPeriod id="reporting-period" />

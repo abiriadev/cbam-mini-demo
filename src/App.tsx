@@ -38,6 +38,8 @@ function App() {
 		useState(false)
 	const dispatch = useDispatch()
 
+	const roww = 24
+
 	return (
 		<Layout className="min-h-screen">
 			<Header
@@ -63,13 +65,13 @@ function App() {
 				</Flex>
 			</Header>
 			<Layout>
-				<Sider>
-					<Toc />
-				</Sider>
+				{/* <Sider> */}
+				{/* 	<Toc /> */}
+				{/* </Sider> */}
 				<Content>
 					{state === 'calculating' && (
 						<Row className="mb-2 fixed top-0 left-0 w-screen h-screen z-10 backdrop-brightness-90">
-							<Col span={21}>
+							<Col span={roww}>
 								<Flex
 									justify="center"
 									align="center"
@@ -91,7 +93,7 @@ function App() {
 						</Row>
 					)}
 					<Row className="mb-2">
-						<Col span={21}>
+						<Col span={roww}>
 							<Flex justify="end">
 								<Form size="large">
 									<Form.Item
@@ -138,9 +140,9 @@ function App() {
 							</Flex>
 						</Col>
 					</Row>
-					<SheetsList />
+					<SheetsList roww={roww} />
 					<Row>
-						<Col span={21} className="mt-8">
+						<Col span={roww} className="mt-8">
 							<Flex
 								justify="end"
 								className="h-40"
