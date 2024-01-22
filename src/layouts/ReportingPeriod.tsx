@@ -9,6 +9,7 @@ import {
 import { useSelector } from 'react-redux'
 import dayjs from 'dayjs'
 import { RootState } from '@/store'
+import { useEffect } from 'react'
 
 export const ReportingPeriod = ({
 	id,
@@ -20,6 +21,16 @@ export const ReportingPeriod = ({
 	const { state } = useSelector(
 		({ environment }: RootState) => environment,
 	)
+	const [form] = Form.useForm()
+
+	useEffect(() => {
+		if (state === 'generated') {
+			form.setFieldValue('period', [
+				dayjs(nemesia.start),
+				dayjs(nemesia.end),
+			])
+		}
+	}, [state])
 
 	return (
 		<div
@@ -41,26 +52,13 @@ export const ReportingPeriod = ({
 				</Typography.Title>
 			</Flex>
 			<Flex>
-				<Form>
+				<Form form={form}>
 					<Form.Item
 						label="Reporting period"
 						name="period"
 						rules={[{ required: true }]}
 					>
-						<DatePicker.RangePicker
-							{...(state === 'generated'
-								? {
-										defaultValue: [
-											dayjs(
-												nemesia.start,
-											),
-											dayjs(
-												nemesia.end,
-											),
-										],
-								  }
-								: {})}
-						/>
+						<DatePicker.RangePicker />
 					</Form.Item>
 				</Form>
 			</Flex>
