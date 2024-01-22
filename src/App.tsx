@@ -70,7 +70,29 @@ function App() {
 					<Toc />
 				</Sider>
 				<Content className="bg-inherit">
-					{state === 'calculating' && <Spin />}
+					{state === 'calculating' && (
+						<Row className="mb-2 fixed top-0 left-0 w-screen h-screen z-10 backdrop-brightness-90">
+							<Col span={21}>
+								<Flex
+									justify="center"
+									align="center"
+									className="h-full"
+								>
+									<Spin
+										indicator={
+											<LoadingOutlined
+												style={{
+													fontSize: 72,
+												}}
+												spin
+											/>
+										}
+										size="large"
+									/>
+								</Flex>
+							</Col>
+						</Row>
+					)}
 					<Row className="mb-2">
 						<Col span={21}>
 							<Flex justify="end">
@@ -102,7 +124,7 @@ function App() {
 															dispatch(
 																generate(),
 															),
-														1000,
+														1200,
 													)
 												)}
 											>
