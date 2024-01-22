@@ -22,22 +22,22 @@ export const nemesiaInit: Nemesia = {
 		telephone: '010-1234-5678',
 	},
 	a_3_1: {
-		name: 'name',
-		street: 'street',
-		city: 'city',
-		zip: 'zip',
+		name: 'Authorization Company',
+		street: '158-7, Golden root-ro, Juchon-myeon, Gimhae-si, Gyeongsangnam-do, Republic of Korea',
+		city: 'Seoul',
+		zip: '50969',
 		country: 'Republic of Korea',
 	},
 	a_3_2: {
-		name: 'name',
-		email: 'email',
-		telephone: '010-1212!??',
-		fax: '????',
+		name: 'John Doe',
+		email: 'hello@example.com',
+		telephone: '010-1234-5678',
+		fax: '379834943',
 	},
 	a_3_3: {
-		state: 'state',
-		accreditation: 'accreditation',
-		reg: '123232',
+		state: 'Representative',
+		accreditation: 'J.D. Yoman',
+		reg: '1445298',
 	},
 	a_4_1: {
 		list: [
