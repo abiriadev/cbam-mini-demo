@@ -24,5 +24,11 @@ export const theme: ThemeConfig = {
 			headerBg: white,
 			siderBg: white,
 		},
+		Input: {
+			colorBgContainer: white,
+		},
+		DatePicker: {
+			colorBgContainer: white,
+		},
 	},
 }
