@@ -11,7 +11,6 @@ import {
 	Space,
 	Spin,
 	Typography,
-	message,
 	theme,
 } from 'antd'
 import { Content, Header } from 'antd/es/layout/layout'
@@ -106,6 +105,10 @@ function App() {
 											<Input
 												placeholder=""
 												className="w-80"
+												style={{
+													borderColor:
+														token.colorPrimary,
+												}}
 											/>
 											<Button
 												type="primary"
