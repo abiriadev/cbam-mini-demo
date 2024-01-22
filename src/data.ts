@@ -94,9 +94,9 @@ export const nemesiaInit: Nemesia = {
 		list: [
 			{
 				id: '1',
-				name: 'Process 1',
-				agc: 'Cement',
-				included: ['Cement clinker'],
+				name: '선철제조공정',
+				agc: 'Pig Iron',
+				included: [],
 			},
 			{
 				id: '2',
@@ -107,7 +107,19 @@ export const nemesiaInit: Nemesia = {
 			{
 				id: '3',
 				name: 'Process 3',
-				agc: 'Pig iron',
+				agc: 'Ammonia',
+				included: [],
+			},
+			{
+				id: '4',
+				name: 'Process 3',
+				agc: 'Unwrought aluminium',
+				included: [],
+			},
+			{
+				id: '5',
+				name: 'Process 3',
+				agc: 'Iron or steel products',
 				included: [],
 			},
 		],

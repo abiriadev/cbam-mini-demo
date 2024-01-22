@@ -1,4 +1,5 @@
 import { selectNemesia } from '@/calc'
+import { TitledTable } from '@/components/TitledTable'
 import { Table, Typography } from 'antd'
 import { useSelector } from 'react-redux'
 
@@ -10,13 +11,9 @@ export const SummaryCommunication = ({
 	const nemesia = useSelector(selectNemesia).s2
 
 	return (
-		<Table
+		<TitledTable
 			id={id}
-			title={() => (
-				<Typography.Title level={4}>
-					Summary communication
-				</Typography.Title>
-			)}
+			titleText="Summary communication"
 			columns={[
 				{
 					title: 'Process',
