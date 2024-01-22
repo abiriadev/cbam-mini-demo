@@ -43,17 +43,21 @@ export const nemesiaInit: Nemesia = {
 		list: [
 			{
 				id: '1',
-				kind: 'Cement',
+				kind: 'Aluminium products',
 				routes_kind: 'All production routes',
-				routes: [],
+				routes: [
+					'Steam reforming and partial oxidation',
+					'Electrolysis of water',
+					'Chior-Alkali electrolysis and production of chiorales',
+				],
 			},
 			{
 				id: '2',
-				kind: 'Crude steel',
+				kind: 'Unwrought aluminium',
 				routes_kind: 'Manual',
 				routes: [
-					'Basic oxygen steelmaking',
-					'Electric arc furnace',
+					'Primary smelting',
+					'Secondary melting',
 				],
 			},
 			{
@@ -63,6 +67,24 @@ export const nemesiaInit: Nemesia = {
 				routes: [
 					'Blast furnace route',
 					'Smelting reduction',
+				],
+			},
+			{
+				id: '4',
+				kind: 'Crude steel',
+				routes_kind: 'Manual',
+				routes: [
+					'Basic oxygen steelmaking',
+					'Electric arc furnace',
+				],
+			},
+			{
+				id: '5',
+				kind: 'Iron or steel products',
+				routes_kind: 'Manual',
+				routes: [
+					'Haber-Bosch process with steam reforming of natural gas or biogas',
+					'Haber-Bosch process with gasification of coal or other fuels',
 				],
 			},
 		],
