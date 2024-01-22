@@ -27,7 +27,7 @@ import {
 	VerticalAlignBottomOutlined,
 } from '@ant-design/icons'
 import { useEffect, useState } from 'react'
-import { generate } from './store/environment'
+import { calculate, generate } from './store/environment'
 
 function App() {
 	const { token } = theme.useToken()
@@ -93,11 +93,18 @@ function App() {
 												icon={
 													<CheckOutlined />
 												}
-												onClick={() =>
+												onClick={() => (
 													dispatch(
-														generate(),
+														calculate(),
+													),
+													setTimeout(
+														() =>
+															dispatch(
+																generate(),
+															),
+														1000,
 													)
-												}
+												)}
 											>
 												Generate
 												report
