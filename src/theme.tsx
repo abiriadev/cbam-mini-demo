@@ -24,10 +24,18 @@ export const theme: ThemeConfig = {
 			headerBg: white,
 			siderBg: white,
 		},
+		Select: {
+			colorBgContainer: white,
+		},
 		Input: {
 			colorBgContainer: white,
 		},
 		DatePicker: {
+			colorBgContainer: white,
+		},
+		Table: {
+			headerColor: white,
+			headerBg: primary,
 			colorBgContainer: white,
 		},
 	},
