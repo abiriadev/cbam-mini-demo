@@ -32,9 +32,9 @@ import { generate } from './store/environment'
 function App() {
 	const { token } = theme.useToken()
 
-	const { isIframe } = useSelector(
-		(st: RootState) => st.environment,
-	)
+	const {
+		environment: { isIframe, state },
+	} = useSelector((st: RootState) => st)
 	const [excelModalOpen, setExcelModalOpen] =
 		useState(false)
 	const dispatch = useDispatch()
@@ -70,6 +70,7 @@ function App() {
 					<Toc />
 				</Sider>
 				<Content className="bg-inherit">
+					{state === 'calculating' && <Spin />}
 					<Row className="mb-2">
 						<Col span={21}>
 							<Flex justify="end">
