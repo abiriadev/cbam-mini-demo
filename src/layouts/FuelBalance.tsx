@@ -18,24 +18,24 @@ export const FuelBalance = ({ id }: { id?: string }) => {
 				{
 					title: 'Total fuel input',
 					dataIndex: 'tfi',
-					render: () => 0,
+					render: () => 1.0,
 				},
 				{
 					title: 'Direct fuel for CBAM goods',
-					render: () => 0,
+					render: () => 3.3,
 				},
 				{
 					title: 'Fuel for electricity',
-					render: () => 0,
+					render: () => 22.3,
 				},
 				{
 					title: 'Direct fuel for non CBAM goods',
-					render: () => 0,
+					render: () => 23.6,
 				},
 				{
 					title: 'Rest',
 					dataIndex: 'rest',
-					render: () => 0,
+					render: () => 35.2,
 				},
 			]}
 			dataSource={[

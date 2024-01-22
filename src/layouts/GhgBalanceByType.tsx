@@ -22,31 +22,31 @@ export const GhgBalanceByType = ({
 				{
 					title: 'Total CO2 emissions',
 					dataIndex: 'tfi',
-					render: () => 0,
+					render: () => 12.4,
 				},
 				{
 					title: 'Biomass emissions',
-					render: () => 0,
+					render: () => 64.43,
 				},
 				{
 					title: 'Total N2O emissions',
-					render: () => 0,
+					render: () => 53.4,
 				},
 				{
 					title: 'Total PFC emissions',
-					render: () => 0,
+					render: () => 35.3,
 				},
 				{
 					title: 'Total direct emissions',
-					render: () => 0,
+					render: () => 3.5,
 				},
 				{
 					title: 'Total indirect emissions',
-					render: () => 0,
+					render: () => 35.3,
 				},
 				{
 					title: 'Total emissions',
-					render: () => 0,
+					render: () => 34.3344,
 				},
 			]}
 			dataSource={[

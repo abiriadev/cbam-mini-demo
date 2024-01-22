@@ -131,7 +131,21 @@ export const nemesiaInit: Nemesia = {
 				name: 'precursor 1',
 				agc: 'Cement',
 				country: 'KR',
-				routes: ['A', 'B'],
+				routes: ['Route 1', 'Route 2', 'Route 3'],
+			},
+			{
+				id: '2',
+				name: 'precursor 2',
+				agc: 'Cement',
+				country: 'KR',
+				routes: ['Route 1'],
+			},
+			{
+				id: '3',
+				name: 'precursor 3',
+				agc: 'Cement',
+				country: 'KR',
+				routes: ['Route 1', 'Route 2'],
 			},
 		],
 	},
@@ -178,7 +192,7 @@ export const nemesiaInit: Nemesia = {
 				id: '1',
 				name: 'process',
 				direm: 132,
-				activity_level: 353,
+				activity_level: 35,
 				heat: {
 					imported: {
 						amount: 211,
@@ -186,15 +200,15 @@ export const nemesiaInit: Nemesia = {
 					},
 					exported: {
 						amount: 243,
-						emissionFactor: 35353,
+						emissionFactor: 31,
 					},
 				},
 				wg: {
 					imported: {
-						amount: 35353,
+						amount: 3,
 					},
 					exported: {
-						amount: 35353,
+						amount: 30,
 					},
 				},
 			},
@@ -207,20 +221,20 @@ export const nemesiaInit: Nemesia = {
 				process: 'process 1',
 				agc: 'Cement',
 				direm: 343,
-				heat: 53,
+				heat: 13,
 				wg: 6543,
-				direct: 353,
-				indirect: 353,
+				direct: 33,
+				indirect: 3,
 			},
 			{
 				id: '2',
 				process: 'process 2',
 				agc: 'Crude steel',
 				direm: 232,
-				heat: 53,
+				heat: 6.6,
 				wg: 6543,
-				direct: 353,
-				indirect: 353,
+				direct: 3.3,
+				indirect: 335,
 			},
 		],
 	},
@@ -234,7 +248,7 @@ export const nemesiaInit: Nemesia = {
 					indirect: 4546,
 				},
 				see: {
-					direct: 53,
+					direct: 1,
 					indirect: 35,
 				},
 				ee: {
@@ -250,11 +264,11 @@ export const nemesiaInit: Nemesia = {
 					indirect: 4546,
 				},
 				see: {
-					direct: 53,
+					direct: 0,
 					indirect: 35,
 				},
 				ee: {
-					direct: 323.53,
+					direct: 323.3,
 					indirect: 22.3,
 				},
 			},
@@ -266,7 +280,7 @@ export const nemesiaInit: Nemesia = {
 					indirect: 4546,
 				},
 				see: {
-					direct: 53,
+					direct: 35,
 					indirect: 35,
 				},
 				ee: {
@@ -282,7 +296,7 @@ export const nemesiaInit: Nemesia = {
 					indirect: 4546,
 				},
 				see: {
-					direct: 53,
+					direct: 22,
 					indirect: 35,
 				},
 				ee: {
