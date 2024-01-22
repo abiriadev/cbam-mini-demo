@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export interface Environment {
 	isIframe: boolean
-	state: 'empty' | 'generated'
+	state: 'empty' | 'calculating' | 'generated'
 }
 
 const testIframe = () => window.self !== window.top
