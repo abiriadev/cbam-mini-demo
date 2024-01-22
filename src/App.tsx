@@ -42,9 +42,7 @@ function App() {
 	return (
 		<Layout className="min-h-screen">
 			<Header
-				className={`h-36 bg-inherit ${
-					isIframe && 'hidden'
-				}`}
+				className={`h-36 ${isIframe && 'hidden'}`}
 			>
 				<Flex align="center" className="h-full">
 					<img src={aipimLogo} height={'80%'} />
@@ -66,10 +64,10 @@ function App() {
 				</Flex>
 			</Header>
 			<Layout>
-				<Sider className="!bg-inherit">
+				<Sider>
 					<Toc />
 				</Sider>
-				<Content className="bg-inherit">
+				<Content>
 					{state === 'calculating' && (
 						<Row className="mb-2 fixed top-0 left-0 w-screen h-screen z-10 backdrop-brightness-90">
 							<Col span={21}>
