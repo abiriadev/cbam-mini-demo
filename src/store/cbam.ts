@@ -1,9 +1,5 @@
-import {
-	createSlice,
-	PayloadAction,
-} from '@reduxjs/toolkit'
-import { CORR, EFNG } from '../constants'
-import { relu } from '../utils'
+import { createSlice } from '@reduxjs/toolkit'
+import { nemesiaInit } from '@/data'
 
 export interface Emission {
 	direct: number
@@ -35,44 +31,6 @@ export const totalUsage = ({
 	emissionFactor,
 }: Usage) => amount * emissionFactor
 
-export interface ProcessState {
-	id: string
-	name: string
-	agc: AgcKind
-	direm: number
-	activity_level: number
-	heat: ImpExp
-	wasteGas: ImpExp
-	precursors: Record<string, PrecursorUsage>
-	// results
-	attrHeat: number
-	attrWg: number
-	attr: Emission
-}
-
-export interface PrecursorState {
-	id: string
-	name: string
-	agc: AgcKind
-	see: Emission
-}
-
-export interface PrecursorUsage {
-	amount: number
-}
-
-export interface EmInstState {
-	id: string
-	method:
-		| 'combustion'
-		| 'process-emissions'
-		| 'mass-balance'
-	name: string
-	ad: number
-	adUnit: 't' | 'kNm3'
-	ncv: number
-}
-
 export const AgcKindSet = [
 	'Cement',
 	'Cement clinker',
@@ -96,12 +54,6 @@ export const AgcKindSet = [
 
 export type AgcKind = (typeof AgcKindSet)[number]
 
-export interface AgcState {
-	id: string
-	kind: AgcKind
-	routes: Array<string>
-}
-
 export const cc = [
 	'AD',
 	'AE',
@@ -123,484 +75,127 @@ export const cc = [
 ]
 
 export interface CbamState {
-	processes: Array<ProcessState>
-	precursors: Array<PrecursorState>
-	eminst: Array<EmInstState>
-	agc: Array<AgcState>
-}
-
-const initialState: CbamState = {
-	processes: [],
-	precursors: [],
-	eminst: [],
-	agc: [],
+	a_1: {
+		start: Date
+		end: Date
+	}
+	a_2: {
+		name: string
+		name_en: string
+		street: string
+		economic: string
+		zip: string
+		po: string
+		city: string
+		country: string
+		unlocode: string
+		latitude: string
+		longitude: string
+		representative: string
+		email: string
+		telephone: string
+	}
+	a_3_1: {
+		name: string
+		street: string
+		city: string
+		zip: string
+		country: string
+	}
+	a_3_2: {
+		name: string
+		email: string
+		telephone: string
+		fax: string
+	}
+	a_3_3: {
+		state: string
+		accreditation: string
+		reg: string
+	}
+	a_4_1: {
+		list: Array<{
+			id: string
+			kind: string
+			routes_kind: string
+			routes: Array<string>
+		}>
+	}
+	a_4_2: {
+		list: Array<{
+			id: string
+			name: string
+			agc: string
+			included: Array<string>
+		}>
+	}
+	a_5: {
+		list: Array<{
+			id: string
+			name: string
+			agc: string
+			country: string
+			routes: Array<string>
+		}>
+	}
+	b_1: {
+		list: Array<{
+			id: string
+			method: string
+			name: string
+			ad: number
+			ncv: number
+		}>
+	}
+	d: {
+		list: Array<{
+			id: string
+			name: string
+			direm: number
+			activity_level: number
+			heat: {
+				imported: {
+					amount: number
+					emissionFactor: number
+				}
+				exported: {
+					amount: number
+					emissionFactor: number
+				}
+			}
+			wg: {
+				imported: {
+					amount: number
+				}
+				exported: {
+					amount: number
+				}
+			}
+		}>
+	}
+	s2: {
+		list: Array<{
+			id: string
+			name: string
+			agc: string
+			cn: string
+			product_name: string
+			see_d: number
+			see_i: number
+			see_t: number
+			unit: string
+			share: number
+			source: string
+			ee: number
+		}>
+	}
 }
 
 export const cbamSlice = createSlice({
 	name: 'cbam',
-	initialState,
-	reducers: {
-		addProcess: (
-			{ processes },
-			{ payload }: PayloadAction<ProcessState>,
-		) => void processes.push(payload),
-
-		addNewProcess: (
-			{ processes },
-			{ payload }: PayloadAction<AgcKind>,
-		) =>
-			void processes.push({
-				id: crypto.randomUUID(),
-				name: chooseUniqueName(
-					processes.map(({ name }) => name),
-					'new process',
-				),
-				agc: payload,
-				direm: 0,
-				activity_level: 0,
-				heat: {
-					imported: {
-						amount: 0,
-						emissionFactor: 0,
-					},
-					exported: {
-						amount: 0,
-						emissionFactor: 0,
-					},
-				},
-				wasteGas: {
-					imported: {
-						amount: 0,
-						emissionFactor: EFNG,
-					},
-					exported: {
-						amount: 0,
-						emissionFactor: EFNG,
-					},
-				},
-				precursors: {},
-				// results
-				// TODO: call calc?
-				attrHeat: 0,
-				attrWg: 0,
-				attr: ZeroEmission,
-			}),
-
-		updateProcessName: (
-			{ processes },
-			{
-				payload: { pid, name },
-			}: PayloadAction<{
-				pid: string
-				name: string
-			}>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === pid,
-			)
-			if (i !== -1) processes[i].name = name
-		},
-
-		updateDirem: (
-			{ processes },
-			{
-				payload: { pid, direm },
-			}: PayloadAction<{
-				pid: string
-				direm: number
-			}>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === pid,
-			)
-			if (i !== -1) {
-				processes[i].direm = direm
-				calcProcess(processes[i])
-			}
-		},
-
-		updateActivityLevel: (
-			{ processes },
-			{
-				payload: { pid, activity_level },
-			}: PayloadAction<{
-				pid: string
-				activity_level: number
-			}>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === pid,
-			)
-			if (i !== -1) {
-				processes[i].activity_level = activity_level
-				calcProcess(processes[i])
-			}
-		},
-
-		updateImportedMeasurableHeatAmount: (
-			{ processes },
-			{
-				payload: { pid, amount },
-			}: PayloadAction<{
-				pid: string
-				amount: number
-			}>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === pid,
-			)
-			if (i !== -1) {
-				processes[i].heat.imported.amount = amount
-				calcProcess(processes[i])
-			}
-		},
-
-		updateImportedMeasurableHeatEf: (
-			{ processes },
-			{
-				payload: { pid, ef },
-			}: PayloadAction<{
-				pid: string
-				ef: number
-			}>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === pid,
-			)
-			if (i !== -1) {
-				processes[i].heat.imported.emissionFactor =
-					ef
-				calcProcess(processes[i])
-			}
-		},
-
-		updateExportedMeasurableHeatAmount: (
-			{ processes },
-			{
-				payload: { pid, amount },
-			}: PayloadAction<{
-				pid: string
-				amount: number
-			}>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === pid,
-			)
-			if (i !== -1) {
-				processes[i].heat.exported.amount = amount
-				calcProcess(processes[i])
-			}
-		},
-
-		updateExportedMeasurableHeatEf: (
-			{ processes },
-			{
-				payload: { pid, ef },
-			}: PayloadAction<{
-				pid: string
-				ef: number
-			}>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === pid,
-			)
-			if (i !== -1) {
-				processes[i].heat.exported.emissionFactor =
-					ef
-				calcProcess(processes[i])
-			}
-		},
-
-		updateImportedWasteGasAmount: (
-			{ processes },
-			{
-				payload: { pid, amount },
-			}: PayloadAction<{
-				pid: string
-				amount: number
-			}>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === pid,
-			)
-			if (i !== -1) {
-				processes[i].wasteGas.imported.amount =
-					amount
-				calcProcess(processes[i])
-			}
-		},
-
-		updateExportedWasteGasAmount: (
-			{ processes },
-			{
-				payload: { pid, amount },
-			}: PayloadAction<{
-				pid: string
-				amount: number
-			}>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === pid,
-			)
-			if (i !== -1) {
-				processes[i].wasteGas.exported.amount =
-					amount
-				calcProcess(processes[i])
-			}
-		},
-
-		addPrecursorToProcess: (
-			{ processes },
-			{
-				payload: { pid, ppid },
-			}: PayloadAction<{
-				pid: string
-				ppid: string
-			}>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === pid,
-			)
-			if (i !== -1) {
-				processes[i].precursors[ppid] = {
-					amount: 0,
-				}
-				calcProcess(processes[i])
-			}
-		},
-
-		updatePrecursorAmount: (
-			{ processes },
-			{
-				payload: { pid, ppid, amount },
-			}: PayloadAction<{
-				pid: string
-				ppid: string
-				amount: number
-			}>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === pid,
-			)
-			if (i !== -1) {
-				processes[i].precursors[ppid].amount =
-					amount
-				calcProcess(processes[i])
-			}
-		},
-
-		removePrecursorFromProcess: (
-			{ processes },
-			{
-				payload: { pid, ppid },
-			}: PayloadAction<{
-				pid: string
-				ppid: string
-			}>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === pid,
-			)
-			if (i !== -1) {
-				delete processes[i].precursors[ppid]
-				calcProcess(processes[i])
-			}
-		},
-
-		removeProcess: (
-			{ processes },
-			{ payload }: PayloadAction<string>,
-		) => {
-			const i = processes.findIndex(
-				({ id }) => id === payload,
-			)
-			if (i !== -1) processes.splice(i, 1)
-		},
-
-		addPrecursor: (
-			{ precursors },
-			{ payload }: PayloadAction<PrecursorState>,
-		) => void precursors.push(payload),
-
-		addNewPrecursor: (
-			{ precursors },
-			{ payload }: PayloadAction<AgcKind>,
-		) =>
-			void precursors.push({
-				id: crypto.randomUUID(),
-				name: chooseUniqueName(
-					precursors.map(({ name }) => name),
-					'new precursor',
-				),
-				agc: payload,
-				see: ZeroEmission,
-			}),
-
-		updatePrecursorName: (
-			{ precursors },
-			{
-				payload: { ppid, name },
-			}: PayloadAction<{
-				ppid: string
-				name: string
-			}>,
-		) => {
-			const i = precursors.findIndex(
-				({ id }) => id === ppid,
-			)
-			if (i !== -1) precursors[i].name = name
-		},
-
-		updatePrecursorDirectSee: (
-			{ precursors, processes },
-			{
-				payload: { ppid, see_d },
-			}: PayloadAction<{
-				ppid: string
-				see_d: number
-			}>,
-		) => {
-			const i = precursors.findIndex(
-				({ id }) => id === ppid,
-			)
-			if (i !== -1) {
-				precursors[i].see.direct = see_d
-				processes.forEach(calcProcess)
-			}
-		},
-
-		updatePrecursorIndirectSee: (
-			{ precursors, processes },
-			{
-				payload: { ppid, see_i },
-			}: PayloadAction<{
-				ppid: string
-				see_i: number
-			}>,
-		) => {
-			const i = precursors.findIndex(
-				({ id }) => id === ppid,
-			)
-			if (i !== -1) {
-				precursors[i].see.indirect = see_i
-				processes.forEach(calcProcess)
-			}
-		},
-
-		removePrecursor: (
-			{ processes, precursors },
-			{ payload }: PayloadAction<string>,
-		) => {
-			const i = precursors.findIndex(
-				({ id }) => id === payload,
-			)
-			if (i !== -1) precursors.splice(i, 1)
-			processes.forEach(p =>
-				Object.entries(p.precursors)
-					.map(([pp]) => pp)
-					.filter(k => k === payload)
-					.forEach(
-						pp => (
-							delete p.precursors[pp],
-							calcProcess(p)
-						),
-					),
-			)
-		},
-
-		addNewEmInst: ({ eminst }) =>
-			void eminst.push({
-				id: crypto.randomUUID(),
-				method: 'mass-balance',
-				name: chooseUniqueName(
-					eminst.map(({ name }) => name),
-					'new stream',
-				),
-				ad: 0,
-				adUnit: 't',
-				ncv: 0,
-			}),
-
-		addNewAgc: (
-			{ agc },
-			{ payload }: PayloadAction<AgcKind>,
-		) =>
-			void agc.push({
-				id: crypto.randomUUID(),
-				kind: payload,
-				routes: [],
-			}),
-
-		updateAgcRoute: (
-			{ agc },
-			{
-				payload: { aid, routeIdx, route },
-			}: PayloadAction<{
-				aid: string
-				routeIdx: number
-				route: string
-			}>,
-		) => {
-			const i = agc.findIndex(({ id }) => id === aid)
-			if (i !== -1) {
-				agc[i].routes[routeIdx] = route
-			}
-		},
-
-		removeAgc: (
-			{ agc },
-			{ payload }: PayloadAction<string>,
-		) => {
-			const i = agc.findIndex(
-				({ id }) => id === payload,
-			)
-			if (i !== -1) agc.splice(i, 1)
-		},
-	},
+	initialState: nemesiaInit,
+	reducers: {},
 })
-
-const calcProcess = (p: ProcessState) => calcAttr(p)
-
-const calcAttr = (p: ProcessState) => {
-	p.attrHeat =
-		totalUsage(p.heat.imported) -
-		totalUsage(p.heat.exported)
-	p.attrWg =
-		totalUsage(p.wasteGas.imported) -
-		totalUsage(p.wasteGas.exported) * CORR
-
-	p.attr = {
-		direct: relu(p.direm + p.attrHeat + p.attrWg),
-		indirect: 0,
-	}
-}
-
-export const findPrecursorById = (
-	pps: Array<PrecursorState>,
-	id: string,
-) => {
-	const i = pps.findIndex(pp => pp.id === id)
-	return i !== -1 ? pps[i] : null
-}
-
-export const precursorMapToArray = (
-	pps: Array<PrecursorState>,
-	pp: Record<string, PrecursorUsage>,
-) =>
-	Object.keys(pp)
-		.map(k => findPrecursorById(pps, k))
-		.filter((v): v is PrecursorState => v !== null)
-
-export const precursorMapToUsageArray = (
-	pps: Array<PrecursorState>,
-	pp: Record<string, PrecursorUsage>,
-) =>
-	Object.entries(pp)
-		.map(([k, v]) => [findPrecursorById(pps, k), v])
-		.filter(
-			(v): v is [PrecursorState, PrecursorUsage] =>
-				v[0] !== null,
-		)
 
 export const chooseUniqueName = (
 	nameSet: Array<string>,
@@ -620,32 +215,6 @@ export const chooseUniqueName = (
 }
 
 export const {
-	actions: {
-		addNewAgc,
-		addNewEmInst,
-		addNewPrecursor,
-		addNewProcess,
-		addPrecursor,
-		addPrecursorToProcess,
-		addProcess,
-		removeAgc,
-		removePrecursor,
-		removePrecursorFromProcess,
-		removeProcess,
-		updateActivityLevel,
-		updateAgcRoute,
-		updateDirem,
-		updateExportedMeasurableHeatAmount,
-		updateExportedMeasurableHeatEf,
-		updateExportedWasteGasAmount,
-		updateImportedMeasurableHeatAmount,
-		updateImportedMeasurableHeatEf,
-		updateImportedWasteGasAmount,
-		updatePrecursorAmount,
-		updatePrecursorDirectSee,
-		updatePrecursorIndirectSee,
-		updatePrecursorName,
-		updateProcessName,
-	},
+	actions: {},
 	reducer,
 } = cbamSlice

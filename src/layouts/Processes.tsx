@@ -19,7 +19,6 @@ import {
 	updateActivityLevel,
 	updateProcessName,
 	addPrecursorToProcess,
-	findPrecursorById,
 	removePrecursorFromProcess,
 	updatePrecursorAmount,
 	updateImportedMeasurableHeatAmount,
