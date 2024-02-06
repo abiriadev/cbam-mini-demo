@@ -1,4 +1,4 @@
-import { selectNemesia } from '@/calc'
+import { calc } from '@/calc'
 import { CbamState } from '@/store/cbam'
 import { RootState } from '@/store'
 import { initialState } from '@/store/cbam'
@@ -8,8 +8,6 @@ const genRootState = (cbam: CbamState): RootState => ({
 	environment: { state: 'generated', isIframe: false },
 })
 
-test('A', () => {
-	expect(
-		selectNemesia(genRootState(initialState)),
-	).toHaveProperty('s2.list.length', 0)
+it('A', () => {
+	expect(calc(initialState)).toHaveProperty('s2.list', [])
 })

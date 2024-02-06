@@ -196,12 +196,10 @@ export const empty = {
 
 export const selectNemesia = ({
 	cbam,
-	environment,
+	environment: { state },
 }: RootState) =>
-	environment.state === 'generated' ? calc(cbam) : empty
+	state === 'generated' ? calc(cbam) : empty
 
 export const calc = (cbam: CbamState) => {
-	const a = {}
-
-	return a
+	return cbam
 }
