@@ -1,5 +1,6 @@
 import { nemesiaInit } from './data'
 import { RootState } from './store'
+import { CbamState } from './store/cbam'
 
 export interface Nemesia {
 	a_1: {
@@ -153,7 +154,7 @@ export interface Nemesia {
 	}
 }
 
-const empty = {
+export const empty = {
 	a_1: {
 		start: new Date(),
 		end: new Date(),
@@ -197,4 +198,10 @@ export const selectNemesia = ({
 	cbam,
 	environment,
 }: RootState) =>
-	environment.state === 'generated' ? nemesiaInit : empty
+	environment.state === 'generated' ? calc(cbam) : empty
+
+export const calc = (cbam: CbamState) => {
+	const a = {}
+
+	return a
+}
