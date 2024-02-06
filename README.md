@@ -22,3 +22,17 @@ $ npm install
 $ npm run build
 $ npm run preview
 ```
+
+## Stack Index
+
+-   Ant Design
+-   Docker
+-   Jest
+-   NGINX
+-   OpenAPI
+-   RTK
+-   React
+-   SWC
+-   TailwindCSS
+-   TypeScript
+-   Vite
