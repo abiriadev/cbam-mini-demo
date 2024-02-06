@@ -1,0 +1,20 @@
+{
+	"$schema": "https://json.schemastore.org/swcrc",
+	"jsc": {
+		"parser": {
+			"syntax": "typescript"
+		},
+		"baseUrl": ".",
+		"target": "es2022"
+		"paths": {
+			"@/*": ["./src/*"],
+			"@components/*": ["./src/components/*"],
+			"@layouts/*": ["./src/layouts/*"]
+		},
+	},
+	"module": {
+		"type": "es6",
+		"resolveFully": true,
+	},
+	"sourceMaps": true
+}
