@@ -30,6 +30,7 @@ $ npm run preview
 -   Jest
 -   NGINX
 -   OpenAPI
+-   PNPM
 -   RTK
 -   React
 -   SWC
