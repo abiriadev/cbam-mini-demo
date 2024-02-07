@@ -11,3 +11,11 @@ const genRootState = (cbam: CbamState): RootState => ({
 it('A', () => {
 	expect(calc(initialState)).toHaveProperty('s2.list', [])
 })
+
+// it('should produce same output as the sheet', () => {
+// 	expect(calc(initialState)).toEqual({
+// 		{
+//
+// 		}
+// 	})
+// })

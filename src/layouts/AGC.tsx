@@ -1,35 +1,24 @@
 import {
 	Button,
 	Dropdown,
-	Flex,
 	Input,
 	Popconfirm,
-	Table,
 	Typography,
 	theme,
 } from 'antd'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/store'
+import { useSelector } from 'react-redux'
 import {
 	DeleteOutlined,
 	DownOutlined,
 } from '@ant-design/icons'
-import {
-	AgcKind,
-	AgcKindSet,
-	addNewAgc,
-} from '@/store/cbam'
+import { AgcKindSet } from '@/store/cbam'
 import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
 
 export const AGC = ({ id }: { id?: string }) => {
-	const { agc } = useSelector(
-		({ cbam }: RootState) => cbam,
-	)
 	const nemesia = useSelector(selectNemesia).a_4_1
 
 	const { token } = theme.useToken()
-	const dispatch = useDispatch()
 
 	return (
 		<TitledTable
@@ -43,10 +32,6 @@ export const AGC = ({ id }: { id?: string }) => {
 							key: k,
 							label: k,
 						})),
-						onClick: ({ key }) =>
-							dispatch(
-								addNewAgc(key as AgcKind),
-							),
 					}}
 				>
 					<Button
@@ -82,7 +67,7 @@ export const AGC = ({ id }: { id?: string }) => {
 						),
 					})),
 				{
-					render: (_, { id }) => (
+					render: _ => (
 						<Popconfirm
 							title="Delete 1 process"
 							description="Are you sure to delete this process?"

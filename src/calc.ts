@@ -154,7 +154,7 @@ export interface Nemesia {
 	}
 }
 
-export const empty = {
+export const empty: Nemesia = {
 	a_1: {
 		start: new Date(),
 		end: new Date(),
@@ -197,9 +197,9 @@ export const empty = {
 export const selectNemesia = ({
 	cbam,
 	environment: { state },
-}: RootState) =>
+}: RootState): Nemesia =>
 	state === 'generated' ? calc(cbam) : empty
 
-export const calc = (cbam: CbamState) => {
-	return cbam
+export const calc = (cbam: CbamState): Nemesia => {
+	return empty
 }

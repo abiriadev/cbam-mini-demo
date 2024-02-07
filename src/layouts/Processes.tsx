@@ -11,23 +11,7 @@ import {
 	message,
 	theme,
 } from 'antd'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '@/store'
-import {
-	removeProcess,
-	updateDirem,
-	updateActivityLevel,
-	updateProcessName,
-	addPrecursorToProcess,
-	removePrecursorFromProcess,
-	updatePrecursorAmount,
-	updateImportedMeasurableHeatAmount,
-	updateImportedMeasurableHeatEf,
-	updateExportedMeasurableHeatAmount,
-	updateExportedMeasurableHeatEf,
-	updateImportedWasteGasAmount,
-	updateExportedWasteGasAmount,
-} from '@/store/cbam'
+import { useSelector } from 'react-redux'
 import {
 	DeleteOutlined,
 	DownOutlined,
@@ -38,10 +22,6 @@ import { selectNemesia } from '@/calc'
 export const Processes = () => {
 	const { token } = theme.useToken()
 
-	const { processes, precursors: pps } = useSelector(
-		(st: RootState) => st.cbam,
-	)
-	const dispatch = useDispatch()
 	const nemesia = useSelector(selectNemesia).d
 
 	return (
@@ -79,18 +59,7 @@ export const Processes = () => {
 						title: 'Name',
 						dataIndex: 'name',
 						render: (v, { id }) => (
-							<Input
-								value={v}
-								onChange={ev =>
-									dispatch(
-										updateProcessName({
-											pid: id,
-											name: ev.target
-												.value,
-										}),
-									)
-								}
-							/>
+							<Input value={v} />
 						),
 					},
 					{
@@ -101,14 +70,6 @@ export const Processes = () => {
 								value={v}
 								controls={false}
 								addonAfter="eCO2t"
-								onChange={direm =>
-									dispatch(
-										updateDirem({
-											pid: id,
-											direm,
-										}),
-									)
-								}
 							/>
 						),
 					},
@@ -120,16 +81,6 @@ export const Processes = () => {
 								value={v}
 								controls={false}
 								addonAfter="t"
-								onChange={activity_level =>
-									dispatch(
-										updateActivityLevel(
-											{
-												pid: id,
-												activity_level,
-											},
-										),
-									)
-								}
 							/>
 						),
 					},
@@ -153,31 +104,11 @@ export const Processes = () => {
 									value={amount}
 									controls={false}
 									addonAfter="TJ"
-									onChange={amount =>
-										dispatch(
-											updateImportedMeasurableHeatAmount(
-												{
-													pid: id,
-													amount: amount!,
-												},
-											),
-										)
-									}
 								/>
 								<InputNumber
 									value={emissionFactor}
 									controls={false}
 									addonAfter="tCO2e/TJ"
-									onChange={ef =>
-										dispatch(
-											updateImportedMeasurableHeatEf(
-												{
-													pid: id,
-													ef: ef!,
-												},
-											),
-										)
-									}
 								/>
 							</Space>
 						),
@@ -202,31 +133,11 @@ export const Processes = () => {
 									value={amount}
 									controls={false}
 									addonAfter="TJ"
-									onChange={amount =>
-										dispatch(
-											updateExportedMeasurableHeatAmount(
-												{
-													pid: id,
-													amount: amount!,
-												},
-											),
-										)
-									}
 								/>
 								<InputNumber
 									value={emissionFactor}
 									controls={false}
 									addonAfter="tCO2e/TJ"
-									onChange={ef =>
-										dispatch(
-											updateExportedMeasurableHeatEf(
-												{
-													pid: id,
-													ef: ef!,
-												},
-											),
-										)
-									}
 								/>
 							</Space>
 						),
@@ -243,16 +154,6 @@ export const Processes = () => {
 								value={v}
 								controls={false}
 								addonAfter="TJ"
-								onChange={amount =>
-									dispatch(
-										updateImportedWasteGasAmount(
-											{
-												pid: id,
-												amount,
-											},
-										),
-									)
-								}
 							/>
 						),
 					},
@@ -268,16 +169,6 @@ export const Processes = () => {
 								value={v}
 								controls={false}
 								addonAfter="TJ"
-								onChange={amount =>
-									dispatch(
-										updateExportedWasteGasAmount(
-											{
-												pid: id,
-												amount,
-											},
-										),
-									)
-								}
 							/>
 						),
 					},
@@ -286,14 +177,6 @@ export const Processes = () => {
 							<Popconfirm
 								title="Delete 1 process"
 								description="Are you sure to delete this process?"
-								onConfirm={() =>
-									dispatch(
-										removeProcess(id),
-									) &&
-									message.success(
-										'1 process has been deleted',
-									)
-								}
 							>
 								<Button
 									danger
@@ -329,7 +212,7 @@ export const Processes = () => {
 												'click',
 											]}
 											menu={{
-												items: pps.map(
+												items: [].map(
 													({
 														name,
 														id,
@@ -338,17 +221,6 @@ export const Processes = () => {
 														label: name,
 													}),
 												),
-												onClick: ({
-													key,
-												}) =>
-													dispatch(
-														addPrecursorToProcess(
-															{
-																pid: id,
-																ppid: key,
-															},
-														),
-													),
 											}}
 										>
 											<Button
@@ -391,17 +263,6 @@ export const Processes = () => {
 													false
 												}
 												addonAfter="t"
-												onChange={amount =>
-													dispatch(
-														updatePrecursorAmount(
-															{
-																pid: id,
-																ppid,
-																amount,
-															},
-														),
-													)
-												}
 											/>
 										),
 									},
@@ -414,14 +275,6 @@ export const Processes = () => {
 												title="Remove 1 precursor"
 												description="Are you sure to remove this precursor from the process?"
 												onConfirm={() =>
-													dispatch(
-														removePrecursorFromProcess(
-															{
-																pid: id,
-																ppid,
-															},
-														),
-													) &&
 													message.success(
 														'1 precursor has been removed from a process',
 													)

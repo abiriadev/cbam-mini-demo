@@ -9,19 +9,12 @@ import {
 	Typography,
 	theme,
 } from 'antd'
-import { addNewEmInst } from '@/store/cbam'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/store'
+import { useSelector } from 'react-redux'
 import { selectNemesia } from '@/calc'
 
 export const PFC = ({ id }: { id: string }) => {
 	const { token } = theme.useToken()
-	const { eminst } = useSelector(
-		({ cbam }: RootState) => cbam,
-	)
 	const nemesia = useSelector(selectNemesia).b_1
-
-	const dispatch = useDispatch()
 
 	return (
 		<Table
@@ -35,9 +28,6 @@ export const PFC = ({ id }: { id: string }) => {
 					<Button
 						type="primary"
 						icon={<PlusOutlined />}
-						onClick={() =>
-							dispatch(addNewEmInst())
-						}
 					>
 						<Typography.Text
 							strong
@@ -78,12 +68,6 @@ export const PFC = ({ id }: { id: string }) => {
 				{
 					title: 'Name',
 					dataIndex: 'name',
-					render: (v, { id }) => (
-						<Input
-							value={v}
-							// onChange={ev => dispatch(null)}
-						/>
-					),
 				},
 				{
 					title: 'Activity data',

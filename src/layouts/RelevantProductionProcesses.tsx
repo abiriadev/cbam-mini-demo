@@ -7,21 +7,14 @@ import {
 	message,
 	theme,
 } from 'antd'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '@/store'
-import {
-	addNewProcess,
-	removeProcess,
-	updateProcessName,
-	AgcKindSet,
-	AgcKind,
-} from '@/store/cbam'
+import { useSelector } from 'react-redux'
 import {
 	DeleteOutlined,
 	DownOutlined,
 } from '@ant-design/icons'
 import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
+import { AgcKindSet } from '@/store/cbam'
 
 export const RelevantProductionProcesses = ({
 	id,
@@ -30,10 +23,6 @@ export const RelevantProductionProcesses = ({
 }) => {
 	const { token } = theme.useToken()
 
-	const { processes, precursors: pps } = useSelector(
-		(st: RootState) => st.cbam,
-	)
-	const dispatch = useDispatch()
 	const nemesia = useSelector(selectNemesia).a_4_2
 
 	return (
@@ -50,12 +39,6 @@ export const RelevantProductionProcesses = ({
 								key: k,
 								label: k,
 							})),
-							onClick: ({ key }) =>
-								dispatch(
-									addNewProcess(
-										key as AgcKind,
-									),
-								),
 						}}
 					>
 						<Button
@@ -79,18 +62,7 @@ export const RelevantProductionProcesses = ({
 						title: 'Name',
 						dataIndex: 'name',
 						render: (v, { id }) => (
-							<Input
-								value={v}
-								onChange={ev =>
-									dispatch(
-										updateProcessName({
-											pid: id,
-											name: ev.target
-												.value,
-										}),
-									)
-								}
-							/>
+							<Input value={v} />
 						),
 					},
 					{
@@ -114,9 +86,6 @@ export const RelevantProductionProcesses = ({
 								title="Delete 1 process"
 								description="Are you sure to delete this process?"
 								onConfirm={() =>
-									dispatch(
-										removeProcess(id),
-									) &&
 									message.success(
 										'1 process has been deleted',
 									)

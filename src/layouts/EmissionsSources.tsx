@@ -2,16 +2,13 @@ import { PlusOutlined } from '@ant-design/icons'
 import {
 	Button,
 	Flex,
-	Input,
 	InputNumber,
 	Select,
 	Table,
 	Typography,
 	theme,
 } from 'antd'
-import { addNewEmInst } from '@/store/cbam'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/store'
+import { useSelector } from 'react-redux'
 import { selectNemesia } from '@/calc'
 
 export const EmissionsSources = ({
@@ -20,12 +17,7 @@ export const EmissionsSources = ({
 	id: string
 }) => {
 	const { token } = theme.useToken()
-	const { eminst } = useSelector(
-		({ cbam }: RootState) => cbam,
-	)
 	const nemesia = useSelector(selectNemesia).b_1
-
-	const dispatch = useDispatch()
 
 	return (
 		<Table
@@ -39,9 +31,6 @@ export const EmissionsSources = ({
 					<Button
 						type="primary"
 						icon={<PlusOutlined />}
-						onClick={() =>
-							dispatch(addNewEmInst())
-						}
 					>
 						<Typography.Text
 							strong
@@ -82,17 +71,11 @@ export const EmissionsSources = ({
 				{
 					title: 'Name',
 					dataIndex: 'name',
-					render: (v, { id }) => (
-						<Input
-							value={v}
-							// onChange={ev => dispatch(null)}
-						/>
-					),
 				},
 				{
 					title: 'Activity data',
 					dataIndex: 'ad',
-					render: (v, { id }) => (
+					render: (v, _) => (
 						<InputNumber
 							value={v}
 							controls={false}
@@ -118,7 +101,7 @@ export const EmissionsSources = ({
 				{
 					title: 'NCV',
 					dataIndex: 'ncv',
-					render: (v, { id }) => (
+					render: v => (
 						<InputNumber
 							value={v}
 							controls={false}

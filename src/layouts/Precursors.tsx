@@ -10,16 +10,8 @@ import {
 	message,
 	theme,
 } from 'antd'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '@/store'
-import {
-	addNewPrecursor,
-	updatePrecursorName,
-	removePrecursor,
-	AgcKindSet,
-	AgcKind,
-	cc,
-} from '@/store/cbam'
+import { useSelector } from 'react-redux'
+import { AgcKindSet, cc } from '@/store/cbam'
 import {
 	DeleteOutlined,
 	DownOutlined,
@@ -29,10 +21,6 @@ import { selectNemesia } from '@/calc'
 export const Precursors = ({ id }: { id?: string }) => {
 	const { token } = theme.useToken()
 
-	const { precursors } = useSelector(
-		(st: RootState) => st.cbam,
-	)
-	const dispatch = useDispatch()
 	const nemesia = useSelector(selectNemesia).a_5
 
 	return (
@@ -52,12 +40,6 @@ export const Precursors = ({ id }: { id?: string }) => {
 										label: k,
 									}),
 								),
-								onClick: ({ key }) =>
-									dispatch(
-										addNewPrecursor(
-											key as AgcKind,
-										),
-									),
 							}}
 						>
 							<Button
@@ -84,21 +66,7 @@ export const Precursors = ({ id }: { id?: string }) => {
 						title: 'Name',
 						dataIndex: 'name',
 						render: (v, { id }) => (
-							<Input
-								value={v}
-								onChange={ev =>
-									dispatch(
-										updatePrecursorName(
-											{
-												ppid: id,
-												name: ev
-													.target
-													.value,
-											},
-										),
-									)
-								}
-							/>
+							<Input value={v} />
 						),
 					},
 					{
@@ -134,9 +102,6 @@ export const Precursors = ({ id }: { id?: string }) => {
 								title="Delete 1 precursor"
 								description="Are you sure to delete this precursor?"
 								onConfirm={() =>
-									dispatch(
-										removePrecursor(id),
-									) &&
 									message.success(
 										'1 precursor has been deleted',
 									)

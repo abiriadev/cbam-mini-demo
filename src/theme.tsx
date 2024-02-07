@@ -1,7 +1,7 @@
 import { ThemeConfig } from 'antd'
 
 // const primary = '#13B48B'
-const primary = '#23544D'
+const primary = '#185959'
 
 const white = '#ffffff'
 

@@ -1,52 +1,15 @@
-import { Table, Typography } from 'antd'
+import { Table } from 'antd'
 import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
 import { fix3, sum } from '@/utils'
 import { TitledTable } from '@/components/TitledTable'
 import { selectNemesia } from '@/calc'
-
-interface GhgEmissionResult {
-	id: string
-	name: string
-	unit: string
-	direm: number
-	heat: number
-	wg: number
-	totalDirem: number
-	indirect: number
-}
 
 export const GhgEmissions = ({
 	id: id,
 }: {
 	id?: string
 }) => {
-	const { processes } = useSelector(
-		(st: RootState) => st.cbam,
-	)
 	const nemesia = useSelector(selectNemesia).s1_2_1
-
-	const em: Array<GhgEmissionResult> = processes.map(
-		({
-			id,
-			name,
-			direm,
-			attrWg,
-			attrHeat,
-			attr: { direct, indirect },
-		}) => {
-			return {
-				id,
-				name,
-				unit: 'tCO2e',
-				direm,
-				heat: attrHeat,
-				wg: attrWg,
-				totalDirem: direct,
-				indirect,
-			}
-		},
-	)
 
 	return (
 		<TitledTable
