@@ -201,5 +201,22 @@ export const selectNemesia = ({
 	state === 'generated' ? calc(cbam) : empty
 
 export const calc = (cbam: CbamState): Nemesia => {
-	return empty
+	const res: Partial<Nemesia> = {}
+
+	res.a_1 = cbam.a_1
+
+	res.a_2 = cbam.a_2
+
+	res.a_3_1 = cbam.a_3_1
+	res.a_3_2 = cbam.a_3_2
+	res.a_3_3 = cbam.a_3_3
+
+	res.a_4_1 = { ...cbam.a_4_1, precursors: [] }
+	res.a_4_2 = cbam.a_4_2
+
+	res.a_5 = cbam.a_5
+
+	// res.b_1 = cbam.b_1
+
+	return res as Nemesia
 }
