@@ -18,11 +18,14 @@ describe('emInst', () => {
 			emInstCombustion({
 				ad: 100,
 				ef: 2,
+				ncv: 0,
 				bioc: 0,
 			}),
 		).toEqual({
 			fossil: 200,
 			bio: 0,
+			ec_fossil: 0,
+			ec_bio: 0,
 		})
 	})
 
@@ -31,11 +34,14 @@ describe('emInst', () => {
 			emInstCombustion({
 				ad: 100,
 				ef: 2,
+				ncv: 0,
 				bioc: 20,
 			}),
 		).toEqual({
 			fossil: 160,
 			bio: 40,
+			ec_fossil: 0,
+			ec_bio: 0,
 		})
 	})
 })
