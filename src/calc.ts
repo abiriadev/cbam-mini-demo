@@ -79,6 +79,13 @@ export interface Nemesia {
 			content_bio: number
 		}>
 	}
+	c_2_a: {
+		co2: number
+		biomass: number
+		n2o: number
+		pfc: number
+		direct: number
+	}
 	d: {
 		list: Array<{
 			id: string
@@ -187,6 +194,13 @@ export const empty: Nemesia = {
 	a_4_2: { list: [] },
 	a_5: { list: [] },
 	b_1: { list: [] },
+	c_2_a: {
+		co2: 0,
+		biomass: 0,
+		n2o: 0,
+		pfc: 0,
+		direct: 0,
+	},
 	d: { list: [] },
 	s1_2_1: { list: [] },
 	s1_2_2_1: { list: [] },
@@ -215,6 +229,9 @@ export const calc = (cbam: CbamState): Nemesia => {
 
 	res.a_5 = cbam.a_5
 
+	let acc = 0
+	let acc_bio = 0
+
 	res.b_1 = {
 		list: cbam.b_1.list.map(r => {
 			const res = emInstCombustion({
@@ -224,6 +241,9 @@ export const calc = (cbam: CbamState): Nemesia => {
 				oxf: 100,
 				bioc: 0,
 			})
+
+			acc += res.fossil
+			acc_bio += res.bio
 
 			return {
 				id: r.id,
@@ -237,6 +257,14 @@ export const calc = (cbam: CbamState): Nemesia => {
 				content_bio: res.ec_bio,
 			}
 		}),
+	}
+
+	res.c_2_a = {
+		co2: acc,
+		biomass: acc_bio,
+		n2o: 0,
+		pfc: 0,
+		direct: acc,
 	}
 
 	res.d = { list: [] }

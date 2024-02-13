@@ -9,7 +9,7 @@ const testIframe = () => window.self !== window.top
 
 const initialState: Environment = {
 	isIframe: testIframe(),
-	state: 'empty',
+	state: 'generated',
 }
 
 export const cbamSlice = createSlice({

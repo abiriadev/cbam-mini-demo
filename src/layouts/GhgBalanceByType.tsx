@@ -1,10 +1,14 @@
+import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
+import { useSelector } from 'react-redux'
 
 export const GhgBalanceByType = ({
 	id,
 }: {
 	id?: string
 }) => {
+	const nemesia = useSelector(selectNemesia).c_2_a
+
 	return (
 		<TitledTable
 			id={id}
@@ -21,36 +25,43 @@ export const GhgBalanceByType = ({
 				},
 				{
 					title: 'Total CO2 emissions',
-					dataIndex: 'tfi',
-					render: () => 12.4,
+					dataIndex: 'co2',
 				},
 				{
 					title: 'Biomass emissions',
-					render: () => 64.43,
+					dataIndex: 'biomass',
 				},
 				{
 					title: 'Total N2O emissions',
-					render: () => 53.4,
+					dataIndex: 'n2o',
 				},
 				{
 					title: 'Total PFC emissions',
-					render: () => 35.3,
+					dataIndex: 'pfc',
 				},
 				{
 					title: 'Total direct emissions',
-					render: () => 3.5,
+					dataIndex: 'direct',
 				},
 				{
 					title: 'Total indirect emissions',
-					render: () => 35.3,
+					dataIndex: 'indirect',
 				},
 				{
 					title: 'Total emissions',
-					render: () => 34.3344,
+					dataIndex: 'total',
 				},
 			]}
 			dataSource={[
-				{ id: '1', fb: 'from sheet B_EmInst' },
+				{
+					id: '1',
+					fb: 'from sheet B_EmInst',
+					co2: nemesia.co2,
+					biomass: nemesia.biomass,
+					n2o: nemesia.n2o,
+					pfc: nemesia.pfc,
+					direct: nemesia.direct,
+				},
 				{ id: '2', fb: 'manual entries' },
 				{ id: '3', fb: 'Results' },
 			]}

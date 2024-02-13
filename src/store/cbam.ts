@@ -1,3 +1,4 @@
+import { nemesiaInit } from '@/data'
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface Emission {
@@ -227,7 +228,7 @@ export const initialState: CbamState = {
 
 export const cbamSlice = createSlice({
 	name: 'cbam',
-	initialState,
+	initialState: nemesiaInit,
 	reducers: {},
 })
 
