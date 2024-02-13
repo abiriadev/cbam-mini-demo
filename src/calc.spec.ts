@@ -18,10 +18,24 @@ describe('emInst', () => {
 			emInstCombustion({
 				ad: 100,
 				ef: 2,
+				bioc: 0,
 			}),
 		).toEqual({
 			fossil: 200,
 			bio: 0,
+		})
+	})
+
+	it('combustion 2', () => {
+		expect(
+			emInstCombustion({
+				ad: 100,
+				ef: 2,
+				bioc: 20,
+			}),
+		).toEqual({
+			fossil: 160,
+			bio: 40,
 		})
 	})
 })

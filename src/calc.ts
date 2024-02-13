@@ -224,6 +224,7 @@ export const calc = (cbam: CbamState): Nemesia => {
 export interface EmInstCombustionInput {
 	ad: number
 	ef: number
+	bioc: number
 }
 
 export interface EmInstCombustionOutput {
@@ -234,7 +235,14 @@ export interface EmInstCombustionOutput {
 export const emInstCombustion = ({
 	ad,
 	ef,
-}: EmInstCombustionInput): EmInstCombustionOutput => ({
-	fossil: ad * ef,
-	bio: 0,
-})
+	bioc,
+}: EmInstCombustionInput): EmInstCombustionOutput => {
+	const bf = bioc / ad
+	const ef_new = ef * (1 - bf)
+	const ef_new_bio = ef * bf
+
+	return {
+		fossil: ad * ef_new,
+		bio: ad * ef_new_bio,
+	}
+}
