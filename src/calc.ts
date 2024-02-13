@@ -249,7 +249,7 @@ export const emInstCombustion = ({
 	return {
 		fossil: ad * ef_new,
 		bio: ad * ef_new_bio,
-		ec_fossil: ncv * bf_1,
-		ec_bio: ncv * bf,
+		ec_fossil: ((ad * ncv) / 1000) * bf_1,
+		ec_bio: ((ad * ncv) / 1000) * bf,
 	}
 }
