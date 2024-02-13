@@ -1,4 +1,3 @@
-import { nemesiaInit } from './data'
 import { RootState } from './store'
 import { CbamState } from './store/cbam'
 
