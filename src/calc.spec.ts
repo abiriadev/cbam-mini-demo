@@ -1,4 +1,8 @@
-import { calc, emInstCombustion } from '@/calc'
+import {
+	EmInstCombustionInput,
+	calc,
+	emInstCombustion,
+} from '@/calc'
 import { CbamState } from '@/store/cbam'
 import { RootState } from '@/store'
 import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to'
@@ -20,14 +24,19 @@ expect.extend({
 })
 
 describe('emInst', () => {
+	const base: EmInstCombustionInput = {
+		ad: 100,
+		ef: 1,
+		ncv: 0,
+		oxf: 100,
+		bioc: 0,
+	}
+
 	it('combustion 1', () => {
 		expect(
 			emInstCombustion({
-				ad: 100,
+				...base,
 				ef: 2,
-				ncv: 0,
-				oxf: 1,
-				bioc: 0,
 			}),
 		).toBeDeepCloseTo({
 			fossil: 200,
@@ -37,13 +46,27 @@ describe('emInst', () => {
 		})
 	})
 
-	it('combustion 2', () => {
+	// 시트에 문제 있음;
+	it.skip('combustion 2', () => {
 		expect(
 			emInstCombustion({
-				ad: 100,
+				...base,
 				ef: 2,
-				ncv: 0,
-				oxf: 1,
+				oxf: 70,
+			}),
+		).toBeDeepCloseTo({
+			fossil: 200,
+			bio: 0,
+			ec_fossil: 0,
+			ec_bio: 0,
+		})
+	})
+
+	it('combustion 3', () => {
+		expect(
+			emInstCombustion({
+				...base,
+				ef: 2,
 				bioc: 20,
 			}),
 		).toBeDeepCloseTo({
@@ -54,13 +77,12 @@ describe('emInst', () => {
 		})
 	})
 
-	it('combustion 3', () => {
+	it('combustion 4', () => {
 		expect(
 			emInstCombustion({
+				...base,
 				ad: 200,
 				ef: 2,
-				ncv: 0,
-				oxf: 1,
 				bioc: 40,
 			}),
 		).toBeDeepCloseTo({
@@ -71,14 +93,11 @@ describe('emInst', () => {
 		})
 	})
 
-	it('combustion 4', () => {
+	it('combustion 5', () => {
 		expect(
 			emInstCombustion({
-				ad: 100,
-				ef: 1,
+				...base,
 				ncv: 123,
-				oxf: 1,
-				bioc: 0,
 			}),
 		).toBeDeepCloseTo({
 			fossil: 100,
@@ -88,13 +107,11 @@ describe('emInst', () => {
 		})
 	})
 
-	it('combustion 5', () => {
+	it('combustion 6', () => {
 		expect(
 			emInstCombustion({
-				ad: 100,
-				ef: 1,
+				...base,
 				ncv: 123,
-				oxf: 1,
 				bioc: 30,
 			}),
 		).toBeDeepCloseTo(

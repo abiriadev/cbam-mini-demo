@@ -243,14 +243,15 @@ export const emInstCombustion = ({
 	oxf,
 	bioc,
 }: EmInstCombustionInput): EmInstCombustionOutput => {
+	const oxfn = oxf / 100
 	const bf = bioc / 100
 	const bf_1 = 1 - bf
 	const ef_new = ef * bf_1
 	const ef_new_bio = ef * bf
 
 	return {
-		fossil: ad * ef_new * oxf,
-		bio: ad * ef_new_bio * oxf,
+		fossil: ad * ef_new * oxfn,
+		bio: ad * ef_new_bio * oxfn,
 		ec_fossil: ((ad * ncv) / 1000) * bf_1,
 		ec_bio: ((ad * ncv) / 1000) * bf,
 	}
