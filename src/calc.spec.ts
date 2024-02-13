@@ -60,4 +60,20 @@ describe('emInst', () => {
 			ec_bio: 0,
 		})
 	})
+
+	it('combustion 4', () => {
+		expect(
+			emInstCombustion({
+				ad: 100,
+				ef: 1,
+				ncv: 123,
+				bioc: 0,
+			}),
+		).toEqual({
+			fossil: 100,
+			bio: 0,
+			ec_fossil: 12.3,
+			ec_bio: 0,
+		})
+	})
 })
