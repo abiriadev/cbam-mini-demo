@@ -241,7 +241,7 @@ export const emInstCombustion = ({
 	ncv,
 	bioc,
 }: EmInstCombustionInput): EmInstCombustionOutput => {
-	const bf = bioc / ad
+	const bf = bioc / 100
 	const bf_1 = 1 - bf
 	const ef_new = ef * bf_1
 	const ef_new_bio = ef * bf
