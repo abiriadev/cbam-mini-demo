@@ -5,7 +5,7 @@ import './index.css'
 import { Provider } from 'react-redux'
 import { store } from './store.ts'
 import { ConfigProvider, ThemeConfig } from 'antd'
-import { theme } from './theme.tsx'
+import { theme } from './theme'
 
 ReactDOM.createRoot(
 	document.getElementById('root')!,
