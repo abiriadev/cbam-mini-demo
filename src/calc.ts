@@ -216,6 +216,35 @@ export const calc = (cbam: CbamState): Nemesia => {
 
 	res.a_5 = cbam.a_5
 
+	res.b_1 = {
+		list: cbam.b_1.list.map(r => {
+			const res = emInstCombustion({
+				ad: r.ad,
+				ef: 1,
+				ncv: r.ncv,
+				oxf: 100,
+				bioc: 0,
+			})
+
+			return {
+				id: r.id,
+				method: r.method,
+				name: r.name,
+				ad: r.ad,
+				ncv: r.ncv,
+				fossil: res.fossil,
+				bio: res.bio,
+				content_fossil: res.ec_fossil,
+				content_bio: res.ec_bio,
+			}
+		}),
+	}
+
+	res.d = { list: [] }
+	res.s1_2_1 = { list: [] }
+	res.s1_2_2_1 = { list: [] }
+	res.s2 = { list: [] }
+
 	// res.b_1 = cbam.b_1
 
 	return res as Nemesia
