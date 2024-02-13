@@ -225,6 +225,7 @@ export interface EmInstCombustionInput {
 	ad: number
 	ef: number
 	ncv: number
+	oxf: number
 	bioc: number
 }
 
@@ -239,6 +240,7 @@ export const emInstCombustion = ({
 	ad,
 	ef,
 	ncv,
+	oxf,
 	bioc,
 }: EmInstCombustionInput): EmInstCombustionOutput => {
 	const bf = bioc / 100
@@ -247,8 +249,8 @@ export const emInstCombustion = ({
 	const ef_new_bio = ef * bf
 
 	return {
-		fossil: ad * ef_new,
-		bio: ad * ef_new_bio,
+		fossil: ad * ef_new * oxf,
+		bio: ad * ef_new_bio * oxf,
 		ec_fossil: ((ad * ncv) / 1000) * bf_1,
 		ec_bio: ((ad * ncv) / 1000) * bf,
 	}
