@@ -26,6 +26,7 @@ describe('emInst', () => {
 				ad: 100,
 				ef: 2,
 				ncv: 0,
+				oxf: 1,
 				bioc: 0,
 			}),
 		).toBeDeepCloseTo({
@@ -42,6 +43,7 @@ describe('emInst', () => {
 				ad: 100,
 				ef: 2,
 				ncv: 0,
+				oxf: 1,
 				bioc: 20,
 			}),
 		).toBeDeepCloseTo({
@@ -58,6 +60,7 @@ describe('emInst', () => {
 				ad: 200,
 				ef: 2,
 				ncv: 0,
+				oxf: 1,
 				bioc: 40,
 			}),
 		).toBeDeepCloseTo({
@@ -74,6 +77,7 @@ describe('emInst', () => {
 				ad: 100,
 				ef: 1,
 				ncv: 123,
+				oxf: 1,
 				bioc: 0,
 			}),
 		).toBeDeepCloseTo({
@@ -90,6 +94,7 @@ describe('emInst', () => {
 				ad: 100,
 				ef: 1,
 				ncv: 123,
+				oxf: 1,
 				bioc: 30,
 			}),
 		).toBeDeepCloseTo(
