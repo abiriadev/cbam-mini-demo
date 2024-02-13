@@ -312,3 +312,38 @@ export const emInstCombustion = ({
 		ec_bio: ((ad * ncv) / 1000) * bf,
 	}
 }
+
+interface Process {
+	id: string
+	direm: number
+	precursors: {
+		purchased: Record<string, number>
+		process: Record<string, number>
+	}
+}
+
+interface PurchasedPrecursor {
+	see: number
+}
+
+interface Processes {
+	list: Array<Process>
+}
+
+interface PurchasedPrecursors {
+	list: Array<PurchasedPrecursor>
+}
+
+const calcProcessSee = (
+	ps: Processes,
+	pps: PurchasedPrecursors,
+) => {
+	for (const process of ps.list) {
+		let acc = 0
+
+		for (const [id, amount] of Object.entries(
+			process.precursors.process,
+		)) {
+		}
+	}
+}
