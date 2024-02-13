@@ -220,3 +220,21 @@ export const calc = (cbam: CbamState): Nemesia => {
 
 	return res as Nemesia
 }
+
+export interface EmInstCombustionInput {
+	ad: number
+	ef: number
+}
+
+export interface EmInstCombustionOutput {
+	fossil: number
+	bio: number
+}
+
+export const emInstCombustion = ({
+	ad,
+	ef,
+}: EmInstCombustionInput): EmInstCombustionOutput => ({
+	fossil: ad * ef,
+	bio: 0,
+})
