@@ -4,6 +4,7 @@ import {
 	createSlice,
 } from '@reduxjs/toolkit'
 import { RootState } from '@/store'
+import { sum } from '@/utils'
 
 export interface Emission {
 	direct: number
@@ -143,7 +144,7 @@ export interface Process {
 }
 
 export interface ProcessDerived extends Process {
-	see: Emission
+	see?: Emission
 }
 
 export interface PurchasedPrecursor {
@@ -152,6 +153,7 @@ export interface PurchasedPrecursor {
 	agc: string
 	country: string
 	routes: Array<string>
+	see: Emission
 }
 
 export interface CbamState {
@@ -167,11 +169,26 @@ export interface CbamState {
 	installation_informations: InstallationInformation
 }
 
+export interface CbamStateDerived {
+	entities: {
+		agcs: Record<Id, Agc>
+		processes: Record<Id, ProcessDerived>
+		purchased_precursors: Record<Id, PurchasedPrecursor>
+	}
+	reporting_period: {
+		start: Date
+		end: Date
+	}
+	installation_informations: InstallationInformation
+}
+
 const a = createSelector(
 	[(s: RootState) => s.cbam.entities],
-	e => {
+	(e: CbamStateDerived['entities']) => {
 		Object.values(e.processes).map(
 			(proc: Process): ProcessDerived => {
+				const see = sum(e.processes) / 123
+
 				return {
 					...proc,
 					see: newEmission(0, 0),
@@ -180,6 +197,37 @@ const a = createSelector(
 		)
 	},
 )
+
+const calcProc = (
+	proc: Process,
+	entities: CbamStateDerived['entities'],
+): ProcessDerived => {
+	// entities.processes[proc]
+
+	const ppcs = sum(
+		Object.entries(
+			proc.included.purchased_precursors,
+		).map(
+			([k, v]) =>
+				entities.purchased_precursors[k].see
+					.direct * v,
+		),
+	)
+
+	const procs = sum(
+		Object.entries(proc.included.processes).map(
+			([k, v]) =>
+				entities.processes[k].see?.direct! * v,
+		),
+	)
+
+	const see = ppcs + procs
+
+	return {
+		...proc,
+		see: newEmission(see, see),
+	}
+}
 
 const initialState: CbamState = {
 	entities: {},
