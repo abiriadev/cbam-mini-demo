@@ -1,5 +1,6 @@
 import { RootState } from './store'
 import { CbamState } from './store/cbam'
+import { sum } from './utils'
 
 export interface Nemesia {
 	a_1: {
@@ -317,8 +318,14 @@ interface Process {
 	id: string
 	direm: number
 	precursors: {
-		purchased: Record<string, number>
-		process: Record<string, number>
+		purchased: Array<{
+			id: string
+			amount: number
+		}>
+		process: Array<{
+			id: string
+			amount: number
+		}>
 	}
 }
 
@@ -334,16 +341,19 @@ interface PurchasedPrecursors {
 	list: Array<PurchasedPrecursor>
 }
 
-const calcProcessSee = (
-	ps: Processes,
-	pps: PurchasedPrecursors,
-) => {
-	for (const process of ps.list) {
-		let acc = 0
+interface Cache<T> {
+	ps: Record<string, T>
+	pps: Record<string, T>
+}
 
-		for (const [id, amount] of Object.entries(
-			process.precursors.process,
-		)) {
-		}
-	}
+const calcProcessSee = (
+	process: Process,
+	pps: PurchasedPrecursors,
+	cache: Map<string, number>,
+) => {
+	sum(
+		process.precursors.process.map(
+			({ id, amount }) => cache.get(id)! * amount,
+		),
+	)
 }
