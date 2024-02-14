@@ -17,3 +17,20 @@ export const relu = (_: number) => Math.max(_, 0)
 
 export const sum = (a: Array<number>) =>
 	a.reduce((a, b) => a + b, 0)
+
+export const chooseUniqueName = (
+	nameSet: Array<string>,
+	desiredName: string,
+) => {
+	let uq = desiredName
+
+	if (!nameSet.includes(uq)) return uq
+
+	for (
+		let i = 1;
+		nameSet.includes((uq = `${desiredName} (${i})`));
+		++i
+	) {}
+
+	return uq
+}

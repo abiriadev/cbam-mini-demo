@@ -1,10 +1,22 @@
 import { nemesiaInit } from '@/data'
-import { createSlice } from '@reduxjs/toolkit'
+import {
+	createSelector,
+	createSlice,
+} from '@reduxjs/toolkit'
+import { RootState } from '@/store'
 
 export interface Emission {
 	direct: number
 	indirect: number
 }
+
+export const newEmission = (
+	direct: number,
+	indirect: number,
+): Emission => ({
+	direct,
+	indirect,
+})
 
 export const ZeroEmission: Emission = {
 	direct: 0,
@@ -74,12 +86,10 @@ export const cc = [
 	'AZ',
 ]
 
-export interface CbamState {
-	a_1: {
-		start: Date
-		end: Date
-	}
-	a_2: {
+type Id = string
+
+export interface InstallationInformation {
+	about: {
 		name: string
 		name_en: string
 		street: string
@@ -95,159 +105,93 @@ export interface CbamState {
 		email: string
 		telephone: string
 	}
-	a_3_1: {
+	verifier1: {
 		name: string
 		street: string
 		city: string
 		zip: string
 		country: string
 	}
-	a_3_2: {
+	verifier2: {
 		name: string
 		email: string
 		telephone: string
 		fax: string
 	}
-	a_3_3: {
+	verifier3: {
 		state: string
 		accreditation: string
 		reg: string
 	}
-	a_4_1: {
-		list: Array<{
-			id: string
-			kind: string
-			routes_kind: string
-			routes: Array<string>
-		}>
-	}
-	a_4_2: {
-		list: Array<{
-			id: string
-			name: string
-			agc: string
-			included: Array<string>
-		}>
-	}
-	a_5: {
-		list: Array<{
-			id: string
-			name: string
-			agc: string
-			country: string
-			routes: Array<string>
-		}>
-	}
-	b_1: {
-		list: Array<{
-			id: string
-			method: string
-			name: string
-			ad: number
-			ncv: number
-		}>
-	}
-	d: {
-		list: Array<{
-			id: string
-			name: string
-			direm: number
-			activity_level: number
-			heat: {
-				imported: {
-					amount: number
-					emissionFactor: number
-				}
-				exported: {
-					amount: number
-					emissionFactor: number
-				}
-			}
-			wg: {
-				imported: {
-					amount: number
-				}
-				exported: {
-					amount: number
-				}
-			}
-		}>
-	}
-	s2: {
-		list: Array<{
-			id: string
-			name: string
-			agc: string
-			cn: string
-			product_name: string
-			see_d: number
-			see_i: number
-			see_t: number
-			unit: string
-			share: number
-			source: string
-			ee: number
-		}>
+}
+
+export interface Agc {
+	id: string
+	kind: string
+	routes_kind: string
+	routes: Array<string>
+}
+
+export interface Process {
+	id: string
+	name: string
+	agc: string
+	included: {
+		processes: Record<Id, number>
+		purchased_precursors: Record<Id, number>
 	}
 }
 
-export const initialState: CbamState = {
-	a_1: { start: new Date(), end: new Date() },
-	a_2: {
-		name: '',
-		name_en: '',
-		street: '',
-		economic: '',
-		zip: '',
-		po: '',
-		city: '',
-		country: '',
-		unlocode: '',
-		latitude: '',
-		longitude: '',
-		representative: '',
-		email: '',
-		telephone: '',
+export interface ProcessDerived extends Process {
+	see: Emission
+}
+
+export interface PurchasedPrecursor {
+	id: string
+	name: string
+	agc: string
+	country: string
+	routes: Array<string>
+}
+
+export interface CbamState {
+	entities: {
+		agcs: Record<Id, Agc>
+		processes: Record<Id, Process>
+		purchased_precursors: Record<Id, PurchasedPrecursor>
+	}
+	reporting_period: {
+		start: Date
+		end: Date
+	}
+	installation_informations: InstallationInformation
+}
+
+const a = createSelector(
+	[(s: RootState) => s.cbam.entities],
+	e => {
+		Object.values(e.processes).map(
+			(proc: Process): ProcessDerived => {
+				return {
+					...proc,
+					see: newEmission(0, 0),
+				}
+			},
+		)
 	},
-	a_3_1: {
-		name: '',
-		street: '',
-		city: '',
-		zip: '',
-		country: '',
-	},
-	a_3_2: { name: '', email: '', telephone: '', fax: '' },
-	a_3_3: { state: '', accreditation: '', reg: '' },
-	a_4_1: { list: [] },
-	a_4_2: { list: [] },
-	a_5: { list: [] },
-	b_1: { list: [] },
-	d: { list: [] },
-	s2: { list: [] },
+)
+
+const initialState: CbamState = {
+	entities: {},
+	reporting_period: {},
+	installation_informations: {},
 }
 
 export const cbamSlice = createSlice({
 	name: 'cbam',
-	initialState: nemesiaInit,
+	initialState,
 	reducers: {},
 })
-
-export const chooseUniqueName = (
-	nameSet: Array<string>,
-	desiredName: string,
-) => {
-	let uq = desiredName
-
-	if (!nameSet.includes(uq)) return uq
-
-	for (
-		let i = 1;
-		nameSet.includes((uq = `${desiredName} (${i})`));
-		++i
-	) {}
-
-	return uq
-}
 
 export const {
 	actions: {},
