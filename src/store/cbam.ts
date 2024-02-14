@@ -126,14 +126,12 @@ export interface InstallationInformation {
 }
 
 export interface Agc {
-	id: string
 	kind: string
 	routes_kind: string
 	routes: Array<string>
 }
 
 export interface Process {
-	id: string
 	name: string
 	agc: string
 	included: {
@@ -147,7 +145,6 @@ export interface ProcessDerived extends Process {
 }
 
 export interface PurchasedPrecursor {
-	id: string
 	name: string
 	agc: string
 	country: string
@@ -223,8 +220,15 @@ const calcProc = (
 }
 
 const initialState: CbamState = {
-	entities: {},
-	reporting_period: {},
+	entities: {
+		agcs: {},
+		processes: {},
+		purchased_precursors: {},
+	},
+	reporting_period: {
+		start: new Date(),
+		end: new Date(),
+	},
 	installation_informations: {},
 }
 
@@ -238,3 +242,21 @@ export const {
 	actions: {},
 	reducer,
 } = cbamSlice
+
+export interface CalcAttrInput {
+	wg_i: number
+	wg_e: number
+	direm: number
+}
+
+export interface CalcAttrOutput {
+	se: number
+}
+
+export const calcAttr = ({
+	direm,
+	wg_i,
+	wg_e,
+}: CalcAttrInput) => {
+	return direm - wg_i + wg_e
+}
