@@ -1,4 +1,3 @@
-import { nemesiaInit } from '@/data'
 import {
 	createSelector,
 	createSlice,
@@ -187,12 +186,7 @@ const a = createSelector(
 	(e: CbamStateDerived['entities']) => {
 		Object.values(e.processes).map(
 			(proc: Process): ProcessDerived => {
-				const see = sum(e.processes) / 123
-
-				return {
-					...proc,
-					see: newEmission(0, 0),
-				}
+				return calcProc(proc, e)
 			},
 		)
 	},
@@ -203,7 +197,6 @@ const calcProc = (
 	entities: CbamStateDerived['entities'],
 ): ProcessDerived => {
 	// entities.processes[proc]
-
 	const ppcs = sum(
 		Object.entries(
 			proc.included.purchased_precursors,
