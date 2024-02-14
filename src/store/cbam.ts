@@ -181,19 +181,24 @@ export interface CbamStateDerived {
 const a = createSelector(
 	[(s: RootState) => s.cbam.entities],
 	(e: CbamStateDerived['entities']) => {
-		Object.values(e.processes).map(
-			(proc: Process): ProcessDerived => {
-				return calcProc(proc, e)
+		Object.keys(e.processes).map(
+			(procId: Id): ProcessDerived => {
+				return calcProc(procId, e)
 			},
 		)
 	},
 )
 
 const calcProc = (
-	proc: Process,
+	procId: Id,
 	entities: CbamStateDerived['entities'],
 ): ProcessDerived => {
-	// entities.processes[proc]
+	const proc = entities.processes[procId]
+
+	if (proc.see !== undefined) {
+		return proc
+	}
+
 	const ppcs = sum(
 		Object.entries(
 			proc.included.purchased_precursors,
