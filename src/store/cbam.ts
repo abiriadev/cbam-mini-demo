@@ -246,17 +246,30 @@ export const {
 export interface CalcAttrInput {
 	wg_i: number
 	wg_e: number
+	heat_i: number
+	heat_e: number
 	direm: number
 }
 
 export interface CalcAttrOutput {
-	se: number
+	wg: number
+	heat: number
+	attr: number
 }
 
 export const calcAttr = ({
 	direm,
 	wg_i,
 	wg_e,
-}: CalcAttrInput) => {
-	return direm - wg_i + wg_e
+	heat_i,
+	heat_e,
+}: CalcAttrInput): CalcAttrOutput => {
+	const wg = wg_i - wg_e
+	const heat = heat_i - heat_e
+
+	return {
+		attr: direm + wg + heat,
+		wg,
+		heat,
+	}
 }
