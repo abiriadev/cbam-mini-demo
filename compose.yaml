@@ -1,6 +1,6 @@
 services:
   cbam:
     build: .
-    restart: 'no'
+    restart: 'always'
     ports:
       - 13731:80
