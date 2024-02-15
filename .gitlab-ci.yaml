@@ -1,0 +1,17 @@
+stages:
+  - build
+variables:
+  REGISTRY: harbor.aipim.synology.me
+  PROJECT: lca
+  IMAGE: cbam-mini-demo
+build_image:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker login $REGISTRY -u $USERNAME -p $PASSWORD
+    - docker build -t $REGISTRY/$PROJECT/$IMAGE:$CI_COMMIT_SHORT_SHA .
+    - docker push $REGISTRY/$PROJECT/$IMAGE:$CI_COMMIT_SHORT_SHA
+  only:
+    - main
