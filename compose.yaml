@@ -1,6 +1,14 @@
 services:
   cbam:
     build: .
+    image: harbor.aipim.synology.me/lca/cbam-mini-demo@latest
     restart: 'always'
     ports:
       - 13731:80
+  watchtower:
+    image: containrrr/watchtower
+    restart: 'always'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.docker/config.json:/config.json
+    command: --interval 5
