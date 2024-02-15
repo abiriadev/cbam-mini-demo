@@ -2,6 +2,7 @@ import { createSelector } from '@reduxjs/toolkit'
 import { RootState } from './store'
 import { CbamState } from './store/cbam'
 import { sum } from './utils'
+import { nemesiaInit } from './data'
 
 export interface Nemesia {
 	a_1: {
@@ -216,37 +217,38 @@ export const selectNemesia = ({
 	state === 'generated' ? calc(cbam) : empty
 
 export const calc = (cbam: CbamState): Nemesia => {
-	const res: Partial<Nemesia> = {}
+	const res: Partial<Nemesia> = nemesiaInit
 
 	let acc = 0
 	let acc_bio = 0
 
-	// res.b_1 = {
-	// 	list: [].map(r => {
-	// 		const res = emInstCombustion({
-	// 			ad: r.ad,
-	// 			ef: 1,
-	// 			ncv: r.ncv,
-	// 			oxf: 100,
-	// 			bioc: 0,
-	// 		})
-	//
-	// 		acc += res.fossil
-	// 		acc_bio += res.bio
-	//
-	// 		return {
-	// 			id: r.id,
-	// 			method: r.method,
-	// 			name: r.name,
-	// 			ad: r.ad,
-	// 			ncv: r.ncv,
-	// 			fossil: res.fossil,
-	// 			bio: res.bio,
-	// 			content_fossil: res.ec_fossil,
-	// 			content_bio: res.ec_bio,
-	// 		}
-	// 	}),
-	// }
+	res.b_1 = {
+		list: [],
+		// .map(r => {
+		// 	const res = emInstCombustion({
+		// 		ad: r.ad,
+		// 		ef: 1,
+		// 		ncv: r.ncv,
+		// 		oxf: 100,
+		// 		bioc: 0,
+		// 	})
+		//
+		// 	acc += res.fossil
+		// 	acc_bio += res.bio
+		//
+		// 	return {
+		// 		id: r.id,
+		// 		method: r.method,
+		// 		name: r.name,
+		// 		ad: r.ad,
+		// 		ncv: r.ncv,
+		// 		fossil: res.fossil,
+		// 		bio: res.bio,
+		// 		content_fossil: res.ec_fossil,
+		// 		content_bio: res.ec_bio,
+		// 	}
+		// }),
+	}
 
 	res.c_2_a = {
 		co2: acc,
