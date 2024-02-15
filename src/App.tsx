@@ -57,7 +57,7 @@ function App() {
 								color: token.colorPrimary,
 							}}
 						>
-							Aipim CBAM reporter v2
+							Aipim CBAM reporter v3
 						</Typography.Title>
 					</Flex>
 				</Flex>
