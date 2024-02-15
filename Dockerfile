@@ -16,4 +16,4 @@ FROM nginx:1.25.3-alpine-slim AS runner
 
 WORKDIR /app
 
-COPY --from=builder /app//dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
