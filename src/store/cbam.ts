@@ -234,7 +234,42 @@ const initialState: CbamState = {
 		start: new Date(),
 		end: new Date(),
 	},
-	installation_informations: {},
+	installation_informations: {
+		about: {
+			name: '김해공장',
+			name_en: 'factory Gimhae',
+			street: '158-7, Golden root-ro, Juchon-myeon, Gimhae-si, Gyeongsangnam-do, Republic of Korea',
+			economic: '$58,000,00',
+			zip: '50969',
+			po: 'Gimhae',
+			city: 'Seoul',
+			country: 'Republic of Korea',
+			unlocode: 'KR SEL',
+			latitude: '35.22070',
+			longitude: '128.8264',
+			representative: 'lca_manager',
+			email: 'hello@example.com',
+			telephone: '010-1234-5678',
+		},
+		verifier1: {
+			name: 'Authorization Company',
+			street: '158-7, Golden root-ro, Juchon-myeon, Gimhae-si, Gyeongsangnam-do, Republic of Korea',
+			city: 'Seoul',
+			zip: '50969',
+			country: 'Republic of Korea',
+		},
+		verifier2: {
+			name: 'John Doe',
+			email: 'hello@example.com',
+			telephone: '010-1234-5678',
+			fax: '379834943',
+		},
+		verifier3: {
+			state: 'Representative',
+			accreditation: 'J.D. Yoman',
+			reg: '1445298',
+		},
+	},
 }
 
 export const cbamSlice = createSlice({

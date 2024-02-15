@@ -186,6 +186,13 @@ export const nemesiaInit: Nemesia = {
 			},
 		],
 	},
+	c_2_a: {
+		co2: 123,
+		biomass: 123,
+		n2o: 123213,
+		direct: 213,
+		pfc: 123,
+	},
 	d: {
 		list: [
 			{

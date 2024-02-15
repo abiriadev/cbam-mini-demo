@@ -1,3 +1,4 @@
+import { createSelector } from '@reduxjs/toolkit'
 import { RootState } from './store'
 import { CbamState } from './store/cbam'
 import { sum } from './utils'
@@ -217,48 +218,35 @@ export const selectNemesia = ({
 export const calc = (cbam: CbamState): Nemesia => {
 	const res: Partial<Nemesia> = {}
 
-	res.a_1 = cbam.a_1
-
-	res.a_2 = cbam.a_2
-
-	res.a_3_1 = cbam.a_3_1
-	res.a_3_2 = cbam.a_3_2
-	res.a_3_3 = cbam.a_3_3
-
-	res.a_4_1 = { ...cbam.a_4_1, precursors: [] }
-	res.a_4_2 = cbam.a_4_2
-
-	res.a_5 = cbam.a_5
-
 	let acc = 0
 	let acc_bio = 0
 
-	res.b_1 = {
-		list: cbam.b_1.list.map(r => {
-			const res = emInstCombustion({
-				ad: r.ad,
-				ef: 1,
-				ncv: r.ncv,
-				oxf: 100,
-				bioc: 0,
-			})
-
-			acc += res.fossil
-			acc_bio += res.bio
-
-			return {
-				id: r.id,
-				method: r.method,
-				name: r.name,
-				ad: r.ad,
-				ncv: r.ncv,
-				fossil: res.fossil,
-				bio: res.bio,
-				content_fossil: res.ec_fossil,
-				content_bio: res.ec_bio,
-			}
-		}),
-	}
+	// res.b_1 = {
+	// 	list: [].map(r => {
+	// 		const res = emInstCombustion({
+	// 			ad: r.ad,
+	// 			ef: 1,
+	// 			ncv: r.ncv,
+	// 			oxf: 100,
+	// 			bioc: 0,
+	// 		})
+	//
+	// 		acc += res.fossil
+	// 		acc_bio += res.bio
+	//
+	// 		return {
+	// 			id: r.id,
+	// 			method: r.method,
+	// 			name: r.name,
+	// 			ad: r.ad,
+	// 			ncv: r.ncv,
+	// 			fossil: res.fossil,
+	// 			bio: res.bio,
+	// 			content_fossil: res.ec_fossil,
+	// 			content_bio: res.ec_bio,
+	// 		}
+	// 	}),
+	// }
 
 	res.c_2_a = {
 		co2: acc,
@@ -357,3 +345,5 @@ const calcProcessSee = (
 		),
 	)
 }
+
+createSelector([(s: RootState) => s.cbam], () => {})
