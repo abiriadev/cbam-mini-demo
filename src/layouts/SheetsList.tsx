@@ -1,17 +1,8 @@
 import { Sheet } from '@components/Sheet'
-import {
-	Button,
-	Col,
-	Flex,
-	Row,
-	Typography,
-	message,
-	theme,
-} from 'antd'
+import { Col, Flex, Row, theme } from 'antd'
 import { Emissions } from '@layouts/Emissions'
 import { Precursors } from '@layouts/Precursors'
 import { Processes } from '@layouts/Processes'
-import { VerticalAlignBottomOutlined } from '@ant-design/icons'
 import { GhgEmissions } from '@layouts/GhgEmissions'
 import { AboutTheInstallation } from '@layouts/AboutTheInstallation'
 import { SummaryProducts } from '@layouts/SummaryProducts'
