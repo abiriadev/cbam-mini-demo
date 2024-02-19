@@ -31,6 +31,15 @@ interface Process extends Identifiable {
 		exported: number
 		ef_exported: number
 	}
+	precursors: {
+		processes: Array<Precursor>
+		purchased_precursors: Array<Precursor>
+	}
+}
+
+interface Precursor {
+	ref: Id
+	amount: number
 }
 
 interface PurchasedPrecursor extends Identifiable {
