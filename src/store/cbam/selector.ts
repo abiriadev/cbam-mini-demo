@@ -1,4 +1,16 @@
-interface Process {
+interface Emission {
+	direct: number
+	indirect: number
+}
+
+type Id = string
+
+interface Identifiable {
+	id: Id
+}
+
+interface Process extends Identifiable {
+	ad: number
 	direm: number
 	heat: {
 		imported: number
@@ -19,4 +31,8 @@ interface Process {
 		exported: number
 		ef_exported: number
 	}
+}
+
+interface PurchasedPrecursor extends Identifiable {
+	see: Emission
 }
