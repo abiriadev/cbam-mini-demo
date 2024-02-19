@@ -112,17 +112,17 @@ const selectPrecursorsById = createSelector(
 	({ precursors }) => precursors,
 )
 
-const selectEeById = createSelector(
-	[
-		selectAttrById,
-		selectPrecursorsById,
-		selectPurchasedPrecursors,
-	],
-	(attr, precursors, purchased_precursors) => {
-		precursors.purchased_precursors.map(
-			({ ref, amount }) =>
-				purchased_precursors[ref].see.direct *
-				amount,
-		)
-	},
-)
+// const selectEeById = createSelector(
+// 	[
+// 		selectAttrById,
+// 		selectPrecursorsById,
+// 		selectPurchasedPrecursors,
+// 	],
+// 	(attr, precursors, purchased_precursors) => {
+// 		precursors.purchased_precursors.map(
+// 			({ ref, amount }) =>
+// 				purchased_precursors[ref].see.direct *
+// 				amount,
+// 		)
+// 	},
+// )
