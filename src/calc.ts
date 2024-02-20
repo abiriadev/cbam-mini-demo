@@ -146,6 +146,20 @@ export interface Nemesia {
 			}
 		}>
 	}
+	s1_2_2_2: {
+		list: Array<{
+			id: string
+			name: string
+			se: {
+				direct: number
+				indirect: number
+			}
+			see: {
+				direct: number
+				indirect: number
+			}
+		}>
+	}
 	s2: {
 		list: Array<{
 			id: string

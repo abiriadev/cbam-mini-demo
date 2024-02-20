@@ -334,7 +334,15 @@ const aaa: State = {
 			},
 		},
 	},
-	purchased_precursors: {},
+	purchased_precursors: {
+		a: {
+			id: 'a',
+			see: {
+				direct: 1,
+				indirect: 2,
+			},
+		},
+	},
 }
 
 export const cbamSlice = createSlice({
