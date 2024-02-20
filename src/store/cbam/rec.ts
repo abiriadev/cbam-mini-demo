@@ -58,6 +58,7 @@ interface Precursor {
 }
 
 interface PurchasedPrecursor extends Identifiable {
+	name: string
 	see: Emission
 }
 
@@ -133,7 +134,7 @@ export const recCalc = (
 			list: Object.entries(purchased_precursors).map(
 				([k, v]) => ({
 					id: k,
-					// name: v.name,
+					name: v.name,
 					name: 'name',
 					se: v.see,
 					see: v.see,

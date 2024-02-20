@@ -337,6 +337,7 @@ const aaa: State = {
 	purchased_precursors: {
 		a: {
 			id: 'a',
+			name: 'precursor 1',
 			see: {
 				direct: 1,
 				indirect: 2,
