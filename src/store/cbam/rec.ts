@@ -135,7 +135,6 @@ export const recCalc = (
 				([k, v]) => ({
 					id: k,
 					name: v.name,
-					name: 'name',
 					se: v.see,
 					see: v.see,
 				}),

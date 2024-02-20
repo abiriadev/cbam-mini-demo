@@ -313,6 +313,9 @@ export const nemesiaInit: Nemesia = {
 			},
 		],
 	},
+	s1_2_2_2: {
+		list: [],
+	},
 	s2: {
 		list: [
 			{

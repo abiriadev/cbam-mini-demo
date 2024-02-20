@@ -179,16 +179,16 @@ export interface CbamStateDerived {
 	installation_informations: InstallationInformation
 }
 
-const a = createSelector(
-	[(s: RootState) => s.cbam.entities],
-	(e: CbamStateDerived['entities']) => {
-		Object.keys(e.processes).map(
-			(procId: Id): ProcessDerived => {
-				return calcProc(procId, e)
-			},
-		)
-	},
-)
+// const a = createSelector(
+// 	[(s: RootState) => s.cbam.entities],
+// 	(e: CbamStateDerived['entities']) => {
+// 		Object.keys(e.processes).map(
+// 			(procId: Id): ProcessDerived => {
+// 				return calcProc(procId, e)
+// 			},
+// 		)
+// 	},
+// )
 
 const calcProc = (
 	procId: Id,

@@ -8,10 +8,10 @@ import { RootState } from '@/store'
 import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to'
 // import { initialState } from '@/store/cbam'
 
-const genRootState = (cbam: CbamState): RootState => ({
-	cbam,
-	environment: { state: 'generated', isIframe: false },
-})
+// const genRootState = (cbam: CbamState): RootState => ({
+// 	cbam,
+// 	environment: { state: 'generated', isIframe: false },
+// })
 
 // it('A', () => {
 // 	expect(calc(initialState)).toHaveProperty('s2.list', [])
