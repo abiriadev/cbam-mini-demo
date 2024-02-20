@@ -7,7 +7,7 @@ export const PrecursorEmissions = ({
 }: {
 	id: string
 }) => {
-	const nemesia = useSelector(selectNemesia).s1_2_2_1
+	const nemesia = useSelector(selectNemesia).s1_2_2_2
 
 	return (
 		<div id={id}>
@@ -45,14 +45,6 @@ export const PrecursorEmissions = ({
 					},
 					{
 						title: 'SEE (total)',
-					},
-					{
-						title: 'EmbEm (direct)',
-						dataIndex: ['ee', 'direct'],
-					},
-					{
-						title: 'EmbEm (indirect)',
-						dataIndex: ['ee', 'indirect'],
 					},
 					{
 						title: 'EmbEm (total)',
