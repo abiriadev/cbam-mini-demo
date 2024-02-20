@@ -11,6 +11,7 @@ export const theme: ThemeConfig = {
 		colorSuccess: primary,
 		colorBgContainer: '#DCEEE0',
 		colorBgLayout: white,
+		colorError: '#FF4A43',
 	},
 	components: {
 		Button: {

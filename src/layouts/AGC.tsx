@@ -40,10 +40,7 @@ export const AGC = ({ id }: { id?: string }) => {
 					>
 						<Typography.Text
 							strong
-							style={{
-								color: token.Button
-									?.primaryColor,
-							}}
+							className="text-white"
 						>
 							Add new aggregated goods
 							category
@@ -75,6 +72,7 @@ export const AGC = ({ id }: { id?: string }) => {
 						>
 							<Button
 								danger
+								type="primary"
 								icon={<DeleteOutlined />}
 							></Button>
 						</Popconfirm>
