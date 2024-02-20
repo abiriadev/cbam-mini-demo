@@ -4,6 +4,7 @@ import {
 } from '@reduxjs/toolkit'
 import { RootState } from '@/store'
 import { sum } from '@/utils'
+import { State } from './cbam/rec'
 
 export interface Emission {
 	direct: number
@@ -272,9 +273,14 @@ const initialState: CbamState = {
 	},
 }
 
+const aaa: State = {
+	processes: {},
+	purchased_precursors: {},
+}
+
 export const cbamSlice = createSlice({
 	name: 'cbam',
-	initialState,
+	initialState: aaa,
 	reducers: {},
 })
 

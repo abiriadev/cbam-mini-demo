@@ -2,7 +2,7 @@ import { Nemesia } from '@/calc'
 import { nemesiaInit } from '@/data'
 import { sum } from '@/utils'
 
-interface State {
+export interface State {
 	processes: Record<Id, Process>
 	purchased_precursors: Record<Id, PurchasedPrecursor>
 }

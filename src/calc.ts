@@ -217,7 +217,9 @@ export const selectNemesia = ({
 	cbam,
 	environment: { state },
 }: RootState): Nemesia =>
-	state === 'generated' ? calc(cbam) : empty
+	state === 'generated'
+		? recCalc(cbam, { processes: {} })
+		: empty
 
 export const calc = (cbam: CbamState): Nemesia => {
 	// const res: Partial<Nemesia> = nemesiaInit
