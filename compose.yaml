@@ -15,7 +15,7 @@ services:
       - WATCHTOWER_LABEL_ENABLE=1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ~/.docker/config.json:/config.json
+      - /home/aipim/.docker/config.json:/config.json
     command: --interval 5
     labels:
       - com.centurylinklabs.watchtower.enable=true
