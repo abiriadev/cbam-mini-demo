@@ -274,7 +274,37 @@ const initialState: CbamState = {
 }
 
 const aaa: State = {
-	processes: {},
+	processes: {
+		a: {
+			id: 'a',
+			name: 'process 1',
+			ad: 123,
+			direm: 34,
+			heat: {
+				imported: 0,
+				exported: 0,
+				ef_imported: 1,
+				ef_exported: 1,
+			},
+			wg: {
+				imported: 0,
+				exported: 0,
+				ef_imported: 1,
+				ef_exported: 1,
+			},
+			electricity: {
+				imported: 0,
+				exported: 0,
+				ef_imported: 1,
+				ef_exported: 1,
+				ef_source_imported: 'a',
+			},
+			precursors: {
+				processes: {},
+				purchased_precursors: {},
+			},
+		},
+	},
 	purchased_precursors: {},
 }
 
