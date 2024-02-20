@@ -15,6 +15,7 @@ import {
 import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
 import { AgcKindSet } from '@/store/cbam'
+import { DeleteButton } from '@/components/DeleteButton'
 
 export const RelevantProductionProcesses = ({
 	id,
@@ -82,22 +83,7 @@ export const RelevantProductionProcesses = ({
 						})),
 					{
 						render: (_, { id }) => (
-							<Popconfirm
-								title="Delete 1 process"
-								description="Are you sure to delete this process?"
-								onConfirm={() =>
-									message.success(
-										'1 process has been deleted',
-									)
-								}
-							>
-								<Button
-									danger
-									icon={
-										<DeleteOutlined />
-									}
-								></Button>
-							</Popconfirm>
+							<DeleteButton />
 						),
 					},
 				]}

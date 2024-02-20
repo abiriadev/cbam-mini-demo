@@ -17,6 +17,7 @@ import {
 	DownOutlined,
 } from '@ant-design/icons'
 import { selectNemesia } from '@/calc'
+import { DeleteButton } from '@/components/DeleteButton'
 
 export const Precursors = ({ id }: { id?: string }) => {
 	const { token } = theme.useToken()
@@ -98,22 +99,7 @@ export const Precursors = ({ id }: { id?: string }) => {
 						})),
 					{
 						render: (_, { id }) => (
-							<Popconfirm
-								title="Delete 1 precursor"
-								description="Are you sure to delete this precursor?"
-								onConfirm={() =>
-									message.success(
-										'1 precursor has been deleted',
-									)
-								}
-							>
-								<Button
-									danger
-									icon={
-										<DeleteOutlined />
-									}
-								></Button>
-							</Popconfirm>
+							<DeleteButton />
 						),
 					},
 				]}

@@ -18,6 +18,7 @@ import {
 	PlusOutlined,
 } from '@ant-design/icons'
 import { selectNemesia } from '@/calc'
+import { DeleteButton } from '@/components/DeleteButton'
 
 export const Processes = () => {
 	const { token } = theme.useToken()
@@ -174,17 +175,7 @@ export const Processes = () => {
 					},
 					{
 						render: (_, { id }) => (
-							<Popconfirm
-								title="Delete 1 process"
-								description="Are you sure to delete this process?"
-							>
-								<Button
-									danger
-									icon={
-										<DeleteOutlined />
-									}
-								></Button>
-							</Popconfirm>
+							<DeleteButton />
 						),
 					},
 				]}
@@ -271,22 +262,7 @@ export const Processes = () => {
 											_,
 											{ id: ppid },
 										) => (
-											<Popconfirm
-												title="Remove 1 precursor"
-												description="Are you sure to remove this precursor from the process?"
-												onConfirm={() =>
-													message.success(
-														'1 precursor has been removed from a process',
-													)
-												}
-											>
-												<Button
-													danger
-													icon={
-														<DeleteOutlined />
-													}
-												></Button>
-											</Popconfirm>
+											<DeleteButton />
 										),
 									},
 								]}

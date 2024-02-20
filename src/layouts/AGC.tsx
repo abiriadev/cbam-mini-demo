@@ -14,6 +14,7 @@ import {
 import { AgcKindSet } from '@/store/cbam'
 import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
+import { DeleteButton } from '@/components/DeleteButton'
 
 export const AGC = ({ id }: { id?: string }) => {
 	const nemesia = useSelector(selectNemesia).a_4_1
@@ -64,19 +65,7 @@ export const AGC = ({ id }: { id?: string }) => {
 						),
 					})),
 				{
-					render: _ => (
-						<Popconfirm
-							title="Delete 1 process"
-							description="Are you sure to delete this process?"
-							onConfirm={() => void 0}
-						>
-							<Button
-								danger
-								type="primary"
-								icon={<DeleteOutlined />}
-							></Button>
-						</Popconfirm>
-					),
+					render: _ => <DeleteButton />,
 				},
 			]}
 			dataSource={nemesia.list}
