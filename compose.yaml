@@ -2,7 +2,7 @@ version: '3'
 services:
   cbam:
     build: .
-    image: harbor.aipim.synology.me/lca/cbam-mini-demo:85f217ce
+    image: harbor.aipim.synology.me/lca/cbam-mini-demo:122f5142
     restart: 'always'
     ports:
       - 13731:80
