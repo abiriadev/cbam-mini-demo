@@ -1,3 +1,5 @@
+import { sum } from '@/utils'
+
 interface State {
 	processes: Record<Id, Process>
 	purchased_precursors: Record<Id, PurchasedPrecursor>
@@ -42,13 +44,13 @@ interface Process extends Identifiable {
 		ef_exported: number
 	}
 	precursors: {
-		processes: Array<Precursor>
-		purchased_precursors: Array<Precursor>
+		processes: Record<Id, Precursor>
+		purchased_precursors: Record<Id, Precursor>
 	}
 }
 
 interface Precursor {
-	ref: Id
+	// ref: Id
 	amount: number
 }
 
@@ -65,15 +67,47 @@ type CbamCache = {
 	processes: Record<Id, ProcessRes>
 }
 
-const calcProcess = (process: Process): ProcessRes => {
-	// todo!()
+const calcProcess = (
+	{
+		ad,
+		direm,
+		heat,
+		wg,
+		precursors: { purchased_precursors },
+	}: Process,
+	pps: Record<Id, PurchasedPrecursor>,
+): ProcessRes => {
+	const heatRes =
+		heat.imported * heat.ef_imported -
+		heat.exported * heat.ef_exported
+	const wgRes =
+		wg.imported * wg.ef_imported -
+		wg.exported * wg.ef_exported
+
+	const attr_d = direm + heatRes + wgRes
+
+	const ee_d =
+		attr_d +
+		sum(
+			Object.entries(purchased_precursors).map(
+				([k, v]) => pps[k].see.direct * v.amount,
+			),
+		)
 
 	return {
-		se: newEmission(1, 2),
-		see: newEmission(3, 4),
+		se: newEmission(attr_d / ad, 0),
+		see: newEmission(ee_d / ad, 0),
 	}
 }
 
-// const calc = (state: State) => {
-//
-// }
+const calc = (
+	{ processes, purchased_precursors }: State,
+	cache: CbamCache,
+) => {
+	for (const id in processes) {
+		cache.processes[id] = calcProcess(
+			processes[id],
+			purchased_precursors,
+		)
+	}
+}
