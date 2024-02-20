@@ -3,6 +3,7 @@ import { RootState } from './store'
 import { CbamState } from './store/cbam'
 import { sum } from './utils'
 import { nemesiaInit } from './data'
+import { recCalc } from './store/cbam/rec'
 
 export interface Nemesia {
 	a_1: {
@@ -164,10 +165,12 @@ export interface Nemesia {
 }
 
 export const empty: Nemesia = {
+	// reporting period
 	a_1: {
 		start: new Date(),
 		end: new Date(),
 	},
+	// about the installation
 	a_2: {
 		name: '',
 		name_en: '',
@@ -217,53 +220,58 @@ export const selectNemesia = ({
 	state === 'generated' ? calc(cbam) : empty
 
 export const calc = (cbam: CbamState): Nemesia => {
-	const res: Partial<Nemesia> = nemesiaInit
+	// const res: Partial<Nemesia> = nemesiaInit
+	//
+	// let acc = 0
+	// let acc_bio = 0
+	//
+	// res.b_1 = {
+	// 	list: [],
+	// 	// .map(r => {
+	// 	// 	const res = emInstCombustion({
+	// 	// 		ad: r.ad,
+	// 	// 		ef: 1,
+	// 	// 		ncv: r.ncv,
+	// 	// 		oxf: 100,
+	// 	// 		bioc: 0,
+	// 	// 	})
+	// 	//
+	// 	// 	acc += res.fossil
+	// 	// 	acc_bio += res.bio
+	// 	//
+	// 	// 	return {
+	// 	// 		id: r.id,
+	// 	// 		method: r.method,
+	// 	// 		name: r.name,
+	// 	// 		ad: r.ad,
+	// 	// 		ncv: r.ncv,
+	// 	// 		fossil: res.fossil,
+	// 	// 		bio: res.bio,
+	// 	// 		content_fossil: res.ec_fossil,
+	// 	// 		content_bio: res.ec_bio,
+	// 	// 	}
+	// 	// }),
+	// }
+	//
+	// res.c_2_a = {
+	// 	co2: acc,
+	// 	biomass: acc_bio,
+	// 	n2o: 0,
+	// 	pfc: 0,
+	// 	direct: acc,
+	// }
+	//
+	// res.d = { list: [] }
+	// res.s1_2_1 = { list: [] }
+	// res.s1_2_2_1 = { list: [] }
+	// res.s2 = { list: [] }
+	//
+	// // res.b_1 = cbam.b_1
 
-	let acc = 0
-	let acc_bio = 0
+	// const stateRJKLkk//w'h
+	const cache = {}
 
-	res.b_1 = {
-		list: [],
-		// .map(r => {
-		// 	const res = emInstCombustion({
-		// 		ad: r.ad,
-		// 		ef: 1,
-		// 		ncv: r.ncv,
-		// 		oxf: 100,
-		// 		bioc: 0,
-		// 	})
-		//
-		// 	acc += res.fossil
-		// 	acc_bio += res.bio
-		//
-		// 	return {
-		// 		id: r.id,
-		// 		method: r.method,
-		// 		name: r.name,
-		// 		ad: r.ad,
-		// 		ncv: r.ncv,
-		// 		fossil: res.fossil,
-		// 		bio: res.bio,
-		// 		content_fossil: res.ec_fossil,
-		// 		content_bio: res.ec_bio,
-		// 	}
-		// }),
-	}
-
-	res.c_2_a = {
-		co2: acc,
-		biomass: acc_bio,
-		n2o: 0,
-		pfc: 0,
-		direct: acc,
-	}
-
-	res.d = { list: [] }
-	res.s1_2_1 = { list: [] }
-	res.s1_2_2_1 = { list: [] }
-	res.s2 = { list: [] }
-
-	// res.b_1 = cbam.b_1
+	const res = recCalc(state, cache)
 
 	return res as Nemesia
 }

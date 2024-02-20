@@ -24,6 +24,7 @@ interface Identifiable {
 }
 
 interface Process extends Identifiable {
+	name: string
 	ad: number
 	direm: number
 	heat: {
@@ -63,6 +64,7 @@ interface PurchasedPrecursor extends Identifiable {
 interface ProcessRes {
 	se: Emission
 	see: Emission
+	ee: Emission
 }
 
 type CbamCache = {
@@ -99,6 +101,7 @@ const calcProcess = (
 	return {
 		se: newEmission(attr_d / ad, 0),
 		see: newEmission(ee_d / ad, 0),
+		ee: newEmission(ee_d, 0),
 	}
 }
 
@@ -116,7 +119,15 @@ export const recCalc = (
 	return {
 		...nemesiaInit,
 		s1_2_2_1: {
-			list: [],
+			list: Object.entries(processes).map(
+				([k, v]) => ({
+					id: k,
+					name: v.name,
+					se: cache.processes[k].se,
+					see: cache.processes[k].see,
+					ee: cache.processes[k].se,
+				}),
+			),
 		},
 	}
 }
