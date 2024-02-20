@@ -15,6 +15,7 @@ export const theme: ThemeConfig = {
 	components: {
 		Button: {
 			primaryColor: white,
+			colorBgContainer: white,
 		},
 		Typography: {
 			titleMarginBottom: '0',
