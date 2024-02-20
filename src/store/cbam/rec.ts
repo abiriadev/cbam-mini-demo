@@ -8,6 +8,11 @@ interface Emission {
 	indirect: number
 }
 
+const newEmission = (direct: number, indirect: number) => ({
+	direct,
+	indirect,
+})
+
 type Id = string
 
 interface Identifiable {
@@ -50,3 +55,25 @@ interface Precursor {
 interface PurchasedPrecursor extends Identifiable {
 	see: Emission
 }
+
+interface ProcessRes {
+	se: Emission
+	see: Emission
+}
+
+type CbamCache = {
+	processes: Record<Id, ProcessRes>
+}
+
+const calcProcess = (process: Process): ProcessRes => {
+	// todo!()
+
+	return {
+		se: newEmission(1, 2),
+		see: newEmission(3, 4),
+	}
+}
+
+// const calc = (state: State) => {
+//
+// }
