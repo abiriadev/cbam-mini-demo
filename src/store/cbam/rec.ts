@@ -129,6 +129,17 @@ export const recCalc = (
 				}),
 			),
 		},
+		s1_2_2_2: {
+			list: Object.entries(purchased_precursors).map(
+				([k, v]) => ({
+					id: k,
+					// name: v.name,
+					name: 'name',
+					se: v.see,
+					see: v.see,
+				}),
+			),
+		},
 	}
 }
 
