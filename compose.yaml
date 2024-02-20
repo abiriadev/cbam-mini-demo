@@ -5,9 +5,13 @@ services:
     restart: 'always'
     ports:
       - 13731:80
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
   watchtower:
     image: containrrr/watchtower
     restart: 'always'
+    environment:
+      - WATCHTOWER_LABEL_ENABLE=1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ~/.docker/config.json:/config.json
