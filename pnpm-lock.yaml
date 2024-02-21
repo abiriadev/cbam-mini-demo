@@ -17,6 +17,9 @@ dependencies:
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
+  excellentexport:
+    specifier: ^3.9.6
+    version: 3.9.6
   immer:
     specifier: ^10.0.3
     version: 10.0.3
@@ -2809,6 +2812,11 @@ packages:
   /eventemitter3@4.0.7:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
     dev: true
+
+  /excellentexport@3.9.6:
+    resolution: {integrity: sha512-jZDdpI9snrH1lAyzEQU05/7LcW1dv5T15dI16oYCb0Ng+JJctJA4vD9KH1Ltq9IIBek/hp5HgpAS0edKa9XxNg==}
+    requiresBuild: true
+    dev: false
 
   /execa@0.7.0:
     resolution: {integrity: sha512-RztN09XglpYI7aBBrJCPW95jEH7YF1UEPOoX9yDhUTPdp7mK+CQvnLTuD10BNXZ3byLTu2uehZ8EcKT/4CGiFw==}
