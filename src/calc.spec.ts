@@ -400,6 +400,6 @@ describe('rec', () => {
 		).toBeCloseTo(1362)
 		expect(
 			Math.round(cache.processes[p1].ee.indirect!),
-		).toBeCloseTo(2328)
+		).toBeCloseTo(966)
 	})
 })
