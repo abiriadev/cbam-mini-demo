@@ -132,14 +132,15 @@ describe('emInst', () => {
 })
 
 describe('rec', () => {
-	it('a', () => {
-		const cache = newCache(['p1'])
+	it('basic', () => {
+		const id = 'p1'
+		const cache = newCache([id])
 
 		const state: State = {
 			processes: {
 				p1: {
-					name: 'p1',
-					id: 'p1',
+					name: id,
+					id,
 					ad: 100,
 					direm: 123,
 					heat: {
@@ -172,11 +173,66 @@ describe('rec', () => {
 
 		calcCache(cache, state)
 
-		expect(cache.processes['p1'].se.direct).toBeCloseTo(
+		expect(cache.processes[id].se.direct).toBeCloseTo(
 			1.23,
 		)
+		expect(cache.processes[id].see.direct).toBeCloseTo(
+			1.23,
+		)
+		expect(cache.processes[id].ee.direct).toBeCloseTo(
+			123,
+		)
+	})
+
+	it('wg', () => {
+		const id = 'p1'
+		const cache = newCache([id])
+
+		const state: State = {
+			processes: {
+				p1: {
+					name: id,
+					id,
+					ad: 100,
+					direm: 123,
+					heat: {
+						imported: 0,
+						exported: 0,
+						ef_imported: 0,
+						ef_exported: 0,
+					},
+					wg: {
+						imported: 12,
+						exported: 8.6,
+						ef_imported: 1.2,
+						ef_exported: 3.4,
+					},
+					electricity: {
+						imported: 0,
+						exported: 0,
+						ef_imported: 0,
+						ef_exported: 0,
+						ef_source_imported: '',
+					},
+					precursors: {
+						processes: {},
+						purchased_precursors: {},
+					},
+				},
+			},
+			purchased_precursors: {},
+		}
+
+		calcCache(cache, state)
+
+		expect(cache.processes[id].se.direct).toBeCloseTo(
+			4.744,
+		)
+		expect(cache.processes[id].see.direct).toBeCloseTo(
+			4.744,
+		)
 		expect(
-			cache.processes['p1'].see.direct,
-		).toBeCloseTo(1.23)
+			Math.floor(cache.processes[id].ee.direct!),
+		).toBeCloseTo(474)
 	})
 })

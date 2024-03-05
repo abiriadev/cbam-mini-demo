@@ -1,4 +1,5 @@
 import { Nemesia } from '@/calc'
+import { CORR, EFNG } from '@/constants'
 import { nemesiaInit } from '@/data'
 import { zip, sum } from 'lodash'
 
@@ -130,9 +131,7 @@ const calcProcessCache = (
 		heat.exported * heat.ef_exported
 	cache.processes[id].heat = heatRes
 
-	const wgRes =
-		wg.imported * wg.ef_imported -
-		wg.exported * wg.ef_exported
+	const wgRes = (wg.imported - wg.exported * CORR) * EFNG
 	cache.processes[id].wg = wgRes
 
 	const attr_d = direm + heatRes + wgRes
