@@ -1,6 +1,4 @@
-import { Nemesia } from '@/calc'
 import { CORR, EFNG } from '@/constants'
-import { nemesiaInit } from '@/data'
 import { zip, sum } from 'lodash'
 
 export interface State {
@@ -20,11 +18,7 @@ const newEmission = (direct: number, indirect: number) => ({
 
 type Id = string
 
-interface Identifiable {
-	id: Id
-}
-
-interface Process extends Identifiable {
+interface Process {
 	name: string
 	ad: number
 	direm: number
@@ -37,8 +31,6 @@ interface Process extends Identifiable {
 	wg: {
 		imported: number
 		exported: number
-		ef_imported: number
-		ef_exported: number
 	}
 	electricity: {
 		imported: number
@@ -54,11 +46,10 @@ interface Process extends Identifiable {
 }
 
 interface Precursor {
-	// ref: Id
 	amount: number
 }
 
-interface PurchasedPrecursor extends Identifiable {
+interface PurchasedPrecursor {
 	name: string
 	see: Emission
 }
@@ -123,20 +114,20 @@ const calcProcessCache = (
 	state: State,
 	pid: Id,
 ) => {
-	const { id, ad, heat, wg, direm, precursors } =
+	const { ad, heat, wg, direm, precursors } =
 		state.processes[pid]
 
 	const heatRes =
 		heat.imported * heat.ef_imported -
 		heat.exported * heat.ef_exported
-	cache.processes[id].heat = heatRes
+	cache.processes[pid].heat = heatRes
 
 	const wgRes = (wg.imported - wg.exported * CORR) * EFNG
-	cache.processes[id].wg = wgRes
+	cache.processes[pid].wg = wgRes
 
 	const attr_d = direm + heatRes + wgRes
 	const attr_i = 0
-	cache.processes[id].attr = newEmission(attr_d, attr_i)
+	cache.processes[pid].attr = newEmission(attr_d, attr_i)
 
 	const [pp_d, pp_i] = zip(
 		Object.entries(precursors.purchased_precursors).map(
@@ -167,15 +158,15 @@ const calcProcessCache = (
 
 	const ee_d = attr_d + sum(pp_d) + sum(p_d)
 	const ee_i = attr_i + sum(pp_i) + sum(p_i)
-	cache.processes[id].ee = newEmission(ee_d, ee_i)
+	cache.processes[pid].ee = newEmission(ee_d, ee_i)
 
 	const se_d = attr_d / ad
 	const se_i = attr_i / ad
-	cache.processes[id].se = newEmission(se_d, se_i)
+	cache.processes[pid].se = newEmission(se_d, se_i)
 
 	const see_d = ee_d / ad
 	const see_i = ee_i / ad
-	cache.processes[id].see = newEmission(see_d, see_i)
+	cache.processes[pid].see = newEmission(see_d, see_i)
 }
 
 // export const recCalc = (
