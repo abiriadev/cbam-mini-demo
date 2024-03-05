@@ -147,10 +147,12 @@ const calcProcessCache = (
 	const [p_d, p_i] = zip(
 		...Object.entries(precursors.processes).map(
 			([k, { amount }]) => {
-				const see =
-					cache.processes[k].see ??
-					(calcProcessCache(cache, state, k),
-					cache.processes[k].see)
+				let see = cache.processes[k].see
+
+				if (see.direct === null) {
+					calcProcessCache(cache, state, k)
+					see = cache.processes[k].see
+				}
 
 				return [
 					see.direct! * amount,
