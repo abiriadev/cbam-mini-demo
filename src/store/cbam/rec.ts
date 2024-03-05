@@ -1,7 +1,6 @@
 import { Nemesia } from '@/calc'
 import { nemesiaInit } from '@/data'
-import { sum } from '@/utils'
-import { DeepPartial, MaybeNull } from 'tsdef'
+import { zip, sum } from 'lodash'
 
 export interface State {
 	processes: Record<Id, Process>
@@ -87,11 +86,11 @@ type CbamCache = {
 
 const calcProcessCache = (
 	cache: CbamCache,
-	{ processes, purchased_precursors }: State,
+	state: State,
 	pid: Id,
 ) => {
 	const { id, ad, heat, wg, direm, precursors } =
-		processes[pid]
+		state.processes[pid]
 
 	const heatRes =
 		heat.imported * heat.ef_imported -
@@ -107,28 +106,35 @@ const calcProcessCache = (
 	const attr_i = 0
 	cache.processes[id].attr = newEmission(attr_d, attr_i)
 
-	const ee_d =
-		attr_d +
-		sum(
-			Object.entries(
-				precursors.purchased_precursors,
-			).map(
-				([k, { amount }]) =>
-					purchased_precursors[k].see.direct *
+	const [pp_d, pp_i] = zip(
+		Object.entries(precursors.purchased_precursors).map(
+			([k, { amount }]) => [
+				state.purchased_precursors[k].see.direct *
 					amount,
-			),
-		)
-	const ee_i =
-		attr_i +
-		sum(
-			Object.entries(
-				precursors.purchased_precursors,
-			).map(
-				([k, { amount }]) =>
-					purchased_precursors[k].see.indirect *
+				state.purchased_precursors[k].see.indirect *
 					amount,
-			),
-		)
+			],
+		),
+	)
+
+	const [p_d, p_i] = zip(
+		Object.entries(precursors.processes).map(
+			([k, { amount }]) => {
+				const see =
+					cache.processes[k].see ??
+					(calcProcessCache(cache, state, k),
+					cache.processes[k].see)
+
+				return [
+					see.direct! * amount,
+					see.indirect! * amount,
+				]
+			},
+		),
+	)
+
+	const ee_d = attr_d + sum(pp_d) + sum(p_d)
+	const ee_i = attr_i + sum(pp_i) + sum(p_i)
 	cache.processes[id].ee = newEmission(ee_d, ee_i)
 
 	const se_d = attr_d / ad
@@ -140,78 +146,42 @@ const calcProcessCache = (
 	cache.processes[id].see = newEmission(see_d, see_i)
 }
 
-const calcProcess = (
-	{
-		ad,
-		direm,
-		heat,
-		wg,
-		precursors: { purchased_precursors },
-	}: Process,
-	pps: Record<Id, PurchasedPrecursor>,
-): ProcessRes => {
-	const heatRes =
-		heat.imported * heat.ef_imported -
-		heat.exported * heat.ef_exported
-	const wgRes =
-		wg.imported * wg.ef_imported -
-		wg.exported * wg.ef_exported
-
-	const attr_d = direm + heatRes + wgRes
-
-	const ee_d =
-		attr_d +
-		sum(
-			Object.entries(purchased_precursors).map(
-				([k, v]) => pps[k].see.direct * v.amount,
-			),
-		)
-
-	return {
-		heat: heatRes,
-		wg: wgRes,
-		se: newEmission(attr_d / ad, 0),
-		see: newEmission(ee_d / ad, 0),
-		ee: newEmission(ee_d, 0),
-	}
-}
-
-export const recCalc = (
-	{ processes, purchased_precursors }: State,
-	cache: CbamCache,
-): Nemesia => {
-	for (const id in processes) {
-		cache.processes[id] = calcProcess(
-			processes[id],
-			purchased_precursors,
-		)
-	}
-
-	return {
-		...nemesiaInit,
-		s1_2_2_1: {
-			list: Object.entries(processes).map(
-				([k, v]) => ({
-					id: k,
-					name: v.name,
-					se: cache.processes[k].se,
-					see: cache.processes[k].see,
-					ee: cache.processes[k].se,
-				}),
-			),
-		},
-		s1_2_2_2: {
-			list: Object.entries(purchased_precursors).map(
-				([k, v]) => ({
-					id: k,
-					name: v.name,
-					se: v.see,
-					see: v.see,
-				}),
-			),
-		},
-	}
-}
+// export const recCalc = (
+// 	{ processes, purchased_precursors }: State,
+// 	cache: CbamCache,
+// ): Nemesia => {
+// 	for (const id in processes) {
+// 		cache.processes[id] = calcProcess(
+// 			processes[id],
+// 			purchased_precursors,
+// 		)
+// 	}
+//
+// 	return {
+// 		...nemesiaInit,
+// 		s1_2_2_1: {
+// 			list: Object.entries(processes).map(
+// 				([k, v]) => ({
+// 					id: k,
+// 					name: v.name,
+// 					se: cache.processes[k].se,
+// 					see: cache.processes[k].see,
+// 					ee: cache.processes[k].se,
+// 				}),
+// 			),
+// 		},
+// 		s1_2_2_2: {
+// 			list: Object.entries(purchased_precursors).map(
+// 				([k, v]) => ({
+// 					id: k,
+// 					name: v.name,
+// 					se: v.see,
+// 					see: v.see,
+// 				}),
+// 			),
+// 		},
+// 	}
+// }
 
 type a = {
 	a_1: {
