@@ -143,22 +143,22 @@ describe('rec', () => {
 					ad: 100,
 					direm: 123,
 					heat: {
-						imported: 12,
-						exported: 12,
-						ef_imported: 1,
-						ef_exported: 2,
+						imported: 0,
+						exported: 0,
+						ef_imported: 0,
+						ef_exported: 0,
 					},
 					wg: {
-						imported: 12,
-						exported: 12,
-						ef_imported: 1,
-						ef_exported: 2,
+						imported: 0,
+						exported: 0,
+						ef_imported: 0,
+						ef_exported: 0,
 					},
 					electricity: {
-						imported: 12,
-						exported: 12,
-						ef_imported: 1,
-						ef_exported: 2,
+						imported: 0,
+						exported: 0,
+						ef_imported: 0,
+						ef_exported: 0,
 						ef_source_imported: '',
 					},
 					precursors: {
@@ -171,5 +171,12 @@ describe('rec', () => {
 		}
 
 		calcCache(cache, state)
+
+		expect(cache.processes['p1'].se.direct).toBeCloseTo(
+			1.23,
+		)
+		expect(
+			cache.processes['p1'].see.direct,
+		).toBeCloseTo(1.23)
 	})
 })
