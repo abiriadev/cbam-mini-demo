@@ -114,7 +114,7 @@ const calcProcessCache = (
 	state: State,
 	pid: Id,
 ) => {
-	const { ad, heat, wg, direm, precursors } =
+	const { ad, direm, heat, wg, electricity, precursors } =
 		state.processes[pid]
 
 	const heatRes =
@@ -125,8 +125,12 @@ const calcProcessCache = (
 	const wgRes = (wg.imported - wg.exported * CORR) * EFNG
 	cache.processes[pid].wg = wgRes
 
-	const attr_d = direm + heatRes + wgRes
-	const attr_i = 0
+	const elecRes =
+		electricity.exported * electricity.ef_exported
+
+	const attr_d = direm + heatRes + wgRes - elecRes
+	const attr_i =
+		electricity.imported * electricity.ef_imported
 	cache.processes[pid].attr = newEmission(attr_d, attr_i)
 
 	const [pp_d, pp_i] = zip(

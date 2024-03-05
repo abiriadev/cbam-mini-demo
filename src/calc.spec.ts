@@ -223,7 +223,7 @@ describe('rec', () => {
 			4.744,
 		)
 		expect(
-			Math.floor(cache.processes[id].ee.direct!),
+			Math.round(cache.processes[id].ee.direct!),
 		).toBeCloseTo(474)
 	})
 
@@ -272,7 +272,7 @@ describe('rec', () => {
 			1.242,
 		)
 		expect(
-			Math.floor(cache.processes[id].ee.direct!),
+			Math.round(cache.processes[id].ee.direct!),
 		).toBeCloseTo(124)
 	})
 
@@ -327,10 +327,10 @@ describe('rec', () => {
 			cache.processes[id].see.indirect,
 		).toBeCloseTo(0.639)
 		expect(
-			Math.floor(cache.processes[id].ee.direct!),
+			Math.round(cache.processes[id].ee.direct!),
 		).toBeCloseTo(95)
 		expect(
-			Math.floor(cache.processes[id].ee.indirect!),
+			Math.round(cache.processes[id].ee.indirect!),
 		).toBeCloseTo(64)
 	})
 })
