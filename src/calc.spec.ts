@@ -275,4 +275,62 @@ describe('rec', () => {
 			Math.floor(cache.processes[id].ee.direct!),
 		).toBeCloseTo(124)
 	})
+
+	it('electricity', () => {
+		const id = 'p1'
+		const cache = newCache([id])
+
+		const state: State = {
+			processes: {
+				p1: {
+					name: id,
+					ad: 100,
+					direm: 123,
+					heat: {
+						imported: 0,
+						exported: 0,
+						ef_imported: 0,
+						ef_exported: 0,
+					},
+					wg: {
+						imported: 0,
+						exported: 0,
+					},
+					electricity: {
+						imported: 71,
+						exported: 44,
+						ef_imported: 0.9,
+						ef_exported: 0.64,
+						ef_source_imported: '',
+					},
+					precursors: {
+						processes: {},
+						purchased_precursors: {},
+					},
+				},
+			},
+			purchased_precursors: {},
+		}
+
+		calcCache(cache, state)
+
+		expect(cache.processes[id].se.direct).toBeCloseTo(
+			0.948,
+		)
+		expect(cache.processes[id].se.indirect).toBeCloseTo(
+			0.639,
+		)
+		expect(cache.processes[id].see.direct).toBeCloseTo(
+			0.948,
+		)
+		expect(
+			cache.processes[id].see.indirect,
+		).toBeCloseTo(0.639)
+		expect(
+			Math.floor(cache.processes[id].ee.direct!),
+		).toBeCloseTo(95)
+		expect(
+			Math.floor(cache.processes[id].ee.indirect!),
+		).toBeCloseTo(64)
+	})
 })
