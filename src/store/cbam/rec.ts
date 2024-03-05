@@ -1,6 +1,7 @@
 import { Nemesia } from '@/calc'
 import { nemesiaInit } from '@/data'
 import { sum } from '@/utils'
+import { DeepPartial } from 'tsdef'
 
 export interface State {
 	processes: Record<Id, Process>
@@ -63,13 +64,15 @@ interface PurchasedPrecursor extends Identifiable {
 }
 
 interface ProcessRes {
+	heat: number
+	wg: number
 	se: Emission
 	see: Emission
 	ee: Emission
 }
 
 type CbamCache = {
-	processes: Record<Id, ProcessRes>
+	processes: Record<Id, DeepPartial<ProcessRes>>
 }
 
 const calcProcess = (
