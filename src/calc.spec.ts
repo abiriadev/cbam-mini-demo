@@ -402,4 +402,109 @@ describe('rec', () => {
 			Math.round(cache.processes[p1].ee.indirect!),
 		).toBeCloseTo(966)
 	})
+
+	it('process precursor', () => {
+		const p1 = 'p1'
+		const p2 = 'p2'
+		const cache = newCache([p1, p2])
+
+		const state: State = {
+			processes: {
+				p1: {
+					name: p1,
+					ad: 100,
+					direm: 123,
+					heat: {
+						imported: 0,
+						exported: 0,
+						ef_imported: 0,
+						ef_exported: 0,
+					},
+					wg: {
+						imported: 0,
+						exported: 0,
+					},
+					electricity: {
+						imported: 0,
+						exported: 0,
+						ef_imported: 0,
+						ef_exported: 0,
+						ef_source_imported: '',
+					},
+					precursors: {
+						processes: {
+							p2: {
+								amount: 15,
+							},
+						},
+						purchased_precursors: {},
+					},
+				},
+				p2: {
+					name: p2,
+					ad: 20,
+					direm: 88,
+					heat: {
+						imported: 0,
+						exported: 0,
+						ef_imported: 0,
+						ef_exported: 0,
+					},
+					wg: {
+						imported: 0,
+						exported: 0,
+					},
+					electricity: {
+						imported: 12,
+						exported: 0,
+						ef_imported: 1,
+						ef_exported: 0,
+						ef_source_imported: '',
+					},
+					precursors: {
+						processes: {},
+						purchased_precursors: {},
+					},
+				},
+			},
+			purchased_precursors: {},
+		}
+
+		calcCache(cache, state)
+
+		expect(cache.processes[p1].se.direct).toBeCloseTo(
+			1.23,
+		)
+		expect(cache.processes[p1].see.direct).toBeCloseTo(
+			1.89,
+		)
+		expect(
+			cache.processes[p1].see.indirect,
+		).toBeCloseTo(0.09)
+		expect(
+			Math.round(cache.processes[p1].ee.direct!),
+		).toBeCloseTo(189)
+		expect(
+			Math.round(cache.processes[p1].ee.indirect!),
+		).toBeCloseTo(9)
+
+		expect(cache.processes[p2].se.direct).toBeCloseTo(
+			4.4,
+		)
+		expect(cache.processes[p2].se.indirect).toBeCloseTo(
+			0.6,
+		)
+		expect(cache.processes[p2].see.direct).toBeCloseTo(
+			4.4,
+		)
+		expect(
+			cache.processes[p2].see.indirect,
+		).toBeCloseTo(0.6)
+		expect(
+			Math.round(cache.processes[p2].ee.direct!),
+		).toBeCloseTo(88)
+		expect(
+			Math.round(cache.processes[p2].ee.indirect!),
+		).toBeCloseTo(12)
+	})
 })
