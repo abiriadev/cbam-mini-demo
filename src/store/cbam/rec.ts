@@ -87,8 +87,12 @@ type CbamCache = {
 
 const calcProcessCache = (
 	cache: CbamCache,
-	{ id, heat, wg, direm }: Process,
+	{ processes, purchased_precursors }: State,
+	pid: Id,
 ) => {
+	const { id, heat, wg, direm, precursors } =
+		processes[pid]
+
 	const heatRes =
 		heat.imported * heat.ef_imported -
 		heat.exported * heat.ef_exported
@@ -100,15 +104,32 @@ const calcProcessCache = (
 	cache.processes[id].wg = wgRes
 
 	const attr_d = direm + heatRes + wgRes
-	cache.processes[id].attr = newEmission(attr_d, 0)
+	const attr_i = 0
+	cache.processes[id].attr = newEmission(attr_d, attr_i)
 
-	// const ee_d =
-	// 	attr_d +
-	// 	sum(
-	// 		Object.entries(purchased_precursors).map(
-	// 			([k, v]) => pps[k].see.direct * v.amount,
-	// 		),
-	// 	)
+	const ee_d =
+		attr_d +
+		sum(
+			Object.entries(
+				precursors.purchased_precursors,
+			).map(
+				([k, { amount }]) =>
+					purchased_precursors[k].see.direct *
+					amount,
+			),
+		)
+	const ee_i =
+		attr_i +
+		sum(
+			Object.entries(
+				precursors.purchased_precursors,
+			).map(
+				([k, { amount }]) =>
+					purchased_precursors[k].see.indirect *
+					amount,
+			),
+		)
+	cache.processes[id].ee = newEmission(ee_d, ee_i)
 }
 
 const calcProcess = (
