@@ -1,10 +1,7 @@
 import {
 	EmInstCombustionInput,
-	calc,
 	emInstCombustion,
 } from '@/calc'
-import { CbamState } from '@/store/cbam'
-import { RootState } from '@/store'
 import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to'
 import {
 	State,
@@ -140,7 +137,6 @@ describe('rec', () => {
 			processes: {
 				p1: {
 					name: id,
-					id,
 					ad: 100,
 					direm: 123,
 					heat: {
@@ -152,8 +148,6 @@ describe('rec', () => {
 					wg: {
 						imported: 0,
 						exported: 0,
-						ef_imported: 0,
-						ef_exported: 0,
 					},
 					electricity: {
 						imported: 0,
@@ -192,7 +186,6 @@ describe('rec', () => {
 			processes: {
 				p1: {
 					name: id,
-					id,
 					ad: 100,
 					direm: 123,
 					heat: {
@@ -204,8 +197,6 @@ describe('rec', () => {
 					wg: {
 						imported: 12,
 						exported: 8.6,
-						ef_imported: 1.2,
-						ef_exported: 3.4,
 					},
 					electricity: {
 						imported: 0,
