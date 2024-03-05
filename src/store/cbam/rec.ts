@@ -84,7 +84,35 @@ type CbamCache = {
 	>
 }
 
-const calcCache = (cache: CbamCache, state: State) =>
+const newCache = (ids: Array<Id>): CbamCache => ({
+	processes: Object.fromEntries(
+		ids.map(id => [
+			id,
+			{
+				heat: null,
+				wg: null,
+				attr: {
+					direct: null,
+					indirect: null,
+				},
+				ee: {
+					direct: null,
+					indirect: null,
+				},
+				se: {
+					direct: null,
+					indirect: null,
+				},
+				see: {
+					direct: null,
+					indirect: null,
+				},
+			},
+		]),
+	),
+})
+
+export const calcCache = (cache: CbamCache, state: State) =>
 	void Object.entries(state.processes).forEach(([k]) =>
 		calcProcessCache(cache, state, k),
 	)
