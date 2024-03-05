@@ -19,6 +19,7 @@
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-redux": "^9.0.4",
+		"tsdef": "^0.0.14",
 		"use-immer": "^0.9.0",
 		"xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
 	},
