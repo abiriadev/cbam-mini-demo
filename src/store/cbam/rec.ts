@@ -90,7 +90,7 @@ const calcProcessCache = (
 	{ processes, purchased_precursors }: State,
 	pid: Id,
 ) => {
-	const { id, heat, wg, direm, precursors } =
+	const { id, ad, heat, wg, direm, precursors } =
 		processes[pid]
 
 	const heatRes =
@@ -130,6 +130,14 @@ const calcProcessCache = (
 			),
 		)
 	cache.processes[id].ee = newEmission(ee_d, ee_i)
+
+	const se_d = attr_d / ad
+	const se_i = attr_i / ad
+	cache.processes[id].se = newEmission(se_d, se_i)
+
+	const see_d = ee_d / ad
+	const see_i = ee_i / ad
+	cache.processes[id].see = newEmission(see_d, see_i)
 }
 
 const calcProcess = (
