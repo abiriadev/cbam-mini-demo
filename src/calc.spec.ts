@@ -333,4 +333,73 @@ describe('rec', () => {
 			Math.round(cache.processes[id].ee.indirect!),
 		).toBeCloseTo(64)
 	})
+
+	it('purchased precursor', () => {
+		const p1 = 'p1'
+		const pp1 = 'pp1'
+		const cache = newCache([p1])
+
+		const state: State = {
+			processes: {
+				p1: {
+					name: p1,
+					ad: 100,
+					direm: 123,
+					heat: {
+						imported: 0,
+						exported: 0,
+						ef_imported: 0,
+						ef_exported: 0,
+					},
+					wg: {
+						imported: 0,
+						exported: 0,
+					},
+					electricity: {
+						imported: 0,
+						exported: 0,
+						ef_imported: 0,
+						ef_exported: 0,
+						ef_source_imported: '',
+					},
+					precursors: {
+						processes: {},
+						purchased_precursors: {
+							pp1: {
+								amount: 30,
+							},
+						},
+					},
+				},
+			},
+			purchased_precursors: {
+				pp1: {
+					name: pp1,
+					see: {
+						direct: 41.3,
+						indirect: 32.2,
+					},
+				},
+			},
+		}
+
+		calcCache(cache, state)
+
+		expect(cache.processes[p1].se.direct).toBeCloseTo(
+			1.23,
+		)
+		expect(cache.processes[p1].see.direct).toBeCloseTo(
+			13.62,
+		)
+		expect(
+			cache.processes[p1].see.indirect,
+		).toBeCloseTo(9.66)
+
+		expect(
+			Math.round(cache.processes[p1].ee.direct!),
+		).toBeCloseTo(1362)
+		expect(
+			Math.round(cache.processes[p1].ee.indirect!),
+		).toBeCloseTo(2328)
+	})
 })

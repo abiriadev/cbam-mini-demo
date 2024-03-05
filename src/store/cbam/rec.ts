@@ -134,18 +134,18 @@ const calcProcessCache = (
 	cache.processes[pid].attr = newEmission(attr_d, attr_i)
 
 	const [pp_d, pp_i] = zip(
-		Object.entries(precursors.purchased_precursors).map(
-			([k, { amount }]) => [
-				state.purchased_precursors[k].see.direct *
-					amount,
-				state.purchased_precursors[k].see.indirect *
-					amount,
-			],
-		),
+		...Object.entries(
+			precursors.purchased_precursors,
+		).map(([k, { amount }]) => [
+			state.purchased_precursors[k].see.direct *
+				amount,
+			state.purchased_precursors[k].see.indirect *
+				amount,
+		]),
 	)
 
 	const [p_d, p_i] = zip(
-		Object.entries(precursors.processes).map(
+		...Object.entries(precursors.processes).map(
 			([k, { amount }]) => {
 				const see =
 					cache.processes[k].see ??
