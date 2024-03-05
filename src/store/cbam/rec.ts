@@ -84,7 +84,7 @@ type CbamCache = {
 	>
 }
 
-const newCache = (ids: Array<Id>): CbamCache => ({
+export const newCache = (ids: Array<Id>): CbamCache => ({
 	processes: Object.fromEntries(
 		ids.map(id => [
 			id,

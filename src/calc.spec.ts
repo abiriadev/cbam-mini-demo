@@ -6,6 +6,11 @@ import {
 import { CbamState } from '@/store/cbam'
 import { RootState } from '@/store'
 import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to'
+import {
+	State,
+	calcCache,
+	newCache,
+} from './store/cbam/rec'
 // import { initialState } from '@/store/cbam'
 
 // const genRootState = (cbam: CbamState): RootState => ({
@@ -123,5 +128,48 @@ describe('emInst', () => {
 			},
 			SANE_PRECISION,
 		)
+	})
+})
+
+describe('rec', () => {
+	it('a', () => {
+		const cache = newCache(['p1'])
+
+		const state: State = {
+			processes: {
+				p1: {
+					name: 'p1',
+					id: 'p1',
+					ad: 100,
+					direm: 123,
+					heat: {
+						imported: 12,
+						exported: 12,
+						ef_imported: 1,
+						ef_exported: 2,
+					},
+					wg: {
+						imported: 12,
+						exported: 12,
+						ef_imported: 1,
+						ef_exported: 2,
+					},
+					electricity: {
+						imported: 12,
+						exported: 12,
+						ef_imported: 1,
+						ef_exported: 2,
+						ef_source_imported: '',
+					},
+					precursors: {
+						processes: {},
+						purchased_precursors: {},
+					},
+				},
+			},
+			purchased_precursors: {},
+		}
+
+		calcCache(cache, state)
 	})
 })
