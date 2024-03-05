@@ -84,6 +84,11 @@ type CbamCache = {
 	>
 }
 
+const calcCache = (cache: CbamCache, state: State) =>
+	void Object.entries(state.processes).forEach(([k]) =>
+		calcProcessCache(cache, state, k),
+	)
+
 const calcProcessCache = (
 	cache: CbamCache,
 	state: State,
