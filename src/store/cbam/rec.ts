@@ -1,7 +1,7 @@
 import { Nemesia } from '@/calc'
 import { nemesiaInit } from '@/data'
 import { sum } from '@/utils'
-import { DeepPartial } from 'tsdef'
+import { DeepPartial, MaybeNull } from 'tsdef'
 
 export interface State {
 	processes: Record<Id, Process>
@@ -63,16 +63,52 @@ interface PurchasedPrecursor extends Identifiable {
 	see: Emission
 }
 
-interface ProcessRes {
-	heat: number
-	wg: number
-	se: Emission
-	see: Emission
-	ee: Emission
+type LeafMaybeNull<T> = {
+	[P in keyof T]: T[P] extends (infer I)[]
+		? LeafMaybeNull<I>[]
+		: T[P] extends object
+		? LeafMaybeNull<T[P]>
+		: T[P] | null
 }
 
 type CbamCache = {
-	processes: Record<Id, DeepPartial<ProcessRes>>
+	processes: Record<
+		Id,
+		LeafMaybeNull<{
+			heat: number
+			wg: number
+			attr: Emission
+			ee: Emission
+			se: Emission
+			see: Emission
+		}>
+	>
+}
+
+const calcProcessCache = (
+	cache: CbamCache,
+	{ id, heat, wg, direm }: Process,
+) => {
+	const heatRes =
+		heat.imported * heat.ef_imported -
+		heat.exported * heat.ef_exported
+	cache.processes[id].heat = heatRes
+
+	const wgRes =
+		wg.imported * wg.ef_imported -
+		wg.exported * wg.ef_exported
+	cache.processes[id].wg = wgRes
+
+	const attr_d = direm + heatRes + wgRes
+	cache.processes[id].attr = newEmission(attr_d, 0)
+
+	// const ee_d =
+	// 	attr_d +
+	// 	sum(
+	// 		Object.entries(purchased_precursors).map(
+	// 			([k, v]) => pps[k].see.direct * v.amount,
+	// 		),
+	// 	)
 }
 
 const calcProcess = (
@@ -103,6 +139,8 @@ const calcProcess = (
 		)
 
 	return {
+		heat: heatRes,
+		wg: wgRes,
 		se: newEmission(attr_d / ad, 0),
 		see: newEmission(ee_d / ad, 0),
 		ee: newEmission(ee_d, 0),
