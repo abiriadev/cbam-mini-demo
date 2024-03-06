@@ -15,138 +15,284 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CBAM'
+                $ref: '#/components/schemas/cbam'
 components:
   schemas:
+    cbam:
+      type: object
+      properties:
+        a:
+          type: object
+          properties:
+            reporting_period:
+              type: object
+              description: CBAM 보고 기간
+              properties:
+                start:
+                  type: string
+                  format: date
+                  description: CBAM 보고 기간의 시작일
+                end:
+                  type: string
+                  format: date
+                  description: CBAM 보고 기간의 종료일
+              example:
+                start: 2024-01-01
+                end: 2024-12-31
+            about_the_installation:
+              type: object
+              description: 설비 기본 정보
+              properties:
+                name_of_the_installation:
+                  type: string
+                  description: 설비 명칭
+                  example: 공장 A
+                name_of_the_installation_english:
+                  type: string
+                  description: 설비 영문 명칭
+                  example: factory A
+                street_number:
+                  type: string
+                  description: 주소
+                economic_activity:
+                  type: string
+                post_code:
+                  type: integer
+                  description: 우편번호
+                po_box:
+                  type: string
+                  description: 우편함
+                city:
+                  type: string
+                  description: 설립 도시
+                  example: 'Seoul'
+                country:
+                  type: string
+                unlocode:
+                  type: string
+                  description: UN/LO 지역 코드
+                  example: KR SEL
+                coordinates_latitude:
+                  type: number
+                  description: 설비의 좌표
+                coordinates_longitude:
+                  type: number
+                  description: 설비의 좌표
+                name_of_the_authorized_representative:
+                  type: string
+                  description: 담당자
+                email:
+                  type: string
+                  format: email
+                  description: 이메일
+                telephone:
+                  type: string
+                  description: 연락처
+                  example: 010-1234-5678
+              required:
+                - name_of_the_installation_english
+                - street_number
+                - post_code
+                - po_box
+                - city
+                - country
+                - unlocode
+                - coordinates_latitude
+                - coordinates_longitude
+            verifier_of_the_report:
+              type: object
+              description: CBAM 보고서 인증기관 정보
+              properties:
+                company_name:
+                  type: string
+                  description: 사명
+                street_number:
+                  type: string
+                  description: 주소
+                city:
+                  type: string
+                  description: 도시
+                postcode:
+                  type: string
+                  description: 우편번호
+                country:
+                  type: string
+                  description: 국가
+                name:
+                  type: string
+                  description: 담당자 이름
+                email_address:
+                  type: string
+                  format: email
+                  description: 이메일
+                telephone_number:
+                  type: string
+                  description: 연락처
+                fax:
+                  type: string
+                  description: 팩스
+                accreditation_member_state:
+                  type: string
+                name_of_the_national_accreditation_body:
+                  type: string
+                registration_number_issued_by_the_accreditation_body:
+                  type: string
+                aggregated_goods_categories_and_relevant_production_processes:
+                  type: array
+                  description: 관련된 집약 상품 카테고리 종류
+                  items:
+                    type: object
+                    properties:
+                      agc:
+                        $ref: '#/components/schemas/AGC'
+                      route1:
+                        $ref: '#/components/schemas/Route'
+                      route2:
+                        $ref: '#/components/schemas/Route'
+                      route3:
+                        $ref: '#/components/schemas/Route'
+                      route4:
+                        $ref: '#/components/schemas/Route'
+                      route5:
+                        $ref: '#/components/schemas/Route'
+                      route6:
+                        $ref: '#/components/schemas/Route'
+                    required:
+                      - agc
+                      - routes
+                purchased_precursors:
+                  production_process:
+                    $ref: '#/components/schemas/AGC'
+                  country_code:
+                    $ref: '#/components/schemas/CountryCode'
+                  route1:
+                    type: string
+                  route2:
+                    type: string
+                  route3:
+                    type: string
+                  route4:
+                    type: string
+                  route5:
+                    type: string
+                  name:
+                    type: string
+        b:
+          type: object
+          properties:
+            source_streams:
+              type: array
+              items:
+                type: object
+                properties:
+                  method:
+                    type: string
+                    enum:
+                      - Combustion
+                      - Process emissions
+                      - Mass Balance
+                  name:
+                    type: string
+                  ad:
+                    type: number
+                  ad_unit:
+                    type: string
+                    enum:
+                      - t
+                      - 1000Nm3
+                  ncv:
+                    type: number
+                  ef:
+                    type: number
+                  ef_unit:
+                    type: string
+                    enum:
+                      - tCO2/TJ
+                      - tCO2/t
+                      - tCO2/1000Nm3
+                  carbon_content:
+                    type: number
+                  oxf:
+                    type: number
+                  convf:
+                    type: number
+                  bioc:
+                    type: number
+            pfc_emissions:
+              type: array
+              items:
+                type: object
+                properties:
+                  method:
+                    type: string
+                    enum:
+                      - Slope method
+                      - Overvoltage method
+                  type_of_anode:
+                    type: string
+                  ad:
+                    type: number
+                  a_frequency:
+                    type: number
+                  a_duration:
+                    type: number
+                  a_cf4:
+                    type: number
+                  b_aeo:
+                    type: number
+                  b_ce:
+                    type: number
+                  b_ovc:
+                    type: number
+                  c2f6:
+                    type: number
+                  collection_efficiency:
+                    type: number
+            emissions_sources:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: number
+                  type_of_ghg:
+                    type: number
+                  biomass_fraction:
+                    type: number
+                  hourly_ghg_conc_average:
+                    type: number
+                  hours_operating:
+                    type: number
+                  flue_gas:
+                    type: number
+        c:
+          type: object
+          properties: {}
+        d:
+          type: object
+          properties: {}
+        e:
+          type: object
+          properties: {}
+        f:
+          type: object
+          properties: {}
+        s1:
+          type: object
+          properties: {}
+        s2:
+          type: object
+          properties: {}
+        s3:
+          type: object
+          properties: {}
     CBAM:
       type: object
       description: CBAM 계산
       properties:
-        reporting-period:
-          type: object
-          description: CBAM 보고 기간
-          properties:
-            start:
-              type: string
-              format: date
-              description: CBAM 보고 기간의 시작일
-            end:
-              type: string
-              format: date
-              description: CBAM 보고 기간의 종료일
-          example:
-            start: 2023-01-01
-            end: 2023-12-31
-        installation:
-          type: object
-          description: 설비 기본 정보
-          properties:
-            name:
-              type: string
-              description: 설비 명칭
-              example: 공장 A
-            name-en:
-              type: string
-              description: 설비 영문 명칭
-              example: factory A
-            street:
-              type: string
-              description: 주소
-            economic-activity:
-              type: string
-            postcode:
-              type: integer
-              description: 우편번호
-            po-box:
-              type: string
-              description: 우편함
-            city:
-              type: string
-              description: 설립 도시
-              example: 'Seoul'
-            country:
-              $ref: '#/components/schemas/CountryCode'
-            unlocode:
-              type: string
-              description: UN/LO 지역 코드
-              example: KR SEL
-            coordinates:
-              type: object
-              description: 설비의 좌표
-              properties:
-                latitude:
-                  type: number
-                longitude:
-                  type: number
-            representative:
-              type: string
-              description: 담당자
-            email:
-              type: string
-              format: email
-              description: 이메일
-            telephone:
-              type: string
-              description: 연락처
-              example: 010-1234-5678
-          required:
-            - name-en
-            - country
-            - unlocode
-        verifier:
-          type: object
-          description: CBAM 보고서 인증기관 정보
-          properties:
-            company-name:
-              type: string
-              description: 사명
-            street:
-              type: string
-              description: 주소
-            city:
-              type: string
-              description: 도시
-            postcode:
-              type: string
-              description: 우편번호
-            country:
-              type: string
-              description: 국가
-            name:
-              type: string
-              description: 담당자 이름
-            email:
-              type: string
-              format: email
-              description: 이메일
-            telephone:
-              type: string
-              description: 연락처
-            fax:
-              type: string
-              description: 팩스
-            accreditation-state:
-              type: string
-            national-accreditation-body:
-              type: string
-            registration-number:
-              type: string
-        agcs:
-          type: array
-          description: 관련된 집약 상품 카테고리 종류
-          items:
-            type: object
-            properties:
-              agc:
-                $ref: '#/components/schemas/AGC'
-              routes:
-                type: array
-                description: 각 집약 상품 카테고리를 생산하는 서로 다른 제조 경로
-                items:
-                  $ref: '#/components/schemas/Route'
-            required:
-              - agc
-              - routes
+        # installation:
+        # verifier:
+        # agcs:
         processes:
           type: array
           description: 제조 공정 목록
