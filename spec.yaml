@@ -3,6 +3,9 @@ info:
   title: CBAM excal generation API
   version: 0.1.0
   description: 주어진 값을 사용하여 Excel 파일을 생성하는 백엔드 API 스펙
+  license:
+    name: CC Attribution-ShareAlike 4.0 (CC BY-SA 4.0)
+    url: https://openweathermap.org/price
 servers:
   - url: https://cbam.example.aipim.io
 paths:
@@ -10,6 +13,7 @@ paths:
     post:
       operationId: generateExcel
       summary: Excel 파일 생성 요청
+      security: []
       requestBody:
         description: aaa
         required: true
