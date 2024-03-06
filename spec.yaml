@@ -1,21 +1,29 @@
 openapi: 3.0.0
 info:
-  title: CBAM demo API
+  title: CBAM excal generation API
   version: 0.1.0
-  description: aa
+  description: 주어진 값을 사용하여 Excel 파일을 생성하는 백엔드 API 스펙
+servers:
+  - url: https://cbam.example.aipim.io
 paths:
   /:
-    get:
-      operationId: fetch
-      summary: Fetch CBAM data
+    post:
+      operationId:
+      summary: Excel 파일 생성 요청
+      requestBody:
+        description: aaa
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/cbam'
       responses:
         '200':
-          description: |-
-            정상 응답
+          description: 생성된 Excel 파일
           content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/cbam'
+            application/vnd.ms-excel:
+        '400':
+          description: 생성 실패
 components:
   schemas:
     cbam:
