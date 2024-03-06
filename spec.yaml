@@ -355,8 +355,119 @@ components:
                         - Four eyes principle
                         - None
         d:
-          type: object
-          properties: {}
+          type: array
+          items:
+            type: object
+            properties:
+              total_production_level:
+                type: array
+                description: 각 제조 경로별로 생산된 양
+                items:
+                  type: number
+                  description: 각 경로별로 생산된 양. 톤 단위.
+              production_for_the_market:
+                type: number
+              consumed_in_other_production_processes:
+                type: array
+                description: 각 제조 공정에서 소비된 양
+                items:
+                  type: number
+                  description: 옆 공정에서 소비된 양. 톤 단위.
+              consumed_in_non_cbam_goods:
+                type: number
+              calculation_of_the_attributed_emissions:
+                type: object
+                description: 귀속배출량 계산
+                properties:
+                  direm:
+                    type: number
+                    description: 직접배출량
+                  measurable_heat:
+                    type: object
+                    description: 측정가능한 열
+                    properties:
+                      applicable:
+                        type: boolean
+                      imported:
+                        type: object
+                        description: 수입된 열
+                        properties:
+                          amount:
+                            type: number
+                            description: 수입된 양
+                          ef:
+                            type: number
+                            description: 배출계수
+                        required:
+                          - amount
+                          - ef
+                      exported:
+                        type: object
+                        description: 추출된 열
+                        properties:
+                          amount:
+                            type: number
+                            description: 수출된 양
+                          ef:
+                            type: number
+                            description: 배출계수
+                        required:
+                          - amount
+                          - ef
+                    required:
+                      - imported
+                      - exported
+                  waste_gases:
+                    type: object
+                    description: 폐가스
+                    properties:
+                      applicable:
+                        type: boolean
+                      imported:
+                        type: number
+                        description: 수입된 폐가스
+                      exported:
+                        type: number
+                        description: 수출된 폐가스
+                    required:
+                      - imported
+                      - exported
+                  indirect_emissions_from_electricity_consumption:
+                    type: object
+                    description: 수입된 전력
+                    properties:
+                      amount:
+                        type: number
+                        description: 수입된 양 (MWh)
+                      ef:
+                        type: number
+                        description: 배출계수
+                      source:
+                        type: string
+                        description: 배출계수 출처
+                        enum:
+                          - D.2.1
+                          - D.2.2
+                          - D.2.3
+                          - D.2.4
+                          - Mix
+                    required:
+                      - amount
+                      - ef
+                      - source
+                  electricity_exported_from_the_production_process:
+                    type: object
+                    description: 수출된 전력 (간접배출량)
+                    properties:
+                      amount:
+                        type: number
+                        description: 수출된 양 (MWh)
+                      ef:
+                        type: number
+                        description: 배출계수
+                    required:
+                      - amount
+                      - ef
         e:
           type: object
           properties: {}
@@ -426,160 +537,7 @@ components:
       description: 생산 경로
       enum:
         - Basic oxygen steelmaking
-    Process:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: 식별자
-        name:
-          type: string
-          description: 제조 공정 명칭
-          example: Process 1
-        agc:
-          $ref: '#/components/schemas/AGC'
-        included-goods:
-          type: array
-          items:
-            $ref: '#/components/schemas/AGC'
-        production-level:
-          type: object
-          description: 각 제조 경로별로 생산된 양
-          additionalProperties:
-            type: number
-            description: 각 경로별로 생산된 양. 톤 단위.
-        consumed:
-          type: object
-          description: 각 제조 공정에서 소비된 양
-          additionalProperties:
-            type: number
-            description: 옆 공정에서 소비된 양. 톤 단위.
-        attr:
-          type: object
-          description: 귀속배출량 계산
-          properties:
-            direm:
-              type: number
-              description: 직접배출량
-            heat:
-              type: object
-              description: 측정가능한 열
-              properties:
-                imported:
-                  type: object
-                  description: 수입된 열
-                  properties:
-                    amount:
-                      type: number
-                      description: 수입된 양
-                    ef:
-                      type: number
-                      description: 배출계수
-                  required:
-                    - amount
-                    - ef
-                exported:
-                  type: object
-                  description: 추출된 열
-                  properties:
-                    amount:
-                      type: number
-                      description: 수출된 양
-                    ef:
-                      type: number
-                      description: 배출계수
-                  required:
-                    - amount
-                    - ef
-              required:
-                - imported
-                - exported
-            wg:
-              type: object
-              description: 폐가스
-              properties:
-                imported:
-                  type: object
-                  description: 수입된 폐가스
-                  properties:
-                    amount:
-                      type: number
-                      description: 수입된 양
-                    ef:
-                      type: number
-                      description: 배출계수
-                  required:
-                    - amount
-                exported:
-                  type: object
-                  description: 수출된 폐가스
-                  properties:
-                    amount:
-                      type: number
-                      description: 수출된 양
-                    ef:
-                      type: number
-                      description: 배출계수
-                  required:
-                    - amount
-              required:
-                - imported
-                - exported
-            electricity:
-              type: object
-              description: 전력
-              properties:
-                imported:
-                  type: object
-                  description: 수입된 전력
-                  properties:
-                    amount:
-                      type: number
-                      description: 수입된 양 (MWh)
-                    ef:
-                      type: number
-                      description: 배출계수
-                    source:
-                      type: string
-                      description: 배출계수 출처
-                      enum:
-                        - D.2.1
-                        - D.2.2
-                        - D.2.3
-                        - D.2.4
-                        - Mix
-                  required:
-                    - amount
-                    - ef
-                    - source
-                exported:
-                  type: object
-                  description: 수출된 전력 (간접배출량)
-                  properties:
-                    amount:
-                      type: number
-                      description: 수출된 양 (MWh)
-                    ef:
-                      type: number
-                      description: 배출계수
-                  required:
-                    - amount
-                    - ef
-              required:
-                - imported
-                - exported
-          required:
-            - direm
-            - electricity
-      required:
-        - id
-        - name
-        - agc
-        - included-goods
-        - production-level
-        - consumed
-        - attr
+    # Process:
     Precursor:
       type: object
       description: 프리커서
