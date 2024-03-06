@@ -8,7 +8,7 @@ servers:
 paths:
   /:
     post:
-      operationId:
+      operationId: generateExcel
       summary: Excel 파일 생성 요청
       requestBody:
         description: aaa
@@ -22,6 +22,9 @@ paths:
           description: 생성된 Excel 파일
           content:
             application/vnd.ms-excel:
+              schema:
+                type: string
+                format: binary
         '400':
           description: 생성 실패
 components:
@@ -303,14 +306,16 @@ components:
           type: object
           properties:
             fuel_balance:
-              total_fuel_input:
-                type: number
-              direct_fuel_for_cbam_goods:
-                type: number
-              fuel_for_electricity:
-                type: number
-              direct_fuel_for_non_cbam_goods:
-                type: number
+              type: object
+              properties:
+                total_fuel_input:
+                  type: number
+                direct_fuel_for_cbam_goods:
+                  type: number
+                fuel_for_electricity:
+                  type: number
+                direct_fuel_for_non_cbam_goods:
+                  type: number
             greenhouse_gas_emissions_balance:
               type: object
               properties:
