@@ -528,15 +528,87 @@ components:
         f:
           type: object
           properties: {}
-        s1:
-          type: object
-          properties: {}
-        s2:
-          type: object
-          properties: {}
-        s3:
-          type: object
-          properties: {}
+        s_production:
+          type: array
+          items:
+            type: object
+            properties:
+              production_process:
+                type: string
+              cn_code:
+                type: number
+              product_name:
+                type: string
+              the_main_reducing_agent_of_the_precursor:
+                type: string
+                enum:
+                  - Coal or coke
+                  - Natural gas
+                  - Biogas
+                  - Hydrogen
+              steel_mill_identification_number:
+                type: number
+              p_mn:
+                type: number
+              p_cr:
+                type: number
+              p_nr:
+                type: number
+              p_other_alloys:
+                type: number
+              p_carbon:
+                type: number
+              t_scrap_per_t_steel:
+                type: number
+              p_other_materials:
+                type: number
+              p_pre_consumer_scrap:
+                type: number
+              t_scrap_per_t_aluminium:
+                type: number
+              p_non_aluminium_elements:
+                type: number
+              clinker_factor:
+                type: number
+              concentration:
+                type: number
+              p_nitric_acid:
+                type: number
+              p_urea:
+                type: number
+              p_n_contained:
+                type: number
+              p_n_as_nitrate:
+                type: number
+              p_n_as_urea:
+                type: number
+              p_n_in_other_forms:
+                type: number
+              form_of_carbon_price:
+                type: string
+                enum:
+                  - Emissions Trading System
+                  - Tax or levy
+                  - Combination
+                  - Other
+              share_of_total_embedded_emissions_covered_by_the_carbon_price:
+                type: number
+              currency:
+                $ref: '#/components/schemas/Currency'
+              carbon_price:
+                type: number
+              form_of_rebate:
+                type: string
+                enum:
+                  - Free allocation
+                  - Financial compensation
+                  - Tax deduction
+                  - Combination
+                  - Other
+              share_of_total_embedded_emissions_covered_by_the_rebate:
+                type: number
+              amount_of_rebate:
+                type: number
     AGC:
       type: string
       description: 집약 상품 카테고리
@@ -564,39 +636,6 @@ components:
       description: 생산 경로
       enum:
         - Basic oxygen steelmaking
-    # Precursor:
-    Stream:
-      type: object
-      properties:
-        method:
-          type: string
-          description: 배출량 측정 방식
-          enum:
-            - Combustion
-            - Process emissions
-            - Mass Balance
-        name:
-          type: string
-          description: 본 스트림의 명칭
-        ad:
-          type: number
-          description: 소비량 (Activity data)
-        ad-unit:
-          type: string
-          description: 소비량 단위
-          enum:
-            - t
-            - 1000Nm3
-          example: t
-        ncv:
-          type: number
-          description: Net calorific value
-      required:
-        - method
-        - name
-        - ad
-        - ad-unit
-        - ncv
     CountryCode:
       type: string
       description: 국가 코드
@@ -868,3 +907,19 @@ components:
         - ZR
         - ZW
       example: KR
+    Currency:
+      type: string
+      description: 화폐
+      enum:
+        - AED
+        - AFN
+        - ALL
+        - AMD
+        - ANG
+        - AOA
+        - ARS
+        - AUD
+        - AWG
+        - AZN
+        - USD
+      example: USD
