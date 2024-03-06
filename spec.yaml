@@ -293,7 +293,67 @@ components:
                     type: number
         c:
           type: object
-          properties: {}
+          properties:
+            fuel_balance:
+              total_fuel_input:
+                type: number
+              direct_fuel_for_cbam_goods:
+                type: number
+              fuel_for_electricity:
+                type: number
+              direct_fuel_for_non_cbam_goods:
+                type: number
+            greenhouse_gas_emissions_balance:
+              type: object
+              properties:
+                ghg_balance_by_type_of_ghg:
+                  type: object
+                  description: 온실가스 균형 정보
+                  properties:
+                    total_co2_emissions:
+                      type: number
+                      description: 총 CO2 배출량
+                    biomass_emissions:
+                      type: number
+                      description: 총 바이오매스 배출량
+                    total_n2o_emissions:
+                      type: number
+                      description: 총 N20 배출량
+                    total_pfc_emissions:
+                      type: number
+                      description: 총 PFC 배출량
+                    total_direct_emissions:
+                      type: number
+                      description: 총 직접배출량
+                    total_indirect_emissions:
+                      type: number
+                      description: 총 간접배출량
+                  required:
+                    - total_indirect_emissions
+                information_on_the_data_quality_and_quality_assurance:
+                  type: object
+                  properties:
+                    general_information_on_data_quality:
+                      type: string
+                      enum:
+                        - Mostly measurements & analyses
+                        - Mostly measurements & national standard factors for e.g. the emission factor
+                        - Mostly measurements & sector-specific standard factors for e.g. the emission factor
+                        - Mostly measurements & international standard factors for e.g. the emission factor
+                        - Mostly default values provided by the European Commission
+                    justification_for_use_of_default_values:
+                      type: string
+                      enum:
+                        - Unreasonable costs for more accurate monitoring
+                        - Data gaps
+                        - Other
+                    information_on_quality_assurance:
+                      type: string
+                      enum:
+                        - Third-party verification
+                        - Internal audits
+                        - Four eyes principle
+                        - None
         d:
           type: object
           properties: {}
@@ -329,30 +389,7 @@ components:
           description: 구입한 프리커서 목록
           items:
             $ref: '#/components/schemas/Precursor'
-        ghg-balance:
-          type: object
-          description: 온실가스 균형 정보
-          properties:
-            co2:
-              type: number
-              description: 총 CO2 배출량
-            biomass:
-              type: number
-              description: 총 바이오매스 배출량
-            n2o:
-              type: number
-              description: 총 N20 배출량
-            pfc:
-              type: number
-              description: 총 PFC 배출량
-            direct:
-              type: number
-              description: 총 직접배출량
-            indirect:
-              type: number
-              description: 총 간접배출량
-          required:
-            - indirect
+        # ghg-balance:
       required:
         - reporting-period
         - installation
