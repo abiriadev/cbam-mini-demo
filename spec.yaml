@@ -491,62 +491,64 @@ components:
                       - amount
                       - ef
         e:
-          type: object
-          properties:
-            consumed_in_production_processes:
-              type: array
-              items:
-                type: number
-            specific_embedded_emissions:
-              type: object
-              description: 특정내재배출량 정보
-              properties:
-                direct:
-                  type: object
-                  description: 특정직접내재배출량
-                  properties:
-                    value:
-                      type: number
-                      description: 내재배출량 값 (tCO2e/t)
-                    source:
-                      type: string
-                      description: 배출량 출처
-                      enum:
-                        - Measured
-                        - Default
-                  required:
-                    - value
-                    - source
-                indirect:
-                  type: object
-                  description: 특정간접내재배출량
-                  properties:
-                    value:
-                      type: number
-                      description: 내재배출량 값 (tCO2e/t)
-                    source:
-                      type: string
-                      description: 배출량 출처
-                      enum:
-                        - D.2.1
-                        - D.2.2
-                        - D.2.3
-                        - D.2.4
-                        - Mix
-                  required:
-                    - value
-                    - source
-                justification:
-                  type: string
-                  description: 기본수치를 적용한 이유
-                  enum:
-                    - Unreasonable costs for more accurate monitoring
-                    - Data gaps
-                    - Other
-              required:
-                - direct
-                - indirect
-                - justification
+          type: array
+          items:
+            type: object
+            properties:
+              consumed_in_production_processes:
+                type: array
+                items:
+                  type: number
+              specific_embedded_emissions:
+                type: object
+                description: 특정내재배출량 정보
+                properties:
+                  direct:
+                    type: object
+                    description: 특정직접내재배출량
+                    properties:
+                      value:
+                        type: number
+                        description: 내재배출량 값 (tCO2e/t)
+                      source:
+                        type: string
+                        description: 배출량 출처
+                        enum:
+                          - Measured
+                          - Default
+                    required:
+                      - value
+                      - source
+                  indirect:
+                    type: object
+                    description: 특정간접내재배출량
+                    properties:
+                      value:
+                        type: number
+                        description: 내재배출량 값 (tCO2e/t)
+                      source:
+                        type: string
+                        description: 배출량 출처
+                        enum:
+                          - D.2.1
+                          - D.2.2
+                          - D.2.3
+                          - D.2.4
+                          - Mix
+                    required:
+                      - value
+                      - source
+                  justification:
+                    type: string
+                    description: 기본수치를 적용한 이유
+                    enum:
+                      - Unreasonable costs for more accurate monitoring
+                      - Data gaps
+                      - Other
+                required:
+                  - direct
+                  - indirect
+                  - justification
         f:
           type: object
           properties: {}
