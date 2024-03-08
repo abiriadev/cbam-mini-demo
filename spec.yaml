@@ -299,7 +299,10 @@ components:
                   name:
                     type: number
                   type_of_ghg:
-                    type: number
+                    type: string
+                    enum:
+                      - CO2
+                      - N2O
                   biomass_fraction:
                     type: number
                   hourly_ghg_conc_average:
