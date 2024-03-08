@@ -495,6 +495,10 @@ components:
           items:
             type: object
             properties:
+              total_purchased_levels:
+                type: array
+                items:
+                  type: number
               consumed_in_production_processes:
                 type: array
                 items:
