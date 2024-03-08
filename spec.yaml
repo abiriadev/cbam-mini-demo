@@ -152,72 +152,72 @@ components:
                   type: string
                 registration_number_issued_by_the_accreditation_body:
                   type: string
-                aggregated_goods_categories_and_relevant_production_processes:
-                  type: object
-                  properties:
-                    list_of_aggregated_goods_categories:
-                      type: array
-                      description: 관련된 집약 상품 카테고리 종류
-                      items:
-                        type: object
-                        properties:
-                          agc:
-                            $ref: '#/components/schemas/AGC'
-                          route1:
-                            $ref: '#/components/schemas/Route'
-                          route2:
-                            $ref: '#/components/schemas/Route'
-                          route3:
-                            $ref: '#/components/schemas/Route'
-                          route4:
-                            $ref: '#/components/schemas/Route'
-                          route5:
-                            $ref: '#/components/schemas/Route'
-                          route6:
-                            $ref: '#/components/schemas/Route'
-                        required:
-                          - agc
-                          - routes
-                    relevant_production_processes:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          production_process:
-                            $ref: '#/components/schemas/AGC'
-                          included_goods_categories_1:
-                            $ref: '#/components/schemas/AGC'
-                          included_goods_categories_2:
-                            $ref: '#/components/schemas/AGC'
-                          included_goods_categories_3:
-                            $ref: '#/components/schemas/AGC'
-                          included_goods_categories_4:
-                            $ref: '#/components/schemas/AGC'
-                          included_goods_categories_5:
-                            $ref: '#/components/schemas/AGC'
-                          included_goods_categories_6:
-                            $ref: '#/components/schemas/AGC'
-                          name:
-                            type: string
-                purchased_precursors:
-                  type: object
-                  properties:
-                    production_process:
-                      $ref: '#/components/schemas/AGC'
-                    country_code:
-                      $ref: '#/components/schemas/CountryCode'
-                    route1:
-                      $ref: '#/components/schemas/Route'
-                    route2:
-                      $ref: '#/components/schemas/Route'
-                    route3:
-                      $ref: '#/components/schemas/Route'
-                    route4:
-                      $ref: '#/components/schemas/Route'
-                    route5:
-                      $ref: '#/components/schemas/Route'
-                    name:
-                      $ref: '#/components/schemas/Route'
+            aggregated_goods_categories_and_relevant_production_processes:
+              type: object
+              properties:
+                list_of_aggregated_goods_categories:
+                  type: array
+                  description: 관련된 집약 상품 카테고리 종류
+                  items:
+                    type: object
+                    properties:
+                      agc:
+                        $ref: '#/components/schemas/AGC'
+                      route1:
+                        $ref: '#/components/schemas/Route'
+                      route2:
+                        $ref: '#/components/schemas/Route'
+                      route3:
+                        $ref: '#/components/schemas/Route'
+                      route4:
+                        $ref: '#/components/schemas/Route'
+                      route5:
+                        $ref: '#/components/schemas/Route'
+                      route6:
+                        $ref: '#/components/schemas/Route'
+                    required:
+                      - agc
+                      - routes
+                relevant_production_processes:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      production_process:
+                        $ref: '#/components/schemas/AGC'
+                      included_goods_categories_1:
+                        $ref: '#/components/schemas/AGC'
+                      included_goods_categories_2:
+                        $ref: '#/components/schemas/AGC'
+                      included_goods_categories_3:
+                        $ref: '#/components/schemas/AGC'
+                      included_goods_categories_4:
+                        $ref: '#/components/schemas/AGC'
+                      included_goods_categories_5:
+                        $ref: '#/components/schemas/AGC'
+                      included_goods_categories_6:
+                        $ref: '#/components/schemas/AGC'
+                      name:
+                        type: string
+            purchased_precursors:
+              type: object
+              properties:
+                production_process:
+                  $ref: '#/components/schemas/AGC'
+                country_code:
+                  $ref: '#/components/schemas/CountryCode'
+                route1:
+                  $ref: '#/components/schemas/Route'
+                route2:
+                  $ref: '#/components/schemas/Route'
+                route3:
+                  $ref: '#/components/schemas/Route'
+                route4:
+                  $ref: '#/components/schemas/Route'
+                route5:
+                  $ref: '#/components/schemas/Route'
+                name:
+                  $ref: '#/components/schemas/Route'
         b:
           type: object
           properties:
