@@ -200,24 +200,26 @@ components:
                       name:
                         type: string
             purchased_precursors:
-              type: object
-              properties:
-                production_process:
-                  $ref: '#/components/schemas/AGC'
-                country_code:
-                  $ref: '#/components/schemas/CountryCode'
-                route1:
-                  $ref: '#/components/schemas/Route'
-                route2:
-                  $ref: '#/components/schemas/Route'
-                route3:
-                  $ref: '#/components/schemas/Route'
-                route4:
-                  $ref: '#/components/schemas/Route'
-                route5:
-                  $ref: '#/components/schemas/Route'
-                name:
-                  $ref: '#/components/schemas/Route'
+              type: array
+              items:
+                type: object
+                properties:
+                  production_process:
+                    $ref: '#/components/schemas/AGC'
+                  country_code:
+                    $ref: '#/components/schemas/CountryCode'
+                  route1:
+                    $ref: '#/components/schemas/Route'
+                  route2:
+                    $ref: '#/components/schemas/Route'
+                  route3:
+                    $ref: '#/components/schemas/Route'
+                  route4:
+                    $ref: '#/components/schemas/Route'
+                  route5:
+                    $ref: '#/components/schemas/Route'
+                  name:
+                    $ref: '#/components/schemas/Route'
         b:
           type: object
           properties:
