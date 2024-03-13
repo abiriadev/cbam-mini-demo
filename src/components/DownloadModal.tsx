@@ -20,7 +20,7 @@ export const DownloadModal = ({
 	filename,
 	title,
 	successTitle,
-	fetchHref: fetchHref,
+	fetchHref,
 }: DownloadModalProps) => {
 	const [loading, setLoading] = useState(true)
 	const [href, setHref] = useState<string | undefined>(
