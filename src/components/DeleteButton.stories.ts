@@ -17,3 +17,10 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {
 	args: {},
 }
+
+export const CustomTooltip: Story = {
+	args: {
+		title: 'Tooltip title',
+		description: 'Tooltip description',
+	},
+}
