@@ -34,6 +34,16 @@ export const Primary: Story = {
 	},
 }
 
+export const Loading: Story = {
+	args: {
+		excelModalOpen: true,
+		setExcelModalOpen: _ => {},
+		title: 'Title',
+		successTitle: 'Success title',
+		fetchHref: () => new Promise(_ => {}),
+	},
+}
+
 export const FileName: Story = {
 	args: {
 		excelModalOpen: true,
@@ -51,10 +61,11 @@ export const Href: Story = {
 		title: 'Title',
 		successTitle: 'Success title',
 		filename: 'example.txt',
-		href: URL.createObjectURL(
-			new Blob(['lorem ipsum'], {
-				type: 'text/plain',
-			}),
-		),
+		fetchHref: async () =>
+			URL.createObjectURL(
+				new Blob(['lorem ipsum'], {
+					type: 'text/plain',
+				}),
+			),
 	},
 }
