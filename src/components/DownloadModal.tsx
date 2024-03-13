@@ -1,10 +1,10 @@
 import { LoadingOutlined } from '@ant-design/icons'
 import { Button, Flex, Modal, Result, Spin } from 'antd'
 import { useEffect, useState } from 'react'
+
 // 'CBAM_communication_for_installation (generated).xlsx'
 //"Export results as CBAM Excel report"
 //"Successfully generated Excel report!"
-
 export interface DownloadModalProps {
 	excelModalOpen: boolean
 	setExcelModalOpen: (_: boolean) => void
@@ -73,7 +73,10 @@ export const DownloadModal = ({
 							className="font-bold"
 							onClick={close}
 						>
-							<a href={href} download>
+							<a
+								href={href}
+								download={filename}
+							>
 								Download file
 							</a>
 						</Button>,
