@@ -57,3 +57,15 @@ export const Href: Story = {
 			),
 	},
 }
+
+export const Error: Story = {
+	args: {
+		excelModalOpen: true,
+		setExcelModalOpen: _ => {},
+		title: 'Title',
+		successTitle: 'Success title',
+		errorTitle: 'Error title',
+		filename: 'example.txt',
+		fetchHref: Promise.reject(''),
+	},
+}
