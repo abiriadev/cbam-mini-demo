@@ -12,11 +12,12 @@ const client = createClient<paths>({
 export const createExcel = async (
 	input: CbamInput,
 ): Promise<string> => {
-	const { error, response } = await client.POST('/', {
+	const { error, data } = await client.POST('/', {
 		body: input,
+		parseAs: 'blob',
 	})
 
 	if (error) throw error
 
-	return URL.createObjectURL(await response?.blob())
+	return URL.createObjectURL(data)
 }
