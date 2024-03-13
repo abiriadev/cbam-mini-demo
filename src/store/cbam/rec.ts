@@ -175,42 +175,42 @@ const calcProcessCache = (
 	cache.processes[pid].see = newEmission(see_d, see_i)
 }
 
-export const recCalc = (
-	{ processes, purchased_precursors }: State,
-	cache: CbamCache,
-) => {
-	// for (const id in processes) {
-	// 	cache.processes[id] = calcProcess(
-	// 		processes[id],
-	// 		purchased_precursors,
-	// 	)
-	// }
-
-	return {
-		// ...nemesiaInit,
-		s1_2_2_1: {
-			list: Object.entries(processes).map(
-				([k, v]) => ({
-					id: k,
-					name: v.name,
-					se: cache.processes[k].se,
-					see: cache.processes[k].see,
-					ee: cache.processes[k].se,
-				}),
-			),
-		},
-		s1_2_2_2: {
-			list: Object.entries(purchased_precursors).map(
-				([k, v]) => ({
-					id: k,
-					name: v.name,
-					se: v.see,
-					see: v.see,
-				}),
-			),
-		},
-	}
-}
+// export const recCalc = (
+// 	{ processes, purchased_precursors }: State,
+// 	cache: CbamCache,
+// ) => {
+// 	// for (const id in processes) {
+// 	// 	cache.processes[id] = calcProcess(
+// 	// 		processes[id],
+// 	// 		purchased_precursors,
+// 	// 	)
+// 	// }
+//
+// 	return {
+// 		// ...nemesiaInit,
+// 		s1_2_2_1: {
+// 			list: Object.entries(processes).map(
+// 				([k, v]) => ({
+// 					id: k,
+// 					name: v.name,
+// 					se: cache.processes[k].se,
+// 					see: cache.processes[k].see,
+// 					ee: cache.processes[k].se,
+// 				}),
+// 			),
+// 		},
+// 		s1_2_2_2: {
+// 			list: Object.entries(purchased_precursors).map(
+// 				([k, v]) => ({
+// 					id: k,
+// 					name: v.name,
+// 					se: v.see,
+// 					see: v.see,
+// 				}),
+// 			),
+// 		},
+// 	}
+// }
 
 type a = {
 	a_1: {
