@@ -5,7 +5,7 @@ export type CbamInput = components['schemas']['cbam']
 
 const client = createClient<paths>({
 	baseUrl:
-		process.env.VITE_EXCEL_API_ENDPOINT +
+		import.meta.env.VITE_EXCEL_API_ENDPOINT +
 		'/cbam/download',
 })
 
