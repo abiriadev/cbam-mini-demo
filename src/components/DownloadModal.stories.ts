@@ -13,18 +13,6 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-// 'CBAM_communication_for_installation (generated).xlsx'
-//"Export results as CBAM Excel report"
-//"Successfully generated Excel report!"
-// export interface DownloadModalProps {
-// 	excelModalOpen: boolean
-// 	setExcelModalOpen: (_: boolean) => void
-// 	filename?: string
-// 	title: string
-// 	href?: string
-// 	successTitle: string
-// }
-
 export const Primary: Story = {
 	args: {
 		excelModalOpen: true,
