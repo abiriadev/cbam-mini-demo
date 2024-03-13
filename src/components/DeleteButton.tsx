@@ -13,10 +13,10 @@ export const DeleteButton = ({
 	onConfirm,
 }: DeleteButtonProps) => (
 	<Popconfirm
-		title={title ?? 'Delete 1 process'}
+		title={title ?? 'Delete 1 item'}
 		description={
 			description ??
-			'Are you sure to delete this process?'
+			'Are you sure to delete this item?'
 		}
 		onConfirm={onConfirm ?? (() => void 0)}
 	>
