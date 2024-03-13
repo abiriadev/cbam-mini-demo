@@ -10,8 +10,8 @@ export interface DownloadModalProps {
 	setExcelModalOpen: (_: boolean) => void
 	filename?: string
 	title: string
-	href?: string
 	successTitle: string
+	fetchHref?: () => Promise<string>
 }
 
 export const DownloadModal = ({
@@ -19,18 +19,23 @@ export const DownloadModal = ({
 	setExcelModalOpen,
 	filename,
 	title,
-	href,
 	successTitle,
+	fetchHref: fetchHref,
 }: DownloadModalProps) => {
 	const [loading, setLoading] = useState(true)
+	const [href, setHref] = useState<string | undefined>(
+		undefined,
+	)
 
 	useEffect(() => {
 		if (!excelModalOpen) return
 
 		setLoading(true)
-		setTimeout(() => {
+		;(async () => {
+			setHref(await fetchHref?.())
+
 			setLoading(false)
-		}, 1000)
+		})()
 	}, [excelModalOpen])
 
 	const close = () => setExcelModalOpen(false)
