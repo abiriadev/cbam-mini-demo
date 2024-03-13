@@ -11,6 +11,7 @@ export interface DownloadModalProps {
 	filename?: string
 	title: string
 	successTitle: string
+	errorTitle: string
 	fetchHref?: () => Promise<string>
 }
 
@@ -20,9 +21,12 @@ export const DownloadModal = ({
 	filename,
 	title,
 	successTitle,
+	errorTitle,
 	fetchHref,
 }: DownloadModalProps) => {
-	const [loading, setLoading] = useState(true)
+	const [state, setState] = useState<
+		'loading' | 'success' | 'error'
+	>()
 	const [href, setHref] = useState<string | undefined>(
 		undefined,
 	)
@@ -30,11 +34,17 @@ export const DownloadModal = ({
 	useEffect(() => {
 		if (!excelModalOpen) return
 
-		setLoading(true)
+		setState('loading')
 		;(async () => {
-			setHref(await fetchHref?.())
+			try {
+				setHref(await fetchHref?.())
 
-			setLoading(false)
+				setState('success')
+			} catch (e) {
+				console.error(e)
+
+				setState('error')
+			}
 		})()
 	}, [excelModalOpen])
 
@@ -49,7 +59,7 @@ export const DownloadModal = ({
 			onCancel={close}
 			footer={() => <></>}
 		>
-			{loading ? (
+			{state == 'loading' ? (
 				<Flex
 					justify="center"
 					align="center"
@@ -66,7 +76,7 @@ export const DownloadModal = ({
 						}
 					/>
 				</Flex>
-			) : (
+			) : state == 'success' ? (
 				<Result
 					status="success"
 					title={successTitle}
@@ -86,6 +96,12 @@ export const DownloadModal = ({
 							</a>
 						</Button>,
 					]}
+				/>
+			) : (
+				<Result
+					status="error"
+					title={errorTitle}
+					subTitle={`cause: failed to fetch data`}
 				/>
 			)}
 		</Modal>
