@@ -1,14 +1,16 @@
 import { Form, Input } from 'antd'
 
-export const I = ({
-	label,
-	required,
-	name,
-}: {
+export interface FieldsInputProps {
 	label: string
 	required?: boolean
 	name?: string
-}) => (
+}
+
+export const FieldsInput = ({
+	label,
+	required,
+	name,
+}: FieldsInputProps) => (
 	<Form.Item
 		label={label}
 		name={name ?? label}
