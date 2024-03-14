@@ -18,3 +18,10 @@ export const Primary: Story = {
 		label: 'Label',
 	},
 }
+
+export const Required: Story = {
+	args: {
+		label: 'Label',
+		required: true,
+	},
+}
