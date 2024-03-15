@@ -1,4 +1,4 @@
-import { Button, Dropdown, Input, Typography } from 'antd'
+import { Input } from 'antd'
 import { useSelector } from 'react-redux'
 import { AgcKindSet } from '@/store/cbam'
 import { selectNemesia } from '@/calc'
