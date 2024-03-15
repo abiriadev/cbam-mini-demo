@@ -1,5 +1,5 @@
 import { selectNemesia } from '@/calc'
-import { Table, Typography } from 'antd'
+import { TitledTable } from '@/components/TitledTable'
 import { useSelector } from 'react-redux'
 
 export const SummaryOfTheInstallation = ({
@@ -10,14 +10,9 @@ export const SummaryOfTheInstallation = ({
 	const nemesia = useSelector(selectNemesia).a_2
 
 	return (
-		<Table
+		<TitledTable
 			id={id}
-			pagination={false}
-			title={() => (
-				<Typography.Title level={4}>
-					Summary of the installation
-				</Typography.Title>
-			)}
+			titleText="Summary of the installation"
 			columns={[
 				{ dataIndex: 'k' },
 				{ dataIndex: 'v' },
