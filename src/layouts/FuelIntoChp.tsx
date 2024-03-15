@@ -1,16 +1,10 @@
-import { Table, Typography } from 'antd'
+import { TitledTable } from '@/components/TitledTable'
 
 export const FuelIntoChp = ({ id }: { id?: string }) => {
 	return (
-		<Table
+		<TitledTable
 			id={id}
-			pagination={false}
-			title={() => (
-				<Typography.Title level={4}>
-					Total amount of fuel input into CHP
-					units
-				</Typography.Title>
-			)}
+			titleText="Total amount of fuel input into CHP units"
 			columns={[
 				{
 					title: 'Parameter',

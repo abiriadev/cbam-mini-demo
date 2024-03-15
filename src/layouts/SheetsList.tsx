@@ -22,6 +22,7 @@ import { FuelBalance } from '@layouts/FuelBalance'
 import { GhgBalanceByType } from '@layouts/GhgBalanceByType'
 import { FuelIntoChp } from '@layouts/FuelIntoChp'
 import { SummaryOfTheInstallation } from '@layouts/SummaryOfTheInstallation'
+import { ProcessGroup } from './ProcessGroup'
 
 export const SheetsList = ({ roww }: { roww: number }) => {
 	const { token } = theme.useToken()
@@ -103,6 +104,9 @@ export const SheetsList = ({ roww }: { roww: number }) => {
 						title="Summary Communication"
 					>
 						<SummaryCommunication id="summary-communication" />
+					</Sheet>
+					<Sheet id="a" title="a">
+						<ProcessGroup id="aa" />
 					</Sheet>
 				</Flex>
 			</Col>
