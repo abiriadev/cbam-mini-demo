@@ -1,47 +1,36 @@
-import { Flex, Form, Typography, theme } from 'antd'
-import { I } from '@/I'
-import { useSelector } from 'react-redux'
-import { selectNemesia } from '@/calc'
+import { Fields } from '@/components/Fields'
+import { TitledBox } from '@/components/TitledBox'
 
 export const Verifier1 = ({ id }: { id?: string }) => {
-	const { token } = theme.useToken()
-	const nemesia = useSelector(selectNemesia).a_3_1
-	const [form] = Form.useForm()
-
-	form.setFieldsValue(nemesia)
-
 	return (
-		<div
+		<TitledBox
 			id={id}
-			style={{
-				backgroundColor: token.colorBgContainer,
-				borderRadius: token.borderRadius,
-				padding: token.padding,
-			}}
+			title="Name and address of the verifier of this report"
 		>
-			<Flex
-				justify="space-between"
-				style={{
-					paddingBottom: token.padding,
-				}}
-			>
-				<Typography.Title level={4}>
-					Name and address of the verifier of this
-					report
-				</Typography.Title>
-			</Flex>
-			<Flex gap="large">
-				<Form form={form}>
-					<I label="Company Name" name="name" />
-					<I
-						label="Street, Number"
-						name="street"
-					/>
-					<I label="City" name="city" />
-					<I label="Postcode/ZIP" name="zip" />
-					<I label="Country" name="country" />
-				</Form>
-			</Flex>
-		</div>
+			<Fields
+				fields={[
+					{
+						label: 'Company Name',
+						name: 'name',
+					},
+					{
+						label: 'Street, Number',
+						name: 'street',
+					},
+					{
+						label: 'City',
+						name: 'city',
+					},
+					{
+						label: 'Postcode/ZIP',
+						name: 'zip',
+					},
+					{
+						label: 'Country',
+						name: 'country',
+					},
+				]}
+			/>
+		</TitledBox>
 	)
 }
