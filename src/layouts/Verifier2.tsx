@@ -1,46 +1,32 @@
-import { Flex, Form, Typography, theme } from 'antd'
-import { I } from '@/I'
-import { useSelector } from 'react-redux'
-import { selectNemesia } from '@/calc'
+import { Fields } from '@/components/Fields'
+import { TitledBox } from '@/components/TitledBox'
 
 export const Verifier2 = ({ id }: { id?: string }) => {
-	const { token } = theme.useToken()
-	const nemesia = useSelector(selectNemesia).a_3_2
-	const [form] = Form.useForm()
-
-	form.setFieldsValue(nemesia)
-
 	return (
-		<div
+		<TitledBox
 			id={id}
-			style={{
-				backgroundColor: token.colorBgContainer,
-				borderRadius: token.borderRadius,
-				padding: token.padding,
-			}}
+			title="Authorised representative of the verifier"
 		>
-			<Flex
-				justify="space-between"
-				style={{
-					paddingBottom: token.padding,
-				}}
-			>
-				<Typography.Title level={4}>
-					Authorised representative of the
-					verifier
-				</Typography.Title>
-			</Flex>
-			<Flex gap="large">
-				<Form form={form} layout="vertical">
-					<I label="Name" name="name" />
-					<I label="Email address" name="email" />
-					<I
-						label="Telephone number"
-						name="telephone"
-					/>
-					<I label="Fax" name="fax" />
-				</Form>
-			</Flex>
-		</div>
+			<Fields
+				fields={[
+					{
+						label: 'Name',
+						name: 'name',
+					},
+					{
+						label: 'Email address',
+						name: 'email',
+					},
+					{
+						label: 'Telephone number',
+						name: 'telephone',
+					},
+					{
+						label: 'Fax',
+						name: 'fax',
+					},
+				]}
+			/>
+		</TitledBox>
 	)
 }
