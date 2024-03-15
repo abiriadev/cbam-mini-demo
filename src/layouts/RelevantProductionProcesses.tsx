@@ -16,6 +16,7 @@ import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
 import { AgcKindSet } from '@/store/cbam'
 import { DeleteButton } from '@/components/DeleteButton'
+import { DropdownButton } from '@/components/DropdownButton'
 
 export const RelevantProductionProcesses = ({
 	id,
@@ -33,30 +34,10 @@ export const RelevantProductionProcesses = ({
 				titleText="Relevand production processes"
 				rowKey={({ id }) => id}
 				button={
-					<Dropdown
-						trigger={['click']}
-						menu={{
-							items: AgcKindSet.map(k => ({
-								key: k,
-								label: k,
-							})),
-						}}
-					>
-						<Button
-							type="primary"
-							icon={<DownOutlined />}
-						>
-							<Typography.Text
-								strong
-								style={{
-									color: token.Button
-										?.primaryColor,
-								}}
-							>
-								Add new process
-							</Typography.Text>
-						</Button>
-					</Dropdown>
+					<DropdownButton
+						text="Add new process"
+						items={AgcKindSet}
+					/>
 				}
 				columns={[
 					{
