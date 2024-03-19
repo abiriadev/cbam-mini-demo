@@ -1,49 +1,23 @@
-import { PlusOutlined } from '@ant-design/icons'
-import {
-	Button,
-	Flex,
-	InputNumber,
-	Select,
-	Table,
-	Typography,
-	theme,
-} from 'antd'
+import { InputNumber, Select } from 'antd'
 import { useSelector } from 'react-redux'
 import { selectNemesia } from '@/calc'
+import { TitledTable } from '@/components/TitledTable'
 
 export const EmissionsSources = ({
 	id,
 }: {
 	id: string
 }) => {
-	const { token } = theme.useToken()
 	const nemesia = useSelector(selectNemesia).b_1
 
 	return (
-		<Table
+		<TitledTable
+			titleText="Emissions Sources"
 			id={id}
-			pagination={false}
-			title={() => (
-				<Flex justify="space-between">
-					<Typography.Title level={4}>
-						Emissions Sources
-					</Typography.Title>
-					<Button
-						type="primary"
-						icon={<PlusOutlined />}
-					>
-						<Typography.Text
-							strong
-							style={{
-								color: token.Button
-									?.primaryColor,
-							}}
-						>
-							Add new process
-						</Typography.Text>
-					</Button>
-				</Flex>
-			)}
+			button={{
+				text: 'Add new process',
+				callback: () => void 0,
+			}}
 			rowKey={({ id }) => id}
 			columns={[
 				{
