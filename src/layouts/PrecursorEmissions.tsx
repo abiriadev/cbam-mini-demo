@@ -1,6 +1,7 @@
 import { Table, Typography } from 'antd'
 import { useSelector } from 'react-redux'
 import { selectNemesia } from '@/calc'
+import { TitledTable } from '@/components/TitledTable'
 
 export const PrecursorEmissions = ({
 	id,
@@ -10,48 +11,42 @@ export const PrecursorEmissions = ({
 	const nemesia = useSelector(selectNemesia).s1_2_2_2
 
 	return (
-		<div id={id}>
-			<Table
-				title={() => (
-					<Typography.Title level={4}>
-						Precursor Emissions
-					</Typography.Title>
-				)}
-				rowKey={({ id }) => id}
-				pagination={false}
-				columns={[
-					{
-						title: 'Name',
-						dataIndex: 'name',
-					},
-					{
-						title: 'SE (direct)',
-						dataIndex: ['se', 'direct'],
-					},
-					{
-						title: 'SE (indirect)',
-						dataIndex: ['se', 'indirect'],
-					},
-					{
-						title: 'SE (total)',
-					},
-					{
-						title: 'SEE (direct)',
-						dataIndex: ['see', 'direct'],
-					},
-					{
-						title: 'SEE (indirect)',
-						dataIndex: ['see', 'indirect'],
-					},
-					{
-						title: 'SEE (total)',
-					},
-					{
-						title: 'EmbEm (total)',
-					},
-				]}
-				dataSource={nemesia.list}
-			/>
-		</div>
+		<TitledTable
+			titleText="Precursor Emissions"
+			id={id}
+			rowKey={({ id }) => id}
+			columns={[
+				{
+					title: 'Name',
+					dataIndex: 'name',
+				},
+				{
+					title: 'SE (direct)',
+					dataIndex: ['se', 'direct'],
+				},
+				{
+					title: 'SE (indirect)',
+					dataIndex: ['se', 'indirect'],
+				},
+				{
+					title: 'SE (total)',
+				},
+				{
+					title: 'SEE (direct)',
+					dataIndex: ['see', 'direct'],
+				},
+				{
+					title: 'SEE (indirect)',
+					dataIndex: ['see', 'indirect'],
+				},
+				{
+					title: 'SEE (total)',
+				},
+				{
+					title: 'EmbEm (total)',
+				},
+			]}
+			dataSource={nemesia.list}
+		/>
 	)
 }
