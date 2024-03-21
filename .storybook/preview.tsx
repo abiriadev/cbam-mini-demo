@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react'
 import { ConfigProvider } from 'antd'
 import { theme } from '../src/theme'
+import '../src/index.css'
 
 const preview: Preview = {
 	parameters: {
