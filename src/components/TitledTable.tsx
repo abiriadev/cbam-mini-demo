@@ -1,23 +1,10 @@
-import {
-	Flex,
-	Table,
-	Typography,
-	theme,
-	TableProps,
-} from 'antd'
+import { Flex, Table, Typography, TableProps } from 'antd'
 import { ReactElement } from 'react'
-import { PlusButton } from './PlusButton'
 
 export interface TitledTableProps extends TableProps<any> {
 	id?: string
 	titleText: string
-	button?:
-		| ReactElement
-		| {
-				callback?: () => void
-				text: string
-				icon?: ReactElement
-		  }
+	button?: ReactElement
 }
 
 export const TitledTable = (props: TitledTableProps) => {
@@ -33,16 +20,7 @@ export const TitledTable = (props: TitledTableProps) => {
 				<Typography.Title level={4}>
 					{titleText}
 				</Typography.Title>
-				{button &&
-					('text' in button ? (
-						<PlusButton
-							onClick={button.callback}
-						>
-							{button.text}
-						</PlusButton>
-					) : (
-						button
-					))}
+				{button}
 			</Flex>
 			<Table {...rest} id={id} pagination={false} />
 		</div>
