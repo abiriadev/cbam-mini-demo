@@ -22,7 +22,6 @@ export interface TitledTableProps extends TableProps<any> {
 
 export const TitledTable = (props: TitledTableProps) => {
 	const { id, titleText, button, ...rest } = props
-	const { token } = theme.useToken()
 
 	return (
 		<div>
