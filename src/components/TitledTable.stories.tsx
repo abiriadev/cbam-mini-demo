@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { TitledTable } from './TitledTable'
+import { PlusButton } from './PlusButton'
 
 const meta = {
 	title: 'TitledTable',
@@ -48,10 +49,7 @@ export const Primary: Story = {
 export const Button: Story = {
 	args: {
 		titleText: 'Table title',
-		button: {
-			callback() {},
-			text: 'Button',
-		},
+		button: <PlusButton>Button</PlusButton>,
 		columns: [
 			{
 				title: 'Column A',
