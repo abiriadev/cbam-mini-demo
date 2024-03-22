@@ -19,6 +19,8 @@ import {
 } from '@ant-design/icons'
 import { selectNemesia } from '@/calc'
 import { DeleteButton } from '@/components/DeleteButton'
+import { TitledTable } from '@/components/TitledTable'
+import { PlusButton } from '@/components/PlusButton'
 
 export const Processes = () => {
 	const { token } = theme.useToken()
@@ -27,34 +29,13 @@ export const Processes = () => {
 
 	return (
 		<div>
-			<Table
+			<TitledTable
 				id="processes"
-				pagination={false}
 				rowKey={({ id }) => id}
-				title={() => (
-					<Flex justify="space-between">
-						<Typography.Title level={4}>
-							Processes
-						</Typography.Title>
-						<Button
-							type="primary"
-							icon={<PlusOutlined />}
-							// onClick={() =>
-							// 	dispatch(addNewProcess())
-							// }
-						>
-							<Typography.Text
-								strong
-								style={{
-									color: token.Button
-										?.primaryColor,
-								}}
-							>
-								Add new process
-							</Typography.Text>
-						</Button>
-					</Flex>
-				)}
+				titleText="Processes"
+				button={
+					<PlusButton>Add new process</PlusButton>
+				}
 				columns={[
 					{
 						title: 'Name',
