@@ -2,6 +2,7 @@ import { Input, InputNumber, Select } from 'antd'
 import { useSelector } from 'react-redux'
 import { TitledTable } from '@/components/TitledTable'
 import { selectNemesia } from '@/calc'
+import { PlusButton } from '@/components/PlusButton'
 
 export const SourceStreams = ({ id }: { id: string }) => {
 	const nemesia = useSelector(selectNemesia).b_1
@@ -10,10 +11,9 @@ export const SourceStreams = ({ id }: { id: string }) => {
 		<TitledTable
 			id={id}
 			titleText="Source Streams"
-			button={{
-				text: 'Add new process',
-				callback: () => void 0,
-			}}
+			button={
+				<PlusButton>Add new process</PlusButton>
+			}
 			rowKey={({ id }) => id}
 			columns={[
 				{
