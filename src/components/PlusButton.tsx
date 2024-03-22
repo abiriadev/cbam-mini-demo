@@ -13,7 +13,7 @@ export const PlusButton = ({
 }: PlusButtonProps) => {
 	return (
 		<Button
-			type="primary"
+			type="default"
 			icon={<PlusOutlined />}
 			onClick={onClick}
 		>
