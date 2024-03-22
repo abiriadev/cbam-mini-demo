@@ -1,4 +1,3 @@
-import { Table, Typography } from 'antd'
 import { useSelector } from 'react-redux'
 import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'

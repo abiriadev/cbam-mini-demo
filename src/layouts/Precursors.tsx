@@ -18,6 +18,8 @@ import {
 } from '@ant-design/icons'
 import { selectNemesia } from '@/calc'
 import { DeleteButton } from '@/components/DeleteButton'
+import { TitledTable } from '@/components/TitledTable'
+import { DropdownButton } from '@/components/DropdownButton'
 
 export const Precursors = ({ id }: { id?: string }) => {
 	const { token } = theme.useToken()
@@ -25,87 +27,54 @@ export const Precursors = ({ id }: { id?: string }) => {
 	const nemesia = useSelector(selectNemesia).a_5
 
 	return (
-		<div id={id}>
-			<Table
-				title={() => (
-					<Flex justify="space-between">
-						<Typography.Title level={4}>
-							Purchased precursors
-						</Typography.Title>
-						<Dropdown
-							trigger={['click']}
-							menu={{
-								items: AgcKindSet.map(
-									k => ({
-										key: k,
-										label: k,
-									}),
-								),
-							}}
-						>
-							<Button
-								type="primary"
-								icon={<DownOutlined />}
-							>
-								<Typography.Text
-									strong
-									style={{
-										color: token.Button
-											?.primaryColor,
-									}}
-								>
-									Add new precursor
-								</Typography.Text>
-							</Button>
-						</Dropdown>
-					</Flex>
-				)}
-				pagination={false}
-				rowKey={({ id }) => id}
-				columns={[
-					{
-						title: 'Name',
-						dataIndex: 'name',
-						render: (v, { id }) => (
-							<Input value={v} />
+		<TitledTable
+			id={id}
+			titleText="Purchased precursors"
+			button={
+				<DropdownButton text="Precursors"></DropdownButton>
+			}
+			rowKey={({ id }) => id}
+			columns={[
+				{
+					title: 'Name',
+					dataIndex: 'name',
+					render: (v, { id }) => (
+						<Input value={v} />
+					),
+				},
+				{
+					title: 'Production process',
+					dataIndex: 'agc',
+				},
+				{
+					title: 'Country code',
+					dataIndex: 'country',
+					render: country => (
+						<Select
+							defaultValue={country}
+							style={{ width: 70 }}
+							options={cc.map(c => ({
+								value: c,
+								label: c,
+							}))}
+						/>
+					),
+				},
+				...Array(5)
+					.fill(null)
+					.map((_, i) => ({
+						title: `Route ${i + 1}`,
+						dataIndex: ['routes', i],
+						render: (r: any) => (
+							<Input value={r} />
 						),
-					},
-					{
-						title: 'Production process',
-						dataIndex: 'agc',
-					},
-					{
-						title: 'Country code',
-						dataIndex: 'country',
-						render: country => (
-							<Select
-								defaultValue={country}
-								style={{ width: 70 }}
-								options={cc.map(c => ({
-									value: c,
-									label: c,
-								}))}
-							/>
-						),
-					},
-					...Array(5)
-						.fill(null)
-						.map((_, i) => ({
-							title: `Route ${i + 1}`,
-							dataIndex: ['routes', i],
-							render: (r: any) => (
-								<Input value={r} />
-							),
-						})),
-					{
-						render: (_, { id }) => (
-							<DeleteButton />
-						),
-					},
-				]}
-				dataSource={nemesia.list}
-			/>
-		</div>
+					})),
+				{
+					render: (_, { id }) => <DeleteButton />,
+				},
+			]}
+			dataSource={nemesia.list}
+		/>
 	)
 }
 
