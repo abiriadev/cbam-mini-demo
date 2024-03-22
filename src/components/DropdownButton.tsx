@@ -19,10 +19,8 @@ export const DropdownButton = ({
 			})),
 		}}
 	>
-		<Button type="primary" icon={<DownOutlined />}>
-			<Typography.Text strong className="text-white">
-				{text}
-			</Typography.Text>
+		<Button type="default" icon={<DownOutlined />}>
+			<b>{text}</b>
 		</Button>
 	</Dropdown>
 )
