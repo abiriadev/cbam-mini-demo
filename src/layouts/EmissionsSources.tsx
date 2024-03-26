@@ -2,6 +2,7 @@ import { InputNumber, Select } from 'antd'
 import { useSelector } from 'react-redux'
 import { TitledTable } from '@/components/TitledTable'
 import { RootState } from '@/store'
+import { PlusButton } from '@/components/PlusButton'
 
 export const EmissionsSources = ({
 	id,
@@ -12,14 +13,15 @@ export const EmissionsSources = ({
 		(state: RootState) => state.cbam,
 	)
 
+	const data = cbam.i.b?.source_streams
+
 	return (
 		<TitledTable
 			titleText="Emissions Sources"
 			id={id}
-			button={{
-				text: 'Add new process',
-				callback: () => void 0,
-			}}
+			button={
+				<PlusButton>Add new process</PlusButton>
+			}
 			rowKey={({ id }) => id}
 			columns={[
 				{
@@ -105,7 +107,7 @@ export const EmissionsSources = ({
 					dataIndex: 'content_bio',
 				},
 			]}
-			dataSource={nemesia.list}
+			dataSource={data}
 		/>
 	)
 }

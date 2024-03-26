@@ -49,11 +49,11 @@ export const SheetsList = ({ roww }: { roww: number }) => {
 						</Sheet>
 						{/* <Precursors /> */}
 					</Sheet>
-					{/* <Sheet title="B EmInst"> */}
-					{/* 	<SourceStreams /> */}
-					{/* 	<PFC /> */}
-					{/* 	<EmissionsSources /> */}
-					{/* </Sheet> */}
+					<Sheet title="B EmInst">
+						<SourceStreams />
+						<PFC />
+						<EmissionsSources />
+					</Sheet>
 					{/* <Sheet title="C Emissions & Energy"> */}
 					{/* 	<FuelBalance /> */}
 					{/* 	<GhgBalanceByType /> */}

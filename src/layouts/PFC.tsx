@@ -2,20 +2,24 @@ import { InputNumber, Select } from 'antd'
 import { useSelector } from 'react-redux'
 import { TitledTable } from '@/components/TitledTable'
 import { RootState } from '@/store'
+import { PlusButton } from '@/components/PlusButton'
 
 export const PFC = ({ id }: { id?: string }) => {
 	const cbam = useSelector(
 		(state: RootState) => state.cbam,
 	)
 
+	if (cbam.state !== 'generated') return
+
+	const data = cbam.i.b?.source_streams
+
 	return (
 		<TitledTable
 			id={id}
 			titleText="PFC Emissions"
-			button={{
-				text: 'Add new process',
-				callback: () => void 0,
-			}}
+			button={
+				<PlusButton>Add new process</PlusButton>
+			}
 			rowKey={({ id }) => id}
 			columns={[
 				{
@@ -101,7 +105,7 @@ export const PFC = ({ id }: { id?: string }) => {
 					dataIndex: 'content_bio',
 				},
 			]}
-			dataSource={nemesia.list}
+			dataSource={data}
 		/>
 	)
 }
