@@ -10,6 +10,23 @@ export const AGC = ({ id }: { id?: string }) => {
 		(state: RootState) => state.cbam,
 	)
 
+	const data =
+		cbam?.i?.a?.aggregated_goods_categories_and_relevant_production_processes?.list_of_aggregated_goods_categories?.map(
+			a => {
+				return {
+					kind: a.agc,
+					routes: [
+						a.route1,
+						a.route2,
+						a.route3,
+						a.route4,
+						a.route5,
+						a.route6,
+					],
+				}
+			},
+		)
+
 	return (
 		<TitledTable
 			id={id}
@@ -36,7 +53,7 @@ export const AGC = ({ id }: { id?: string }) => {
 					render: _ => <DeleteButton />,
 				},
 			]}
-			dataSource={[]}
+			dataSource={data ?? []}
 		/>
 	)
 }

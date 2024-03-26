@@ -1,4 +1,5 @@
 import { Flex, Form, Input, theme } from 'antd'
+import { useEffect } from 'react'
 
 export interface FieldsInputProps {
 	label: string
@@ -14,6 +15,11 @@ export interface FieldsProps {
 
 export const Fields = ({ id, fields }: FieldsProps) => {
 	const { token } = theme.useToken()
+	const [form] = Form.useForm()
+
+	fields.forEach(({ name, value }) => {
+		form.setFieldValue(name, value)
+	})
 
 	return (
 		<div
@@ -25,19 +31,14 @@ export const Fields = ({ id, fields }: FieldsProps) => {
 			}}
 		>
 			<Flex gap="large">
-				<Form layout="vertical">
+				<Form layout="vertical" form={form}>
 					{fields.map(
-						({
-							label,
-							required,
-							name,
-							value,
-						}) => (
+						({ label, required, name }) => (
 							<Form.Item
+								key={name ?? label}
 								label={label}
 								name={name ?? label}
 								rules={[{ required }]}
-								initialValue={value}
 							>
 								<Input />
 							</Form.Item>

@@ -64,7 +64,7 @@ export const Error: Story = {
 		setExcelModalOpen: _ => {},
 		title: 'Title',
 		successTitle: 'Success title',
-		errorTitle: 'Error title',
+		errorTitle: 'Failed ',
 		filename: 'example.txt',
 		fetchHref: Promise.reject(''),
 	},

@@ -34,3 +34,8 @@ export const chooseUniqueName = (
 
 	return uq
 }
+
+export const opt = <T, U>(
+	v: T,
+	cb: (_: T) => U,
+): U | undefined => (v === undefined ? undefined : cb(v))

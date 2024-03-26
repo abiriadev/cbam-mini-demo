@@ -9,7 +9,7 @@ export const theme: ThemeConfig = {
 	token: {
 		colorPrimary: primary,
 		colorSuccess: primary,
-		colorBgContainer: '#DCEEE0',
+		// colorBgContainer: '#DCEEE0',
 		colorBgLayout: white,
 		colorError: '#FF4A43',
 	},
@@ -20,28 +20,20 @@ export const theme: ThemeConfig = {
 		},
 		Typography: {
 			titleMarginBottom: '0',
-			// colorTextHeading: primary,
+			colorTextHeading: primary,
 		},
 		Layout: {
 			headerBg: white,
 			siderBg: white,
 		},
-		Select: {
-			colorBgContainer: white,
-		},
-		Input: {
-			colorBgContainer: white,
-		},
-		InputNumber: {
-			colorBgContainer: white,
-		},
-		DatePicker: {
-			colorBgContainer: white,
-		},
 		Table: {
 			headerColor: white,
 			headerBg: primary,
 			colorBgContainer: white,
+			headerBorderRadius: 5,
+			// lineWidth: 100,
+			// colorBorder: 'black',
+			// colorErrorBorderHover
 		},
 	},
 }
