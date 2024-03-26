@@ -1,17 +1,14 @@
+image: node:15.12-alpine3.13
 stages:
-  - build
-variables:
-  REGISTRY: harbor.aipim.synology.me
-  PROJECT: lca
-  IMAGE: cbam-mini-demo
-build_image:
-  stage: build
-  image: docker:latest
-  services:
-    - docker:dind
+  - deploy
+pages:
+  stage: deploy
   script:
-    - docker login $REGISTRY -u $USERNAME -p $PASSWORD
-    - docker build -t $REGISTRY/$PROJECT/$IMAGE:$CI_COMMIT_SHORT_SHA .
-    - docker push $REGISTRY/$PROJECT/$IMAGE:$CI_COMMIT_SHORT_SHA
-  only:
-    - main
+    - pnpm install
+    - pnpm build
+  artifacts:
+    paths:
+      - dist
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+
