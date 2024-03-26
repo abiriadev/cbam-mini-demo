@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 export const SummaryCommunication = ({
 	id,
 }: {
-	id: string
+	id?: string
 }) => {
 	const nemesia = useSelector(selectNemesia).s2
 
