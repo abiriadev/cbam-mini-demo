@@ -4,7 +4,7 @@ import { TitledTable } from '@/components/TitledTable'
 import { selectNemesia } from '@/calc'
 import { PlusButton } from '@/components/PlusButton'
 
-export const SourceStreams = ({ id }: { id: string }) => {
+export const SourceStreams = ({ id }: { id?: string }) => {
 	const nemesia = useSelector(selectNemesia).b_1
 
 	return (
