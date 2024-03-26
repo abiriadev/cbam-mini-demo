@@ -2,7 +2,11 @@ import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
 import { useSelector } from 'react-redux'
 
-export const SummaryProducts = ({ id }: { id: string }) => {
+export const SummaryProducts = ({
+	id,
+}: {
+	id?: string
+}) => {
 	const nemesia = useSelector(selectNemesia).s2
 
 	return (
