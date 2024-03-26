@@ -2,7 +2,7 @@ import { Flex, Typography, theme } from 'antd'
 import { ReactNode } from 'react'
 
 export interface SheetProps {
-	id: string
+	id?: string
 	title: string
 	children: ReactNode
 	sub?: boolean
