@@ -2,20 +2,9 @@ version: '3'
 services:
   cbam:
     build: .
-    image: harbor.aipim.synology.me/lca/cbam-mini-demo:122f5142
+    image: harbor.aipim.synology.me/lca/cbam-mini-demo:latest
     restart: 'always'
     ports:
       - 13731:80
-    labels:
-      - com.centurylinklabs.watchtower.enable=true
-  watchtower:
-    image: containrrr/watchtower
-    restart: 'always'
-    environment:
-      - WATCHTOWER_LABEL_ENABLE=1
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /home/aipim/.docker/config.json:/config.json
-    command: --interval 5
     labels:
       - com.centurylinklabs.watchtower.enable=true
