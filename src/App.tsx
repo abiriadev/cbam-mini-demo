@@ -5,8 +5,6 @@ import {
 	Form,
 	Input,
 	Layout,
-	Modal,
-	Result,
 	Row,
 	Space,
 	Spin,
@@ -23,8 +21,10 @@ import {
 	LoadingOutlined,
 	VerticalAlignBottomOutlined,
 } from '@ant-design/icons'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { calculate, generate } from './store/environment'
+import { DownloadModal } from './components/DownloadModal'
+import { createExcel } from './excel-api'
 
 function App() {
 	const { token } = theme.useToken()
@@ -57,15 +57,12 @@ function App() {
 								color: token.colorPrimary,
 							}}
 						>
-							Aipim CBAM reporter v3
+							Aipim CBAM reporter v4
 						</Typography.Title>
 					</Flex>
 				</Flex>
 			</Header>
 			<Layout>
-				{/* <Sider> */}
-				{/* 	<Toc /> */}
-				{/* </Sider> */}
 				<Content>
 					{state === 'calculating' && (
 						<Row className="mb-2 fixed top-0 left-0 w-screen h-screen z-10 backdrop-brightness-90">
@@ -169,12 +166,19 @@ function App() {
 										report
 									</Typography.Text>
 								</Button>
-								<M
+								<DownloadModal
 									excelModalOpen={
 										excelModalOpen
 									}
 									setExcelModalOpen={
 										setExcelModalOpen
+									}
+									title="Export results as CBAM Excel report"
+									filename="CBAM_communication_for_installation (generated).xlsx"
+									successTitle="Successfully generated Excel report!"
+									errorTitle="Failed to generate Excel report"
+									fetchHref={() =>
+										createExcel(a)
 									}
 								/>
 							</Flex>
