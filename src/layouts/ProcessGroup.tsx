@@ -1,7 +1,7 @@
 import { Fields } from '@/components/Fields'
 import { TitledBox } from '@/components/TitledBox'
 
-export const ProcessGroup = ({ id }) => {
+export const ProcessGroup = ({ id }: { id?: string }) => {
 	return (
 		<TitledBox title="a">
 			<div>
