@@ -22,7 +22,12 @@ export const TitledTable = (props: TitledTableProps) => {
 				</Typography.Title>
 				{button}
 			</Flex>
-			<Table {...rest} id={id} pagination={false} />
+			<Table
+				{...rest}
+				id={id}
+				pagination={false}
+				className="border-solid border border-neutral-400 rounded"
+			/>
 		</div>
 	)
 }
