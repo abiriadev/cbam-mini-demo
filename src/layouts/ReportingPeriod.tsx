@@ -51,7 +51,7 @@ export const ReportingPeriod = ({
 					Reporting Period
 				</Typography.Title>
 			</Flex>
-			<Flex>
+			<Flex className="border border-solid border-neutral-400 rounded p-4">
 				<Form form={form}>
 					<Form.Item
 						label="Reporting period"

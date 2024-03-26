@@ -3,15 +3,18 @@ import { useSelector } from 'react-redux'
 import { TitledTable } from '@/components/TitledTable'
 import { PlusButton } from '@/components/PlusButton'
 import { RootState } from '@/store'
+import { zip, zipWith } from 'lodash'
 
 export const SourceStreams = ({ id }: { id?: string }) => {
 	const cbam = useSelector(
 		(state: RootState) => state.cbam,
 	)
 
-	if (cbam.state !== 'generated') return
-
-	const data = cbam.i.b?.source_streams
+	const data = zipWith(
+		cbam?.i?.b?.source_streams,
+		cbam?.o?.b?.source_streams,
+		(a, b) => ({ ...a, ...b }),
+	)
 
 	return (
 		<TitledTable
@@ -57,13 +60,13 @@ export const SourceStreams = ({ id }: { id?: string }) => {
 				{
 					title: 'Activity data',
 					dataIndex: 'ad',
-					render: (v, { id }) => (
+					render: (v, { id, ad_unit }) => (
 						<InputNumber
 							value={v}
 							controls={false}
 							addonAfter={
 								<Select
-									defaultValue="t"
+									defaultValue={ad_unit}
 									style={{ width: 80 }}
 								>
 									<Select.Option value="t">
@@ -74,9 +77,6 @@ export const SourceStreams = ({ id }: { id?: string }) => {
 									</Select.Option>
 								</Select>
 							}
-							// onChange={activity_level =>
-							// 	dispatch(null)
-							// }
 						/>
 					),
 				},
@@ -88,19 +88,39 @@ export const SourceStreams = ({ id }: { id?: string }) => {
 							value={v}
 							controls={false}
 							addonAfter={'GJ/t'}
-							// onChange={activity_level =>
-							// 	dispatch(null)
-							// }
+						/>
+					),
+				},
+				{
+					title: 'Emission factor',
+					dataIndex: 'ef',
+					render: (v, { id, ef_unit }) => (
+						<InputNumber
+							value={v}
+							controls={false}
+							addonAfter={
+								<Select
+									defaultValue={ef_unit}
+									style={{ width: 80 }}
+								>
+									<Select.Option value="t">
+										t
+									</Select.Option>
+									<Select.Option value="kNm3">
+										kNm3
+									</Select.Option>
+								</Select>
+							}
 						/>
 					),
 				},
 				{
 					title: 'CO2e fossil',
-					dataIndex: 'fossil',
+					dataIndex: 'co2e_fossil',
 				},
 				{
 					title: 'CO2e bio',
-					dataIndex: 'bio',
+					dataIndex: 'co2e_bio',
 				},
 				{
 					title: 'Energy content (fossil)',
@@ -111,7 +131,7 @@ export const SourceStreams = ({ id }: { id?: string }) => {
 					dataIndex: 'content_bio',
 				},
 			]}
-			dataSource={data}
+			dataSource={data ?? []}
 		/>
 	)
 }
