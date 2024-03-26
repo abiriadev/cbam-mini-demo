@@ -1,5 +1,6 @@
 import { CbamInput } from '@/excel-api'
 import { createSlice } from '@reduxjs/toolkit'
+import { res_i, res_o } from './cbam/data'
 
 export type CbamState =
 	| {
@@ -17,7 +18,7 @@ export type CbamState =
 export interface CbamOutput {}
 
 const initialState: CbamState = {
-	state: 'calculating',
+	state: 'blank',
 }
 
 export const cbamSlice = createSlice({
@@ -26,7 +27,12 @@ export const cbamSlice = createSlice({
 	reducers: {
 		calculate: state =>
 			void (state.state = 'calculating'),
-		generate: state => void (state.state = 'generated'),
+		// @ts-ignore
+		generate: () => ({
+			state: 'generated',
+			i: res_i,
+			o: res_o,
+		}),
 	},
 })
 

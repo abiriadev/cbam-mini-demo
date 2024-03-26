@@ -1,7 +1,7 @@
 import { CbamInput } from '@/excel-api'
 import { CbamOutput } from '../cbam'
 
-export const zeroback_i: CbamInput = {
+export const res_i: CbamInput = {
 	a: {
 		reporting_period: {
 			start: '2024-01-01',
@@ -537,4 +537,4 @@ export const zeroback_i: CbamInput = {
 	],
 }
 
-export const zeroback_o: CbamOutput = {}
+export const res_o: CbamOutput = {}
