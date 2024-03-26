@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
 
-export const PFC = ({ id }: { id: string }) => {
+export const PFC = ({ id }: { id?: string }) => {
 	const nemesia = useSelector(selectNemesia).b_1
 
 	return (
