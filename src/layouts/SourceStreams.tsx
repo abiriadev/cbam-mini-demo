@@ -9,6 +9,10 @@ export const SourceStreams = ({ id }: { id?: string }) => {
 		(state: RootState) => state.cbam,
 	)
 
+	if (cbam.state !== 'generated') return
+
+	const data = cbam.i.b?.source_streams
+
 	return (
 		<TitledTable
 			id={id}
@@ -107,7 +111,7 @@ export const SourceStreams = ({ id }: { id?: string }) => {
 					dataIndex: 'content_bio',
 				},
 			]}
-			dataSource={nemesia.list}
+			dataSource={data}
 		/>
 	)
 }
