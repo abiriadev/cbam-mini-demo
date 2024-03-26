@@ -1,30 +1,16 @@
-import {
-	Button,
-	Dropdown,
-	Flex,
-	Input,
-	Popconfirm,
-	Select,
-	Table,
-	Typography,
-	message,
-	theme,
-} from 'antd'
+import { Input, theme } from 'antd'
 import { useSelector } from 'react-redux'
-import { AgcKindSet, cc } from '@/store/cbam'
-import {
-	DeleteOutlined,
-	DownOutlined,
-} from '@ant-design/icons'
-import { selectNemesia } from '@/calc'
 import { DeleteButton } from '@/components/DeleteButton'
 import { TitledTable } from '@/components/TitledTable'
 import { DropdownButton } from '@/components/DropdownButton'
+import { RootState } from '@/store'
 
 export const Precursors = ({ id }: { id?: string }) => {
 	const { token } = theme.useToken()
 
-	const nemesia = useSelector(selectNemesia).a_5
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 
 	return (
 		<TitledTable

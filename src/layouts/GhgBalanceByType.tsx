@@ -1,5 +1,5 @@
-import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
+import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
 
 export const GhgBalanceByType = ({
@@ -7,7 +7,9 @@ export const GhgBalanceByType = ({
 }: {
 	id?: string
 }) => {
-	const nemesia = useSelector(selectNemesia).c_2_a
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 
 	return (
 		<TitledTable

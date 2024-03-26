@@ -1,13 +1,15 @@
 import { useSelector } from 'react-redux'
-import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
+import { RootState } from '@/store'
 
 export const PrecursorEmissions = ({
 	id,
 }: {
 	id?: string
 }) => {
-	const nemesia = useSelector(selectNemesia).s1_2_2_2
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 
 	return (
 		<TitledTable

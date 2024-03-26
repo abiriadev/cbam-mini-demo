@@ -1,5 +1,5 @@
-import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
+import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
 
 export const SummaryProducts = ({
@@ -7,7 +7,9 @@ export const SummaryProducts = ({
 }: {
 	id?: string
 }) => {
-	const nemesia = useSelector(selectNemesia).s2
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 
 	return (
 		<TitledTable

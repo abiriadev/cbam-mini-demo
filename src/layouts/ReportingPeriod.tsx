@@ -1,4 +1,3 @@
-import { selectNemesia } from '@/calc'
 import {
 	DatePicker,
 	Flex,
@@ -17,7 +16,9 @@ export const ReportingPeriod = ({
 	id?: string
 }) => {
 	const { token } = theme.useToken()
-	const nemesia = useSelector(selectNemesia).a_1
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 	const { state } = useSelector(
 		({ environment }: RootState) => environment,
 	)

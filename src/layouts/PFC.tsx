@@ -1,10 +1,12 @@
 import { InputNumber, Select } from 'antd'
 import { useSelector } from 'react-redux'
-import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
+import { RootState } from '@/store'
 
 export const PFC = ({ id }: { id?: string }) => {
-	const nemesia = useSelector(selectNemesia).b_1
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 
 	return (
 		<TitledTable

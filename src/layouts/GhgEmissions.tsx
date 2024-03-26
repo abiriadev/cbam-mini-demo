@@ -2,14 +2,16 @@ import { Table } from 'antd'
 import { useSelector } from 'react-redux'
 import { fix3, sum } from '@/utils'
 import { TitledTable } from '@/components/TitledTable'
-import { selectNemesia } from '@/calc'
+import { RootState } from '@/store'
 
 export const GhgEmissions = ({
 	id: id,
 }: {
 	id?: string
 }) => {
-	const nemesia = useSelector(selectNemesia).s1_2_1
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 
 	return (
 		<TitledTable

@@ -4,28 +4,24 @@ import {
 	Flex,
 	Input,
 	InputNumber,
-	Popconfirm,
 	Space,
 	Table,
 	Typography,
-	message,
 	theme,
 } from 'antd'
 import { useSelector } from 'react-redux'
-import {
-	DeleteOutlined,
-	DownOutlined,
-	PlusOutlined,
-} from '@ant-design/icons'
-import { selectNemesia } from '@/calc'
+import { DownOutlined } from '@ant-design/icons'
 import { DeleteButton } from '@/components/DeleteButton'
 import { TitledTable } from '@/components/TitledTable'
 import { PlusButton } from '@/components/PlusButton'
+import { RootState } from '@/store'
 
 export const Processes = () => {
 	const { token } = theme.useToken()
 
-	const nemesia = useSelector(selectNemesia).d
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 
 	return (
 		<div>

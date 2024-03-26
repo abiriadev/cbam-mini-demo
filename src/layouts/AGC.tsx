@@ -1,23 +1,21 @@
 import { Input } from 'antd'
 import { useSelector } from 'react-redux'
-import { AgcKindSet } from '@/store/cbam'
-import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
 import { DeleteButton } from '@/components/DeleteButton'
 import { DropdownButton } from '@/components/DropdownButton'
+import { RootState } from '@/store'
 
 export const AGC = ({ id }: { id?: string }) => {
-	const nemesia = useSelector(selectNemesia).a_4_1
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 
 	return (
 		<TitledTable
 			id={id}
 			titleText="List of aggregated goods categories"
 			button={
-				<DropdownButton
-					text="Add new aggregated goods category"
-					items={AgcKindSet}
-				/>
+				<DropdownButton text="Add new aggregated goods category" />
 			}
 			rowKey={({ id }) => id}
 			columns={[
@@ -38,7 +36,7 @@ export const AGC = ({ id }: { id?: string }) => {
 					render: _ => <DeleteButton />,
 				},
 			]}
-			dataSource={nemesia.list}
+			dataSource={[]}
 		/>
 	)
 }

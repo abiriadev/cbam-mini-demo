@@ -1,11 +1,13 @@
 import { Input, InputNumber, Select } from 'antd'
 import { useSelector } from 'react-redux'
 import { TitledTable } from '@/components/TitledTable'
-import { selectNemesia } from '@/calc'
 import { PlusButton } from '@/components/PlusButton'
+import { RootState } from '@/store'
 
 export const SourceStreams = ({ id }: { id?: string }) => {
-	const nemesia = useSelector(selectNemesia).b_1
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 
 	return (
 		<TitledTable

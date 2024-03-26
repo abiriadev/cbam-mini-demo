@@ -1,15 +1,15 @@
-import { Table, Typography } from 'antd'
 import { useSelector } from 'react-redux'
-import { fixEmission, nanGuard, sum } from '@/utils'
-import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
+import { RootState } from '@/store'
 
 export const ProcessEmissions = ({
 	id,
 }: {
 	id?: string
 }) => {
-	const nemesia = useSelector(selectNemesia).s1_2_2_1
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 
 	return (
 		<TitledTable

@@ -25,8 +25,6 @@ import { SummaryOfTheInstallation } from '@layouts/SummaryOfTheInstallation'
 import { ProcessGroup } from './ProcessGroup'
 
 export const SheetsList = ({ roww }: { roww: number }) => {
-	const { token } = theme.useToken()
-
 	return (
 		<Row>
 			<Col span={roww}>

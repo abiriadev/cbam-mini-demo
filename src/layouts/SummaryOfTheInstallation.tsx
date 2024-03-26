@@ -1,5 +1,5 @@
-import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
+import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
 
 export const SummaryOfTheInstallation = ({
@@ -7,7 +7,9 @@ export const SummaryOfTheInstallation = ({
 }: {
 	id?: string
 }) => {
-	const nemesia = useSelector(selectNemesia).a_2
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 
 	return (
 		<TitledTable

@@ -1,22 +1,9 @@
-import {
-	Button,
-	Dropdown,
-	Input,
-	Popconfirm,
-	Typography,
-	message,
-	theme,
-} from 'antd'
+import { Input, theme } from 'antd'
 import { useSelector } from 'react-redux'
-import {
-	DeleteOutlined,
-	DownOutlined,
-} from '@ant-design/icons'
-import { selectNemesia } from '@/calc'
 import { TitledTable } from '@/components/TitledTable'
-import { AgcKindSet } from '@/store/cbam'
 import { DeleteButton } from '@/components/DeleteButton'
 import { DropdownButton } from '@/components/DropdownButton'
+import { RootState } from '@/store'
 
 export const RelevantProductionProcesses = ({
 	id,
@@ -25,7 +12,9 @@ export const RelevantProductionProcesses = ({
 }) => {
 	const { token } = theme.useToken()
 
-	const nemesia = useSelector(selectNemesia).a_4_2
+	const cbam = useSelector(
+		(state: RootState) => state.cbam,
+	)
 
 	return (
 		<div>
