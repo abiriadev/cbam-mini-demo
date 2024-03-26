@@ -29,6 +29,7 @@ export const Fields = ({ id, fields }: FieldsProps) => {
 				borderRadius: token.borderRadius,
 				padding: token.padding,
 			}}
+			className="border border-solid"
 		>
 			<Flex gap="large">
 				<Form layout="vertical" form={form}>

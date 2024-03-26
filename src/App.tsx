@@ -63,7 +63,7 @@ function App() {
 					</Flex>
 				</Flex>
 			</Header>
-			<Layout>
+			<Layout className="p-5">
 				<Content>
 					{cbam.state === 'calculating' && (
 						<Row className="mb-2 fixed top-0 left-0 w-screen h-screen z-10 backdrop-brightness-90">

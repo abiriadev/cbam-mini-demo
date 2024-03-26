@@ -54,36 +54,36 @@ export const SheetsList = ({ roww }: { roww: number }) => {
 						<PFC />
 						<EmissionsSources />
 					</Sheet>
-					{/* <Sheet title="C Emissions & Energy"> */}
-					{/* 	<FuelBalance /> */}
-					{/* 	<GhgBalanceByType /> */}
-					{/* </Sheet> */}
+					<Sheet title="C Emissions & Energy">
+						<FuelBalance />
+						<GhgBalanceByType />
+					</Sheet>
 					{/* <Sheet title="Processes"> */}
 					{/* 	<Processes /> */}
 					{/* </Sheet> */}
 					{/* <Sheet title="PurchPrec"> */}
 					{/* 	<Precursors /> */}
 					{/* </Sheet> */}
-					{/* <Sheet title="Tools"> */}
-					{/* 	<FuelIntoChp /> */}
-					{/* </Sheet> */}
-					{/* <Sheet title="Summary Processes"> */}
-					{/* 	<Sheet */}
-					{/* 		title="Summary of the installation, processes and production routes" */}
-					{/* 		sub */}
-					{/* 	> */}
-					{/* 		<SummaryOfTheInstallation /> */}
-					{/* 	</Sheet> */}
-					{/* 	<Sheet */}
-					{/* 		title="Greenhouse gas emissions balance and specific embedded emissions (SEE)" */}
-					{/* 		sub */}
-					{/* 	> */}
-					{/* 		<GhgEmissions /> */}
-					{/* 		<ProcessEmissions /> */}
-					{/* 		<PrecursorEmissions /> */}
-					{/* 	</Sheet> */}
-					{/* 	<Emissions /> */}
-					{/* </Sheet> */}
+					<Sheet title="Tools">
+						<FuelIntoChp />
+					</Sheet>
+					<Sheet title="Summary Processes">
+						<Sheet
+							title="Summary of the installation, processes and production routes"
+							sub
+						>
+							<SummaryOfTheInstallation />
+						</Sheet>
+						{/* <Sheet */}
+						{/* 	title="Greenhouse gas emissions balance and specific embedded emissions (SEE)" */}
+						{/* 	sub */}
+						{/* > */}
+						{/* 	<GhgEmissions /> */}
+						{/* 	<ProcessEmissions /> */}
+						{/* 	<PrecursorEmissions /> */}
+						{/* </Sheet> */}
+						{/* <Emissions /> */}
+					</Sheet>
 					{/* <Sheet title="Summary Products"> */}
 					{/* 	<SummaryProducts /> */}
 					{/* </Sheet> */}

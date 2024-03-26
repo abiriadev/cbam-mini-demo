@@ -13,7 +13,7 @@ export const EmissionsSources = ({
 		(state: RootState) => state.cbam,
 	)
 
-	const data = cbam.i.b?.source_streams
+	const data = cbam?.i?.b?.source_streams
 
 	return (
 		<TitledTable
