@@ -22,7 +22,7 @@ import {
 	VerticalAlignBottomOutlined,
 } from '@ant-design/icons'
 import { useState } from 'react'
-import { calculate, generate } from './store/environment'
+import { generate, calculate } from './store/cbam'
 import { DownloadModal } from './components/DownloadModal'
 import { createExcel } from './excel-api'
 
