@@ -6,7 +6,7 @@ import { TitledTable } from '@/components/TitledTable'
 export const EmissionsSources = ({
 	id,
 }: {
-	id: string
+	id?: string
 }) => {
 	const nemesia = useSelector(selectNemesia).b_1
 
