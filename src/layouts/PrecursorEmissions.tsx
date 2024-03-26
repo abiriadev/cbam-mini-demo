@@ -5,7 +5,7 @@ import { TitledTable } from '@/components/TitledTable'
 export const PrecursorEmissions = ({
 	id,
 }: {
-	id: string
+	id?: string
 }) => {
 	const nemesia = useSelector(selectNemesia).s1_2_2_2
 
