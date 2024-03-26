@@ -1,11 +1,15 @@
 import { CbamInput } from '@/excel-api'
 import { createSlice } from '@reduxjs/toolkit'
 
-export interface CbamState {
-	isBlank: boolean
-	i?: CbamInput
-	o?: CbamOutput
-}
+export type CbamState =
+	| {
+			isBlank: true
+	  }
+	| {
+			isBlank: false
+			i: CbamInput
+			o: CbamOutput
+	  }
 
 export interface CbamOutput {}
 
