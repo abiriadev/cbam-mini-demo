@@ -30,7 +30,8 @@ function App() {
 	const { token } = theme.useToken()
 
 	const {
-		environment: { isIframe, state },
+		environment: { isIframe },
+		cbam,
 	} = useSelector((st: RootState) => st)
 	const [excelModalOpen, setExcelModalOpen] =
 		useState(false)
@@ -177,9 +178,18 @@ function App() {
 									filename="CBAM_communication_for_installation (generated).xlsx"
 									successTitle="Successfully generated Excel report!"
 									errorTitle="Failed to generate Excel report"
-									fetchHref={() =>
-										createExcel(a)
-									}
+									fetchHref={() => {
+										if (
+											cbam.state ===
+											'generated'
+										) {
+											return createExcel(
+												cbam.i,
+											)
+										} else {
+											return Promise.reject()
+										}
+									}}
 								/>
 							</Flex>
 						</Col>
