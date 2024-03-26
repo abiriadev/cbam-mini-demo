@@ -3,10 +3,13 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export type CbamState =
 	| {
-			isBlank: true
+			state: 'blank'
 	  }
 	| {
-			isBlank: false
+			state: 'calculating'
+	  }
+	| {
+			state: 'generated'
 			i: CbamInput
 			o: CbamOutput
 	  }
@@ -14,16 +17,20 @@ export type CbamState =
 export interface CbamOutput {}
 
 const initialState: CbamState = {
-	isBlank: true,
+	state: 'calculating',
 }
 
 export const cbamSlice = createSlice({
 	name: 'cbam',
-	initialState,
-	reducers: {},
+	initialState: initialState as CbamState,
+	reducers: {
+		calculate: state =>
+			void (state.state = 'calculating'),
+		generate: state => void (state.state = 'generated'),
+	},
 })
 
 export const {
-	actions: {},
+	actions: { calculate, generate },
 	reducer,
 } = cbamSlice

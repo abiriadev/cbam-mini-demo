@@ -17,13 +17,10 @@ export const cbamSlice = createSlice({
 	initialState,
 	reducers: {
 		setIframe: state => void (state.isIframe = true),
-		calculate: state =>
-			void (state.state = 'calculating'),
-		generate: state => void (state.state = 'generated'),
 	},
 })
 
 export const {
-	actions: { setIframe, calculate, generate },
+	actions: { setIframe },
 	reducer,
 } = cbamSlice
