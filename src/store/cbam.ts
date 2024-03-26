@@ -1,22 +1,21 @@
 import { CbamInput } from '@/excel-api'
 import { createSlice } from '@reduxjs/toolkit'
-import { zeroback_i, zeroback_o } from './cbam/data'
 
 export interface CbamState {
-	i: CbamInput
-	o: CbamOutput
+	isBlank: boolean
+	i?: CbamInput
+	o?: CbamOutput
 }
 
 export interface CbamOutput {}
 
-const zeroback: CbamState = {
-	i: zeroback_i,
-	o: zeroback_o,
+const initialState: CbamState = {
+	isBlank: true,
 }
 
 export const cbamSlice = createSlice({
 	name: 'cbam',
-	initialState: zeroback,
+	initialState,
 	reducers: {},
 })
 
