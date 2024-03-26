@@ -19,19 +19,18 @@ export const ReportingPeriod = ({
 	const cbam = useSelector(
 		(state: RootState) => state.cbam,
 	)
-	const { state } = useSelector(
-		({ environment }: RootState) => environment,
-	)
 	const [form] = Form.useForm()
 
 	useEffect(() => {
-		if (state === 'generated') {
-			form.setFieldValue('period', [
-				dayjs(nemesia.start),
-				dayjs(nemesia.end),
-			])
-		}
-	}, [state])
+		if (cbam.state !== 'generated') return
+
+		form.setFieldValue('period', [
+			// @ts-ignore
+			dayjs(cbam.i.a.reporting_period.start),
+			// @ts-ignore
+			dayjs(cbam.i.a.reporting_period.end),
+		])
+	}, [cbam.state])
 
 	return (
 		<div
