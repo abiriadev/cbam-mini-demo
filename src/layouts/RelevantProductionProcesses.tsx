@@ -25,7 +25,7 @@ export const RelevantProductionProcesses = ({
 				button={
 					<DropdownButton
 						text="Add new process"
-						items={AgcKindSet}
+						items={[]}
 					/>
 				}
 				columns={[
