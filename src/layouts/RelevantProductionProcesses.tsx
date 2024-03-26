@@ -1,4 +1,4 @@
-import { Input, theme } from 'antd'
+import { Input } from 'antd'
 import { useSelector } from 'react-redux'
 import { TitledTable } from '@/components/TitledTable'
 import { DeleteButton } from '@/components/DeleteButton'
@@ -10,11 +10,27 @@ export const RelevantProductionProcesses = ({
 }: {
 	id?: string
 }) => {
-	const { token } = theme.useToken()
-
 	const cbam = useSelector(
 		(state: RootState) => state.cbam,
 	)
+
+	const data =
+		cbam?.i?.a?.aggregated_goods_categories_and_relevant_production_processes?.relevant_production_processes?.map(
+			a => {
+				return {
+					name: a.name,
+					agc: a.production_process,
+					included: [
+						a.included_goods_categories_1,
+						a.included_goods_categories_2,
+						a.included_goods_categories_3,
+						a.included_goods_categories_4,
+						a.included_goods_categories_5,
+						a.included_goods_categories_6,
+					],
+				}
+			},
+		)
 
 	return (
 		<div>
@@ -57,7 +73,7 @@ export const RelevantProductionProcesses = ({
 						),
 					},
 				]}
-				dataSource={nemesia.list}
+				dataSource={data ?? []}
 			/>
 		</div>
 	)

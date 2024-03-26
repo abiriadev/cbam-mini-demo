@@ -45,7 +45,7 @@ export const SheetsList = ({ roww }: { roww: number }) => {
 							sub
 						>
 							<AGC />
-							{/* <RelevantProductionProcesses /> */}
+							<RelevantProductionProcesses />
 						</Sheet>
 						{/* <Precursors /> */}
 					</Sheet>
