@@ -1,9 +1,10 @@
-image: node:15.12-alpine3.13
+image: node:lts-alpine3.19
 stages:
   - deploy
 pages:
   stage: deploy
   script:
+    - corepack enable
     - pnpm install
     - pnpm build
   artifacts:
