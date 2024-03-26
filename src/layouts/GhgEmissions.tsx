@@ -13,16 +13,21 @@ export const GhgEmissions = ({
 		(state: RootState) => state.cbam,
 	)
 
+	const data =
+		cbam?.o?.s_processes
+			?.greenhouse_gas_emissions_balance_and_specific_embedded_emissions
+			?.ghg_emissions_balance_of_the_installation_and_all_production_processes
+
 	return (
 		<TitledTable
 			id={id}
-			dataSource={nemesia.list}
+			dataSource={data ?? []}
 			rowKey={({ id }) => id}
 			titleText="GHG emissions balance"
 			columns={[
 				{
 					title: 'Production Process',
-					dataIndex: 'process',
+					dataIndex: 'production_process',
 				},
 				{
 					title: 'AGC',
@@ -58,35 +63,34 @@ export const GhgEmissions = ({
 					<Table.Summary.Cell index={0}>
 						Total
 					</Table.Summary.Cell>
-					<Table.Summary.Cell index={1}>
+					<Table.Summary.Cell index={2}>
 						tCO2e
 					</Table.Summary.Cell>
-					<Table.Summary.Cell index={2}>
+					<Table.Summary.Cell index={3}>
 						{fix3(
 							sum(
 								v.map(({ direm }) => direm),
 							),
 						)}
 					</Table.Summary.Cell>
-					<Table.Summary.Cell index={3}>
+					<Table.Summary.Cell index={4}>
 						{fix3(
 							sum(v.map(({ heat }) => heat)),
 						)}
 					</Table.Summary.Cell>
-					<Table.Summary.Cell index={4}>
+					<Table.Summary.Cell index={5}>
 						{fix3(sum(v.map(({ wg }) => wg)))}
 					</Table.Summary.Cell>
-					<Table.Summary.Cell index={5}>
+					<Table.Summary.Cell index={6}>
 						{fix3(
 							sum(
 								v.map(
-									({ totalDirem }) =>
-										totalDirem,
+									({ direct }) => direct,
 								),
 							),
 						)}
 					</Table.Summary.Cell>
-					<Table.Summary.Cell index={6}>
+					<Table.Summary.Cell index={7}>
 						{fix3(
 							sum(
 								v.map(

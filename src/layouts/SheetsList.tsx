@@ -74,14 +74,14 @@ export const SheetsList = ({ roww }: { roww: number }) => {
 						>
 							<SummaryOfTheInstallation />
 						</Sheet>
-						{/* <Sheet */}
-						{/* 	title="Greenhouse gas emissions balance and specific embedded emissions (SEE)" */}
-						{/* 	sub */}
-						{/* > */}
-						{/* 	<GhgEmissions /> */}
-						{/* 	<ProcessEmissions /> */}
-						{/* 	<PrecursorEmissions /> */}
-						{/* </Sheet> */}
+						<Sheet
+							title="Greenhouse gas emissions balance and specific embedded emissions (SEE)"
+							sub
+						>
+							<GhgEmissions />
+							{/* <ProcessEmissions /> */}
+							{/* <PrecursorEmissions /> */}
+						</Sheet>
 						{/* <Emissions /> */}
 					</Sheet>
 					{/* <Sheet title="Summary Products"> */}

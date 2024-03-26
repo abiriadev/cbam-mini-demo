@@ -613,4 +613,52 @@ export const res_o: CbamOutput = {
 			},
 		],
 	},
+	s_processes: {
+		greenhouse_gas_emissions_balance_and_specific_embedded_emissions:
+			{
+				ghg_emissions_balance_of_the_installation_and_all_production_processes:
+					[
+						{
+							production_process:
+								'시멘트제조공정',
+							agc: 'Cement',
+							direm: 757,
+							heat: -41,
+							wg: -524,
+							direct: 192,
+							indirect: 105,
+						},
+						{
+							production_process:
+								'선철제조공정',
+							agc: 'Crude steel',
+							direm: 200,
+							heat: -3234,
+							wg: 1795,
+							direct: -1239,
+							indirect: 2039,
+						},
+						{
+							production_process:
+								'암모니아제조공정',
+							agc: 'Ammonia',
+							direm: 4898,
+							heat: -103,
+							wg: -22602,
+							direct: -17806,
+							indirect: 19023,
+						},
+						{
+							production_process:
+								'알루미늄제조공정',
+							agc: 'Unwrought aluminium',
+							direm: 34,
+							heat: 0,
+							wg: 991,
+							direct: 1025,
+							indirect: 56144,
+						},
+					],
+			},
+	},
 }
